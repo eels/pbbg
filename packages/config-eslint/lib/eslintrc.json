@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "semistandard",
+    "@pbbg/eslint-config/lib/configs/import.json",
+    "@pbbg/eslint-config/lib/configs/jest.json",
+    "@pbbg/eslint-config/lib/configs/prettier.json",
+    "@pbbg/eslint-config/lib/configs/react.json",
+    "@pbbg/eslint-config/lib/configs/sort-destructure-keys.json",
+    "@pbbg/eslint-config/lib/configs/sort-imports-es6-autofix.json",
+    "@pbbg/eslint-config/lib/configs/sort-keys-fix.json",
+    "@pbbg/eslint-config/lib/configs/typescript.json"
+  ],
+
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "node": true
+  },
+
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "no-unused-vars": "off",
+    "no-use-before-define": "off",
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "asyncArrow": "always",
+        "named": "never"
+      }
+    ]
+  }
+}

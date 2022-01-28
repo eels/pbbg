@@ -11,8 +11,13 @@
     "format": "prettier './src/**/*.{ts,tsx}' --check",
     "format:fix": "yarn format --write",
     "lint:css": "stylelint './src/**/*.scss' --cache",
-    "lint:css:fix": "yarn lint:css --fix"
+    "lint:css:fix": "yarn lint:css --fix",
+    "lint:js": "eslint './src/**/*.{ts,tsx}' --cache",
+    "lint:js:fix": "yarn lint:js --fix"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {
     "chic-modules": "^1.0.7",
     "next": "^12.0.9",
@@ -21,12 +26,14 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@pbbg/eslint-config": "*",
     "@pbbg/config-prettier": "*",
     "@pbbg/config-stylelint": "*",
     "@pbbg/config-typescript": "*",
     "@types/node": "^17.0.13",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "eslint": "^8.7.0",
     "next-purge-css-modules": "^1.0.1",
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
