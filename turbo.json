@@ -8,9 +8,11 @@
       "dependsOn": ["^clean"]
     },
     "dev": {
+      "cache": false,
       "dependsOn": ["^dev"]
     },
     "lint-staged": {
+      "cache": false,
       "dependsOn": []
     },
     "test": {
