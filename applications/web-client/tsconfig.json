@@ -2,6 +2,7 @@
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
 
   "compilerOptions": {
+    "baseUrl": "src",
     "jsx": "preserve",
     "noEmit": true
   },
