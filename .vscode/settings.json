@@ -1,0 +1,21 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "editor.formatOnSave": true,
+
+  "[javascript]": {
+    "editor.rulers": [100]
+  },
+
+  "[javascriptreact]": {
+    "editor.rulers": [100]
+  },
+
+  "[typescript]": {
+    "editor.rulers": [100]
+  },
+
+  "[typescriptreact]": {
+    "editor.rulers": [100]
+  }
+}

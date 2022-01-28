@@ -1,0 +1,26 @@
+{
+  "name": "@pbbg/root",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Liam Howell <liam@liam.codes>",
+  "repository": "https://github.com/eels/pbbg",
+  "bugs": "https://github.com/eels/pbbg/issues",
+  "packageManager": "yarn@1.22.17",
+  "workspaces": [
+    "applications/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "turbo": "^1.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@pbbg/config-prettier": "*",
+    "husky": "^7.0.4",
+    "prettier": "^2.5.1"
+  }
+}

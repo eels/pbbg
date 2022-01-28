@@ -1,0 +1,32 @@
+# Packages
+# -----------------------------------------------
+
+*.tar
+*.zip
+
+# Logs
+# -----------------------------------------------
+
+.turbo
+*.log
+
+# OS generated files
+# -----------------------------------------------
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# NPM Lock files
+# -----------------------------------------------
+
+package-lock.json
+
+# Dependencies
+# -----------------------------------------------
+
+node_modules
