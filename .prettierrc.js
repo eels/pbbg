@@ -1,3 +1,3 @@
 module.exports = {
-  ...require('@pbbg/config-prettier/src/prettierrc.json'),
+  ...require('@pbbg/prettier-config/lib/prettierrc.json'),
 };

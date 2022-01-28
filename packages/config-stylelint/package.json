@@ -1,8 +1,7 @@
 {
-  "name": "@pbbg/config-stylelint",
+  "name": "@pbbg/stylelint-config",
   "private": true,
   "version": "1.0.0",
-  "author": "Liam Howell <liam@liam.codes>",
   "dependencies": {
     "stylelint": "^14.3.0",
     "stylelint-config-idiomatic-order": "^8.1.0",

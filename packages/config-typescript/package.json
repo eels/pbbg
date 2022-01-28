@@ -1,6 +1,5 @@
 {
-  "name": "@pbbg/config-typescript",
+  "name": "@pbbg/typescript-config",
   "private": true,
-  "version": "1.0.0",
-  "author": "Liam Howell <liam@liam.codes>"
+  "version": "1.0.0"
 }

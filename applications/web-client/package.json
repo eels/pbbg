@@ -2,7 +2,6 @@
   "name": "@pbbg/web-client",
   "private": true,
   "version": "1.0.0",
-  "author": "Liam Howell <liam@liam.codes>",
   "scripts": {
     "build": "next build",
     "clean": "rimraf .next",
@@ -27,9 +26,9 @@
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
-    "@pbbg/config-prettier": "*",
-    "@pbbg/config-stylelint": "*",
-    "@pbbg/config-typescript": "*",
+    "@pbbg/prettier-config": "*",
+    "@pbbg/stylelint-config": "*",
+    "@pbbg/typescript-config": "*",
     "@types/node": "^17.0.13",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",

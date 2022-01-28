@@ -19,7 +19,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@pbbg/config-prettier": "*",
+    "@pbbg/prettier-config": "*",
     "husky": "^7.0.4",
     "prettier": "^2.5.1"
   }
