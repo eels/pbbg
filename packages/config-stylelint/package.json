@@ -1,0 +1,14 @@
+{
+  "name": "@pbbg/config-stylelint",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Liam Howell <liam@liam.codes>",
+  "dependencies": {
+    "stylelint": "^14.3.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-recommended-scss": "^5.0.2",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.1.0"
+  }
+}

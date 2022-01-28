@@ -9,7 +9,9 @@
     "dev": "next dev",
     "export": "next export",
     "format": "prettier './src/**/*.{ts,tsx}' --check",
-    "format:fix": "yarn format --write"
+    "format:fix": "yarn format --write",
+    "lint:css": "stylelint './src/**/*.scss' --cache",
+    "lint:css:fix": "yarn lint:css --fix"
   },
   "dependencies": {
     "chic-modules": "^1.0.7",
@@ -20,6 +22,7 @@
   },
   "devDependencies": {
     "@pbbg/config-prettier": "*",
+    "@pbbg/config-stylelint": "*",
     "@pbbg/config-typescript": "*",
     "@types/node": "^17.0.13",
     "@types/react": "^17.0.38",
@@ -28,6 +31,7 @@
     "prettier": "^2.5.1",
     "rimraf": "^3.0.2",
     "sass": "^1.49.0",
+    "stylelint": "^14.3.0",
     "typescript": "^4.5.5"
   }
 }
