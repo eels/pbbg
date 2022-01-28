@@ -4,17 +4,17 @@ services:
   nginx:
     build:
       context: 'applications/server'
-      dockerfile: 'server-docker/nginx/dockerfile'
+      dockerfile: 'docker/nginx/dockerfile'
     ports:
       - '8080:80'
     restart: 'unless-stopped'
     volumes:
-      - './applications/server/server-docker/nginx/default.conf:/etc/nginx/conf.d/default.conf'
+      - './applications/server/docker/nginx/default.conf:/etc/nginx/conf.d/default.conf'
 
   node:
     build:
       context: '.'
-      dockerfile: 'applications/server/server-docker/node/dockerfile'
+      dockerfile: 'applications/server/docker/node/dockerfile'
     expose:
       - '3000'
     restart: 'on-failure'
@@ -24,7 +24,7 @@ services:
   postgres:
     build:
       context: 'applications/server'
-      dockerfile: 'server-docker/postgres/dockerfile'
+      dockerfile: 'docker/postgres/dockerfile'
     environment:
       - 'POSTGRES_USER=${POSTGRES_USER}'
       - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
