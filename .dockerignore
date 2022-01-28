@@ -1,0 +1,5 @@
+# --- Dependencies ------------------------------
+
+**/.parcel-config
+**/.turbo
+**/node_modules

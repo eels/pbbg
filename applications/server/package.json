@@ -1,0 +1,38 @@
+{
+  "name": "@pbbg/server",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "yarn parcel build src/index.ts --dist-dir build --cache-dir .parcel-cache",
+    "clean": "rimraf build",
+    "dev": "yarn parcel watch src/index.ts --dist-dir build --cache-dir .parcel-cache",
+    "format": "prettier './{src,test}/**/*.{ts,tsx}' --check",
+    "format:fix": "yarn format --write",
+    "lint-staged": "lint-staged",
+    "lint:js": "eslint './{src,test}/**/*.{ts,tsx}' --cache",
+    "lint:js:fix": "yarn lint:js --fix",
+    "start": "node build/index.js",
+    "test": "jest --coverage --passWithNoTests"
+  },
+  "engines": {
+    "node": ">= 16"
+  },
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@pbbg/eslint-config": "*",
+    "@pbbg/prettier-config": "*",
+    "@pbbg/typescript-config": "*",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.12",
+    "eslint": "^8.7.0",
+    "jest": "^27.4.7",
+    "lint-staged": "^12.3.2",
+    "parcel": "^2.2.1",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.5"
+  }
+}

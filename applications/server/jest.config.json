@@ -1,0 +1,11 @@
+{
+  "collectCoverageFrom": ["src/**/*.{ts,tsx}"],
+
+  "moduleDirectories": ["node_modules", "src", "test"],
+
+  "moduleFileExtensions": ["js", "ts", "tsx"],
+
+  "roots": ["<rootDir>/src/"],
+
+  "testEnvironment": "node"
+}

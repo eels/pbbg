@@ -1,0 +1,14 @@
+# --- Dependencies ------------------------------
+
+node_modules
+
+# --- Caches ------------------------------------
+
+.eslintcache
+.parcel-cache
+.yarn-cache
+
+# --- Build -------------------------------------
+
+coverage
+build
