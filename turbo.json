@@ -1,4 +1,14 @@
 {
   "baseBranch": "origin/main",
-  "pipeline": {}
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"]
+    },
+    "clean": {
+      "dependsOn": ["^clean"]
+    },
+    "dev": {
+      "dependsOn": ["^dev"]
+    }
+  }
 }

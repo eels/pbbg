@@ -1,0 +1,33 @@
+{
+  "name": "@pbbg/web-client",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Liam Howell <liam@liam.codes>",
+  "scripts": {
+    "build": "next build",
+    "clean": "rimraf .next",
+    "dev": "next dev",
+    "export": "next export",
+    "format": "prettier './src/**/*.{ts,tsx}' --check",
+    "format:fix": "yarn format --write"
+  },
+  "dependencies": {
+    "chic-modules": "^1.0.7",
+    "next": "^12.0.9",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@pbbg/config-prettier": "*",
+    "@pbbg/config-typescript": "*",
+    "@types/node": "^17.0.13",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "next-purge-css-modules": "^1.0.1",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.0",
+    "typescript": "^4.5.5"
+  }
+}

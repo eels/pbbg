@@ -1,0 +1,12 @@
+{
+  "extends": "@pbbg/config-typescript/src/tsconfig.json",
+
+  "compilerOptions": {
+    "baseUrl": "src",
+    "jsx": "preserve",
+    "noEmit": true,
+    "outDir": "build"
+  },
+
+  "include": ["src"]
+}
