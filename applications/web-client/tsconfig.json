@@ -4,8 +4,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "jsx": "preserve",
-    "noEmit": true,
-    "outDir": "build"
+    "noEmit": true
   },
 
   "include": ["src"]
