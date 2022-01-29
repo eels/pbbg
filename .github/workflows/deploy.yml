@@ -52,7 +52,9 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           script: |
             cd ${{ github.repository }}
-            docker-compose build && docker-compose up --detach
+            docker-compose build
+            docker-compose up --detach
+            docker system prune --all --force --volumes
 
   deploy_web_client:
     name: Deploy Web Client
