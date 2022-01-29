@@ -18,9 +18,9 @@ jobs:
         env:
           ENV_FILE: ${{ github.repository }}/.env
         run: |
-          touch ${{ ENV_FILE }}
-          echo POSTGRES_USER="${{ secrets.POSTGRES_USER }}" >> ${{ ENV_FILE }}
-          echo POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}" >> ${{ ENV_FILE }}
+          touch ${{ env.ENV_FILE }}
+          echo POSTGRES_USER="${{ secrets.POSTGRES_USER }}" >> ${{ env.ENV_FILE }}
+          echo POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}" >> ${{ env.ENV_FILE }}
 
       - name: Prepare directory for deployment
         run: |
