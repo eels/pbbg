@@ -19,6 +19,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           local: ${{ github.repository }}
+          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
           remote: ~/${{ github.repository }}
