@@ -14,13 +14,23 @@ jobs:
         with:
           path: ${{ github.repository }}
 
+      - name: Prepare directory for deployment
+        run: |
+          rm -rf ${{ github.repository }}/.git
+          rm -rf ${{ github.repository }}/.github
+          rm -rf ${{ github.repository }}/.husky
+          rm -rf ${{ github.repository }}/.vscode
+          rm -rf ${{ github.repository }}/applications/web-client
+
       - name: Deploy to remote server
         uses: garygrossgarten/github-action-scp@release
         with:
+          atomicPut: true
+          dotfiles: true
           host: ${{ secrets.SSH_HOST }}
           local: ${{ github.repository }}
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote: ~/${{ github.repository }}
+          remote: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
