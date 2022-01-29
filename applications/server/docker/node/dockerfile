@@ -62,8 +62,8 @@ ENV NODE_ENV=production
 
 COPY --from=production_dependencies /home/node/app/ .
 
-COPY --from=builder /home/node/app/applications/server/build/ ./build/
-
 WORKDIR /home/node/app/applications/server
+
+COPY --from=builder /home/node/app/applications/server/build/ ./build/
 
 CMD yarn start

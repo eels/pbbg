@@ -2,4 +2,5 @@
 
 **/.parcel-config
 **/.turbo
+**/build
 **/node_modules
