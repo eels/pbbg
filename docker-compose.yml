@@ -20,6 +20,7 @@ services:
     restart: 'on-failure'
     volumes:
       - '.:/home/node/app'
+      - '/home/node/app/node_modules'
 
   postgres:
     build:
