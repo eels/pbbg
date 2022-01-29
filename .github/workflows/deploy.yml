@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: ${{ github.repository }}
+
+      - name: Deploy to remote server
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          local: ${{ github.repository }}
+          port: ${{ secrets.SSH_PORT }}
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote: ~/${{ github.repository }}
+          username: ${{ secrets.SSH_USERNAME }}
