@@ -48,8 +48,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
-          script: docker-compose build && docker-compose up --detach
           username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd ${{ github.repository }}
+            docker-compose build && docker-compose up --detach
 
   deploy_web_client:
     name: Deploy Web Client
