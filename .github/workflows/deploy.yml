@@ -38,6 +38,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           source: ${{ github.repository }}
+          strip_components: 2
           target: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
 
