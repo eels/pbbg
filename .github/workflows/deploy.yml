@@ -43,6 +43,16 @@ jobs:
           remote: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
 
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
+          port: ${{ secrets.SSH_PORT }}
+          script: docker-compose build && docker-compose up --detach
+          username: ${{ secrets.SSH_USERNAME }}
+
   deploy_web_client:
     name: Deploy Web Client
     runs-on: ubuntu-latest
