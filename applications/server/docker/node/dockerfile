@@ -8,7 +8,7 @@ ENV YARN_CACHE_FOLDER=.yarn-cache
 
 # --- Sourcer -----------------------------------
 
-FROM base as sourcer
+FROM base AS sourcer
 
 RUN yarn global add turbo
 
@@ -18,7 +18,7 @@ RUN turbo prune --scope=@pbbg/server --docker
 
 # --- Dependencies ------------------------------
 
-FROM base as dependencies
+FROM base AS dependencies
 
 COPY --from=sourcer /home/node/app/out/json/ .
 
@@ -28,7 +28,7 @@ RUN yarn install
 
 # --- Production Dependencies -------------------
 
-FROM base as production_dependencies
+FROM base AS production_dependencies
 
 COPY --from=sourcer /home/node/app/out/json/ .
 
@@ -42,7 +42,7 @@ RUN yarn cache clean
 
 # --- Builder -----------------------------------
 
-FROM base as builder
+FROM base AS builder
 
 COPY --from=dependencies /home/node/app/ .
 
