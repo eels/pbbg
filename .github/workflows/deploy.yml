@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Deploy
+  deploy_server:
+    name: Deploy Server
     runs-on: ubuntu-latest
 
     steps:
@@ -42,3 +42,48 @@ jobs:
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
           remote: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
+
+  deploy_web_client:
+    name: Deploy Web Client
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Retrieve Yarn Cache Directory
+        id: yarn-cache
+        run: |
+          echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Use Cache
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-${{ steps.workflow-vars.outputs.branch }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-${{ steps.workflow-vars.outputs.branch }}-yarn-
+
+      - name: Install Dependencies
+        run: |
+          yarn install --frozen-lockfile --ignore-scripts --prefer-offline
+
+      - name: Build
+        run: |
+          yarn turbo run build --scope=@pbbg/web-client --include-dependencies --no-deps
+          yarn workspace @pbbg/web-client export
+          touch applications/web-client/out/.nojekyll
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: applications/web-client/out
