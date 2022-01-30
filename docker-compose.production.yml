@@ -5,7 +5,7 @@ services:
     build:
       context: '.'
       dockerfile: 'docker/certbot/Dockerfile'
-    env:
+    environment:
       - 'APP_ADMIN_EMAIL=${APP_ADMIN_EMAIL}'
       - 'APP_SERVER_DOMAIN=${APP_SERVER_DOMAIN}'
     restart: 'unless-stopped'
@@ -17,7 +17,7 @@ services:
     build:
       context: '.'
       dockerfile: 'docker/nginx/Dockerfile'
-    env:
+    environment:
       - 'APP_SERVER_DOMAIN=${APP_SERVER_DOMAIN}'
       - 'NODE_PORT=${NODE_PORT}'
     ports:
@@ -33,7 +33,7 @@ services:
     build:
       context: '.'
       dockerfile: 'docker/node/Dockerfile'
-    env:
+    environment:
       - 'NODE_PORT=${NODE_PORT}'
     expose:
       - '${NODE_PORT}'

@@ -59,7 +59,7 @@ jobs:
           script: |
             cd ${{ github.repository }}
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
-            ./docker/certbot/lib/init.sh
+            chmod +x ./docker/certbot/lib/init.sh && ./docker/certbot/lib/init.sh
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes
 
