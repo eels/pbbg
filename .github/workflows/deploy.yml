@@ -50,9 +50,7 @@ jobs:
       - name: Prepare remote files, build, start and prune Docker images
         uses: appleboy/ssh-action@master
         env:
-          COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BASE: docker-compose.yml
-          DOCKER_BUILDKIT: 1
           DOCKER_PROD: docker-compose.production.yml
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -61,6 +59,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
+            COMPOSE_DOCKER_CLI_BUILD=1
+            DOCKER_BUILDKIT=1
             cd ${{ github.repository }}
             chmod +x ./docker/certbot/lib/init.sh
             chmod +x ./docker/nginx/lib/start.sh
