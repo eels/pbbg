@@ -48,8 +48,8 @@ jobs:
       - name: Build and start new Docker images
         uses: appleboy/ssh-action@master
         env:
-          DOCKER_BASE=docker-compose.yml
-          DOCKER_PROD=docker-compose.production.yml
+          DOCKER_BASE: docker-compose.yml
+          DOCKER_PROD: docker-compose.production.yml
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
