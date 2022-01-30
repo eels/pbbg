@@ -9,6 +9,10 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
+if [ -f ".env" ]; then
+  export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+fi
+
 data_path="./docker/certbot/data"
 domains=("$APP_SERVER_DOMAIN")
 email="$APP_ADMIN_EMAIL"
@@ -26,8 +30,9 @@ if [ ! -e "$ssl_config_path" ] || [ ! -e "$ssl_dhparams_path" ]; then
   github_domain="https://raw.githubusercontent.com"
   ssl_config_repo="$github_domain/certbot/certbot/master/certbot-nginx/certbot_nginx"
   ssl_dhparams_repo="$github_domain/certbot/certbot/master/certbot/certbot"
-  ssl_config="$certbot_repo/_internal/tls_configs/options-ssl-nginx.conf"
-  ssl_dhparams="$certbot_repo/ssl-dhparams.pem"
+
+  ssl_config="$ssl_config_repo/_internal/tls_configs/options-ssl-nginx.conf"
+  ssl_dhparams="$ssl_dhparams_repo/ssl-dhparams.pem"
 
   mkdir -p "$data_path/conf"
 
@@ -71,7 +76,7 @@ echo
 echo "# --- Requesting certificate for $domains --------"
 
 domain_args=""
-email_arg="--email $email"
+email_arg="--email $email --no-eff-email"
 
 for domain in "${domains[@]}"; do domain_args="$domain_args -d $domain"; done
 
