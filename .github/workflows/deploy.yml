@@ -59,14 +59,14 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            COMPOSE_DOCKER_CLI_BUILD=1
-            DOCKER_BUILDKIT=1
             cd ${{ github.repository }}
             chmod +x ./docker/certbot/lib/init.sh
             chmod +x ./docker/nginx/lib/start.sh
-            docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
+            COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose \
+              --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
             bash ./docker/certbot/lib/init.sh
-            docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
+            COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose \
+              --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes
 
   deploy_web_client:
