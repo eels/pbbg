@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# -- Source -------------------------------------
+# -- Inspiration --------------------------------
 # -- https://github.com/wmnnd/nginx-certbot
 # -- https://tinyurl.com/4acwhf3k
 
@@ -14,7 +14,7 @@ if [ -f ".env" ]; then
 fi
 
 data_path="./docker/certbot/data"
-domains=("$APP_SERVER_DOMAIN")
+domain="$APP_SERVER_DOMAIN"
 email="$APP_ADMIN_EMAIL"
 rsa_key_size=4096
 staging="$APP_CERTBOT_DEBUG"
@@ -42,13 +42,13 @@ if [ ! -e "$ssl_config_path" ] || [ ! -e "$ssl_dhparams_path" ]; then
   echo
 fi
 
-echo "# --- Creating dummy certificate for $domains ----"
+echo "# --- Creating dummy certificate -----------------"
 
-path="/etc/letsencrypt/live/$domains"
+path="/etc/letsencrypt/live/$domain"
 
-mkdir -p "$data_path/conf/live/$domains"
+mkdir -p "$data_path/conf/live/$domain"
 
-docker-compose --file "docker-compose.yml" --file "docker-compose.production.yml" \
+docker-compose --file "docker-compose.production.yml" \
   run --rm --entrypoint "\
     openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1 \
       -keyout '$path/privkey.pem' \
@@ -59,33 +59,32 @@ docker-compose --file "docker-compose.yml" --file "docker-compose.production.yml
 echo
 echo "# --- Starting Nginx -----------------------------"
 
-docker-compose --file "docker-compose.yml" --file "docker-compose.production.yml" \
-  up --force-recreate -d nginx
+docker-compose --file "docker-compose.production.yml" \
+  up --force-recreate --detach nginx
 
 echo
-echo "# --- Deleting dummy certificate for $domains ----"
+echo "# --- Deleting dummy certificate -----------------"
 
-docker-compose --file "docker-compose.yml" --file "docker-compose.production.yml" \
+docker-compose --file "docker-compose.production.yml" \
   run --rm --entrypoint "\
-    rm -Rf /etc/letsencrypt/live/$domains && \
-    rm -Rf /etc/letsencrypt/archive/$domains && \
-    rm -Rf /etc/letsencrypt/renewal/$domains.conf" \
+    rm -Rf /etc/letsencrypt/live/$domain && \
+    rm -Rf /etc/letsencrypt/archive/$domain && \
+    rm -Rf /etc/letsencrypt/renewal/$domain.conf" \
   certbot
 
 echo
-echo "# --- Requesting certificate for $domains --------"
+echo "# --- Requesting certificate ---------------------"
 
 domain_args=""
 email_arg="--email $email --no-eff-email"
 
-for domain in "${domains[@]}"; do domain_args="$domain_args -d $domain"; done
-
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
-docker-compose --file "docker-compose.yml" --file "docker-compose.production.yml" \
+docker-compose --file "docker-compose.production.yml" \
   run --rm --entrypoint "\
     certbot certonly --webroot -w /var/www/certbot \
-      $staging_arg $email_arg $domain_args \
+      $staging_arg $email_arg \
+      -d $domain \
       --rsa-key-size $rsa_key_size \
       --agree-tos \
       --force-renewal" \
@@ -94,5 +93,5 @@ docker-compose --file "docker-compose.yml" --file "docker-compose.production.yml
 echo
 echo "# --- Stopping Nginx -----------------------------"
 
-docker-compose --file "docker-compose.yml" --file "docker-compose.production.yml" \
+docker-compose --file "docker-compose.production.yml" \
   exec nginx nginx -s stop
