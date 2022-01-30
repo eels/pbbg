@@ -45,7 +45,20 @@ jobs:
           target: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
 
-      - name: Build and start new Docker images
+      - name: Prepare files on remote server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd ${{ github.repository }}
+            chmod +x ./docker/certbot/lib/init.sh
+            chmod +x ./docker/nginx/lib/start.sh
+
+      - name: Build new Docker images
         uses: appleboy/ssh-action@master
         env:
           DOCKER_BASE: docker-compose.yml
@@ -59,7 +72,21 @@ jobs:
           script: |
             cd ${{ github.repository }}
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
-            chmod +x ./docker/certbot/lib/init.sh && ./docker/certbot/lib/init.sh
+            bash ./docker/certbot/lib/init.sh
+
+      - name: Start new Docker images and prune unused images
+        uses: appleboy/ssh-action@master
+        env:
+          DOCKER_BASE: docker-compose.yml
+          DOCKER_PROD: docker-compose.production.yml
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd ${{ github.repository }}
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes
 

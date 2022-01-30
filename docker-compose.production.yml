@@ -25,7 +25,8 @@ services:
       - '443:443'
     restart: 'unless-stopped'
     volumes:
-      - './docker/nginx:/home/nginx'
+      - './docker/nginx/config/default.conf:/home/nginx/config/default.conf'
+      - './docker/nginx/lib/start.sh:/home/nginx/lib/start.sh'
       - './docker/certbot/data/conf:/etc/letsencrypt'
       - './docker/certbot/data/www:/var/www/certbot'
 
