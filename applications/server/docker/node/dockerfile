@@ -1,6 +1,6 @@
 # --- Base --------------------------------------
 
-FROM node:lts-alpine AS base
+FROM node:gallium-alpine AS base
 
 WORKDIR /home/node/app
 
