@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "yarn parcel build src/index.ts --dist-dir build --cache-dir .parcel-cache",
+    "build": "yarn parcel build src/index.ts --cache-dir .parcel-cache --dist-dir build",
     "clean": "rimraf build",
     "dev": "nodemon --exec 'ts-node src/index.ts' --ext '*' --watch './src/**'",
     "format": "prettier './{src,test}/**/*.{ts,tsx}' --check",
