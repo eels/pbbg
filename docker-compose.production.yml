@@ -5,9 +5,6 @@ services:
     build:
       context: '.'
       dockerfile: 'docker/certbot/Dockerfile'
-    environment:
-      - 'APP_ADMIN_EMAIL=${APP_ADMIN_EMAIL}'
-      - 'APP_SERVER_DOMAIN=${APP_SERVER_DOMAIN}'
     restart: 'unless-stopped'
     volumes:
       - './docker/certbot/data/conf:/etc/letsencrypt'
