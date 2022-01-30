@@ -3,8 +3,8 @@ version: '3'
 services:
   postgres:
     build:
-      context: 'applications/server'
-      dockerfile: 'docker/postgres/dockerfile'
+      context: '.'
+      dockerfile: 'docker/postgres/Dockerfile'
     environment:
       - 'POSTGRES_USER=${POSTGRES_USER}'
       - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
