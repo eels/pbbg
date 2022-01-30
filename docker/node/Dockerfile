@@ -4,8 +4,6 @@ FROM node:gallium-alpine AS base
 
 WORKDIR /home/node/app
 
-ENV YARN_CACHE_FOLDER=.yarn-cache
-
 # --- Sourcer -----------------------------------
 
 FROM base AS sourcer
@@ -24,7 +22,8 @@ COPY --from=sourcer /home/node/app/out/json/ .
 
 COPY --from=sourcer /home/node/app/out/yarn.lock ./yarn.lock
 
-RUN yarn install
+RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
+  yarn install --ignore-scripts --prefer-offline
 
 # --- Production Dependencies -------------------
 
@@ -36,9 +35,8 @@ COPY --from=sourcer /home/node/app/out/yarn.lock ./yarn.lock
 
 COPY --from=dependencies /home/node/app/ .
 
-RUN yarn install --production --ignore-scripts --prefer-offline
-
-RUN yarn cache clean
+RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
+  yarn install --ignore-scripts --prefer-offline --production
 
 # --- Builder -----------------------------------
 

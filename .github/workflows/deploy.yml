@@ -61,7 +61,9 @@ jobs:
       - name: Build new Docker images
         uses: appleboy/ssh-action@master
         env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
           DOCKER_BASE: docker-compose.yml
+          DOCKER_BUILDKIT: 1
           DOCKER_PROD: docker-compose.production.yml
         with:
           host: ${{ secrets.SSH_HOST }}
