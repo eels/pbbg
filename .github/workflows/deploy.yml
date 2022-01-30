@@ -47,21 +47,7 @@ jobs:
           target: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
 
-      - name: Prepare files on remote server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          script: |
-            cd ${{ github.repository }}
-            chmod +x ./docker/certbot/lib/init.sh
-            chmod +x ./docker/nginx/lib/start.sh
-            exit
-
-      - name: Build new Docker images
+      - name: Prepare remote files, build, start and prune Docker images
         uses: appleboy/ssh-action@master
         env:
           COMPOSE_DOCKER_CLI_BUILD: 1
@@ -76,26 +62,12 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           script: |
             cd ${{ github.repository }}
+            chmod +x ./docker/certbot/lib/init.sh
+            chmod +x ./docker/nginx/lib/start.sh
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
             bash ./docker/certbot/lib/init.sh
-            exit
-
-      - name: Start new Docker images and prune unused images
-        uses: appleboy/ssh-action@master
-        env:
-          DOCKER_BASE: docker-compose.yml
-          DOCKER_PROD: docker-compose.production.yml
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          script: |
-            cd ${{ github.repository }}
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes
-            exit
 
   deploy_web_client:
     name: Deploy Web Client
