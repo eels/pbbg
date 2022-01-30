@@ -44,6 +44,9 @@ jobs:
 
       - name: Build and start new Docker images
         uses: appleboy/ssh-action@master
+        env:
+          DOCKER_BASE=docker-compose.yml
+          DOCKER_PROD=docker-compose.production.yml
         with:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -52,8 +55,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           script: |
             cd ${{ github.repository }}
-            docker-compose build
-            docker-compose --file docker-compose.yml --file docker-compose.production.yml up --detach
+            docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
+            docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes
 
   deploy_web_client:
