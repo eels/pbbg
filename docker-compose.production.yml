@@ -1,22 +1,42 @@
 version: '3'
 
 services:
+  certbot:
+    build:
+      context: '.'
+      dockerfile: 'docker/certbot/Dockerfile'
+    env:
+      - 'APP_ADMIN_EMAIL=${APP_ADMIN_EMAIL}'
+      - 'APP_SERVER_DOMAIN=${APP_SERVER_DOMAIN}'
+    restart: 'unless-stopped'
+    volumes:
+      - './docker/certbot/data/conf:/etc/letsencrypt'
+      - './docker/certbot/data/www:/var/www/certbot'
+
   nginx:
     build:
       context: '.'
       dockerfile: 'docker/nginx/Dockerfile'
+    env:
+      - 'APP_SERVER_DOMAIN=${APP_SERVER_DOMAIN}'
+      - 'NODE_PORT=${NODE_PORT}'
     ports:
-      - '8080:80'
+      - '80:80'
+      - '443:443'
     restart: 'unless-stopped'
     volumes:
-      - './docker/nginx/config/default.conf:/etc/nginx/conf.d/default.conf'
+      - './docker/nginx:/home/nginx'
+      - './docker/certbot/data/conf:/etc/letsencrypt'
+      - './docker/certbot/data/www:/var/www/certbot'
 
   node:
     build:
       context: '.'
       dockerfile: 'docker/node/Dockerfile'
+    env:
+      - 'NODE_PORT=${NODE_PORT}'
     expose:
-      - '4000'
+      - '${NODE_PORT}'
     restart: 'unless-stopped'
     volumes:
       - '.:/home/node/app'

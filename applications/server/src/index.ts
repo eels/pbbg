@@ -7,6 +7,6 @@ app.get('/', (_: Request, response: Response) => {
   response.send('Hello world!');
 });
 
-app.listen(4000, () => {
+app.listen(process.env.NODE_PORT, () => {
   console.log('Listening on port 4000');
 });
