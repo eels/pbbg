@@ -1,12 +1,16 @@
 import express from 'express';
+import { PrismaClient } from '@prisma/client';
 import type { Request, Response } from 'express';
 
 const app = express();
+const prisma = new PrismaClient();
 
-app.get('/', (_: Request, response: Response) => {
-  response.send('Hello world!');
+app.get('/', async (_: Request, response: Response) => {
+  const users = await prisma.user.findMany();
+
+  response.json(users);
 });
 
 app.listen(process.env.NODE_PORT, () => {
-  console.log('Listening on port 4000');
+  console.log(`Listening on port ${process.env.NODE_PORT}`);
 });

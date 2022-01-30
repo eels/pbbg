@@ -1,0 +1,17 @@
+{
+  "name": "@pbbg/database-service",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "prisma migrate deploy",
+    "format": "prisma format",
+    "generate": "prisma generate",
+    "prepare": "ln -sf  ../../.env ."
+  },
+  "dependencies": {
+    "@prisma/client": "^3.8.1"
+  },
+  "devDependencies": {
+    "prisma": "^3.8.1"
+  }
+}

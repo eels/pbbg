@@ -11,6 +11,11 @@
     "editor.rulers": [100]
   },
 
+  "[prisma]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+
   "[typescript]": {
     "editor.rulers": [100]
   },

@@ -9,9 +9,13 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["^dev"]
+      "dependsOn": ["^build", "^dev"]
     },
     "lint-staged": {
+      "cache": false,
+      "dependsOn": []
+    },
+    "prepare": {
       "cache": false,
       "dependsOn": []
     },
