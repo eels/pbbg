@@ -2,4 +2,4 @@
 
 FROM nginx:mainline-alpine
 
-CMD ./docker/nginx/lib/start.sh
+CMD /home/nginx/lib/start.sh
