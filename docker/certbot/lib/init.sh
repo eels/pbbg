@@ -17,7 +17,7 @@ data_path="./docker/certbot/data"
 domains=("$APP_SERVER_DOMAIN")
 email="$APP_ADMIN_EMAIL"
 rsa_key_size=4096
-staging=1
+staging="$APP_CERTBOT_DEBUG"
 
 if [ -d "$data_path" ]; then exit; fi
 

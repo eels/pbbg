@@ -20,6 +20,7 @@ jobs:
         run: |
           touch ${{ env.ENV_FILE }}
           echo APP_ADMIN_EMAIL="${{ secrets.APP_ADMIN_EMAIL }}" >> ${{ env.ENV_FILE }}
+          echo APP_CERTBOT_DEBUG="${{ secrets.APP_CERTBOT_DEBUG }}" >> ${{ env.ENV_FILE }}
           echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> ${{ env.ENV_FILE }}
           echo NODE_PORT="${{ secrets.NODE_PORT }}" >> ${{ env.ENV_FILE }}
           echo POSTGRES_USER="${{ secrets.POSTGRES_USER }}" >> ${{ env.ENV_FILE }}
