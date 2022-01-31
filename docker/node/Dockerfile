@@ -23,7 +23,7 @@ COPY --from=sourcer /home/node/app/out/json/ .
 COPY --from=sourcer /home/node/app/out/yarn.lock ./yarn.lock
 
 RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
-  yarn install --ignore-scripts --prefer-offline
+  yarn install --prefer-offline
 
 # --- Production Dependencies -------------------
 
@@ -36,7 +36,7 @@ COPY --from=sourcer /home/node/app/out/yarn.lock ./yarn.lock
 COPY --from=dependencies /home/node/app/ .
 
 RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
-  yarn install --ignore-scripts --prefer-offline --production
+  yarn install --prefer-offline --production
 
 # --- Builder -----------------------------------
 
