@@ -18,7 +18,7 @@ email="$APP_ADMIN_EMAIL"
 rsa_key_size=4096
 staging="$APP_CERTBOT_DEBUG"
 
-if [ -d "$data_path/www/live/$domain" ]; then
+if [ -d "$data_path/conf/live/$domain" ]; then
   echo "Required Certbot files already exist, exiting successfully" >&2
   exit 0
 fi
