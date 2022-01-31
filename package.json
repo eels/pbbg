@@ -14,9 +14,10 @@
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "db:build": "yarn workspace @pbbg/database-service prisma migrate deploy",
-    "db:clean": "yarn workspace @pbbg/database-service prisma migrate reset",
-    "db:migrate": "yarn workspace @pbbg/database-service prisma migrate dev --name",
+    "db:build": "yarn workspace @pbbg/database-service build",
+    "db:clean": "yarn workspace @pbbg/database-service reset",
+    "db:create:migration": "yarn workspace @pbbg/database-service create:migration",
+    "db:seed": "yarn workspace @pbbg/database-service seed",
     "dev": "turbo run dev",
     "docker:build": "docker-compose build",
     "docker:down": "docker-compose down",

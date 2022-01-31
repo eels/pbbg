@@ -1,0 +1,11 @@
+# --- Dependencies ------------------------------
+
+node_modules
+
+# --- Caches ------------------------------------
+
+.eslintcache
+
+# --- Environment variables ---------------------
+
+.env
