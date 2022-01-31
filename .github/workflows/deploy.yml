@@ -75,32 +75,28 @@ jobs:
     name: Deploy Web Client
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup Node.js
         uses: actions/setup-node@v2.5.1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: lts/gallium
 
-      - name: Retrieve Yarn Cache Directory
+      - name: Retrieve Yarn cache directory
         id: yarn-cache
         run: |
           echo "::set-output name=dir::$(yarn cache dir)"
 
-      - name: Use Cache
+      - name: Use Yarn cache
         uses: actions/cache@v2
         with:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           path: ${{ steps.yarn-cache.outputs.dir }}
           restore-keys: ${{ runner.os }}-yarn-
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           yarn install --frozen-lockfile --ignore-scripts --prefer-offline
 
