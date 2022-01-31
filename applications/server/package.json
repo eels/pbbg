@@ -11,7 +11,6 @@
     "lint-staged": "lint-staged",
     "lint:js": "eslint './{src,test}/**/*.{ts,tsx}' --cache",
     "lint:js:fix": "yarn lint:js --fix",
-    "start": "node build/index.js",
     "test": "jest --coverage --passWithNoTests"
   },
   "engines": {
