@@ -1,17 +1,16 @@
 #!/bin/bash
 
-# -- Inspiration --------------------------------
-# -- https://github.com/wmnnd/nginx-certbot
-# -- https://tinyurl.com/4acwhf3k
-
 if ! [ -x "$(command -v docker-compose)" ]; then
-  echo "Error: docker-compose is not installed." >&2
+  echo "Error: docker-compose is not installed" >&2
   exit 1
 fi
 
-if [ -f ".env" ]; then
-  export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst)
+if ! [ -f ".env" ]; then
+  echo "Error: Required environment variables file not found" >&2
+  exit 1
 fi
+
+export "$(echo "$(cat .env | sed 's/#.*//g'| xargs)" | envsubst)"
 
 data_path="./docker/certbot/data"
 domain="$APP_SERVER_DOMAIN"
@@ -19,7 +18,10 @@ email="$APP_ADMIN_EMAIL"
 rsa_key_size=4096
 staging="$APP_CERTBOT_DEBUG"
 
-if [ -d "$data_path" ]; then exit; fi
+if [ -d "$data_path/www/live/$domain" ]; then
+  echo "Required Certbot files already exist, exiting successfully" >&2
+  exit 0
+fi
 
 ssl_config_path="$data_path/conf/options-ssl-nginx.conf"
 ssl_dhparams_path="$data_path/conf/ssl-dhparams.pem"
@@ -42,56 +44,37 @@ if [ ! -e "$ssl_config_path" ] || [ ! -e "$ssl_dhparams_path" ]; then
   echo
 fi
 
-echo "# --- Creating dummy certificate -----------------"
-
-path="/etc/letsencrypt/live/$domain"
-
-mkdir -p "$data_path/conf/live/$domain"
-
-docker-compose --file "docker-compose.production.yml" \
-  run --rm --entrypoint "\
-    openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1 \
-      -keyout '$path/privkey.pem' \
-      -out '$path/fullchain.pem' \
-      -subj '/CN=localhost'" \
-  certbot
-
 echo
-echo "# --- Starting Nginx -----------------------------"
+echo "# --- Temporarily starting Nginx -----------------"
 
-docker-compose --file "docker-compose.production.yml" \
-  up --force-recreate --detach nginx
-
-echo
-echo "# --- Deleting dummy certificate -----------------"
-
-docker-compose --file "docker-compose.production.yml" \
-  run --rm --entrypoint "\
-    rm -Rf /etc/letsencrypt/live/$domain && \
-    rm -Rf /etc/letsencrypt/archive/$domain && \
-    rm -Rf /etc/letsencrypt/renewal/$domain.conf" \
-  certbot
+docker-compose --file "docker-compose.production.yml" run \
+  --detach \
+  --entrypoint "/bin/sh /home/nginx/lib/entrypoint.sh temp" \
+  --publish 8080:80 \
+  --rm \
+  nginx
 
 echo
 echo "# --- Requesting certificate ---------------------"
 
-domain_args=""
-email_arg="--email $email --no-eff-email"
+if [ "$staging" != "0" ]; then staging_arg="--staging"; fi
 
-if [ $staging != "0" ]; then staging_arg="--staging"; fi
-
-docker-compose --file "docker-compose.production.yml" \
-  run --rm --entrypoint "\
+docker-compose --file "docker-compose.production.yml" run \
+  --detach \
+  --entrypoint "\
     certbot certonly --webroot -w /var/www/certbot \
-      $staging_arg $email_arg \
+      $staging_arg \
       -d $domain \
-      --rsa-key-size $rsa_key_size \
       --agree-tos \
-      --force-renewal" \
+      --email $email \
+      --force-renewal \
+      --no-eff-email \
+      --rsa-key-size $rsa_key_size" \
+  --rm \
   certbot
 
 echo
 echo "# --- Stopping Nginx -----------------------------"
 
-docker-compose --file "docker-compose.production.yml" \
-  exec nginx nginx -s stop
+docker-compose --file "docker-compose.production.yml" exec \
+  nginx nginx -s stop
