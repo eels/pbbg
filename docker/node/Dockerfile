@@ -68,4 +68,4 @@ WORKDIR /home/node/app/applications/server
 
 COPY --from=builder /home/node/app/applications/server/build/ ./build/
 
-CMD yarn start
+ENTRYPOINT /bin/sh /home/node/app/docker/node/lib/entrypoint.sh
