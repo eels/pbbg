@@ -58,6 +58,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
+          script_stop: true
           script: |
             cd ${{ github.repository }}
             chmod +x ./docker/certbot/lib/init.sh

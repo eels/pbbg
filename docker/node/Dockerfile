@@ -22,6 +22,8 @@ COPY --from=sourcer /home/node/app/out/json/ .
 
 COPY --from=sourcer /home/node/app/out/yarn.lock ./yarn.lock
 
+COPY --from=sourcer /home/node/app/turbo.json .
+
 RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
   yarn install --prefer-offline
 
