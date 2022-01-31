@@ -18,7 +18,7 @@ email="$APP_ADMIN_EMAIL"
 rsa_key_size=4096
 staging="$APP_CERTBOT_DEBUG"
 
-if [ -d "$data_path" ]; then
+if [ -d "$data_path/conf/live/$domain" ]; then
   echo "Required Certbot files already exist, exiting successfully" >&2
   exit 0
 fi
@@ -50,7 +50,7 @@ echo "# --- Temporarily starting Nginx -----------------"
 docker-compose --file "docker-compose.production.yml" run \
   --detach \
   --entrypoint "/bin/sh /home/nginx/lib/entrypoint.sh temp" \
-  --publish 8080:80 \
+  --publish 80:80 \
   --rm \
   nginx
 
@@ -60,7 +60,6 @@ echo "# --- Requesting certificate ---------------------"
 if [ "$staging" != "0" ]; then staging_arg="--staging"; fi
 
 docker-compose --file "docker-compose.production.yml" run \
-  --detach \
   --entrypoint "\
     certbot certonly --webroot -w /var/www/certbot \
       $staging_arg \
@@ -76,5 +75,4 @@ docker-compose --file "docker-compose.production.yml" run \
 echo
 echo "# --- Stopping Nginx -----------------------------"
 
-docker-compose --file "docker-compose.production.yml" exec \
-  nginx nginx -s stop
+docker container stop $(docker ps --all --filter "name=nginx" --quiet)
