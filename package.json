@@ -25,7 +25,8 @@
     "docker:up": "docker-compose up --detach",
     "format": "turbo run format",
     "lint": "turbo run lint",
-    "prepare": "husky install && turbo run prepare"
+    "prepare": "husky install && turbo run prepare",
+    "test": "turbo run test"
   },
   "dependencies": {
     "turbo": "^1.1.0"
