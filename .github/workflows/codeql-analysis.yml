@@ -1,16 +1,23 @@
-name: Verify Code Standard
+name: CodeQL Analysis
 
 on:
+  pull_request:
   push:
 
 jobs:
-  verify:
-    name: Verify Code Standard
+  analyse:
+    name: CodeQL Analysis
     runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
 
       - name: Setup Node.js
         uses: actions/setup-node@v2.5.1
@@ -38,7 +45,5 @@ jobs:
           yarn clean
           yarn build
 
-      - name: Verify code standard
-        run: |
-          yarn format
-          yarn lint
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v1
