@@ -7,6 +7,7 @@
     "deploy": "prisma migrate deploy",
     "format": "prettier './prisma/**/*.ts' --check && prisma format",
     "format:fix": "yarn format --write",
+    "lint": "yarn lint:js",
     "lint-staged": "lint-staged",
     "lint:js": "eslint './prisma/**/*.ts' --cache",
     "lint:js:fix": "yarn lint:js --fix",

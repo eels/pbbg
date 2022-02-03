@@ -23,6 +23,8 @@
     "docker:down": "docker-compose down",
     "docker:stop": "docker-compose stop",
     "docker:up": "docker-compose up --detach",
+    "format": "turbo run format",
+    "lint": "turbo run lint",
     "prepare": "husky install && turbo run prepare"
   },
   "dependencies": {
