@@ -21,6 +21,7 @@
     "dev": "turbo run dev",
     "docker:build": "docker-compose build",
     "docker:down": "docker-compose down",
+    "docker:stop": "docker-compose stop",
     "docker:up": "docker-compose up --detach",
     "prepare": "husky install && turbo run prepare"
   },
