@@ -5,6 +5,7 @@
   "author": "Liam Howell <liam@liam.codes>",
   "repository": "https://github.com/eels/pbbg",
   "bugs": "https://github.com/eels/pbbg/issues",
+  "license": "GPL-3.0-or-later",
   "packageManager": "yarn@1.22.17",
   "workspaces": [
     "applications/*",
