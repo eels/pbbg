@@ -3,14 +3,14 @@
 
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": []
     },
     "clean": {
-      "dependsOn": ["^clean"]
+      "dependsOn": []
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["^build", "^dev"]
+      "dependsOn": []
     },
     "format": {
       "dependsOn": []
