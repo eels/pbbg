@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "next build",
-    "clean": "rimraf .next",
+    "clean": "rimraf .next && rimraf out",
     "dev": "next dev",
     "export": "next export",
     "format": "prettier './{src,test}/**/*.{ts,tsx}' --check",
