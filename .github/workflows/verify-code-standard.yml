@@ -1,0 +1,44 @@
+name: Verify Code Standard
+
+on:
+  push:
+
+jobs:
+  verify:
+    name: Verify Code Standard
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: lts/gallium
+
+      - name: Retrieve Yarn cache directory
+        id: yarn-cache
+        run: |
+          echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Use Yarn cache
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: Install Dependencies
+        run: |
+          yarn install --ignore-scripts --prefer-offline
+
+      - name: Build
+        run: |
+          yarn clean
+          yarn build
+
+      - name: Verify Code Standard
+        run: |
+          yarn format
+          yarn lint
