@@ -5,7 +5,11 @@
 
   "moduleFileExtensions": ["js", "ts", "tsx"],
 
-  "roots": ["<rootDir>/src/"],
+  "roots": ["<rootDir>/src/", "<rootDir>/test/"],
+
+  "preset": "ts-jest",
+
+  "setupFilesAfterEnv": ["<rootDir>/test/setup.ts"],
 
   "testEnvironment": "node"
 }

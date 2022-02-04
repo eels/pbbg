@@ -12,7 +12,8 @@
     "lint-staged": "lint-staged",
     "lint:js": "eslint './{src,test}/**/*.{ts,tsx}' --cache",
     "lint:js:fix": "yarn lint:js --fix",
-    "test": "jest --coverage --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "test:coverage": "yarn test --coverage"
   },
   "engines": {
     "node": ">= 16"
@@ -20,7 +21,9 @@
   "dependencies": {
     "@pbbg/database-service": "*",
     "@prisma/client": "^3.8.1",
-    "express": "^4.17.2"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "winston": "^3.5.1"
   },
   "peerDependencies": {
     "prettier": "*"
@@ -38,6 +41,7 @@
     "nodemon": "^2.0.15",
     "parcel": "^2.2.1",
     "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.3",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",
     "typescript": "^4.5.5"
