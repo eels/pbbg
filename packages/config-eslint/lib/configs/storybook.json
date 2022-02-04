@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "extends": ["plugin:storybook/recommended"],
+
+      "files": ["*.stories.@(ts|tsx)"],
+
+      "plugins": ["storybook"]
+    }
+  ]
+}

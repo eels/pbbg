@@ -27,6 +27,8 @@
     "format": "turbo run format",
     "lint": "turbo run lint",
     "prepare": "husky install && turbo run prepare",
+    "storybook:build": "yarn workspace @pbbg/web-client storybook:build",
+    "storybook:start": "yarn workspace @pbbg/web-client storybook:start",
     "test": "turbo run test"
   },
   "dependencies": {
@@ -37,6 +39,7 @@
     "@commitlint/config-conventional": "^16.0.0",
     "@pbbg/prettier-config": "*",
     "husky": "^7.0.4",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "webpack": "^5.68.0"
   }
 }
