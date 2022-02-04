@@ -1,25 +1,23 @@
-import express from 'express';
-import { PrismaClient } from '@prisma/client';
+import app from 'application';
+import log from 'support/facades/log';
+import path from 'path';
+import { config } from 'dotenv';
+import { startGracefulShutdown } from 'utilities/graceful-shutdown';
 import type { Request, Response } from 'express';
 
-const app = express();
-const signals = ['SIGHUP', 'SIGINT', 'SIGTERM'];
-const prisma = new PrismaClient();
-
-app.get('/', async (_: Request, response: Response) => {
-  const users = await prisma.user.findMany();
-
-  response.json(users);
-});
-
-const server = app.listen(process.env.NODE_PORT, () => {
-  console.log(`Listening on port ${process.env.NODE_PORT}`);
-});
-
-function startGracefulShutdown() {
-  console.log('Gracefully shutting down server');
-
-  server.close();
+if (process.env.NODE_ENV !== 'production') {
+  config({ path: path.resolve('../../', '.env') });
 }
 
-signals.forEach((signal) => process.on(signal, startGracefulShutdown));
+require('http/routes');
+
+app.all('*', (_: Request, response: Response) => {
+  response.status(404);
+  response.json({ message: 'not found', status: 404 });
+});
+
+const port = process.env.NODE_PORT;
+const server = app.listen(port, () => log.info(`Listening on port ${port}`));
+const signals = ['SIGHUP', 'SIGINT', 'SIGTERM'];
+
+signals.forEach((signal) => process.on(signal, () => startGracefulShutdown(server)));

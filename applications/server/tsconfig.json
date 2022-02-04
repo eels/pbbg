@@ -2,11 +2,15 @@
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
 
   "compilerOptions": {
-    "baseUrl": "src",
-    "outDir": "build"
+    "baseUrl": ".",
+    "isolatedModules": false,
+    "outDir": "build",
+    "paths": {
+      "*": ["src/*", "test/*"]
+    }
   },
 
-  "include": ["src"],
+  "include": ["src", "test"],
 
   "ts-node": {
     "require": ["tsconfig-paths/register"]
