@@ -1,6 +1,6 @@
 import { Buffer } from 'buffer';
 import { createHash, randomBytes, timingSafeEqual } from 'crypto';
-import type { Request, Response } from 'express';
+import type { Request, Response } from 'types/http';
 
 export function setCSRFToken(response: Response) {
   const sessionToken = randomBytes(20).toString('hex');
