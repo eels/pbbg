@@ -1,15 +1,6 @@
 import app from 'application';
-import type { Request, Response } from 'express';
+import { NotAllowedHandler } from 'http/controllers/not-allowed';
 
-app.get('/', (_: Request, response: Response) => {
-  response.json({ message: 'hello world' });
-});
+// --- Catch all not allowed --------------------
 
-app.post('/', (request: Request, response: Response) => {
-  response.json(request.body);
-});
-
-app.all('*', (_: Request, response: Response) => {
-  response.status(404);
-  response.json({ message: 'not found', status: 404 });
-});
+app.all('*', NotAllowedHandler);
