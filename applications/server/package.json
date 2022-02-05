@@ -12,7 +12,8 @@
     "lint-staged": "lint-staged",
     "lint:js": "eslint './{src,test}/**/*.{ts,tsx}' --cache",
     "lint:js:fix": "yarn lint:js --fix",
-    "test": "jest --coverage --passWithNoTests"
+    "test": "jest --passWithNoTests",
+    "test:coverage": "yarn test --coverage"
   },
   "engines": {
     "node": ">= 16"
