@@ -1,4 +1,4 @@
-import { setCSRFToken, verifyCSRFToken } from 'utilities/csrf';
+import { setCSRFToken, verifyCSRFToken } from 'support/traits/api/csrf';
 import type { NextFunction, Request, Response } from 'types/http';
 
 export function csrf() {
