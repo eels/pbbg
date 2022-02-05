@@ -1,0 +1,11 @@
+{
+  "plugins": ["testing-library"],
+
+  "overrides": [
+    {
+      "extends": ["plugin:testing-library/react"],
+
+      "files": ["*.test.@(ts|tsx)"]
+    }
+  ]
+}
