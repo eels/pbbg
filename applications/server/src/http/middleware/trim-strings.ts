@@ -7,6 +7,6 @@ export function trimStrings() {
       request.body = trimObjectStringValues(request.body);
     }
 
-    next();
+    return next();
   };
 }
