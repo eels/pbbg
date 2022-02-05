@@ -11,6 +11,7 @@
     "@pbbg/eslint-config/lib/configs/sort-imports-es6-autofix.json",
     "@pbbg/eslint-config/lib/configs/sort-keys-fix.json",
     "@pbbg/eslint-config/lib/configs/storybook.json",
+    "@pbbg/eslint-config/lib/configs/testing-library.json",
     "@pbbg/eslint-config/lib/configs/typescript.json"
   ],
 
