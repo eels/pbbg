@@ -1,5 +1,5 @@
-import type { Request, Response } from 'express';
+import type { Request, Response } from 'types/http';
 
 export function NotAllowedHandler(_: Request, response: Response) {
-  response.status(404).json({ message: 'not found', status: 404 });
+  response.buildHttpResponse('ERROR', { message: 'method not allowed' });
 }

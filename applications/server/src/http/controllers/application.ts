@@ -1,5 +1,5 @@
-import type { Request, Response } from 'express';
+import type { Request, Response } from 'types/http';
 
 export function ApplicationHandler(_: Request, response: Response) {
-  response.status(200).json({});
+  response.buildHttpResponse('SUCCESS');
 }
