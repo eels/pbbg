@@ -23,6 +23,18 @@ describe('utilities/trim-object-string-values', () => {
     });
   });
 
+  it('should not mutate any null values in a supplied object', () => {
+    const object = {
+      age: 20,
+      name: null,
+    };
+
+    expect(trimObjectStringValues(object)).toEqual({
+      age: 20,
+      name: null,
+    });
+  });
+
   it('should recursively trim string values in a supplied object', () => {
     const object = {
       name: {

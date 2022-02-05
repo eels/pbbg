@@ -6,7 +6,7 @@ export function trimObjectStringValues(object: Record<string, any>) {
       object[key] = value.trim();
     }
 
-    if (typeof value === 'object' && !Array.isArray(value)) {
+    if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
       object[key] = trimObjectStringValues(value);
     }
 
