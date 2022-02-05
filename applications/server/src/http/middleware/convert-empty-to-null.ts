@@ -7,6 +7,6 @@ export function convertEmptyToNull() {
       request.body = convertEmptyObjectStringValuesToNull(request.body);
     }
 
-    next();
+    return next();
   };
 }
