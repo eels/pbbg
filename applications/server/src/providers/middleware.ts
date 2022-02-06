@@ -8,7 +8,7 @@ import { json } from 'body-parser';
 import { morgan } from 'http/middleware/morgan';
 import { response } from 'http/middleware/response';
 import { trimStrings } from 'http/middleware/trim-strings';
-import type { Application } from 'express';
+import type { RequestHandler } from 'express';
 
 const { errorHandler, requestHandler } = Handlers;
 
@@ -30,5 +30,5 @@ type Stack = 'pre-controller' | 'post-controller';
 export function registerMiddlewareStack(stack: Stack) {
   const middleware = stack === 'pre-controller' ? preController : postController;
 
-  middleware.forEach((middleware) => app.use(middleware as Application));
+  middleware.forEach((middleware) => app.use(middleware as RequestHandler));
 }
