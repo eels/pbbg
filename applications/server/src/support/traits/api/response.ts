@@ -25,7 +25,7 @@ export function buildHttpResponse(response: Response) {
     const responseObject: HTTPResponseObject = {
       CODE: getHttpStatusCode(status),
       DATA: options?.data,
-      MESSAGE: options?.message,
+      MESSAGE: options?.message?.toLowerCase(),
       STATUS: status,
     };
 
