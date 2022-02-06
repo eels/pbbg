@@ -21,6 +21,7 @@
   "dependencies": {
     "@pbbg/database-service": "*",
     "@prisma/client": "^3.8.1",
+    "@sentry/node": "^6.17.4",
     "body-parser": "^1.19.1",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.0",
