@@ -9,7 +9,7 @@ export function csrf() {
 
     if (isValidApiMethod && isValidApiRequest) {
       if (!verifyCSRFToken(request)) {
-        return response.buildHttpResponse('ERROR', { message: 'invalid csrf token' });
+        return response.buildHttpResponse('FORBIDDEN', { message: 'invalid csrf token' });
       }
     }
 
