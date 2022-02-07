@@ -7,15 +7,15 @@ export function setCSRFToken(response: Response) {
   const staticCSRFToken = process.env.APP_SECRET_CSRF_TOKEN;
   const token = createHash('sha256').update(`${sessionToken}.${staticCSRFToken}`).digest('hex');
 
-  response.cookie('session_token', sessionToken, { httpOnly: true });
-  response.cookie('csrf_token', token, { httpOnly: true });
+  response.cookie('session_token', sessionToken, { httpOnly: true, signed: true });
+  response.cookie('csrf_token', token, { httpOnly: true, signed: true });
 }
 
 export function verifyCSRFToken(request: Request) {
-  const sessionToken = request.cookies.session_token;
+  const sessionToken = request.signedCookies.session_token;
   const staticCSRFToken = process.env.APP_SECRET_CSRF_TOKEN;
   const token = createHash('sha256').update(`${sessionToken}.${staticCSRFToken}`).digest('hex');
-  const CSRFToken = (request.cookies.csrf_token || '') as string;
+  const CSRFToken = (request.signedCookies.csrf_token || '') as string;
 
   if (token.length !== CSRFToken.length) {
     return false;

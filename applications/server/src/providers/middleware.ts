@@ -17,7 +17,7 @@ const preController = [
   response(),
   morgan(),
   json(),
-  cookie(),
+  cookie(process.env.APP_COOKIE_SECRET),
   csrf(),
   convertEmptyToNull(),
   trimStrings(),
