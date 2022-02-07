@@ -12,7 +12,9 @@ import type { RequestHandler } from 'express';
 
 const { errorHandler, requestHandler } = Handlers;
 
-const preController = [
+const postControllerMiddleware = [errorHandler(), error()];
+
+const prepControllerMiddleware = [
   requestHandler(),
   response(),
   morgan(),
@@ -23,12 +25,23 @@ const preController = [
   trimStrings(),
 ];
 
-const postController = [errorHandler(), error()];
+export const POST_STACK = Symbol.for('POST');
 
-type Stack = 'pre-controller' | 'post-controller';
+export const PREP_STACK = Symbol.for('PREP');
+
+type Stack = typeof POST_STACK | typeof PREP_STACK;
+
+export function getMiddlewareStack(stack: Stack) {
+  switch (stack) {
+    case POST_STACK:
+      return postControllerMiddleware;
+    case PREP_STACK:
+      return prepControllerMiddleware;
+    default:
+      throw new Error('Valid middleware stack not provided');
+  }
+}
 
 export function registerMiddlewareStack(stack: Stack) {
-  const middleware = stack === 'pre-controller' ? preController : postController;
-
-  middleware.forEach((middleware) => app.use(middleware as RequestHandler));
+  getMiddlewareStack(stack).forEach((middleware) => app.use(middleware as RequestHandler));
 }

@@ -1,6 +1,6 @@
 import app from 'application';
 import log from 'support/facades/log';
-import { registerMiddlewareStack } from 'providers/middleware';
+import { POST_STACK, PREP_STACK, registerMiddlewareStack } from 'providers/middleware';
 import { startGracefulShutdown } from 'utilities/graceful-shutdown';
 
 // --- Sentry -----------------------------------
@@ -9,7 +9,7 @@ require('bootstrap/sentry');
 
 // --- Pre-controller middleware ----------------
 
-registerMiddlewareStack('pre-controller');
+registerMiddlewareStack(PREP_STACK);
 
 // --- Routes -----------------------------------
 
@@ -17,7 +17,7 @@ require('http/routes');
 
 // --- Post-controller middleware ---------------
 
-registerMiddlewareStack('post-controller');
+registerMiddlewareStack(POST_STACK);
 
 // --- Server -----------------------------------
 
