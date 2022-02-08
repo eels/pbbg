@@ -1,11 +1,15 @@
 {
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
-
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "jsx": "preserve",
-    "noEmit": true
+    "noEmit": true,
+    "paths": {
+      "*": ["scripts/*", "src/*", "test/*"]
+    }
   },
-
-  "include": ["src", "test"]
+  "include": ["scripts", "src", "test"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }
