@@ -6,7 +6,7 @@ import type { Slug } from 'types/post';
 const directory = path.join(process.cwd(), 'src/data/blog');
 
 export function getPostSlugs() {
-  return fs.readdirSync(directory);
+  return fs.existsSync(directory) ? fs.readdirSync(directory) : [];
 }
 
 export function getPostBySlug(slug: Slug) {
