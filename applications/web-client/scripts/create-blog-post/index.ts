@@ -1,6 +1,7 @@
 import fs from 'fs';
 import inquirer from 'inquirer';
 import path from 'path';
+import { capitalCase } from 'change-case';
 import { format } from 'date-fns';
 import { questions } from 'create-blog-post/data/questions';
 
@@ -21,23 +22,16 @@ function sanitiseHeadline(headline: string) {
   return headline;
 }
 
-function convertHeadlineToTitleCase(headline: string) {
-  return headline.replace(/\w\S*/g, (headline) => {
-    return headline.charAt(0).toUpperCase() + headline.substring(1).toLowerCase();
-  });
-}
-
 async function createBlogPost() {
   const answers = await inquirer.prompt(questions);
   const timestamp = format(new Date(), 'yyyyMMddHHmm');
-  const headline = answers.headline;
-  const urlSafeHeadline = sanitiseHeadline(headline);
+  const urlSafeHeadline = sanitiseHeadline(answers.headline);
   const slug = `${timestamp}-${urlSafeHeadline}`;
 
   let template = getBlogPostTemplate();
 
   template = template.replace('%date', timestamp);
-  template = template.replace('%headline', convertHeadlineToTitleCase(headline));
+  template = template.replace('%headline', capitalCase(answers.headline));
   template = template.replace('%slug', slug);
   template = template.replace('%status', 'DRAFT');
 
