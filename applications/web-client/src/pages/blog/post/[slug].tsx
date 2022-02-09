@@ -1,7 +1,7 @@
-import BlogContent from 'components/atoms/BlogContent';
 import BlogHeader from 'components/atoms/BlogHeader';
 import Container from 'components/atoms/Container';
 import Head from 'next/head';
+import MarkdownRenderer from 'components/atoms/MarkdownRenderer';
 import { Fragment } from 'react';
 import { getAllPosts, getPostBySlug } from 'services/BlogPostService';
 import type { GetStaticPropsContext } from 'next';
@@ -20,7 +20,7 @@ export default function BlogPost({ content, data }: BlogPostProps) {
       </Head>
       <Container>
         <BlogHeader data={data} />
-        <BlogContent content={content.post} />
+        <MarkdownRenderer content={content.post} />
       </Container>
     </Fragment>
   );
