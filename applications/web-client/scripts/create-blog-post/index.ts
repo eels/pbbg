@@ -5,7 +5,7 @@ import { capitalCase } from 'change-case';
 import { format } from 'date-fns';
 import { questions } from 'create-blog-post/data/questions';
 
-function getBlogPostTemplate() {
+function getBlogPostTemplateContent() {
   return fs.readFileSync(path.join(__dirname, 'templates', 'blog-post.md'), 'utf8');
 }
 
@@ -28,7 +28,7 @@ async function createBlogPost() {
   const urlSafeHeadline = sanitiseHeadline(answers.headline);
   const slug = `${timestamp}-${urlSafeHeadline}`;
 
-  let template = getBlogPostTemplate();
+  let template = getBlogPostTemplateContent();
 
   template = template.replace('%date', timestamp);
   template = template.replace('%headline', capitalCase(answers.headline));
