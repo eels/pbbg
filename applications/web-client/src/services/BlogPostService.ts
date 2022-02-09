@@ -38,7 +38,7 @@ export function getPostSlugs() {
 }
 
 export async function getAllPosts() {
-  const slugs = getPostSlugs();
+  const slugs = getPostSlugs().reverse();
   const posts = slugs.map(async (slug) => getPostBySlug(slug));
 
   return filterDraftPosts(await Promise.all(posts));
