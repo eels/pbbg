@@ -6,3 +6,11 @@
 
 @import './generic/box-sizing';
 @import './generic/reset';
+@import './generic/selection';
+@import './generic/typography';
+
+// --- Elements ---------------------------------
+
+@import './elements/body';
+@import './elements/heading';
+@import './elements/rule';

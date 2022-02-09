@@ -1,3 +1,5 @@
+import Container from 'components/atoms/Container';
+import Head from 'next/head';
 import { Fragment } from 'react';
 import { convertMarkdownToHTML } from 'services/MarkdownService';
 import { format, parse } from 'date-fns';
@@ -14,9 +16,15 @@ export default function BlogPost({ content, data }: BlogPostProps) {
 
   return (
     <Fragment>
-      <h1>{data.headline}</h1>
-      <div>{format(parsedDate, 'yyyy-MM-dd')}</div>
-      <div>{content}</div>
+      <Head>
+        <title>{data.headline}</title>
+      </Head>
+      <Container>
+        <h1>{data.headline}</h1>
+        <div>Posted {format(parsedDate, 'EEEE, LLLL do yyyy HH:mm aa')}</div>
+        <hr />
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+      </Container>
     </Fragment>
   );
 }
