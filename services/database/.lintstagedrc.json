@@ -1,3 +1,5 @@
 {
-  "prisma/**/*.ts": ["prettier --check", "eslint --cache"]
+  "prisma/**/*.ts": ["prettier --check", "eslint --cache"],
+
+  "./*.json": ["prettier --check"]
 }

@@ -5,11 +5,11 @@
   "scripts": {
     "create:migration": "prisma migrate dev --name",
     "deploy": "prisma migrate deploy",
-    "format": "prettier './prisma/**/*.ts' --check && prisma format",
+    "format": "prettier './{.,prisma}/**/*.{js,json,ts}' --check && prisma format",
     "format:fix": "yarn format --write",
     "lint": "yarn lint:js",
     "lint-staged": "lint-staged",
-    "lint:js": "eslint './prisma/**/*.ts' --cache",
+    "lint:js": "eslint './{.,prisma}/**/*.{js,ts}' --cache",
     "lint:js:fix": "yarn lint:js --fix",
     "generate": "prisma generate",
     "prepare": "ln -sf  ../../.env .",
