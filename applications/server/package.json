@@ -5,7 +5,7 @@
   "scripts": {
     "build": "yarn parcel build src/index.ts --cache-dir .parcel-cache --dist-dir build",
     "clean": "rimraf build",
-    "dev": "nodemon --exec 'ts-node src/index.ts' --ext '*' --watch './src/**'",
+    "dev": "nodemon --exec 'ts-node src/index.ts --transpileOnly' --ext '*' --watch './src/**'",
     "format": "prettier './{.,src,test}/**/*.{js,json,ts,tsx}' --check",
     "format:fix": "yarn format --write",
     "lint": "yarn lint:js",

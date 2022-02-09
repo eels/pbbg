@@ -5,8 +5,8 @@
   "scripts": {
     "build": "next build",
     "clean": "rimraf .next && rimraf out",
-    "create:post": "yarn ts-node scripts/create-blog-post",
-    "create:component": "yarn ts-node scripts/create-component",
+    "create:post": "yarn ts-node scripts/create-blog-post --transpileOnly",
+    "create:component": "yarn ts-node scripts/create-component --transpileOnly",
     "dev": "next dev",
     "export": "next export",
     "format": "prettier './{.,scripts,src,storybook,test}/**/*.{js,json,ts,tsx}' --check",
