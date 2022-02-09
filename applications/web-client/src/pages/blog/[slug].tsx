@@ -1,37 +1,38 @@
+import BlogContent from 'components/atoms/BlogContent';
+import BlogHeader from 'components/atoms/BlogHeader';
 import Container from 'components/atoms/Container';
-import Head from 'next/head';
+import Link from 'next/link';
 import { Fragment } from 'react';
-import { convertMarkdownToHTML } from 'services/MarkdownService';
-import { format, parse } from 'date-fns';
-import { getAllPosts, getPostBySlug } from 'services/BlogPostService';
+import { Post } from 'types/post';
+import { getAllPosts } from 'services/BlogPostService';
 import type { GetStaticPropsContext } from 'next';
 
-interface BlogPostProps {
-  content: string;
-  data: Record<string, any>;
+interface BlogIndexProps {
+  posts: Post[];
 }
 
-export default function BlogPost({ content, data }: BlogPostProps) {
-  const parsedDate = parse(data.date, 'yyyyMMddHHmm', new Date());
-
+export default function BlogIndex({ posts }: BlogIndexProps) {
   return (
     <Fragment>
-      <Head>
-        <title>{data.headline}</title>
-      </Head>
       <Container>
-        <h1>{data.headline}</h1>
-        <div>Posted {format(parsedDate, 'EEEE, LLLL do yyyy HH:mm aa')}</div>
-        <hr />
-        <div dangerouslySetInnerHTML={{ __html: content }} />
+        {posts.map((post) => (
+          <Fragment key={post.data.slug}>
+            <BlogHeader data={post.data} />
+            <BlogContent content={post.content.preview} />
+            <Link href={`/blog/post/${post.data.slug}`}>
+              <a>Read more</a>
+            </Link>
+          </Fragment>
+        ))}
       </Container>
     </Fragment>
   );
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts();
-  const slugs = posts.map(({ data }) => ({ params: { slug: data.slug } }));
+  const posts = await getAllPosts();
+  const pages = Array.from(Array(Math.ceil(posts.length / 10)).keys());
+  const slugs = pages.map((page) => ({ params: { slug: `${page + 1}` } }));
 
   return {
     fallback: false,
@@ -40,15 +41,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: GetStaticPropsContext) {
-  const slug = params?.slug;
-  const constructedSlug = Array.isArray(slug) ? slug.join('/') : slug;
-  const post = getPostBySlug(constructedSlug || '');
-  const content = await convertMarkdownToHTML(post.content || '');
+  const slug = params?.slug || '1';
+  const constructedSlug = Array.isArray(slug) ? slug.join('') : slug;
+  const offset = parseInt(constructedSlug);
+  const posts = await getAllPosts();
 
   return {
     props: {
-      ...post,
-      content: content,
+      posts: posts.slice((offset - 1) * 10, (offset - 1) * 10 + 10),
     },
   };
 }

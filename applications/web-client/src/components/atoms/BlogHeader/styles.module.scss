@@ -1,0 +1,22 @@
+.wrapper {
+  padding-bottom: 30px;
+  border-bottom: 1px solid $palette-black;
+  margin-bottom: 30px;
+}
+
+.headline {
+  position: relative;
+}
+
+.meta-information {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+  user-select: none;
+}
+
+.meta-information-item {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
