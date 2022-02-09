@@ -26,6 +26,13 @@ package-lock.json
 
 node_modules
 
+# --- Terraform ---------------------------------
+
+.terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+
 # --- Environment variables ---------------------
 
 .env
