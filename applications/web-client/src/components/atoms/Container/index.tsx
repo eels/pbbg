@@ -1,4 +1,4 @@
-import * as Styled from './styled';
+import * as Styled from 'components/atoms/Container/styled';
 import type { ReactNode } from 'react';
 
 interface ContainerProps {

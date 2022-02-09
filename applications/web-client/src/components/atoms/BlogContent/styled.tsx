@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from 'components/atoms/BlogContent/blog-content.module.scss';
 import { create } from 'chic-modules';
 
 const styled = create(styles);

@@ -1,4 +1,4 @@
-import * as Styled from './styled';
+import * as Styled from 'components/atoms/BlogHeader/styled';
 import Emoji from 'a11y-react-emoji';
 import { PostData } from 'types/post';
 import { format, parse } from 'date-fns';

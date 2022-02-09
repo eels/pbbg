@@ -1,4 +1,4 @@
-import * as Styled from './styled';
+import * as Styled from 'components/atoms/BlogContent/styled';
 
 interface BlogContentProps {
   content: string;
