@@ -20,6 +20,7 @@
 ## Contents
 
 - [Getting Started Guide](#getting-started-guide)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Getting Started Guide
@@ -47,6 +48,12 @@ yarn docker:build && yarn docker:up
 ```bash
 yarn dev
 ```
+
+## Contributing
+
+Thanks for taking the time to contribute! Before you get started, please take a moment to read through our [contributing guide](https://github.com/eels/pbbg/blob/main/.github/CONTRIBUTING.md). The focus area for the `pbbg` project right now is fixing potential bugs.
+
+However, all issues and PRs are welcome!
 
 ## License
 
