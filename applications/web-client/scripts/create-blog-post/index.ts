@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import { questions } from 'create-blog-post/data/questions';
 
 function getBlogPostTemplateContent() {
-  return fs.readFileSync(path.join(__dirname, 'templates', 'blog-post.md'), 'utf8');
+  return fs.readFileSync(path.join(__dirname, 'templates/blog-post.md'), 'utf8');
 }
 
 function writeBlogPostToDirectory(slug: string, content: string) {

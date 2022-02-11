@@ -16,12 +16,12 @@ module.exports = {
 
   framework: '@storybook/react',
 
-  staticDirs: ['../src/public'],
+  staticDirs: ['../public'],
 
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
 
   webpackFinal: async (config) => {
-    config.resolve.modules.push(path.resolve(__dirname, '../src'));
+    config.resolve.modules.push(path.resolve(process.cwd(), 'src'));
 
     return config;
   },
