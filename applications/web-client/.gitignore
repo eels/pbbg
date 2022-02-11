@@ -5,6 +5,7 @@ node_modules
 # --- Caches ------------------------------------
 
 .eslintcache
+.rollup.cache
 .stylelintcache
 
 # --- Build -------------------------------------
@@ -12,3 +13,4 @@ node_modules
 .next
 coverage
 out
+public/sw.js

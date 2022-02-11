@@ -33,7 +33,11 @@
     "next": "^12.0.9",
     "normalize.css": "^8.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "workbox-cacheable-response": "^6.4.2",
+    "workbox-expiration": "^6.4.2",
+    "workbox-routing": "^6.4.2",
+    "workbox-strategies": "^6.4.2"
   },
   "peerDependencies": {
     "prettier": "*",
@@ -44,6 +48,8 @@
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
     "@pbbg/stylelint-config": "*",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-replace": "^3.0.1",
     "@pbbg/typescript-config": "*",
     "@storybook/addon-a11y": "^6.4.18",
     "@storybook/addon-actions": "^6.4.18",
@@ -73,6 +79,8 @@
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
     "rimraf": "^3.0.2",
+    "rollup": "^2.67.1",
+    "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.49.0",
     "stylelint": "^14.3.0",
     "ts-node": "^10.4.0",
