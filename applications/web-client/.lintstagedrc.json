@@ -1,7 +1,5 @@
 {
-  "src/**/*.scss": ["prettier --check", "stylelint --cache"],
+  "*.{js,ts,tsx}": ["prettier --check", "eslint --cache"],
 
-  "{.,scripts,src,storybook,test}/**/*.{js,ts,tsx}": ["prettier --check", "eslint --cache"],
-
-  "./*.json": ["prettier --check"]
+  "*.scss": ["prettier --check", "stylelint --cache"]
 }
