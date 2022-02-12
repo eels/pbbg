@@ -11,7 +11,7 @@ export function filterDraftPosts(posts: Post[]) {
   return posts.filter(({ data }) => data.status !== 'DRAFT');
 }
 
-export async function getPostBySlug(slug: string) {
+export function getPostBySlug(slug: string) {
   const clonedSlug = slug.replace(/\.md$/, '');
   const pathToPost = path.join(directory, `${clonedSlug}.md`);
   const file = fs.readFileSync(pathToPost, 'utf8');
@@ -20,7 +20,7 @@ export async function getPostBySlug(slug: string) {
   data.slug = clonedSlug;
   data.timeToRead = Math.max(1, Math.floor(content.split(' ').length / 200));
 
-  const convertedContent = await convertMarkdownToHTML(content);
+  const convertedContent = convertMarkdownToHTML(content);
 
   const postContent = {
     post: convertedContent,
@@ -37,9 +37,9 @@ export function getPostSlugs() {
   return fs.existsSync(directory) ? fs.readdirSync(directory) : [];
 }
 
-export async function getAllPosts() {
+export function getAllPosts() {
   const slugs = getPostSlugs().reverse();
-  const posts = slugs.map(async (slug) => getPostBySlug(slug));
+  const posts = slugs.map((slug) => getPostBySlug(slug));
 
-  return filterDraftPosts(await Promise.all(posts));
+  return filterDraftPosts(posts);
 }

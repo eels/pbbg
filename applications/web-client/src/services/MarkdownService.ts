@@ -1,6 +1,8 @@
-import html from 'remark-html';
-import { remark } from 'remark';
+import MarkdownIt from 'markdown-it';
+import markdownItAttrs from 'markdown-it-attrs';
 
-export async function convertMarkdownToHTML(markdown: string) {
-  return (await remark().use(html).process(markdown)).toString();
+const md = new MarkdownIt();
+
+export function convertMarkdownToHTML(markdown: string) {
+  return md.use(markdownItAttrs).render(markdown);
 }
