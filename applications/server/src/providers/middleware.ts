@@ -29,8 +29,8 @@ const prepControllerMiddleware = [
   morgan(),
   json(),
   cookie(process.env.APP_COOKIE_SECRET),
-  csrf(),
   limiter(limiterOptions),
+  csrf(),
   convertEmptyToNull(),
   trimStrings(),
 ];
