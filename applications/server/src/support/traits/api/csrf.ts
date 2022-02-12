@@ -11,15 +11,16 @@ export function setCSRFToken(response: Response) {
   const epoch = Math.floor(Date.now() / 1000 / (expiryDurationInMinutes * 60));
   const session = randomBytes(20).toString('hex');
   const token = createHash('sha256').update(`${secret}.${session}.${epoch}`).digest('hex');
+  const cookieOptions = { httpOnly: true, secure: true, signed: true };
 
-  response.cookie(sessionCookie, session, { httpOnly: true, signed: true });
-  response.cookie(csrfCookie, token, { httpOnly: true, signed: true });
+  response.cookie(sessionCookie, session, cookieOptions);
+  response.cookie(csrfCookie, token, cookieOptions);
 }
 
 export function verifyCSRFToken(request: Request) {
   const epoch = Math.floor(Date.now() / 1000 / (expiryDurationInMinutes * 60));
-  const storedToken = (request.signedCookies[csrfCookie] || '') as string;
-  const storedSession = (request.signedCookies[sessionCookie] || '') as string;
+  const storedToken = request.signedCookies[csrfCookie];
+  const storedSession = request.signedCookies[sessionCookie];
   const token = createHash('sha256').update(`${secret}.${storedSession}.${epoch}`).digest('hex');
 
   if (token.length !== storedToken.length) {
