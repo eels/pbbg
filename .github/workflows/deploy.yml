@@ -2,11 +2,24 @@ name: Deploy
 
 on:
   workflow_dispatch:
+    branches:
+      - main
+    inputs:
+      service:
+        default: both
+        description: Select which services to deploy
+        options:
+          - both
+          - server
+          - web-client
+        required: true
+        type: choice
 
 jobs:
   deploy_server:
     name: Deploy Server
     runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'both' || github.event.inputs.service == 'server'
 
     steps:
       - name: Checkout
@@ -77,6 +90,7 @@ jobs:
   deploy_web_client:
     name: Deploy Web Client
     runs-on: ubuntu-latest
+    if: github.event.inputs.service == 'both' || github.event.inputs.service == 'web-client'
 
     steps:
       - name: Checkout
