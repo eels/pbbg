@@ -1,6 +1,8 @@
 import app from 'application';
 import cookie from 'cookie-parser';
+import limiter from 'express-rate-limit';
 import { Handlers } from '@sentry/node';
+import { constructHttpResponseObject } from 'support/traits/api/response';
 import { convertEmptyToNull } from 'http/middleware/convert-empty-to-null';
 import { csrf } from 'http/middleware/csrf';
 import { error } from 'http/middleware/error';
@@ -12,6 +14,13 @@ import type { RequestHandler } from 'express';
 
 const { errorHandler, requestHandler } = Handlers;
 
+const limiterOptions = {
+  max: 60,
+  message: constructHttpResponseObject('RATE-LIMITED', { message: 'too many requests' }),
+  standardHeaders: true,
+  windowMs: 1 * 60 * 1000,
+};
+
 const postControllerMiddleware = [errorHandler(), error()];
 
 const prepControllerMiddleware = [
@@ -21,6 +30,7 @@ const prepControllerMiddleware = [
   json(),
   cookie(process.env.APP_COOKIE_SECRET),
   csrf(),
+  limiter(limiterOptions),
   convertEmptyToNull(),
   trimStrings(),
 ];

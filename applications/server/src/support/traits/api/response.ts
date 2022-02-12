@@ -13,6 +13,8 @@ function getHttpStatusCode(status: Status): StatusCode {
       return 500;
     case 'FORBIDDEN':
       return 403;
+    case 'RATE-LIMITED':
+      return 429;
     case 'SUCCESS':
       return 200;
     case 'UNAUTHORISED':
@@ -20,24 +22,28 @@ function getHttpStatusCode(status: Status): StatusCode {
   }
 }
 
+export function constructHttpResponseObject(status: Status, options?: HTTPResponseOptions) {
+  const responseObject: HTTPResponseObject = {
+    CODE: getHttpStatusCode(status),
+    DATA: options?.data,
+    MESSAGE: options?.message?.toLowerCase(),
+    STATUS: status,
+  };
+
+  if (!options?.data) {
+    delete responseObject.DATA;
+  }
+
+  if (!options?.message) {
+    delete responseObject.MESSAGE;
+  }
+
+  return responseObject;
+}
+
 export function buildHttpResponse(response: Response) {
   return function (status: Status, options?: HTTPResponseOptions) {
-    const responseObject: HTTPResponseObject = {
-      CODE: getHttpStatusCode(status),
-      DATA: options?.data,
-      MESSAGE: options?.message?.toLowerCase(),
-      STATUS: status,
-    };
-
-    if (!options?.data) {
-      delete responseObject.DATA;
-    }
-
-    if (!options?.message) {
-      delete responseObject.MESSAGE;
-    }
-
     response.status(getHttpStatusCode(status));
-    response.json(responseObject);
+    response.json(constructHttpResponseObject(status, options));
   };
 }
