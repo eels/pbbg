@@ -16,5 +16,9 @@ export interface HTTPResponseOptions {
 }
 
 export interface Response extends ExpressResponse {
-  buildHttpResponse: (status: Status, options?: HTTPResponseOptions) => void;
+  buildHttpResponse: (status: Status, options?: HTTPResponseOptions) => Response;
+}
+
+export interface RequestHandler {
+  (request: any, response: Response): Promise<Response>;
 }

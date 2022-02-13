@@ -1,13 +1,12 @@
 import app from 'application';
-import type { Method, Route } from 'types/http';
-import type { RequestHandler } from 'express';
+import type { Method, RequestHandler, Route } from 'types/http';
 
 function createRouterObject() {
   return {
-    create: (method: Method, path: Route, ...handlers: unknown[]) => {
+    create: (method: Method, path: Route, ...handlers: RequestHandler[]) => {
       const sanitisedMethod = method.toLowerCase() as Lowercase<Method>;
 
-      app[sanitisedMethod](path, ...(handlers as RequestHandler[]));
+      app[sanitisedMethod](path, ...(handlers as any[]));
     },
   };
 }

@@ -46,6 +46,6 @@ export function buildHttpResponse(response: Response) {
     const statusCode = getHttpStatusCode(status);
     const responseObject = constructHttpResponseObject(status, options);
 
-    response.status(statusCode).json(responseObject);
+    return response.status(statusCode).json(responseObject);
   };
 }
