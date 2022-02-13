@@ -21,8 +21,6 @@ const limiterOptions = {
   windowMs: 1 * 60 * 1000,
 };
 
-const postControllerMiddleware = [errorHandler(), error()];
-
 const prepControllerMiddleware = [
   requestHandler(),
   response(),
@@ -35,11 +33,17 @@ const prepControllerMiddleware = [
   trimStrings(),
 ];
 
-export const POST_STACK = Symbol.for('POST');
+// prettier-ignore
+const postControllerMiddleware = [
+  errorHandler(),
+  error(),
+];
 
 export const PREP_STACK = Symbol.for('PREP');
 
-type Stack = typeof POST_STACK | typeof PREP_STACK;
+export const POST_STACK = Symbol.for('POST');
+
+type Stack = typeof PREP_STACK | typeof POST_STACK;
 
 export function getMiddlewareStack(stack: Stack) {
   switch (stack) {
