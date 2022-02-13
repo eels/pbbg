@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "# -- Start ---------------------------------------"
+echo "# --- Start --------------------------------------"
 
 yarn workspace @pbbg/database-service deploy
 
