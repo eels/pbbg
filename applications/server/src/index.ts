@@ -4,4 +4,4 @@ require('bootstrap/environment');
 
 // --- Entrypoint -------------------------------
 
-require('entrypoint');
+require('application/entrypoint');

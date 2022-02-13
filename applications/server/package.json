@@ -3,8 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "yarn parcel build src/index.ts --cache-dir .parcel-cache --dist-dir build",
-    "clean": "rimraf build",
+    "build": "webpack --progress",
+    "clean": "rimraf build logs",
     "dev": "nodemon --exec 'ts-node src/index.ts --transpileOnly' --ext '*' --watch './src/**'",
     "format": "prettier '{.,./{src,test}/**/}*.{js,json,ts,tsx}' --check",
     "format:fix": "yarn format --write",
@@ -32,7 +32,8 @@
     "winston": "^3.5.1"
   },
   "peerDependencies": {
-    "prettier": "*"
+    "prettier": "*",
+    "webpack": "*"
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
@@ -47,11 +48,13 @@
     "jest": "^27.4.7",
     "lint-staged": "^12.3.2",
     "nodemon": "^2.0.15",
-    "parcel": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.1.3",
+    "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "webpack-cli": "^4.9.2",
+    "webpack-node-externals": "^3.0.0"
   }
 }

@@ -5,7 +5,6 @@ node_modules
 # --- Caches ------------------------------------
 
 .eslintcache
-.parcel-cache
 .yarn-cache
 
 # --- Logs --------------------------------------

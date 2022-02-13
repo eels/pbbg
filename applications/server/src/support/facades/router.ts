@@ -1,4 +1,4 @@
-import app from 'application';
+import app from 'application/http';
 import type { Method, RequestHandler, Route } from 'types/http';
 
 function createRouterObject() {

@@ -1,4 +1,4 @@
-import app from 'application';
+import app from 'application/http';
 import cookie from 'cookie-parser';
 import limiter from 'express-rate-limit';
 import { Handlers } from '@sentry/node';

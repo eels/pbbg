@@ -52,8 +52,6 @@ COPY --from=sourcer /home/node/app/out/full/ .
 
 COPY --from=sourcer /home/node/app/turbo.json .
 
-RUN rm -fr /home/node/app/applications/server/.parcel-cache
-
 RUN yarn turbo run build --scope=@pbbg/server --include-dependencies --no-deps
 
 # --- Runtime -----------------------------------
