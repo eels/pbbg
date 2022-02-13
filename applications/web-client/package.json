@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "next build",
-    "clean": "rimraf .next && rimraf out",
+    "clean": "rimraf .next out",
     "create:post": "yarn ts-node scripts/create-blog-post --transpileOnly",
     "create:component": "yarn ts-node scripts/create-component --transpileOnly",
     "dev": "next dev",
