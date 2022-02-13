@@ -6,6 +6,7 @@ import { constructHttpResponseObject } from 'support/traits/api/response';
 import { convertEmptyToNull } from 'http/middleware/convert-empty-to-null';
 import { csrf } from 'http/middleware/csrf';
 import { error } from 'http/middleware/error';
+import { ignoreFavicon } from 'http/middleware/ignore-favicon';
 import { json } from 'body-parser';
 import { morgan } from 'http/middleware/morgan';
 import { response } from 'http/middleware/response';
@@ -29,6 +30,7 @@ const prepControllerMiddleware = [
   cookie(process.env.APP_COOKIE_SECRET),
   limiter(limiterOptions),
   csrf(),
+  ignoreFavicon(),
   convertEmptyToNull(),
   trimStrings(),
 ];
