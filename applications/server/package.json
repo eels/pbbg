@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --progress",
+    "build": "webpack",
     "clean": "rimraf build logs",
     "dev": "nodemon --exec 'ts-node src/index.ts --transpileOnly' --ext '*' --watch './src/**'",
     "format": "prettier '{.,./{src,test}/**/}*.{js,json,ts,tsx}' --check",
