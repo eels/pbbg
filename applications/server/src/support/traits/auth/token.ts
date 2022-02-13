@@ -1,3 +1,4 @@
+import { Buffer } from 'buffer';
 import { SignJWT, jwtVerify } from 'jose';
 import type { Request, Response } from 'express';
 
@@ -17,19 +18,19 @@ export async function createAuthenticationToken(payload: Payload) {
   return await jwt.sign(Buffer.from(secret));
 }
 
-export function deleteAuthenticationTokens(response: Response) {
+export async function deleteAuthenticationTokens(response: Response) {
   response.clearCookie(authHeaderCookie);
   response.clearCookie(authSignitureCookie);
 }
 
-export function getAuthenticationToken(request: Request) {
+export async function getAuthenticationToken(request: Request) {
   const headers = request.signedCookies[authHeaderCookie];
   const signiture = request.signedCookies[authSignitureCookie];
 
   return [headers, signiture].join('.');
 }
 
-export function seperateAuthenticationToken(token: string) {
+export async function seperateAuthenticationToken(token: string) {
   const [signiture, ...rest] = token.split('.').reverse();
   const payload = rest.reverse().join('.');
 
@@ -38,7 +39,7 @@ export function seperateAuthenticationToken(token: string) {
 
 export async function setAuthenticationTokens(response: Response, payload: Payload) {
   const token = await createAuthenticationToken(payload);
-  const [headers, signiture] = seperateAuthenticationToken(token);
+  const [headers, signiture] = await seperateAuthenticationToken(token);
   const cookieOptions = { maxAge: 30 * 60 * 1000, secure: true, signed: true };
 
   response.cookie(authHeaderCookie, headers, cookieOptions);
@@ -46,7 +47,7 @@ export async function setAuthenticationTokens(response: Response, payload: Paylo
 }
 
 export async function validateAuthenticationToken(request: Request) {
-  const token = getAuthenticationToken(request);
+  const token = await getAuthenticationToken(request);
 
   return await jwtVerify(token, Buffer.from(secret));
 }
