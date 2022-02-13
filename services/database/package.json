@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
+    "build": "yarn generate",
     "create:migration": "prisma migrate dev --name",
     "deploy": "prisma migrate deploy",
     "format": "prettier '{.,./prisma/**/}*.{js,json,ts}' --check",
