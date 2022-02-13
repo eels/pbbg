@@ -1,5 +1,5 @@
 # --- Base --------------------------------------
 
-FROM fholzer/nginx-brotli
+FROM korijn/nginx-brotli:alpine
 
 ENTRYPOINT /bin/sh /home/nginx/lib/entrypoint.sh
