@@ -43,7 +43,9 @@ export function constructHttpResponseObject(status: Status, options?: HTTPRespon
 
 export function buildHttpResponse(response: Response) {
   return function (status: Status, options?: HTTPResponseOptions) {
-    response.status(getHttpStatusCode(status));
-    response.json(constructHttpResponseObject(status, options));
+    const statusCode = getHttpStatusCode(status);
+    const responseObject = constructHttpResponseObject(status, options);
+
+    response.status(statusCode).json(responseObject);
   };
 }

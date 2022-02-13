@@ -3,7 +3,7 @@ import type { NextFunction, Request, Response } from 'types/http';
 
 export function convertEmptyToNull() {
   return function (request: Request, _: Response, next: NextFunction) {
-    if (request.method !== 'GET') {
+    if (request.body) {
       request.body = convertEmptyObjectStringValuesToNull(request.body);
     }
 
