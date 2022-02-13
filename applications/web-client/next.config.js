@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const buildServiceWorker = require('./next.rollup.sw.config');
 const path = require('path');
 const withPurgeCSSModules = require('next-purge-css-modules');
 
@@ -19,12 +18,8 @@ module.exports = withPurgeCSSModules({
 
   swcMinify: true,
 
-  webpack: function (config, { dev, isServer }) {
+  webpack: function (config) {
     const webpackConfig = Object.assign({}, config);
-
-    if (!dev && !isServer) {
-      buildServiceWorker();
-    }
 
     webpackConfig.entry = async function () {
       const entries = await config.entry();
