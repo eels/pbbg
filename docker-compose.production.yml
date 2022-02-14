@@ -40,5 +40,4 @@ services:
     restart: 'unless-stopped'
     volumes:
       - '.:/home/node/app'
-      - '/home/node/app/applications/server/build'
       - '/home/node/app/node_modules'
