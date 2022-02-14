@@ -49,8 +49,9 @@ jobs:
           echo APP_COOKIE_SECRET="${{ secrets.APP_COOKIE_SECRET }}" >> ${{ env.ENV_FILE }}
           echo APP_CERTBOT_DEBUG="${{ secrets.APP_CERTBOT_DEBUG }}" >> ${{ env.ENV_FILE }}
           echo APP_SECRET_CSRF_TOKEN="${{ secrets.APP_SECRET_CSRF_TOKEN }}" >> ${{ env.ENV_FILE }}
-          echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> ${{ env.ENV_FILE }}
           echo APP_SECRET_JWT_TOKEN="${{ secrets.APP_SECRET_JWT_TOKEN }}" >> ${{ env.ENV_FILE }}
+          echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> ${{ env.ENV_FILE }}
+          echo APP_WEB_CLIENT_DOMAIN="${{ secrets.APP_WEB_CLIENT_DOMAIN }}" >> ${{ env.ENV_FILE }}
           echo NODE_PORT="${{ secrets.NODE_PORT }}" >> ${{ env.ENV_FILE }}
           echo POSTGRES_CONNECTION="${{ secrets.POSTGRES_CONNECTION }}" >> ${{ env.ENV_FILE }}
           echo POSTGRES_USER="${{ secrets.POSTGRES_USER }}" >> ${{ env.ENV_FILE }}
@@ -136,6 +137,7 @@ jobs:
           yarn turbo run build --scope=@pbbg/web-client --include-dependencies --no-deps
           yarn workspace @pbbg/web-client export
           touch applications/web-client/out/.nojekyll
+          echo "${{ secrets.APP_WEB_CLIENT_DOMAIN }}" > applications/web-client/out/CNAME
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
