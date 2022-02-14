@@ -29,8 +29,8 @@
     "prepare": "husky install && turbo run prepare",
     "storybook:build": "yarn workspace @pbbg/web-client storybook:build",
     "storybook:start": "yarn workspace @pbbg/web-client storybook:start",
-    "terraform:apply": "terraform -chdir=terraform apply",
-    "terraform:destroy": "terraform -chdir=terraform destroy",
+    "terraform:apply": "terraform -chdir=terraform apply -auto-approve",
+    "terraform:destroy": "terraform -chdir=terraform destroy -auto-approve",
     "terraform:plan": "terraform -chdir=terraform plan",
     "terraform:validate": "terraform -chdir=terraform validate",
     "test": "turbo run test"

@@ -9,12 +9,16 @@ terraform {
 
 # --- Variables ---------------------------------
 
-variable "DO_SSH_FINGERPRINT" {
+variable "DO_DOMAIN" {
+  type = string
+}
 
+variable "DO_SSH_FINGERPRINT" {
+  type = string
 }
 
 variable "DO_TOKEN" {
-
+  type = string
 }
 
 # --- Provider ----------------------------------
@@ -33,6 +37,60 @@ resource "digitalocean_droplet" "server" {
   size = "s-1vcpu-1gb-intel"
   ssh_keys = [var.DO_SSH_FINGERPRINT]
   tags = ["docker", "pbbg"]
+}
+
+# --- Domain + Records --------------------------
+
+resource "digitalocean_domain" "domain" {
+  name = var.DO_DOMAIN
+}
+
+resource "digitalocean_record" "web_client_apex_1" {
+  domain = digitalocean_domain.domain.id
+  name = "@"
+  ttl = "3600"
+  type = "A"
+  value = "185.199.108.153"
+}
+
+resource "digitalocean_record" "web_client_apex_2" {
+  domain = digitalocean_domain.domain.id
+  name = "@"
+  ttl = "3600"
+  type = "A"
+  value = "185.199.109.153"
+}
+
+resource "digitalocean_record" "web_client_apex_3" {
+  domain = digitalocean_domain.domain.id
+  name = "@"
+  ttl = "3600"
+  type = "A"
+  value = "185.199.110.153"
+}
+
+resource "digitalocean_record" "web_client_apex_4" {
+  domain = digitalocean_domain.domain.id
+  name = "@"
+  ttl = "3600"
+  type = "A"
+  value = "185.199.111.153"
+}
+
+resource "digitalocean_record" "web_client_www" {
+  domain = digitalocean_domain.domain.id
+  name = "www"
+  ttl = "3600"
+  type = "CNAME"
+  value = digitalocean_domain.domain.id
+}
+
+resource "digitalocean_record" "server" {
+  domain = digitalocean_domain.domain.id
+  name = "api"
+  ttl = "3600"
+  type = "A"
+  value = digitalocean_droplet.server.ipv4_address
 }
 
 # --- Firewall ----------------------------------
