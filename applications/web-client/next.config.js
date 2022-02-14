@@ -17,16 +17,4 @@ module.exports = withPurgeCSSModules({
   },
 
   swcMinify: true,
-
-  webpack: function (config) {
-    const webpackConfig = Object.assign({}, config);
-
-    webpackConfig.entry = async function () {
-      const entries = await config.entry();
-
-      return Object.assign({}, entries, { sw: path.join(process.cwd(), 'src/service-worker.ts') });
-    };
-
-    return webpackConfig;
-  },
 });
