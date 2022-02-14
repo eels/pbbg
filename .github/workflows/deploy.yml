@@ -37,8 +37,9 @@ jobs:
           TF_VAR_DO_TOKEN: ${{ env.TF_VAR_DO_TOKEN }}
         run: |
           cd ${{ github.repository }}/terraform
+          terraform init -input=false
           terraform validate
-          terraform apply -auto-approve
+          terraform apply -input=false -compact-warnings -auto-approve
 
       - name: Create application `.env` file
         env:
