@@ -27,6 +27,19 @@ jobs:
         with:
           path: ${{ github.repository }}
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1.3.2
+
+      - name: Apply Terraform Infrastructure Changes
+        env:
+          TF_VAR_DO_DOMAIN: ${{ env.TF_VAR_DO_DOMAIN }}
+          TF_VAR_DO_SSH_FINGERPRINT: ${{ env.TF_VAR_DO_SSH_FINGERPRINT }}
+          TF_VAR_DO_TOKEN: ${{ env.TF_VAR_DO_TOKEN }}
+        run: |
+          cd ${{ github.repository }}/terraform
+          terraform validate
+          terraform apply -auto-approve
+
       - name: Create application `.env` file
         env:
           ENV_FILE: ${{ github.repository }}/.env
