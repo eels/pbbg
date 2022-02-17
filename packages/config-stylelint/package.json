@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "stylelint": "^14.5.0",
+    "postcss": "^8.4.6",
+    "postcss-nested": "^5.0.6",
     "stylelint-config-idiomatic-order": "^8.1.0",
     "stylelint-config-recommended-scss": "^5.0.2",
     "stylelint-config-standard": "^25.0.0",

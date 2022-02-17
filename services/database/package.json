@@ -25,17 +25,17 @@
     "prisma": "^3.8.1"
   },
   "peerDependencies": {
-    "prettier": "*"
+    "eslint": "*",
+    "lint-staged": "*",
+    "prettier": "*",
+    "typescript": "*"
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
     "@types/node": "^17.0.12",
-    "eslint": "^8.7.0",
-    "lint-staged": "^12.3.2",
     "ts-node": "^10.4.0",
-    "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.5.5"
+    "tsconfig-paths": "^3.12.0"
   }
 }
