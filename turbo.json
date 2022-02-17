@@ -18,10 +18,6 @@
     "lint": {
       "dependsOn": []
     },
-    "lint-staged": {
-      "cache": false,
-      "dependsOn": []
-    },
     "prepare": {
       "cache": false,
       "dependsOn": []

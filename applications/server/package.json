@@ -9,7 +9,6 @@
     "format": "prettier '{.,./{src,test}/**/}*.{js,json,ts,tsx}' --check",
     "format:fix": "yarn format --write",
     "lint": "yarn lint:js",
-    "lint-staged": "lint-staged",
     "lint:js": "eslint './*.{js,ts}' './{src,test}/**/*.{js,ts,tsx}' --cache",
     "lint:js:fix": "yarn lint:js --fix",
     "test": "jest --cache --passWithNoTests",
@@ -33,7 +32,6 @@
   },
   "peerDependencies": {
     "eslint": "*",
-    "lint-staged": "*",
     "prettier": "*",
     "typescript": "*",
     "webpack": "*"

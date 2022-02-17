@@ -2,4 +2,4 @@
 
 . "$(dirname "$0")/_/husky.sh"
 
-yarn turbo run lint-staged --concurrency=1
+yarn turbo run format && yarn turbo run lint

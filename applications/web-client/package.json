@@ -14,7 +14,6 @@
     "format": "prettier '{.,./{scripts,src,storybook,test}/**/}*.{js,json,ts,tsx}' --check",
     "format:fix": "yarn format --write",
     "lint": "yarn lint:js && yarn lint:css",
-    "lint-staged": "lint-staged",
     "lint:css": "stylelint './src/**/*.scss' --cache",
     "lint:css:fix": "yarn lint:css --fix",
     "lint:js": "eslint './*.{js,ts}' './{scripts,src,storybook,test}/**/*.{js,ts,tsx}' --cache",
@@ -43,7 +42,6 @@
   },
   "peerDependencies": {
     "eslint": "*",
-    "lint-staged": "*",
     "prettier": "*",
     "stylelint": "*",
     "typescript": "*",
