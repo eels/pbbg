@@ -8,6 +8,7 @@ module.exports = {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-interactions',
+    'storybook-addon-next',
   ],
 
   core: {
@@ -19,6 +20,12 @@ module.exports = {
   staticDirs: ['../public'],
 
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+
+  typescript: {
+    check: false,
+    checkOptions: {},
+    reactDocgen: false,
+  },
 
   webpackFinal: async (config) => {
     config.resolve.modules.push(path.resolve(process.cwd(), 'src'));

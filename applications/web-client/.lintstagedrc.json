@@ -1,5 +1,5 @@
 {
-  "*.{js,ts,tsx}": ["prettier --check", "eslint --cache"],
+  "./*.{js,ts,tsx}": ["prettier --check", "eslint --cache"],
 
-  "*.scss": ["prettier --check", "stylelint --cache"]
+  "./*.scss": ["prettier --check", "stylelint --cache"]
 }
