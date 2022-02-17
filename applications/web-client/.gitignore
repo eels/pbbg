@@ -8,9 +8,12 @@ node_modules
 .rollup.cache
 .stylelintcache
 
-# --- Build -------------------------------------
+# --- Compiled ----------------------------------
 
 .next
-coverage
 out
 public/sw.js
+
+# --- Coverage ----------------------------------
+
+coverage
