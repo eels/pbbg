@@ -21,7 +21,7 @@
     "lint:js:fix": "yarn lint:js --fix",
     "storybook:build": "build-storybook --config-dir storybook --quiet",
     "storybook:start": "start-storybook --config-dir storybook --port 6006 --quiet",
-    "test": "jest --passWithNoTests",
+    "test": "jest --cache --passWithNoTests",
     "test:coverage": "yarn test --coverage"
   },
   "browserslist": [

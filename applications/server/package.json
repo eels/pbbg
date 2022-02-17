@@ -12,7 +12,7 @@
     "lint-staged": "lint-staged",
     "lint:js": "eslint './*.{js,ts}' './{src,test}/**/*.{js,ts,tsx}' --cache",
     "lint:js:fix": "yarn lint:js --fix",
-    "test": "jest --passWithNoTests",
+    "test": "jest --cache --passWithNoTests",
     "test:coverage": "yarn test --coverage"
   },
   "engines": {
