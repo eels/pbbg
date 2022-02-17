@@ -10,7 +10,7 @@
     }
   },
 
-  "include": ["scripts", "src", "test"],
+  "include": ["next-env.d.ts", "scripts", "src", "test"],
 
   "ts-node": {
     "require": ["tsconfig-paths/register"]
