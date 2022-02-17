@@ -82,7 +82,7 @@ resource "digitalocean_record" "web_client_www" {
   name = "www"
   ttl = "3600"
   type = "CNAME"
-  value = digitalocean_domain.domain.id
+  value = "${digitalocean_domain.domain.name}."
 }
 
 resource "digitalocean_record" "server" {
