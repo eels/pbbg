@@ -45,34 +45,8 @@ jobs:
           echo POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}" >> ${{ env.ENV_FILE }}
           echo SENTRY_DSN="${{ secrets.SENTRY_DSN }}" >> ${{ env.ENV_FILE }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.5.1
-        with:
-          node-version: lts/gallium
-
-      - name: Retrieve Yarn cache directory
-        id: yarn-cache
-        run: |
-          echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Use Yarn cache
-        uses: actions/cache@v2
-        with:
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          restore-keys: ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: |
-          yarn install --frozen-lockfile --ignore-scripts --prefer-offline
-
-      - name: Build
-        run: |
-          yarn turbo run build --scope=@pbbg/server --include-dependencies --no-deps
-
       - name: Prepare directory for deployment
         run: |
-          yarn rimraf **/node_modules
           rm -rf ${{ github.repository }}/.git
           rm -rf ${{ github.repository }}/.github
           rm -rf ${{ github.repository }}/.husky

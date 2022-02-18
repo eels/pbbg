@@ -15,8 +15,8 @@ services:
       context: '.'
       dockerfile: 'docker/nginx/Dockerfile'
     environment:
-      - 'APP_SERVER_DOMAIN=${APP_SERVER_DOMAIN}'
-      - 'NODE_PORT=${NODE_PORT}'
+      - 'APP_SERVER_DOMAIN'
+      - 'NODE_PORT'
     ports:
       - '80:80'
       - '443:443'
@@ -32,9 +32,6 @@ services:
     build:
       context: '.'
       dockerfile: 'docker/node/Dockerfile'
-    environment:
-      - 'NODE_PORT=${NODE_PORT}'
-      - 'POSTGRES_CONNECTION=${POSTGRES_CONNECTION}'
     expose:
       - '${NODE_PORT}'
     restart: 'unless-stopped'

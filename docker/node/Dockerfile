@@ -20,12 +20,45 @@ FROM base AS dependencies
 
 COPY --from=sourcer /home/node/app/out/json/ .
 
-COPY --from=sourcer /home/node/app/out/yarn.lock ./yarn.lock
+COPY --from=sourcer /home/node/app/out/yarn.lock .
 
 COPY --from=sourcer /home/node/app/turbo.json .
 
 RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
-  yarn install --prefer-offline --production
+  yarn install --frozen-lockfile --ignore-scripts --prefer-offline
+
+# --- Production Dependencies -------------------
+
+FROM base AS production_dependencies
+
+COPY --from=sourcer /home/node/app/out/json/ .
+
+COPY --from=sourcer /home/node/app/out/yarn.lock .
+
+COPY --from=sourcer /home/node/app/turbo.json .
+
+COPY --from=sourcer /home/node/app/out/full/services/database/prisma/ ./services/database/prisma
+
+COPY --from=dependencies /home/node/app/ .
+
+RUN yarn cache clean
+
+RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
+  yarn install --frozen-lockfile --ignore-scripts --prefer-offline --production
+
+RUN yarn workspace @pbbg/database-service generate
+
+# --- Builder -----------------------------------
+
+FROM base AS builder
+
+COPY --from=dependencies /home/node/app/ .
+
+COPY --from=sourcer /home/node/app/out/full/ .
+
+COPY --from=sourcer /home/node/app/turbo.json .
+
+RUN yarn turbo run build --scope=@pbbg/server --include-dependencies --no-deps
 
 # --- Runtime -----------------------------------
 
@@ -33,8 +66,10 @@ FROM base
 
 ENV NODE_ENV=production
 
-COPY --from=dependencies /home/node/app/ .
+COPY --from=production_dependencies /home/node/app/ .
 
 WORKDIR /home/node/app/applications/server
+
+COPY --from=builder /home/node/app/applications/server/build/ ./build/
 
 ENTRYPOINT /bin/sh /home/node/app/docker/node/lib/entrypoint.sh
