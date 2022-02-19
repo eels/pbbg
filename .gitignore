@@ -26,6 +26,10 @@ package-lock.json
 
 node_modules
 
+# --- Docker generated files --------------------
+
+docker/certbot/data
+
 # --- Terraform ---------------------------------
 
 .terraform
