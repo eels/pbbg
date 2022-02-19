@@ -6,10 +6,11 @@ import matter from 'gray-matter';
 import path from 'path';
 import { Fragment } from 'react';
 import { convertMarkdownToHTML } from 'services/MarkdownService';
+import type { AuxiliaryData } from 'types/auxiliary';
 import type { GetStaticPropsContext } from 'next';
 
 interface AuxiliaryProps {
-  data: Record<string, string>;
+  data: AuxiliaryData;
   content: string;
 }
 
