@@ -1,5 +1,6 @@
 import 'styles/style.scss';
-import { useEffect } from 'react';
+import Head from 'next/head';
+import { Fragment, useEffect } from 'react';
 import type { AppProps } from 'next/app';
 
 export default function CustomApp({ Component, pageProps }: AppProps) {
@@ -11,5 +12,14 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
     }
   }, []);
 
-  return <Component {...pageProps} />;
+  return (
+    <Fragment>
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+        <meta httpEquiv='x-ua-compatible' content='ie=edge' />
+        <meta name='robots' content='noindex,nofollow,noimageindex' />
+      </Head>
+      <Component {...pageProps} />
+    </Fragment>
+  );
 }
