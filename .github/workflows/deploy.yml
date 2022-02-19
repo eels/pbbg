@@ -82,11 +82,11 @@ jobs:
             chmod +x ./docker/certbot/lib/init.sh
             chmod +x ./docker/nginx/lib/entrypoint.sh
             chmod +x ./docker/node/lib/entrypoint.sh
-            chmod +x ./docker/node/lib/init.sh
+            chmod +x ./docker/node/lib/migrate_database.sh
             COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose \
               --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
             bash ./docker/certbot/lib/init.sh
-            bash ./docker/node/lib/init.sh
+            bash ./docker/node/lib/migrate_database.sh
             COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose \
               --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes
