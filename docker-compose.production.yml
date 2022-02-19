@@ -32,6 +32,8 @@ services:
     build:
       context: '.'
       dockerfile: 'docker/node/Dockerfile'
+    environment:
+      - 'POSTGRES_CONNECTION'
     expose:
       - '${NODE_PORT}'
     restart: 'unless-stopped'
