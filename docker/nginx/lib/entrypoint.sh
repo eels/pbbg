@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "# --- Start --------------------------------------"
-
 export DOLLAR="$"
 
 CONFIG_TEMP=/home/nginx/config/default.temp.conf

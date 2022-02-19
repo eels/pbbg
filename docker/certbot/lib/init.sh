@@ -27,8 +27,6 @@ ssl_config_path="$data_path/conf/options-ssl-nginx.conf"
 ssl_dhparams_path="$data_path/conf/ssl-dhparams.pem"
 
 if [ ! -e "$ssl_config_path" ] || [ ! -e "$ssl_dhparams_path" ]; then
-  echo "# --- Downloading recommended TLS parameters -----"
-
   github_domain="https://raw.githubusercontent.com"
   ssl_config_repo="$github_domain/certbot/certbot/master/certbot-nginx/certbot_nginx"
   ssl_dhparams_repo="$github_domain/certbot/certbot/master/certbot/certbot"
@@ -40,24 +38,19 @@ if [ ! -e "$ssl_config_path" ] || [ ! -e "$ssl_dhparams_path" ]; then
 
   curl -s "$ssl_config" > "$data_path/conf/options-ssl-nginx.conf"
   curl -s "$ssl_dhparams" > "$data_path/conf/ssl-dhparams.pem"
-
-  echo
 fi
-
-echo
-echo "# --- Temporarily starting Nginx -----------------"
 
 docker-compose --file "docker-compose.production.yml" run \
   --detach \
   --entrypoint "/bin/sh /home/nginx/lib/entrypoint.sh temp" \
+  --name "certbot_nginx" \
   --publish 80:80 \
   --rm \
   nginx
 
-echo
-echo "# --- Requesting certificate ---------------------"
-
-if [ "$staging" != "0" ]; then staging_arg="--staging"; fi
+if [ "$staging" != "0" ]; then
+  staging_arg="--staging";
+fi
 
 docker-compose --file "docker-compose.production.yml" run \
   --entrypoint "\
@@ -72,7 +65,4 @@ docker-compose --file "docker-compose.production.yml" run \
   --rm \
   certbot
 
-echo
-echo "# --- Stopping Nginx -----------------------------"
-
-docker container stop $(docker ps --all --filter "name=nginx" --quiet)
+docker container stop $(docker ps --all --filter "name=certbot_nginx" --quiet)
