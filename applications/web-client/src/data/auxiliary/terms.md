@@ -8,25 +8,25 @@ Effective date: February 12, 2022
 
 Please read these Terms of Service ("Terms") carefully before using the our website.
 
-The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company’s terms and conditions. "Untitled Persistent Browser Game", [http://localhost/](/), "us", "we" and "our", refers to our Company. "Party", "parties", or "us", refers to both the Client and ourselves, or either the Client or ourselves.
+The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company’s terms and conditions. "Aethelm", [https://aethelm.com](/), "us", "we" and "our", refers to our Company. "Party", "parties", or "us", refers to both the Client and ourselves, or either the Client or ourselves.
 
 ## 1\. Terms
 
-By accessing the website at [http://localhost/](/), you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
+By accessing the website at [https://aethelm.com](/), you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this website are protected by applicable copyright and trademark law.
 
 ## 2\. Disclaimer
 
-The materials on Untitled Persistent Browser Game's website are provided on an 'as is' basis. Untitled Persistent Browser Game makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+The materials on Aethelm's website are provided on an 'as is' basis. Aethelm makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
 
-Further, Untitled Persistent Browser Game does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.
+Further, Aethelm does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its website or otherwise relating to such materials or on any sites linked to this site.
 
 ## 3\. Limitations
 
-In no event shall Untitled Persistent Browser Game or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Untitled Persistent Browser Game's website, even if Untitled Persistent Browser Game or a Untitled Persistent Browser Game authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+In no event shall Aethelm or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Aethelm's website, even if Aethelm or a Aethelm authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
 
 ## 4\. Accuracy of materials
 
-The materials appearing on Untitled Persistent Browser Game's website could include technical, typographical, or photographic errors. Untitled Persistent Browser Game does not warrant that any of the materials on its website are accurate, complete or current. Untitled Persistent Browser Game may make changes to the materials contained on its website at any time without notice. However, Untitled Persistent Browser Game does not make any commitment to update the materials.
+The materials appearing on Aethelm's website could include technical, typographical, or photographic errors. Aethelm does not warrant that any of the materials on its website are accurate, complete or current. Aethelm may make changes to the materials contained on its website at any time without notice. However, Aethelm does not make any commitment to update the materials.
 
 ## 5\. Account Information
 
