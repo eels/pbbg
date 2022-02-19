@@ -33,8 +33,8 @@ jobs:
         run: |
           touch ${{ env.ENV_FILE }}
           echo APP_ADMIN_EMAIL="${{ secrets.APP_ADMIN_EMAIL }}" >> ${{ env.ENV_FILE }}
-          echo APP_COOKIE_SECRET="${{ secrets.APP_COOKIE_SECRET }}" >> ${{ env.ENV_FILE }}
           echo APP_CERTBOT_DEBUG="${{ secrets.APP_CERTBOT_DEBUG }}" >> ${{ env.ENV_FILE }}
+          echo APP_SECRET_COOKIE_TOKEN="${{ secrets.APP_SECRET_COOKIE_TOKEN }}" >> ${{ env.ENV_FILE }}
           echo APP_SECRET_CSRF_TOKEN="${{ secrets.APP_SECRET_CSRF_TOKEN }}" >> ${{ env.ENV_FILE }}
           echo APP_SECRET_JWT_TOKEN="${{ secrets.APP_SECRET_JWT_TOKEN }}" >> ${{ env.ENV_FILE }}
           echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> ${{ env.ENV_FILE }}

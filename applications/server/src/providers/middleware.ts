@@ -27,7 +27,7 @@ const prepControllerMiddleware = [
   response(),
   morgan(),
   json(),
-  cookie(process.env.APP_COOKIE_SECRET),
+  cookie(process.env.APP_SECRET_COOKIE_TOKEN),
   limiter(limiterOptions),
   csrf(),
   ignoreFavicon(),
