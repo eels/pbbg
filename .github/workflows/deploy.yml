@@ -65,11 +65,13 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd ${{ github.repository }}
           yarn install --frozen-lockfile --ignore-scripts --prefer-offline
 
       - name: Build
         run: |
           export NODE_ENV=production
+          cd ${{ github.repository }}
           yarn workspace @pbbg/server build
 
       - name: Prepare directory for deployment
