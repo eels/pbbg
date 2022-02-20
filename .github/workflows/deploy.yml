@@ -46,6 +46,32 @@ jobs:
           echo POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}" >> ${{ env.ENV_FILE }}
           echo SENTRY_DSN="${{ secrets.SENTRY_DSN }}" >> ${{ env.ENV_FILE }}
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: lts/gallium
+
+      - name: Retrieve Yarn cache directory
+        id: yarn-cache
+        run: |
+          echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Use Yarn cache
+        uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          restore-keys: ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: |
+          yarn install --frozen-lockfile --ignore-scripts --prefer-offline
+
+      - name: Build
+        run: |
+          export NODE_ENV=production
+          yarn workspace @pbbg/server build
+
       - name: Prepare directory for deployment
         run: |
           rm -rf ${{ github.repository }}/.git
@@ -61,7 +87,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
-          source: ${{ github.repository }}
+          source: ${{ github.repository }},!node_modules
           strip_components: 2
           target: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -121,7 +147,7 @@ jobs:
 
       - name: Build
         run: |
-          yarn turbo run build --scope=@pbbg/web-client --include-dependencies --no-deps
+          yarn workspace @pbbg/web-client build
           yarn workspace @pbbg/web-client export
           touch applications/web-client/out/.nojekyll
           echo "${{ secrets.APP_WEB_CLIENT_DOMAIN }}" > applications/web-client/out/CNAME

@@ -22,10 +22,9 @@ services:
       dockerfile: 'docker/node/Dockerfile'
     environment:
       - 'POSTGRES_CONNECTION'
-    expose:
-      - '${NODE_PORT}'
+    ports:
+      - '${NODE_PORT}:${NODE_PORT}'
     restart: 'unless-stopped'
     volumes:
       - '.:/home/node/app'
-      - '/home/node/app/applications/server/build'
       - '/home/node/app/node_modules'
