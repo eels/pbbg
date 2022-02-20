@@ -1,19 +1,10 @@
 version: '3'
 
 services:
-  certbot:
+  caddy:
     build:
       context: '.'
-      dockerfile: 'docker/certbot/Dockerfile'
-    restart: 'unless-stopped'
-    volumes:
-      - './docker/certbot/data/conf:/etc/letsencrypt'
-      - './docker/certbot/data/www:/var/www/certbot'
-
-  nginx:
-    build:
-      context: '.'
-      dockerfile: 'docker/nginx/Dockerfile'
+      dockerfile: 'docker/caddy/Dockerfile'
     environment:
       - 'APP_SERVER_DOMAIN'
       - 'NODE_PORT'
@@ -22,11 +13,7 @@ services:
       - '443:443'
     restart: 'unless-stopped'
     volumes:
-      - './docker/nginx/config/default.prod.conf:/home/nginx/config/default.prod.conf'
-      - './docker/nginx/config/default.temp.conf:/home/nginx/config/default.temp.conf'
-      - './docker/nginx/lib/entrypoint.sh:/home/nginx/lib/entrypoint.sh'
-      - './docker/certbot/data/conf:/etc/letsencrypt'
-      - './docker/certbot/data/www:/var/www/certbot'
+      - './docker/caddy/config/Caddyfile:/etc/caddy/Caddyfile'
 
   node:
     build:

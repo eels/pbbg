@@ -1,0 +1,37 @@
+{$APP_SERVER_DOMAIN} {
+  encode gzip
+
+  header -Server
+
+  header {
+    Permissions-Policy interest-cohort=()
+
+    Referrer-Policy no-referrer-when-downgrade
+
+    Strict-Transport-Security max-age=31536000;
+
+    X-Content-Type-Options nosniff
+
+    X-Frame-Options DENY
+  }
+
+  reverse_proxy node:{$NODE_PORT}
+}
+
+localhost:80 {
+  encode gzip
+
+  header -Server
+
+  header {
+    Permissions-Policy interest-cohort=()
+
+    Referrer-Policy no-referrer-when-downgrade
+
+    X-Content-Type-Options nosniff
+
+    X-Frame-Options DENY
+  }
+
+  reverse_proxy node:{$NODE_PORT}
+}
