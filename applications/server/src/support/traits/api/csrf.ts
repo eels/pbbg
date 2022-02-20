@@ -1,9 +1,11 @@
 import { Buffer } from 'buffer';
+import { cookie } from 'utilities/cookie';
 import { createHash, randomBytes, timingSafeEqual } from 'crypto';
+import type { CookieOptions } from 'express';
 import type { Request, Response } from 'types/http';
 
-const csrfCookie = 'csrf.token';
-const sessionCookie = 'session.id';
+const csrfCookie = cookie('csrf.token');
+const sessionCookie = cookie('session.id');
 const secret = process.env.APP_SECRET_CSRF_TOKEN;
 const expiryDurationInMinutes = 15;
 
@@ -11,10 +13,10 @@ export async function setCSRFToken(response: Response) {
   const epoch = Math.floor(Date.now() / 1000 / (expiryDurationInMinutes * 60));
   const session = randomBytes(20).toString('hex');
   const token = createHash('sha256').update(`${secret}.${session}.${epoch}`).digest('hex');
-  const cookieOptions = { httpOnly: true, secure: true, signed: true };
+  const options = { httpOnly: true, sameSite: 'strict', secure: true, signed: true };
 
-  response.cookie(sessionCookie, session, cookieOptions);
-  response.cookie(csrfCookie, token, cookieOptions);
+  response.cookie(sessionCookie, session, options as CookieOptions);
+  response.cookie(csrfCookie, token, options as CookieOptions);
 }
 
 export async function verifyCSRFToken(request: Request) {

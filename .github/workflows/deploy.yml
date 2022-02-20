@@ -38,6 +38,7 @@ jobs:
           echo APP_SECRET_CSRF_TOKEN="${{ secrets.APP_SECRET_CSRF_TOKEN }}" >> ${{ env.ENV_FILE }}
           echo APP_SECRET_JWT_TOKEN="${{ secrets.APP_SECRET_JWT_TOKEN }}" >> ${{ env.ENV_FILE }}
           echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> ${{ env.ENV_FILE }}
+          echo APP_USE_SECURE_COOKIE_PREFIX="${{ secrets.APP_USE_SECURE_COOKIE_PREFIX }}" >> ${{ env.ENV_FILE }}
           echo APP_WEB_CLIENT_DOMAIN="${{ secrets.APP_WEB_CLIENT_DOMAIN }}" >> ${{ env.ENV_FILE }}
           echo NODE_PORT="${{ secrets.NODE_PORT }}" >> ${{ env.ENV_FILE }}
           echo POSTGRES_CONNECTION="${{ secrets.POSTGRES_CONNECTION }}" >> ${{ env.ENV_FILE }}

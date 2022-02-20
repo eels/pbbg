@@ -1,11 +1,12 @@
 import { Buffer } from 'buffer';
 import { SignJWT, jwtVerify } from 'jose';
-import type { Request, Response } from 'express';
+import { cookie } from 'utilities/cookie';
+import type { CookieOptions, Request, Response } from 'express';
 
 type Payload = Record<string, string>;
 
-const authHeaderCookie = 'auth.headers';
-const authSignitureCookie = 'auth.signiture';
+const headerCookie = cookie('auth.headers');
+const signitureCookie = cookie('auth.signiture');
 const secret = process.env.APP_SECRET_JWT_TOKEN as string;
 
 export async function createAuthenticationToken(payload: Payload) {
@@ -19,13 +20,13 @@ export async function createAuthenticationToken(payload: Payload) {
 }
 
 export async function deleteAuthenticationTokens(response: Response) {
-  response.clearCookie(authHeaderCookie);
-  response.clearCookie(authSignitureCookie);
+  response.clearCookie(headerCookie);
+  response.clearCookie(signitureCookie);
 }
 
 export async function getAuthenticationToken(request: Request) {
-  const headers = request.signedCookies[authHeaderCookie];
-  const signiture = request.signedCookies[authSignitureCookie];
+  const headers = request.signedCookies[headerCookie];
+  const signiture = request.signedCookies[signitureCookie];
 
   return [headers, signiture].join('.');
 }
@@ -40,10 +41,10 @@ export async function seperateAuthenticationToken(token: string) {
 export async function setAuthenticationTokens(response: Response, payload: Payload) {
   const token = await createAuthenticationToken(payload);
   const [headers, signiture] = await seperateAuthenticationToken(token);
-  const cookieOptions = { maxAge: 30 * 60 * 1000, secure: true, signed: true };
+  const options = { maxAge: 30 * 60 * 1000, sameSite: 'strict', secure: true, signed: true };
 
-  response.cookie(authHeaderCookie, headers, cookieOptions);
-  response.cookie(authSignitureCookie, signiture, { ...cookieOptions, httpOnly: true });
+  response.cookie(headerCookie, headers, options as CookieOptions);
+  response.cookie(signitureCookie, signiture, { ...(options as CookieOptions), httpOnly: true });
 }
 
 export async function validateAuthenticationToken(request: Request) {
