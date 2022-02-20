@@ -4,6 +4,8 @@
   header -Server
 
   header {
+    Content-Security-Policy default-src
+
     Permissions-Policy interest-cohort=()
 
     Referrer-Policy no-referrer-when-downgrade
@@ -24,6 +26,8 @@ localhost:80 {
   header -Server
 
   header {
+    Content-Security-Policy default-src
+
     Permissions-Policy interest-cohort=()
 
     Referrer-Policy no-referrer-when-downgrade
