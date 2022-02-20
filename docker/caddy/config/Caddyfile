@@ -4,6 +4,12 @@
   header -Server
 
   header {
+    Access-Control-Allow-Headers *
+
+    Access-Control-Allow-Methods *
+
+    Access-Control-Allow-Origin https://{$APP_WEB_CLIENT_DOMAIN}
+
     Content-Security-Policy default-src
 
     Permissions-Policy interest-cohort=()
@@ -21,21 +27,5 @@
 }
 
 localhost:80 {
-  encode gzip
-
-  header -Server
-
-  header {
-    Content-Security-Policy default-src
-
-    Permissions-Policy interest-cohort=()
-
-    Referrer-Policy no-referrer-when-downgrade
-
-    X-Content-Type-Options nosniff
-
-    X-Frame-Options DENY
-  }
-
   reverse_proxy node:{$NODE_PORT}
 }
