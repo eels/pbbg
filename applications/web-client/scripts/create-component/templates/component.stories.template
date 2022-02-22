@@ -1,0 +1,10 @@
+import %name, { %nameProps } from 'components/%type/%name';
+
+export default {
+  component: %name,
+  title: 'Components/%!type/%name',
+};
+
+export const Default = (args: %nameProps) => <%name {...args} />;
+
+Default.args = {};

@@ -10,6 +10,7 @@ function getComponentTemplateContent(filename: string) {
 
 function getComponentTemplateMap() {
   return {
+    'component.stories.template': '%filename.stories.tsx',
     'index.template': 'index.tsx',
     'styled.template': 'styled.tsx',
     'styles.module.template': '%filename.module.scss',
@@ -42,6 +43,7 @@ async function createComponent() {
   }
 
   const dynamicVariablesMap = {
+    '%!type': pascalCase(componentType),
     '%filename': componentFilename,
     '%name': componentName,
     '%type': componentType,

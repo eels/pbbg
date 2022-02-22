@@ -1,6 +1,6 @@
 import * as Styled from 'components/%type/%name/styled';
 
-interface %nameProps {}
+export interface %nameProps {}
 
 export default function %name({}: %nameProps) {
   return <Styled.Wrapper />;
