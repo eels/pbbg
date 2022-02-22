@@ -1,5 +1,6 @@
 /* eslint-disable no-import-assign */
 
+import 'styles/style.scss';
 import * as NextImage from 'next/image';
 
 const OriginalNextImage = NextImage.default;

@@ -12,6 +12,7 @@
     "color-function-notation": "legacy",
     "color-named": "never",
     "color-no-hex": true,
+    "function-no-unknown": null,
     "max-empty-lines": 1,
     "media-feature-name-no-vendor-prefix": true,
     "property-no-vendor-prefix": true,

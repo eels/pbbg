@@ -1,5 +1,15 @@
 // stylelint-disable color-no-hex
 
-$palette--white: #fff;
+// --- Neutrals ---------------------------------
+
 $palette--black: #222;
-$palette--transparent: rgba($palette--black, 0);
+
+$palette--transparent: rgba(0, 0, 0, 0);
+
+$palette--white: #fff;
+
+// --- Colours ----------------------------------
+
+$palette--green-500: #1b9b51;
+
+$palette--green-600: #167c41;
