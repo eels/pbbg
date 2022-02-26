@@ -50,6 +50,12 @@ jobs:
         run: |
           yarn install --ignore-scripts --prefer-offline
 
+      - name: Compress image assets
+        env:
+          WEB_CLIENT_PUBLIC: applications/web-client/public
+        run: |
+          npx imagemin-cli ${{ env.WEB_CLIENT_PUBLIC }}/* --out-dir=${{ env.WEB_CLIENT_PUBLIC }}
+
       - name: Build
         env:
           NODE_ENV: production
