@@ -69,10 +69,10 @@ jobs:
           mkdir -p out/applications/web-client/build/
           mkdir -p out/docker/
           mkdir -p out/services/database/prisma/migrations/
-          cp -r applications/server/build/ out/applications/server/build/
-          cp -r applications/web-client/out/ out/applications/web-client/build/
-          cp -r docker/ out/docker/
-          cp -r services/database/prisma/migrations/ out/services/database/prisma/migrations/
+          cp -r applications/server/build/* out/applications/server/build/
+          cp -r applications/web-client/out/* out/applications/web-client/build/
+          cp -r docker/* out/docker/
+          cp -r services/database/prisma/migrations/* out/services/database/prisma/migrations/
           cp -r services/database/prisma/schema.prisma out/services/database/prisma/
           cp -r .dockerignore out/
           cp -r .env out/
