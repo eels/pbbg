@@ -1,3 +1,11 @@
+{
+  servers :443 {
+    protocol {
+      experimental_http3
+    }
+  }
+}
+
 {$APP_SERVER_DOMAIN} {
   encode gzip
 
