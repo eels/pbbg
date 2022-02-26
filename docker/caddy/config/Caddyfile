@@ -22,7 +22,7 @@
 
     Referrer-Policy "no-referrer-when-downgrade"
 
-    Strict-Transport-Security "max-age=31536000";
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
     X-Content-Type-Options "nosniff"
 
@@ -58,7 +58,7 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
 
     Referrer-Policy "no-referrer-when-downgrade"
 
-    Strict-Transport-Security "max-age=31536000";
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
     X-Content-Type-Options "nosniff"
 
