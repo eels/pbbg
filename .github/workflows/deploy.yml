@@ -56,18 +56,14 @@ jobs:
       - name: Install dependencies
         run: |
           cd ${{ github.repository }}
-          yarn install --frozen-lockfile --ignore-scripts --prefer-offline
+          yarn install --ignore-scripts --prefer-offline
 
-      - name: Build server
+      - name: Build
         run: |
           cd ${{ github.repository }}
-          yarn workspace @pbbg/server build
-
-      - name: Build web client
-        run: |
-          cd ${{ github.repository }}
-          yarn workspace @pbbg/web-client build
-          yarn workspace @pbbg/web-client export
+          yarn clean
+          yarn build
+          yarn export
 
       - name: Prepare deployment directory
         run: |

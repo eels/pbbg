@@ -24,6 +24,7 @@
     "docker:down": "docker-compose down",
     "docker:stop": "docker-compose stop",
     "docker:up": "docker-compose up --detach",
+    "export": "turbo run export",
     "format": "turbo run format",
     "lint": "turbo run lint",
     "prepare": "husky install && turbo run prepare",

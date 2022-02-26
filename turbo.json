@@ -12,6 +12,9 @@
       "cache": false,
       "dependsOn": []
     },
+    "export": {
+      "dependsOn": []
+    },
     "format": {
       "dependsOn": []
     },
