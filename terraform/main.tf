@@ -45,44 +45,12 @@ resource "digitalocean_domain" "domain" {
   name = var.DO_DOMAIN
 }
 
-resource "digitalocean_record" "web_client_apex_1" {
+resource "digitalocean_record" "web_client_apex" {
   domain = digitalocean_domain.domain.id
   name = "@"
   ttl = "3600"
   type = "A"
-  value = "185.199.108.153"
-}
-
-resource "digitalocean_record" "web_client_apex_2" {
-  domain = digitalocean_domain.domain.id
-  name = "@"
-  ttl = "3600"
-  type = "A"
-  value = "185.199.109.153"
-}
-
-resource "digitalocean_record" "web_client_apex_3" {
-  domain = digitalocean_domain.domain.id
-  name = "@"
-  ttl = "3600"
-  type = "A"
-  value = "185.199.110.153"
-}
-
-resource "digitalocean_record" "web_client_apex_4" {
-  domain = digitalocean_domain.domain.id
-  name = "@"
-  ttl = "3600"
-  type = "A"
-  value = "185.199.111.153"
-}
-
-resource "digitalocean_record" "web_client_www" {
-  domain = digitalocean_domain.domain.id
-  name = "www"
-  ttl = "3600"
-  type = "CNAME"
-  value = "${digitalocean_domain.domain.name}."
+  value = digitalocean_droplet.server.ipv4_address
 }
 
 resource "digitalocean_record" "server" {
@@ -91,6 +59,14 @@ resource "digitalocean_record" "server" {
   ttl = "3600"
   type = "A"
   value = digitalocean_droplet.server.ipv4_address
+}
+
+resource "digitalocean_record" "web_client_www" {
+  domain = digitalocean_domain.domain.id
+  name = "www"
+  ttl = "3600"
+  type = "CNAME"
+  value = "${digitalocean_domain.domain.name}."
 }
 
 # --- Firewall ----------------------------------
@@ -115,6 +91,12 @@ resource "digitalocean_firewall" "server" {
   inbound_rule {
     port_range = "443"
     protocol = "tcp"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
+
+  inbound_rule {
+    port_range = "443"
+    protocol = "udp"
     source_addresses = ["0.0.0.0/0", "::/0"]
   }
 
