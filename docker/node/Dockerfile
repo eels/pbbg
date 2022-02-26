@@ -2,7 +2,7 @@
 
 FROM node:gallium-alpine AS base
 
-WORKDIR /home/node/app
+WORKDIR /home/node
 
 # --- Sourcer -----------------------------------
 
@@ -18,13 +18,13 @@ RUN turbo prune --scope=@pbbg/server --docker
 
 FROM base AS dependencies
 
-COPY --from=sourcer /home/node/app/out/json/ .
+COPY --from=sourcer /home/node/out/json/ .
 
-COPY --from=sourcer /home/node/app/out/yarn.lock .
+COPY --from=sourcer /home/node/out/yarn.lock .
 
-COPY --from=sourcer /home/node/app/turbo.json .
+COPY --from=sourcer /home/node/turbo.json .
 
-COPY --from=sourcer /home/node/app/out/full/services/database/prisma/ ./services/database/prisma
+COPY --from=sourcer /home/node/out/full/services/database/prisma/ ./services/database/prisma
 
 RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
   yarn install --frozen-lockfile --ignore-scripts --prefer-offline --production
@@ -37,8 +37,8 @@ FROM base
 
 ENV NODE_ENV=production
 
-COPY --from=dependencies /home/node/app/ .
+COPY --from=dependencies /home/node/ .
 
-WORKDIR /home/node/app/applications/server
+WORKDIR /home/node/applications/server
 
-ENTRYPOINT /bin/sh /home/node/app/docker/node/lib/entrypoint.sh
+ENTRYPOINT /bin/sh /home/node/docker/node/lib/entrypoint.sh
