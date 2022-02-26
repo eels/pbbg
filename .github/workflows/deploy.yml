@@ -2,24 +2,14 @@ name: Deploy
 
 on:
   workflow_dispatch:
-    branches:
-      - main
-    inputs:
-      service:
-        default: both
-        description: Select which services to deploy
-        options:
-          - both
-          - server
-          - web-client
-        required: true
-        type: choice
 
 jobs:
   deploy_server:
-    name: Deploy Server
+    name: Deploy
     runs-on: ubuntu-latest
-    if: github.event.inputs.service == 'both' || github.event.inputs.service == 'server'
+
+    env:
+      NODE_ENV: production
 
     steps:
       - name: Checkout
@@ -68,19 +58,39 @@ jobs:
           cd ${{ github.repository }}
           yarn install --frozen-lockfile --ignore-scripts --prefer-offline
 
-      - name: Build
+      - name: Build server
         run: |
-          export NODE_ENV=production
           cd ${{ github.repository }}
           yarn workspace @pbbg/server build
 
-      - name: Prepare directory for deployment
+      - name: Build web client
         run: |
-          rm -rf ${{ github.repository }}/.git
-          rm -rf ${{ github.repository }}/.github
-          rm -rf ${{ github.repository }}/.husky
-          rm -rf ${{ github.repository }}/.vscode
-          rm -rf ${{ github.repository }}/applications/web-client
+          cd ${{ github.repository }}
+          yarn workspace @pbbg/web-client build
+          yarn workspace @pbbg/web-client export
+
+      - name: Prepare deployment directory
+        run: |
+          cd ${{ github.repository }}
+          yarn turbo prune --scope=@pbbg/server --docker
+          mv out/json/* out
+          rm -rf out/full
+          rm -rf out/json
+          rm -rf out/packages
+          mkdir -p out/applications/server/build/
+          mkdir -p out/applications/web-client/build/
+          mkdir -p out/docker/
+          mkdir -p out/services/database/prisma/migrations/
+          cp -r applications/server/build/ out/applications/server/build/
+          cp -r applications/web-client/out/ out/applications/web-client/build/
+          cp -r docker/ out/docker/
+          cp -r services/database/prisma/migrations/ out/services/database/prisma/migrations/
+          cp -r services/database/prisma/schema.prisma out/services/database/prisma/
+          cp -r .dockerignore out/
+          cp -r .env out/
+          cp -r docker-compose.production.yml out/
+          cp -r docker-compose.yml out/
+          cp -r turbo.json out/
 
       - name: Deploy to remote server
         uses: appleboy/scp-action@master
@@ -89,7 +99,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
-          source: ${{ github.repository }},!node_modules
+          source: ${{ github.repository }}/out,!node_modules
           strip_components: 2
           target: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -110,52 +120,9 @@ jobs:
             export COMPOSE_DOCKER_CLI_BUILD=1
             export DOCKER_BUILDKIT=1
             cd ${{ github.repository }}
-            chmod +x ./docker/node/lib/entrypoint.sh
-            chmod +x ./docker/node/lib/migrate_database.sh
+            chmod +x docker/node/lib/entrypoint.sh
+            chmod +x docker/node/lib/migrate_database.sh
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
-            bash ./docker/node/lib/migrate_database.sh
+            bash docker/node/lib/migrate_database.sh
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes
-
-  deploy_web_client:
-    name: Deploy Web Client
-    runs-on: ubuntu-latest
-    if: github.event.inputs.service == 'both' || github.event.inputs.service == 'web-client'
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.5.1
-        with:
-          node-version: lts/gallium
-
-      - name: Retrieve Yarn cache directory
-        id: yarn-cache
-        run: |
-          echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Use Yarn cache
-        uses: actions/cache@v2
-        with:
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          restore-keys: ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: |
-          yarn install --frozen-lockfile --ignore-scripts --prefer-offline
-
-      - name: Build
-        run: |
-          yarn workspace @pbbg/web-client build
-          yarn workspace @pbbg/web-client export
-          touch applications/web-client/out/.nojekyll
-          echo "${{ secrets.APP_WEB_CLIENT_DOMAIN }}" > applications/web-client/out/CNAME
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: applications/web-client/out
