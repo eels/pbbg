@@ -64,7 +64,6 @@ jobs:
           mv out/json/* out
           rm -rf out/full
           rm -rf out/json
-          rm -rf out/packages
           mkdir -p out/applications/server/build/
           mkdir -p out/applications/web-client/build/
           mkdir -p out/docker/
