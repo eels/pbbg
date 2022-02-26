@@ -88,7 +88,6 @@ jobs:
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
           source: out,!node_modules
-          strip_components: 2
           target: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
 
