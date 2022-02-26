@@ -8,33 +8,26 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
 
-    env:
-      NODE_ENV: production
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          path: ${{ github.repository }}
 
       - name: Create application `.env` file
-        env:
-          ENV_FILE: ${{ github.repository }}/.env
         run: |
-          touch ${{ env.ENV_FILE }}
-          echo APP_ADMIN_EMAIL="${{ secrets.APP_ADMIN_EMAIL }}" >> ${{ env.ENV_FILE }}
-          echo APP_CERTBOT_DEBUG="${{ secrets.APP_CERTBOT_DEBUG }}" >> ${{ env.ENV_FILE }}
-          echo APP_SECRET_COOKIE_TOKEN="${{ secrets.APP_SECRET_COOKIE_TOKEN }}" >> ${{ env.ENV_FILE }}
-          echo APP_SECRET_CSRF_TOKEN="${{ secrets.APP_SECRET_CSRF_TOKEN }}" >> ${{ env.ENV_FILE }}
-          echo APP_SECRET_JWT_TOKEN="${{ secrets.APP_SECRET_JWT_TOKEN }}" >> ${{ env.ENV_FILE }}
-          echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> ${{ env.ENV_FILE }}
-          echo APP_USE_SECURE_COOKIE_PREFIX="${{ secrets.APP_USE_SECURE_COOKIE_PREFIX }}" >> ${{ env.ENV_FILE }}
-          echo APP_WEB_CLIENT_DOMAIN="${{ secrets.APP_WEB_CLIENT_DOMAIN }}" >> ${{ env.ENV_FILE }}
-          echo NODE_PORT="${{ secrets.NODE_PORT }}" >> ${{ env.ENV_FILE }}
-          echo POSTGRES_CONNECTION="${{ secrets.POSTGRES_CONNECTION }}" >> ${{ env.ENV_FILE }}
-          echo POSTGRES_USER="${{ secrets.POSTGRES_USER }}" >> ${{ env.ENV_FILE }}
-          echo POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}" >> ${{ env.ENV_FILE }}
-          echo SENTRY_DSN="${{ secrets.SENTRY_DSN }}" >> ${{ env.ENV_FILE }}
+          touch .env
+          echo APP_ADMIN_EMAIL="${{ secrets.APP_ADMIN_EMAIL }}" >> .env
+          echo APP_CERTBOT_DEBUG="${{ secrets.APP_CERTBOT_DEBUG }}" >> .env
+          echo APP_SECRET_COOKIE_TOKEN="${{ secrets.APP_SECRET_COOKIE_TOKEN }}" >> .env
+          echo APP_SECRET_CSRF_TOKEN="${{ secrets.APP_SECRET_CSRF_TOKEN }}" >> .env
+          echo APP_SECRET_JWT_TOKEN="${{ secrets.APP_SECRET_JWT_TOKEN }}" >> .env
+          echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> .env
+          echo APP_USE_SECURE_COOKIE_PREFIX="${{ secrets.APP_USE_SECURE_COOKIE_PREFIX }}" >> .env
+          echo APP_WEB_CLIENT_DOMAIN="${{ secrets.APP_WEB_CLIENT_DOMAIN }}" >> .env
+          echo NODE_PORT="${{ secrets.NODE_PORT }}" >> .env
+          echo POSTGRES_CONNECTION="${{ secrets.POSTGRES_CONNECTION }}" >> .env
+          echo POSTGRES_USER="${{ secrets.POSTGRES_USER }}" >> .env
+          echo POSTGRES_PASSWORD="${{ secrets.POSTGRES_PASSWORD }}" >> .env
+          echo SENTRY_DSN="${{ secrets.SENTRY_DSN }}" >> .env
 
       - name: Setup Node.js
         uses: actions/setup-node@v2.5.1
@@ -55,19 +48,18 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd ${{ github.repository }}
           yarn install --ignore-scripts --prefer-offline
 
       - name: Build
+        env:
+          NODE_ENV: production
         run: |
-          cd ${{ github.repository }}
           yarn clean
           yarn build
           yarn export
 
       - name: Prepare deployment directory
         run: |
-          cd ${{ github.repository }}
           yarn turbo prune --scope=@pbbg/server --docker
           mv out/json/* out
           rm -rf out/full
@@ -95,7 +87,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
           port: ${{ secrets.SSH_PORT }}
-          source: ${{ github.repository }}/out,!node_modules
+          source: out,!node_modules
           strip_components: 2
           target: ${{ github.repository }}
           username: ${{ secrets.SSH_USERNAME }}
