@@ -58,6 +58,11 @@ jobs:
           yarn build
           yarn export
 
+      - name: Precompress static client files
+        run: |
+          npx gzip-cli "applications/web-client/out/**/*.{css,html,js,json,svg,txt}" \
+            --extension=br --extension=gz
+
       - name: Prepare deployment directory
         run: |
           yarn turbo prune --scope=@pbbg/server --docker

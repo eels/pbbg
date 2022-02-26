@@ -7,29 +7,31 @@
 }
 
 {$APP_SERVER_DOMAIN} {
-  encode gzip
-
-  header -Server
-
   header {
-    Access-Control-Allow-Headers *
+    -Server
 
-    Access-Control-Allow-Methods *
+    Access-Control-Allow-Headers "*"
 
-    Access-Control-Allow-Origin https://{$APP_WEB_CLIENT_DOMAIN}
+    Access-Control-Allow-Methods "*"
 
-    Content-Security-Policy default-src 'self'
+    Access-Control-Allow-Origin "https://{$APP_WEB_CLIENT_DOMAIN}"
 
-    Permissions-Policy interest-cohort=()
+    Content-Security-Policy "default-src 'self'"
 
-    Referrer-Policy no-referrer-when-downgrade
+    Permissions-Policy "interest-cohort=()"
 
-    Strict-Transport-Security max-age=31536000;
+    Referrer-Policy "no-referrer-when-downgrade"
 
-    X-Content-Type-Options nosniff
+    Strict-Transport-Security "max-age=31536000";
 
-    X-Frame-Options DENY
+    X-Content-Type-Options "nosniff"
+
+    X-Frame-Options "DENY"
+
+    X-XSS-Protection "1; mode=block"
   }
+
+  encode zstd gzip
 
   reverse_proxy node:{$NODE_PORT}
 }
@@ -39,27 +41,49 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
 }
 
 {$APP_WEB_CLIENT_DOMAIN} {
-  encode gzip
-
-  file_server
-
-  header -Server
-
-  header {
-    Content-Security-Policy default-src 'self'
-
-    Permissions-Policy interest-cohort=()
-
-    Referrer-Policy no-referrer-when-downgrade
-
-    Strict-Transport-Security max-age=31536000;
-
-    X-Content-Type-Options nosniff
-
-    X-Frame-Options DENY
+  @StaticCachedFiles {
+    path *.css *.gif *.jpeg *.jpg *.js *.json *.png *.svg *.webp *.woff *.woff2
   }
 
   root * /home/web-client/build
+
+  header {
+    @StaticCachedFiles Cache-Control "public, max-age=31536000, must-revalidate"
+
+    -Server
+
+    Content-Security-Policy "default-src 'self' 'unsafe-inline' {$APP_SERVER_DOMAIN}"
+
+    Permissions-Policy "interest-cohort=()"
+
+    Referrer-Policy "no-referrer-when-downgrade"
+
+    Strict-Transport-Security "max-age=31536000";
+
+    X-Content-Type-Options "nosniff"
+
+    X-Frame-Options "DENY"
+
+    X-XSS-Protection "1; mode=block"
+  }
+
+  try_files {path}.html {path}
+
+  encode zstd gzip
+
+  push
+
+  file_server {
+    precompressed br gzip
+  }
+
+  handle_errors {
+    rewrite * /{http.error.status_code}.html
+
+    file_server {
+      precompressed br gzip
+    }
+  }
 }
 
 localhost:80 {

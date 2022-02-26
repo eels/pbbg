@@ -11,7 +11,8 @@ services:
       - 'NODE_PORT'
     ports:
       - '80:80'
-      - '443:443'
+      - '443:443/tcp'
+      - '443:443/udp'
     restart: 'unless-stopped'
     volumes:
       - './applications/web-client:/home/web-client'
