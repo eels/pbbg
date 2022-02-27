@@ -11,8 +11,8 @@ import type { AuxiliaryData } from 'types/auxiliary';
 import type { GetStaticPropsContext } from 'next';
 
 interface AuxiliaryProps {
-  data: AuxiliaryData;
   content: string;
+  data: AuxiliaryData;
 }
 
 export default function Auxiliary({ content, data }: AuxiliaryProps) {
