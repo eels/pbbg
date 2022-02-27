@@ -16,8 +16,10 @@
     "max-empty-lines": 1,
     "media-feature-name-no-vendor-prefix": true,
     "property-no-vendor-prefix": true,
+    "scss/no-global-function-names": null,
     "selector-no-vendor-prefix": true,
     "string-quotes": "single",
+    "unit-disallowed-list": ["em", "px"],
     "value-no-vendor-prefix": true
   }
 }

@@ -1,7 +1,7 @@
 .wrapper {
-  padding-bottom: 30px;
-  border-bottom: 1px solid $palette--black;
-  margin-bottom: 30px;
+  padding-bottom: spacing(3);
+  border-bottom: unit(1) solid $palette--black;
+  margin-bottom: spacing(3);
 }
 
 .headline {
@@ -11,12 +11,12 @@
 .meta-information {
   display: flex;
   flex-direction: row;
-  column-gap: 30px;
+  column-gap: spacing(3);
   user-select: none;
 }
 
 .meta-information-item {
   display: flex;
   flex-direction: row;
-  column-gap: 10px;
+  column-gap: spacing(1);
 }

@@ -1,5 +1,5 @@
 .wrapper {
-  padding-top: 30px;
-  border-top: 1px solid $palette--black;
-  margin-top: 30px;
+  padding-top: spacing(3);
+  border-top: unit(1) solid $palette--black;
+  margin-top: spacing(3);
 }

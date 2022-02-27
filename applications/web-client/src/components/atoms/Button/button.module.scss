@@ -2,8 +2,8 @@
   position: relative;
   padding: spacing(1) spacing(0.5);
   background-color: $palette--green-500;
-  border-radius: 5px;
-  box-shadow: 0 3px $palette--green-600;
+  border-radius: $border-radius--base;
+  box-shadow: 0 unit(3) $palette--green-600;
   color: $palette--white;
   cursor: pointer;
   font-size: 1.6rem;
@@ -11,18 +11,18 @@
   letter-spacing: 0.2rem;
   line-height: 1;
   text-align: center;
-  text-shadow: 1px 1px rgba($palette--black, 0.5);
+  text-shadow: unit(1) unit(1) rgba($palette--black, 0.5);
   text-transform: uppercase;
   user-select: none;
 
   &:hover {
-    top: 1px;
+    top: unit(1);
     border: 0;
-    box-shadow: 0 2px $palette--green-600;
+    box-shadow: 0 unit(2) $palette--green-600;
   }
 
   &:active {
-    top: 3px;
+    top: unit(3);
     background-color: $palette--green-600;
     box-shadow: none;
     color: $palette--white;
