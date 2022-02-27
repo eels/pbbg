@@ -27,7 +27,7 @@ module.exports = {
     reactDocgen: false,
   },
 
-  webpackFinal: async (config) => {
+  webpackFinal: (config) => {
     config.resolve.modules.push(path.resolve(process.cwd(), 'src'));
 
     return config;

@@ -19,19 +19,19 @@ export async function createAuthenticationToken(payload: Payload) {
   return await jwt.sign(Buffer.from(secret));
 }
 
-export async function deleteAuthenticationTokens(response: Response) {
+export function deleteAuthenticationTokens(response: Response) {
   response.clearCookie(headerCookie);
   response.clearCookie(signitureCookie);
 }
 
-export async function getAuthenticationToken(request: Request) {
+export function getAuthenticationToken(request: Request) {
   const headers = request.signedCookies[headerCookie];
   const signiture = request.signedCookies[signitureCookie];
 
   return [headers, signiture].join('.');
 }
 
-export async function seperateAuthenticationToken(token: string) {
+export function seperateAuthenticationToken(token: string) {
   const [signiture, ...rest] = token.split('.').reverse();
   const payload = rest.reverse().join('.');
 
@@ -40,7 +40,7 @@ export async function seperateAuthenticationToken(token: string) {
 
 export async function setAuthenticationTokens(response: Response, payload: Payload) {
   const token = await createAuthenticationToken(payload);
-  const [headers, signiture] = await seperateAuthenticationToken(token);
+  const [headers, signiture] = seperateAuthenticationToken(token);
   const options = { maxAge: 30 * 60 * 1000, sameSite: 'strict', secure: true, signed: true };
 
   response.cookie(headerCookie, headers, options as CookieOptions);
@@ -48,7 +48,7 @@ export async function setAuthenticationTokens(response: Response, payload: Paylo
 }
 
 export async function validateAuthenticationToken(request: Request) {
-  const token = await getAuthenticationToken(request);
+  const token = getAuthenticationToken(request);
 
   return await jwtVerify(token, Buffer.from(secret));
 }

@@ -28,7 +28,7 @@ function writeComponentToDirectory(path: string, content: string) {
   fs.writeFileSync(path, content);
 }
 
-async function createStaticResources() {
+function createStaticResources() {
   const directory = path.join(process.cwd(), 'public');
 
   if (!fs.existsSync(directory)) {

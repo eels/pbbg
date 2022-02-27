@@ -9,7 +9,7 @@ const sessionCookie = cookie('session.id');
 const secret = process.env.APP_SECRET_CSRF_TOKEN;
 const expiryDurationInMinutes = 15;
 
-export async function setCSRFToken(response: Response) {
+export function setCSRFToken(response: Response) {
   const epoch = Math.floor(Date.now() / 1000 / (expiryDurationInMinutes * 60));
   const session = randomBytes(20).toString('hex');
   const token = createHash('sha256').update(`${secret}.${session}.${epoch}`).digest('hex');
@@ -19,7 +19,7 @@ export async function setCSRFToken(response: Response) {
   response.cookie(csrfCookie, token, options as CookieOptions);
 }
 
-export async function verifyCSRFToken(request: Request) {
+export function verifyCSRFToken(request: Request) {
   const epoch = Math.floor(Date.now() / 1000 / (expiryDurationInMinutes * 60));
   const storedToken = request.signedCookies[csrfCookie];
   const storedSession = request.signedCookies[sessionCookie];

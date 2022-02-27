@@ -34,7 +34,7 @@ export default function BlogIndex({ currentPage, posts, totalPages }: BlogIndexP
   );
 }
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   const posts = getAllPosts();
   const pages = Array.from(Array(Math.ceil(posts.length / POSTS_PER_PAGE)).keys());
   const slugs = pages.map((page) => ({ params: { slug: `${page + 1}` } }));
@@ -45,7 +45,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext) {
+export function getStaticProps({ params }: GetStaticPropsContext) {
   const slug = params?.slug || '1';
   const constructedSlug = Array.isArray(slug) ? slug.join('') : slug;
   const offset = parseInt(constructedSlug);

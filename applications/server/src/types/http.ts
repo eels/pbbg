@@ -20,5 +20,5 @@ export interface Response extends ExpressResponse {
 }
 
 export interface RequestHandler {
-  (request: any, response: Response): Promise<Response>;
+  (request: any, response: Response): Promise<Response> | Response;
 }

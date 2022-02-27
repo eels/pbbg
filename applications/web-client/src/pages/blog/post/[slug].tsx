@@ -27,7 +27,7 @@ export default function BlogPost({ content, data }: BlogPostProps) {
   );
 }
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
   const posts = getAllPosts();
   const slugs = posts.map(({ data }) => ({ params: { slug: data.slug } }));
 
@@ -37,7 +37,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params }: GetStaticPropsContext) {
+export function getStaticProps({ params }: GetStaticPropsContext) {
   const slug = params?.slug;
   const constructedSlug = Array.isArray(slug) ? slug.join('/') : slug;
   const post = getPostBySlug(constructedSlug || '');
