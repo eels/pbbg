@@ -50,6 +50,10 @@ jobs:
         run: |
           yarn install --ignore-scripts --prefer-offline
 
+      - name: Install sharp linux binaries
+        run: |
+          npm install --arch=x64 --platform=linux sharp
+
       - name: Compress image assets
         env:
           WEB_CLIENT_PUBLIC: applications/web-client/public
