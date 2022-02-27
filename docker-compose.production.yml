@@ -17,6 +17,21 @@ services:
     volumes:
       - './applications/web-client:/home/web-client'
       - './docker/caddy/config/Caddyfile:/etc/caddy/Caddyfile'
+      - './docker/caddy/data:/var/log'
+
+  fail2ban:
+    build:
+      context: '.'
+      dockerfile: 'docker/fail2ban/Dockerfile'
+    cap_add:
+      - 'NET_ADMIN'
+      - 'NET_RAW'
+    network_mode: 'host'
+    restart: 'always'
+    volumes:
+      - './docker/caddy/data:/home/caddy/log'
+      - './docker/fail2ban/data:/data'
+      - '/var/log:/var/log:ro'
 
   node:
     build:

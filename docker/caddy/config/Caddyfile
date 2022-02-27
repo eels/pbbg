@@ -7,6 +7,11 @@
 }
 
 {$APP_SERVER_DOMAIN} {
+  log {
+    output file /var/log/server.log
+    format single_field common_log
+  }
+
   header {
     -Server
 
@@ -46,6 +51,11 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
   }
 
   root * /home/web-client/build
+
+  log {
+    output file /var/log/client.log
+    format single_field common_log
+  }
 
   header {
     @StaticCachedFiles Cache-Control "public, max-age=31536000, must-revalidate"
