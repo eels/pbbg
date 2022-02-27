@@ -3,6 +3,10 @@
 const path = require('path');
 
 module.exports = {
+  experimental: {
+    optimizeCss: true,
+  },
+
   images: {
     loader: 'custom',
   },
