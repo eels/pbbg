@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
 const path = require('path');
+const withPurgeCSSModules = require('next-purge-css-modules');
 
-module.exports = {
+module.exports = withPurgeCSSModules({
   experimental: {
     optimizeCss: true,
   },
@@ -24,4 +25,4 @@ module.exports = {
   },
 
   swcMinify: true,
-};
+});
