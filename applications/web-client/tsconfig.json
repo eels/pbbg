@@ -6,7 +6,7 @@
     "jsx": "preserve",
     "noEmit": true,
     "paths": {
-      "*": ["scripts/*", "src/*", "test/*"]
+      "*": ["*", "scripts/*", "src/*", "test/*"]
     }
   },
 

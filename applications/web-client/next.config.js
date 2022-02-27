@@ -3,6 +3,10 @@
 const path = require('path');
 
 module.exports = {
+  images: {
+    loader: 'custom',
+  },
+
   purgeCSSModules: {
     content: path.join(process.cwd(), 'src/**/*.{ts,tsx}'),
     enableDevPurge: false,

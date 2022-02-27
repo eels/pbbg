@@ -1,3 +1,9 @@
+import Image from 'components/atoms/Image';
+
 export default function Home() {
-  return <div>Hello world!</div>;
+  return (
+    <div>
+      <Image layout='fill' src='/images/example.png' />
+    </div>
+  );
 }
