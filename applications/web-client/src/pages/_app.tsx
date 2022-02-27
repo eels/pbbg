@@ -21,19 +21,19 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
     <Fragment>
       <Head>
         <meta charSet='utf-8' />
-        <meta httpEquiv='x-ua-compatible' content='ie=edge' />
-        <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+        <meta content='ie=edge' httpEquiv='x-ua-compatible' />
+        <meta content='width=device-width, initial-scale=1, shrink-to-fit=no' name='viewport' />
         <title>{title}</title>
-        <meta name='description' content={description.join(' ')} />
-        <meta name='robots' content='noindex,nofollow,noimageindex' />
-        <meta name='application-name' content={name} />
-        <meta name='theme-color' content={theme} />
-        <link rel='manifest' href='/site.webmanifest' />
-        <link rel='author' href='/humans.txt' />
-        <link rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png' />
-        <link rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png' />
-        <link rel='apple-touch-icon' type='image/png' sizes='180x180' href='apple-icon.png' />
-        <link rel='canonical' href={pathname} />
+        <meta content={description.join(' ')} name='description' />
+        <meta content='noindex,nofollow,noimageindex' name='robots' />
+        <meta content={name} name='application-name' />
+        <meta content={theme} name='theme-color' />
+        <link href='/site.webmanifest' rel='manifest' />
+        <link href='/humans.txt' rel='author' />
+        <link href='/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png' />
+        <link href='/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png' />
+        <link href='apple-icon.png' rel='apple-touch-icon' sizes='180x180' type='image/png' />
+        <link href={pathname} rel='canonical' />
       </Head>
       <Component {...pageProps} />
     </Fragment>

@@ -10,6 +10,17 @@
   },
 
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/boolean-prop-naming": "error",
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": true,
+        "ignoreCase": false,
+        "shorthandLast": true,
+        "reservedFirst": true
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": "error"
   }
 }
