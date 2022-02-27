@@ -55,7 +55,7 @@ jobs:
           npm_config_arch: x64
           npm_config_platform: linux
         run: |
-          yarn add sharp
+          yarn add sharp --ignore-workspace-root-check
 
       - name: Compress image assets
         env:
