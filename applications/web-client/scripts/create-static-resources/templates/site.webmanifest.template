@@ -1,11 +1,11 @@
 {
-  "name": "Aethelm | Text-Based RPG",
-  "short_name": "Aethelm",
-  "description": "Aethelm is a free-to-play browser-based RPG, available on any device!",
+  "name": "%title",
+  "short_name": "%appname",
+  "description": "%description",
   "lang": "en-GB",
   "start_url": "/",
-  "theme_color": "#111111",
-  "background_color": "#111111",
+  "theme_color": "%theme",
+  "background_color": "%theme",
   "display": "standalone",
   "icons": [
     {

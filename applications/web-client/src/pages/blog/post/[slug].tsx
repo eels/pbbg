@@ -4,6 +4,7 @@ import Head from 'next/head';
 import MarkdownRenderer from 'components/atoms/MarkdownRenderer';
 import { Fragment } from 'react';
 import { getAllPosts, getPostBySlug } from 'services/BlogPostService';
+import { titleify } from 'utilities/titleify';
 import type { GetStaticPropsContext } from 'next';
 import type { PostContent, PostData } from 'types/post';
 
@@ -16,7 +17,7 @@ export default function BlogPost({ content, data }: BlogPostProps) {
   return (
     <Fragment>
       <Head>
-        <title>{data.headline}</title>
+        <title>{titleify(data.headline)}</title>
       </Head>
       <Container>
         <BlogHeader data={data} />

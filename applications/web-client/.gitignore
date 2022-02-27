@@ -12,6 +12,8 @@ node_modules
 
 .next
 out
+public/humans.txt
+public/site.webmanifest
 public/sw.js
 
 # --- Coverage ----------------------------------

@@ -6,6 +6,7 @@ import matter from 'gray-matter';
 import path from 'path';
 import { Fragment } from 'react';
 import { convertMarkdownToHTML } from 'services/MarkdownService';
+import { titleify } from 'utilities/titleify';
 import type { AuxiliaryData } from 'types/auxiliary';
 import type { GetStaticPropsContext } from 'next';
 
@@ -18,7 +19,7 @@ export default function Auxiliary({ content, data }: AuxiliaryProps) {
   return (
     <Fragment>
       <Head>
-        <title>{data.title}</title>
+        <title>{titleify(data.title)}</title>
       </Head>
       <Container>
         <MarkdownRenderer content={content} />
