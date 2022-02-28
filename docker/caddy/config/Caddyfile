@@ -12,29 +12,27 @@
     format single_field common_log
   }
 
-  header {
-    -Server
+  header -Server
 
-    Access-Control-Allow-Headers "*"
+  header Access-Control-Allow-Headers "*"
 
-    Access-Control-Allow-Methods "*"
+  header Access-Control-Allow-Methods "*"
 
-    Access-Control-Allow-Origin "https://{$APP_WEB_CLIENT_DOMAIN}"
+  header Access-Control-Allow-Origin "https://{$APP_WEB_CLIENT_DOMAIN}"
 
-    Content-Security-Policy "default-src 'self'"
+  header Content-Security-Policy "default-src 'self'"
 
-    Permissions-Policy "interest-cohort=()"
+  header Permissions-Policy "interest-cohort=()"
 
-    Referrer-Policy "no-referrer-when-downgrade"
+  header Referrer-Policy "no-referrer-when-downgrade"
 
-    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-    X-Content-Type-Options "nosniff"
+  header X-Content-Type-Options "nosniff"
 
-    X-Frame-Options "DENY"
+  header X-Frame-Options "DENY"
 
-    X-XSS-Protection "1; mode=block"
-  }
+  header X-XSS-Protection "1; mode=block"
 
   encode zstd gzip
 
@@ -46,10 +44,6 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
 }
 
 {$APP_WEB_CLIENT_DOMAIN} {
-  @StaticCachedFiles {
-    path *.css *.gif *.jpeg *.jpg *.js *.json *.png *.svg *.webp *.woff *.woff2
-  }
-
   root * /home/web-client/build
 
   log {
@@ -57,25 +51,29 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
     format single_field common_log
   }
 
-  header {
-    @StaticCachedFiles Cache-Control "public, max-age=31536000, must-revalidate"
+  @StaticCachedFiles {
+    file
 
-    -Server
-
-    Content-Security-Policy "default-src 'self' 'unsafe-inline' {$APP_SERVER_DOMAIN}"
-
-    Permissions-Policy "interest-cohort=()"
-
-    Referrer-Policy "no-referrer-when-downgrade"
-
-    Strict-Transport-Security "max-age=31536000; includeSubDomains"
-
-    X-Content-Type-Options "nosniff"
-
-    X-Frame-Options "DENY"
-
-    X-XSS-Protection "1; mode=block"
+    path *.css *.gif *.jpeg *.jpg *.js *.json *.png *.svg *.webp *.woff *.woff2
   }
+
+  header -Server
+
+  header @StaticCachedFiles Cache-Control "public, max-age=31536000, must-revalidate"
+
+  header Content-Security-Policy "default-src 'self' 'unsafe-inline' {$APP_SERVER_DOMAIN}"
+
+  header Permissions-Policy "interest-cohort=()"
+
+  header Referrer-Policy "no-referrer-when-downgrade"
+
+  header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  header X-Content-Type-Options "nosniff"
+
+  header X-Frame-Options "DENY"
+
+  header X-XSS-Protection "1; mode=block"
 
   try_files {path}.html {path}
 
