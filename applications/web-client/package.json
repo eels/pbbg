@@ -87,7 +87,7 @@
     "jsdom": "^19.0.0",
     "markdown-it": "^12.3.2",
     "markdown-it-attrs": "^4.1.3",
-    "next-purge-css-modules": "^1.0.1",
+    "next-purge-css-modules": "^1.1.0",
     "rimraf": "^3.0.2",
     "sass": "^1.49.0",
     "sharp": "^0.30.1",

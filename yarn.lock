@@ -10553,10 +10553,10 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-next-purge-css-modules@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/next-purge-css-modules/-/next-purge-css-modules-1.0.1.tgz#636db00913a4368fc316f58523cc10bea36309f3"
-  integrity sha512-buosFTriQguXVNl7u6b2J6EJ1OXimn+FRLT3mwPIdrS9pfaTwTUVWfCiM2UBPRSd38Ng+n2JNoEiZNvY/yJPcw==
+next-purge-css-modules@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/next-purge-css-modules/-/next-purge-css-modules-1.1.0.tgz#4ebc15e54898875b3ebf80465e47286ba09ed645"
+  integrity sha512-uzmey1vU9UPJgVzOXhFgG3URmncKhpYTWCmxq1m5WVWCyYgyoSFQmguWjqVz1y2TQWsOqFsyBpNGEeSDBAEn4Q==
   dependencies:
     "@fullhuman/postcss-purgecss" "^4.1.3"
     glob "^7.2.0"
