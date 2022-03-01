@@ -3,14 +3,13 @@ import cookie from 'cookie-parser';
 import limiter from 'express-rate-limit';
 import { Handlers } from '@sentry/node';
 import { constructHttpResponseObject } from 'support/traits/api/response';
-import { convertEmptyToNull } from 'http/middleware/convert-empty-to-null';
 import { csrf } from 'http/middleware/csrf';
 import { error } from 'http/middleware/error';
 import { ignoreFavicon } from 'http/middleware/ignore-favicon';
 import { json } from 'body-parser';
 import { morgan } from 'http/middleware/morgan';
 import { response } from 'http/middleware/response';
-import { trimStrings } from 'http/middleware/trim-strings';
+import { sanitiseRequestBody } from 'http/middleware/sanitise-request-body';
 import type { RequestHandler } from 'express';
 
 const { errorHandler, requestHandler } = Handlers;
@@ -31,8 +30,7 @@ const prepControllerMiddleware = [
   limiter(limiterOptions),
   csrf(),
   ignoreFavicon(),
-  convertEmptyToNull(),
-  trimStrings(),
+  sanitiseRequestBody(),
 ];
 
 // prettier-ignore

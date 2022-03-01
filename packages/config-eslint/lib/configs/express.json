@@ -1,7 +1,7 @@
 {
   "overrides": [
     {
-      "files": ["**/controllers/**/*.ts"],
+      "files": ["**/{controllers,middleware}/**/*.ts"],
 
       "rules": {
         "require-await": "off"

@@ -1,9 +1,9 @@
 module.exports = {
-  collectCoverageFrom: ['src/**/*.{ts,tsx}'],
+  collectCoverageFrom: ['src/**/*.{js,ts}'],
 
   moduleDirectories: ['node_modules', 'src', 'test'],
 
-  moduleFileExtensions: ['js', 'ts', 'tsx'],
+  moduleFileExtensions: ['js', 'ts'],
 
   roots: ['<rootDir>/src/', '<rootDir>/test/'],
 
@@ -12,6 +12,6 @@ module.exports = {
   testEnvironment: 'node',
 
   transform: {
-    '^.+\\.(t|j)sx?$': '@swc/jest',
+    '^.+\\.(t|j)s$': '@swc/jest',
   },
 };

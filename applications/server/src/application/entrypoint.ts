@@ -7,7 +7,7 @@ import { manageGracefulShutdown } from 'utilities/graceful-shutdown';
 
 require('bootstrap/sentry');
 
-// --- Pre-controller middleware ----------------
+// --- Prep middleware --------------------------
 
 registerMiddlewareStack(PREP_STACK);
 
@@ -15,7 +15,7 @@ registerMiddlewareStack(PREP_STACK);
 
 require('http/routes');
 
-// --- Post-controller middleware ---------------
+// --- Post middleware --------------------------
 
 registerMiddlewareStack(POST_STACK);
 
