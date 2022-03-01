@@ -80,6 +80,7 @@
     "@types/sharp": "^0.29.5",
     "babel-loader": "^8.2.3",
     "critters": "^0.0.16",
+    "dotenv": "^16.0.0",
     "gray-matter": "^4.0.3",
     "html-minifier": "^4.0.0",
     "inquirer": "^8.2.0",

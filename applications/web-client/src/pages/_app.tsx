@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app';
 export default function CustomApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const pathname = router.asPath;
+  const canonical = `https://${process.env.NEXT_PUBLIC_WEB_CLIENT_DOMAIN}${pathname}`;
 
   useEffect(() => {
     if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
@@ -33,7 +34,7 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <link href='/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png' />
         <link href='/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png' />
         <link href='apple-icon.png' rel='apple-touch-icon' sizes='180x180' type='image/png' />
-        <link href={pathname} rel='canonical' />
+        <link href={canonical} rel='canonical' />
       </Head>
       <Component {...pageProps} />
     </Fragment>
