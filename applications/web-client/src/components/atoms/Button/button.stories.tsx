@@ -1,4 +1,5 @@
-import Button, { ButtonProps } from 'components/atoms/Button';
+import Button from 'components/atoms/Button';
+import type { ButtonProps } from 'components/atoms/Button';
 
 export default {
   component: Button,

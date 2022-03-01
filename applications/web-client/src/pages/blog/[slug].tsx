@@ -5,9 +5,9 @@ import Link from 'next/link';
 import MarkdownRenderer from 'components/atoms/MarkdownRenderer';
 import { Fragment } from 'react';
 import { POSTS_PER_PAGE } from 'config/constants';
-import { Post } from 'types/post';
 import { getAllPosts } from 'services/BlogPostService';
 import type { GetStaticPropsContext } from 'next';
+import type { Post } from 'types/post';
 
 interface BlogIndexProps {
   currentPage: number;
