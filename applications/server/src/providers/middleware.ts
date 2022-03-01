@@ -3,13 +3,13 @@ import cookie from 'cookie-parser';
 import limiter from 'express-rate-limit';
 import { Handlers } from '@sentry/node';
 import { constructHttpResponseObject } from 'support/traits/api/response';
-import { csrf } from 'http/middleware/csrf';
 import { error } from 'http/middleware/error';
 import { ignoreFavicon } from 'http/middleware/ignore-favicon';
 import { json } from 'body-parser';
 import { morgan } from 'http/middleware/morgan';
 import { response } from 'http/middleware/response';
 import { sanitiseRequestBody } from 'http/middleware/sanitise-request-body';
+import { verifyRequest } from 'http/middleware/verify-request';
 import type { RequestHandler } from 'express';
 
 const { errorHandler, requestHandler } = Handlers;
@@ -28,7 +28,7 @@ const prepControllerMiddleware = [
   json(),
   cookie(process.env.APP_SECRET_COOKIE_TOKEN),
   limiter(limiterOptions),
-  csrf(),
+  verifyRequest(),
   ignoreFavicon(),
   sanitiseRequestBody(),
 ];
