@@ -8,9 +8,10 @@
     "dev": "nodemon --exec 'ts-node src/index.ts --transpileOnly' --ext '*' --watch './src/**'",
     "format": "prettier '{.,./{src,test}/**/}*.{js,json,ts,tsx}' --check",
     "format:fix": "yarn format --write",
-    "lint": "yarn lint:js",
+    "lint": "yarn lint:js && yarn lint:types",
     "lint:js": "eslint './*.{js,ts}' './{src,test}/**/*.{js,ts,tsx}' --cache",
     "lint:js:fix": "yarn lint:js --fix",
+    "lint:types": "tsc --noEmit",
     "test": "jest --cache --passWithNoTests",
     "test:coverage": "yarn test --coverage"
   },
