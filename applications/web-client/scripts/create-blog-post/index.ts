@@ -9,6 +9,16 @@ function getBlogPostTemplateContent() {
   return fs.readFileSync(path.join(__dirname, 'templates/blog-post.md'), 'utf8');
 }
 
+function replaceDynamicVariableValues(map: Record<string, string>, input: string) {
+  const entries = Object.entries(map);
+
+  for (const [variable, value] of entries) {
+    input = input.replace(new RegExp(variable, 'g'), value);
+  }
+
+  return input;
+}
+
 function writeBlogPostToDirectory(slug: string, content: string) {
   const directory = path.join(process.cwd(), 'src/data/blog');
 
@@ -28,14 +38,17 @@ async function createBlogPost() {
   const urlSafeHeadline = sanitiseHeadline(answers.headline);
   const slug = `${timestamp}-${urlSafeHeadline}`;
 
-  let template = getBlogPostTemplateContent();
+  const dynamicVariablesMap = {
+    '%date': timestamp,
+    '%headline': capitalCase(answers.headline),
+    '%slug': slug,
+    '%status': 'DRAFT',
+  };
 
-  template = template.replace('%date', timestamp);
-  template = template.replace('%headline', capitalCase(answers.headline));
-  template = template.replace('%slug', slug);
-  template = template.replace('%status', 'DRAFT');
+  const template = getBlogPostTemplateContent();
+  const post = replaceDynamicVariableValues(dynamicVariablesMap, template);
 
-  writeBlogPostToDirectory(slug, template);
+  writeBlogPostToDirectory(slug, post);
 }
 
 createBlogPost();
