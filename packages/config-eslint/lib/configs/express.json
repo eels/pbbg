@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "files": ["**/controllers/**/*.ts"],
+
+      "rules": {
+        "require-await": "off"
+      }
+    }
+  ]
+}
