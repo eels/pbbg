@@ -12,7 +12,7 @@ import { sanitiseRequestBody } from 'http/middleware/sanitise-request-body';
 import { verifyRequest } from 'http/middleware/verify-request';
 import type { RequestHandler } from 'express';
 
-const { errorHandler, requestHandler } = Handlers;
+const { errorHandler, requestHandler, tracingHandler } = Handlers;
 
 const limiterOptions = {
   max: 60,
@@ -23,6 +23,7 @@ const limiterOptions = {
 
 const prepControllerMiddleware = [
   requestHandler(),
+  tracingHandler(),
   response(),
   morgan(),
   json(),
