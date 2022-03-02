@@ -1,15 +1,14 @@
 import 'styles/style.scss';
 import Head from 'next/head';
 import { Fragment, useEffect } from 'react';
-import { IS_PRODUCTION } from 'config/constants';
+import { IS_PRODUCTION, SERVER_DOMAIN, WEB_CLIENT_DOMAIN } from 'config/constants';
 import { description, name, theme, title } from 'resources/strings/seo';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 
 export default function CustomApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const pathname = router.asPath;
-  const canonical = `https://${process.env.NEXT_PUBLIC_WEB_CLIENT_DOMAIN}${pathname}`;
+  const pathname = router.asPath.replace(/\/$/, '');
 
   useEffect(() => {
     if ('serviceWorker' in navigator && IS_PRODUCTION) {
@@ -35,7 +34,8 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <link href='/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png' />
         <link href='/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png' />
         <link href='apple-icon.png' rel='apple-touch-icon' sizes='180x180' type='image/png' />
-        <link href={canonical} rel='canonical' />
+        <link href={WEB_CLIENT_DOMAIN.concat(pathname)} rel='canonical' />
+        <link href={SERVER_DOMAIN} rel='prefetch' />
       </Head>
       <Component {...pageProps} />
     </Fragment>
