@@ -1,4 +1,5 @@
 import app from 'application/http';
+import { IS_PRODUCTION } from 'config/constants';
 import { Integrations as NodeIntegrations, init } from '@sentry/node';
 import { Integrations as TracingIntegrations } from '@sentry/tracing';
 
@@ -10,5 +11,5 @@ init({
     new TracingIntegrations.Express({ app: app }),
   ],
 
-  tracesSampleRate: process.env.NODE_ENV === 'production' ? 0.25 : 0,
+  tracesSampleRate: IS_PRODUCTION ? 0.25 : 0,
 });

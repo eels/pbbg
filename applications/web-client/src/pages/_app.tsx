@@ -1,6 +1,7 @@
 import 'styles/style.scss';
 import Head from 'next/head';
 import { Fragment, useEffect } from 'react';
+import { IS_PRODUCTION } from 'config/constants';
 import { description, name, theme, title } from 'resources/strings/seo';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
@@ -11,7 +12,7 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
   const canonical = `https://${process.env.NEXT_PUBLIC_WEB_CLIENT_DOMAIN}${pathname}`;
 
   useEffect(() => {
-    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+    if ('serviceWorker' in navigator && IS_PRODUCTION) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/sw.js');
       });
