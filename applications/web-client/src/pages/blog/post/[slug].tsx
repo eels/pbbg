@@ -1,5 +1,5 @@
 import BlogHeader from 'components/atoms/BlogHeader';
-import Container from 'components/atoms/Container';
+import ContentWrapper from 'components/atoms/ContentWrapper';
 import Head from 'next/head';
 import MarkdownRenderer from 'components/atoms/MarkdownRenderer';
 import { Fragment } from 'react';
@@ -19,10 +19,10 @@ export default function BlogPost({ content, data }: BlogPostProps) {
       <Head>
         <title>{titleify(data.headline)}</title>
       </Head>
-      <Container>
+      <ContentWrapper>
         <BlogHeader data={data} />
         <MarkdownRenderer content={content.post} />
-      </Container>
+      </ContentWrapper>
     </Fragment>
   );
 }

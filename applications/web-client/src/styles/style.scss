@@ -5,12 +5,14 @@
 // --- Generic ----------------------------------
 
 @import './generic/box-sizing';
+@import './generic/font-face';
 @import './generic/reset';
 @import './generic/selection';
 @import './generic/typography';
 
 // --- Elements ---------------------------------
 
+@import './elements/anchor';
 @import './elements/body';
 @import './elements/heading';
 @import './elements/list';

@@ -1,3 +1,9 @@
+import ContentWrapper from 'components/atoms/ContentWrapper';
+
 export default function Home() {
-  return <div>Hello world!</div>;
+  return (
+    <ContentWrapper>
+      <div>Hello world!</div>
+    </ContentWrapper>
+  );
 }

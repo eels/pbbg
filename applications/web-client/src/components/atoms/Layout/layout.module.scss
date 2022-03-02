@@ -1,0 +1,13 @@
+.wrapper {
+  height: 85vh;
+  background-color: $palette--grey-500;
+  background-image: url('/ui/background.webp');
+  background-position: center;
+  background-size: 10%;
+}
+
+.gradient {
+  height: 85vh;
+  padding: spacing(2);
+  background-image: linear-gradient($palette--transparent 55%, $palette--black);
+}
