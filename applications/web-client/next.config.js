@@ -23,7 +23,7 @@ module.exports = withPurgeCSSModules({
   purgeCSSModules: {
     content: path.join(process.cwd(), 'src/**/*.{ts,tsx}'),
     enableDevPurge: false,
-    safelist: ['html'],
+    safelist: ['html', 'li', 'ul'],
   },
 
   reactStrictMode: true,
