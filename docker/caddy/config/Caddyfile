@@ -54,7 +54,7 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
   @StaticAssetFiles {
     file
 
-    path *.css *.gif *.ico *.jpeg *.jpg *.js *.json *.png *.svg *.webp *.woff *.woff2
+    path *.css *.gif *.ico *.jpeg *.jpg *.js *.json *.png *.svg *.webmanifest *.webp *.woff2
   }
 
   route {
