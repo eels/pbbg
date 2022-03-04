@@ -60,7 +60,7 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
   @StaticOtherFiles {
     file
 
-    path *.html
+    path *.html *.webmanifest
   }
 
   header -Server
