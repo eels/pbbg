@@ -1,4 +1,5 @@
 import { Buffer } from 'buffer';
+import { IS_PRODUCTION } from 'config/constants';
 import { SignJWT, jwtVerify } from 'jose';
 import { cookie } from 'utilities/cookie';
 import type { CookieOptions, Request, Response } from 'express';
@@ -8,7 +9,18 @@ type Payload = Record<string, string>;
 const headerCookie = cookie('auth.headers');
 const signitureCookie = cookie('auth.signiture');
 const secret = process.env.APP_SECRET_JWT_TOKEN as string;
-const options = { maxAge: 30 * 60 * 1000, sameSite: 'strict', secure: true, signed: true };
+
+const options: CookieOptions = {
+  maxAge: 30 * 60 * 1000,
+  path: '/',
+  sameSite: 'strict',
+  secure: true,
+  signed: true,
+};
+
+if (IS_PRODUCTION) {
+  options.domain = process.env.APP_WEB_CLIENT_DOMAIN;
+}
 
 export async function createAuthenticationToken(payload: Payload) {
   const jwt = new SignJWT({ payload: payload });
@@ -21,7 +33,7 @@ export async function createAuthenticationToken(payload: Payload) {
 }
 
 export function deleteAuthenticationTokens(response: Response) {
-  const clonedOptions = { ...options } as CookieOptions;
+  const clonedOptions = { ...options };
 
   delete clonedOptions.maxAge;
 
@@ -47,8 +59,8 @@ export async function setAuthenticationTokens(response: Response, payload: Paylo
   const token = await createAuthenticationToken(payload);
   const [headers, signiture] = seperateAuthenticationToken(token);
 
-  response.cookie(headerCookie, headers, options as CookieOptions);
-  response.cookie(signitureCookie, signiture, { ...(options as CookieOptions), httpOnly: true });
+  response.cookie(headerCookie, headers, options);
+  response.cookie(signitureCookie, signiture, { ...options, httpOnly: true });
 }
 
 export async function validateAuthenticationToken(request: Request) {
