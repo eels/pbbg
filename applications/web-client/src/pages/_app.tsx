@@ -38,6 +38,7 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <link href='apple-icon.png' rel='apple-touch-icon' sizes='180x180' type='image/png' />
         <link href={WEB_CLIENT_DOMAIN.concat(pathname)} rel='canonical' />
         <link href={SERVER_DOMAIN} rel='prefetch' />
+        <link as='font' href='/fonts/roboto-400.woff2' rel='preload' type='font/woff2' />
       </Head>
       <Layout>
         <Container>
