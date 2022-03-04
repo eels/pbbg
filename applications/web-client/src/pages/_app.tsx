@@ -32,14 +32,16 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <meta content='noindex,nofollow,noimageindex' name='robots' />
         <meta content={name} name='application-name' />
         <meta content={theme} name='theme-color' />
-        <link href='/site.webmanifest' rel='manifest' />
-        <link href='/humans.txt' rel='author' />
+        <link as='font' crossOrigin='true' href={criticalFont} rel='preload' type='font/woff2' />
+        <link crossOrigin='true' href={SERVER_DOMAIN} rel='preconnect' />
+        <link href={SERVER_DOMAIN} rel='dns-prefetch' />
+        <link href={SERVER_DOMAIN} rel='prefetch' />
+        <link href={WEB_CLIENT_DOMAIN.concat(pathname)} rel='canonical' />
         <link href='/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png' />
         <link href='/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png' />
         <link href='apple-icon.png' rel='apple-touch-icon' sizes='180x180' type='image/png' />
-        <link href={WEB_CLIENT_DOMAIN.concat(pathname)} rel='canonical' />
-        <link href={SERVER_DOMAIN} rel='prefetch' />
-        <link as='font' crossOrigin='true' href={criticalFont} rel='preload' type='font/woff2' />
+        <link href='/site.webmanifest' rel='manifest' />
+        <link href='/humans.txt' rel='author' />
       </Head>
       <Layout>
         <Container>
