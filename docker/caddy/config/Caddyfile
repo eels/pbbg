@@ -57,17 +57,13 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
     path *.css *.gif *.ico *.jpeg *.jpg *.js *.json *.png *.svg *.webp *.woff *.woff2
   }
 
-  @StaticOtherFiles {
-    file
+  route {
+    header Cache-Control "private, max-age=31536000, no-cache"
 
-    path *.html *.webmanifest
+    header @StaticAssetFiles Cache-Control "public, max-age=31536000, must-revalidate"
   }
 
   header -Server
-
-  header @StaticAssetFiles Cache-Control "public, max-age=31536000, must-revalidate"
-
-  header @StaticOtherFiles Cache-Control "private, max-age=31536000, no-cache"
 
   header Content-Security-Policy "default-src 'self' 'unsafe-inline' {$APP_SERVER_DOMAIN}"
 
