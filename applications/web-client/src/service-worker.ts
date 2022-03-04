@@ -16,7 +16,7 @@ registerRoute(
 );
 
 registerRoute(
-  ({ request }) => ['font', 'script', 'style', 'worker'].includes(request.destination),
+  ({ request }) => ['font', 'manifest', 'script', 'style', 'worker'].includes(request.destination),
   new CacheFirst({
     cacheName: 'assets',
     plugins: [
