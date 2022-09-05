@@ -1,0 +1,17 @@
+# --- Dependencies ------------------------------
+
+node_modules
+
+# --- Compiled ----------------------------------
+
+build
+tmp
+
+# --- Coverage ----------------------------------
+
+coverage
+
+# --- Manifests ---------------------------------
+
+.adonisrc.json
+ace-manifest.json

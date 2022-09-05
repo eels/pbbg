@@ -1,0 +1,22 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+
+  "compilerOptions": {
+    "baseUrl": ".",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "isolatedModules": false,
+    "outDir": "build",
+    "paths": {
+      "App/*": ["./app/*"],
+      "Config/*": ["./config/*"],
+      "Contracts/*": ["./contracts/*"],
+      "Database/*": ["./database/*"]
+    },
+    "rootDir": ".",
+    "sourceMap": true,
+    "types": ["@adonisjs/core", "@adonisjs/repl", "@japa/preset-adonis/build/adonis-typings"]
+  },
+
+  "include": ["**/*"]
+}
