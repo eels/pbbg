@@ -1,3 +1,6 @@
 {
-  "extends": ["@pbbg/eslint-config/lib/eslintrc.json"]
+  "extends": [
+    "@pbbg/eslint-config/lib/eslintrc.json",
+    "@pbbg/eslint-config/lib/configs/nextjs.json"
+  ]
 }

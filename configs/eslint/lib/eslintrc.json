@@ -6,7 +6,6 @@
     "@pbbg/eslint-config/lib/configs/import.json",
     "@pbbg/eslint-config/lib/configs/jest.json",
     "@pbbg/eslint-config/lib/configs/jsx-a11y.json",
-    "@pbbg/eslint-config/lib/configs/nextjs.json",
     "@pbbg/eslint-config/lib/configs/prettier.json",
     "@pbbg/eslint-config/lib/configs/react.json",
     "@pbbg/eslint-config/lib/configs/sort-destructure-keys.json",
