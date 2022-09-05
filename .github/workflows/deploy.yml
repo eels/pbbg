@@ -85,12 +85,9 @@ jobs:
           mkdir -p out/applications/server/build/
           mkdir -p out/applications/web-client/build/
           mkdir -p out/docker/
-          mkdir -p out/services/database/prisma/migrations/
           cp -r applications/server/build/* out/applications/server/build/
           cp -r applications/web-client/out/* out/applications/web-client/build/
           cp -r docker/* out/docker/
-          cp -r services/database/prisma/migrations/* out/services/database/prisma/migrations/
-          cp -r services/database/prisma/schema.prisma out/services/database/prisma/
           cp -r .dockerignore out/
           cp -r .env out/
           cp -r docker-compose.production.yml out/
@@ -126,8 +123,6 @@ jobs:
             export DOCKER_BUILDKIT=1
             cd ${{ github.repository }}
             chmod +x docker/node/lib/entrypoint.sh
-            chmod +x docker/node/lib/migrate_database.sh
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
-            bash docker/node/lib/migrate_database.sh
             docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
             docker system prune --all --force --volumes

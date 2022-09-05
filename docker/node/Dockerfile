@@ -24,12 +24,8 @@ COPY --from=sourcer /home/node/out/yarn.lock .
 
 COPY --from=sourcer /home/node/turbo.json .
 
-COPY --from=sourcer /home/node/out/full/services/database/prisma/ ./services/database/prisma
-
 RUN --mount=type=cache,target=.yarn-cache YARN_CACHE_FOLDER=.yarn-cache \
   yarn install --frozen-lockfile --ignore-scripts --prefer-offline --production
-
-RUN yarn workspace @pbbg/database-service generate
 
 # --- Runtime -----------------------------------
 

@@ -9,16 +9,11 @@
   "packageManager": "yarn@1.22.17",
   "workspaces": [
     "applications/*",
-    "configs/*",
-    "services/*"
+    "configs/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
-    "db:build": "yarn workspace @pbbg/database-service build",
-    "db:clean": "yarn workspace @pbbg/database-service reset",
-    "db:create:migration": "yarn workspace @pbbg/database-service create:migration",
-    "db:seed": "yarn workspace @pbbg/database-service seed",
     "dev": "turbo run dev",
     "docker:build": "docker-compose build",
     "docker:down": "docker-compose down",
@@ -47,8 +42,6 @@
     "turbo": "^1.1.3",
     "typescript": "^4.5.5",
     "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "dependencies": {}
+    "webpack-cli": "^4.9.2"
+  }
 }
