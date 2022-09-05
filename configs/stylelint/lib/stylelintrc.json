@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "stylelint-config-idiomatic-order",
-    "stylelint-config-standard",
-    "stylelint-config-recommended-scss"
-  ],
+  "extends": ["stylelint-config-idiomatic-order", "stylelint-config-standard"],
 
   "rules": {
     "alpha-value-notation": "number",

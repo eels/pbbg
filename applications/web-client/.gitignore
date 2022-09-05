@@ -5,7 +5,6 @@ node_modules
 # --- Caches ------------------------------------
 
 .eslintcache
-.rollup.cache
 .stylelintcache
 
 # --- Compiled ----------------------------------

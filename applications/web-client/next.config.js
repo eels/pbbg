@@ -12,9 +12,11 @@ module.exports = withPurgeCSSModules({
     NEXT_PUBLIC_WEB_CLIENT_DOMAIN: environment?.parsed?.APP_WEB_CLIENT_DOMAIN,
   },
 
-  experimental: {
-    optimizeCss: true,
-  },
+  ...(process.env.NODE_ENV !== 'development' && {
+    experimental: {
+      optimizeCss: true,
+    },
+  }),
 
   images: {
     loader: 'custom',
