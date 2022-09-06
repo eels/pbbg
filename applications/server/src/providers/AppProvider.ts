@@ -1,5 +1,5 @@
 import { createResponseObject } from 'utilities/create-response-object';
-import { getStatusCode } from 'utilities/get-status-code';
+import { getStatusCode } from 'utilities/status';
 import type { ApplicationContract } from '@ioc:Adonis/Core/Application';
 
 export default class AppProvider {

@@ -1,4 +1,4 @@
-import { getStatusCode } from 'utilities/get-status-code';
+import { getStatusCode } from 'utilities/status';
 import type { Blank } from 'types/object';
 import type { ResponseObject, ResponseOptions } from 'types/response';
 import type { Status } from 'types/http';

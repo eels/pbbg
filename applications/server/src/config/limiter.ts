@@ -23,19 +23,6 @@ export default limiterConfig({
   */
 
   stores: {
-    /*
-    |--------------------------------------------------------------------------
-    | Redis
-    |--------------------------------------------------------------------------
-    |
-    | The redis store uses "@adonisjs/redis" package for communicating with a
-    | redis database. Make sure to install and configure the redis package
-    | first.
-    |
-    | npm i @adonisjs/redis
-    |
-    */
-
     redis: {
       client: 'redis',
       connectionName: 'local',

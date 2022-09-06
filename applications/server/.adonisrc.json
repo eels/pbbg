@@ -28,7 +28,7 @@
     "httpControllers": "App/Controllers"
   },
 
-  "preloads": ["./src/start/routes", "./src/start/kernel", "./start/limiter"],
+  "preloads": ["./src/start/routes", "./src/start/kernel", "./src/start/limiter"],
 
   "providers": ["./src/providers/AppProvider", "@adonisjs/core", "@adonisjs/limiter"],
 
