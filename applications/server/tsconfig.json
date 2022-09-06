@@ -11,11 +11,18 @@
       "App/*": ["./src/app/*"],
       "Config/*": ["./src/config/*"],
       "Contracts/*": ["./src/contracts/*"],
-      "Database/*": ["./src/database/*"]
+      "Database/*": ["./src/database/*"],
+      "types/*": ["./src/types/*"],
+      "utilities/*": ["./src/utilities/*"]
     },
     "rootDir": ".",
     "sourceMap": true,
-    "types": ["@adonisjs/core", "@adonisjs/repl", "@japa/preset-adonis/build/adonis-typings"]
+    "types": [
+      "@adonisjs/core",
+      "@adonisjs/repl",
+      "@japa/preset-adonis/build/adonis-typings",
+      "@adonisjs/limiter"
+    ]
   },
 
   "include": ["**/*"]

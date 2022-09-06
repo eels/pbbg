@@ -5,7 +5,8 @@
     "App": "./src/app",
     "Config": "./src/config",
     "Contracts": "./src/contracts",
-    "Database": "./src/database"
+    "Database": "./src/database",
+    "utilities": "./src/utilities"
   },
 
   "commands": [
@@ -23,9 +24,13 @@
 
   "exceptionHandlerNamespace": "App/Exceptions/Handler",
 
-  "preloads": ["./src/start/routes", "./src/start/kernel"],
+  "namespaces": {
+    "httpControllers": "App/Controllers"
+  },
 
-  "providers": ["./src/providers/AppProvider", "@adonisjs/core"],
+  "preloads": ["./src/start/routes", "./src/start/kernel", "./start/limiter"],
+
+  "providers": ["./src/providers/AppProvider", "@adonisjs/core", "@adonisjs/limiter"],
 
   "testProviders": ["@japa/preset-adonis/TestsProvider"],
 

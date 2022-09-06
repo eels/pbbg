@@ -1,1 +1,1 @@
-import 'App/Routes/Http';
+import 'App/Routes';

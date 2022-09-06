@@ -2,4 +2,4 @@ import Route from '@ioc:Adonis/Core/Route';
 
 // --- Application ------------------------------
 
-Route.get('/', () => ({ hello: 'world' }));
+Route.get('/', 'Application/EntrypointController.handle');

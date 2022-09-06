@@ -1,4 +1,4 @@
-import 'App/Routes/Http/application';
+import 'App/Routes/application';
 import Route from '@ioc:Adonis/Core/Route';
 
 // --- Favicon ----------------------------------
