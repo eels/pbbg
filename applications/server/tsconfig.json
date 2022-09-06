@@ -8,10 +8,10 @@
     "isolatedModules": false,
     "outDir": "build",
     "paths": {
-      "App/*": ["./app/*"],
-      "Config/*": ["./config/*"],
-      "Contracts/*": ["./contracts/*"],
-      "Database/*": ["./database/*"]
+      "App/*": ["./src/app/*"],
+      "Config/*": ["./src/config/*"],
+      "Contracts/*": ["./src/contracts/*"],
+      "Database/*": ["./src/database/*"]
     },
     "rootDir": ".",
     "sourceMap": true,

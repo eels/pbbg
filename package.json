@@ -29,7 +29,8 @@
     "terraform:destroy": "terraform -chdir=terraform destroy -auto-approve",
     "terraform:plan": "terraform -chdir=terraform plan",
     "terraform:validate": "terraform -chdir=terraform validate",
-    "test": "turbo run test"
+    "test": "turbo run test",
+    "typescript:verify": "turbo run typescript:verify"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",

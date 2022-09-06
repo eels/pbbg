@@ -27,6 +27,9 @@
     },
     "test": {
       "dependsOn": []
+    },
+    "typescript:verify": {
+      "dependsOn": []
     }
   }
 }

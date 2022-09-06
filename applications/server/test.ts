@@ -1,17 +1,3 @@
-/*
-|--------------------------------------------------------------------------
-| Tests
-|--------------------------------------------------------------------------
-|
-| The contents in this file boots the AdonisJS application and configures
-| the Japa tests runner.
-|
-| For the most part you will never edit this file. The configuration
-| for the tests can be controlled via ".adonisrc.json" and
-| "tests/bootstrap.ts" files.
-|
-*/
-
 import 'reflect-metadata';
 import sourceMapSupport from 'source-map-support';
 import { Ignitor } from '@adonisjs/core/build/standalone';

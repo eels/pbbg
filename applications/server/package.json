@@ -7,14 +7,15 @@
     "clean": "rimraf build",
     "dev": "node ace serve --watch",
     "environment:copy": "ln -sf  ../../.env .",
-    "format": "prettier \"{.,./**/}*.{js,json,ts}\" --check",
+    "format": "prettier \"{.,./{src,test}/**/}*.{js,json,ts}\" --check",
     "format:fix": "yarn format --write",
-    "lint": "yarn lint:js && yarn lint:types",
-    "lint:js": "eslint \"./*.{js,ts}\" \"./**/*.{js,ts}\" --cache",
+    "lint": "yarn lint:js",
+    "lint:js": "eslint \"./*.{js,ts}\" \"./{src,test}/**/*.{js,ts}\" --cache",
     "lint:js:fix": "yarn lint:js --fix",
-    "lint:types": "tsc --noEmit",
     "prepare": "yarn environment:copy",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node ace test",
+    "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
     "@adonisjs/core": "^5.8.0",

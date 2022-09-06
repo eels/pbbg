@@ -2,23 +2,30 @@
   "aceProviders": ["@adonisjs/repl"],
 
   "aliases": {
-    "App": "app",
-    "Config": "config",
-    "Contracts": "contracts",
-    "Database": "database"
+    "App": "./src/app",
+    "Config": "./src/config",
+    "Contracts": "./src/contracts",
+    "Database": "./src/database"
   },
 
   "commands": [
-    "./commands",
+    "./src/commands",
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands"
   ],
 
+  "directories": {
+    "config": "./src/config",
+    "contracts": "./src/contracts",
+    "providers": "./src/providers",
+    "start": "./src/start"
+  },
+
   "exceptionHandlerNamespace": "App/Exceptions/Handler",
 
-  "preloads": ["./start/routes", "./start/kernel"],
+  "preloads": ["./src/start/routes", "./src/start/kernel"],
 
-  "providers": ["./providers/AppProvider", "@adonisjs/core"],
+  "providers": ["./src/providers/AppProvider", "@adonisjs/core"],
 
   "testProviders": ["@japa/preset-adonis/TestsProvider"],
 

@@ -1,4 +1,4 @@
-import type hashConfig from '../config/hash';
+import type hashConfig from 'Config/hash';
 import type { InferListFromConfig } from '@adonisjs/core/build/config';
 
 declare module '@ioc:Adonis/Core/Hash' {

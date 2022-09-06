@@ -25,7 +25,8 @@
     "storybook:build": "build-storybook --config-dir storybook --quiet",
     "storybook:start": "start-storybook --config-dir storybook --port 6006 --quiet",
     "test": "jest --cache --passWithNoTests",
-    "test:coverage": "yarn test --coverage"
+    "test:coverage": "yarn test --coverage",
+    "typescript:verify": "tsc --noEmit"
   },
   "browserslist": [
     "defaults"

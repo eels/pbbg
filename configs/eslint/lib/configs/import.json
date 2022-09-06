@@ -11,6 +11,7 @@
         "count": 1
       }
     ],
+    "import/no-relative-parent-imports": "error",
     "import/no-unresolved": "off"
   }
 }
