@@ -9,7 +9,7 @@
   },
 
   "commands": [
-    "./src/commands",
+    "./src/start/commands",
     "@adonisjs/core/build/commands/index.js",
     "@adonisjs/repl/build/commands"
   ],

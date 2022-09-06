@@ -28,7 +28,7 @@
     "comma-dangle": ["error", "always-multiline"],
     "no-unused-vars": "off",
     "no-use-before-define": "off",
-    "require-await": "error",
+    "require-await": "off",
     "space-before-function-paren": [
       "error",
       {

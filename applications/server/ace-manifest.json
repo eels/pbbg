@@ -1,5 +1,17 @@
 {
   "commands": {
+    "example": {
+      "settings": {
+        "loadApp": false,
+        "stayAlive": false
+      },
+      "commandPath": "./src/commands/Example",
+      "commandName": "example",
+      "description": "Runs the generated example command",
+      "args": [],
+      "aliases": [],
+      "flags": []
+    },
     "dump:rcfile": {
       "settings": {},
       "commandPath": "@adonisjs/core/build/commands/DumpRc",
