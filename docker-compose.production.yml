@@ -8,7 +8,7 @@ services:
     environment:
       - 'APP_SERVER_DOMAIN'
       - 'APP_WEB_CLIENT_DOMAIN'
-      - 'NODE_PORT'
+      - 'PORT'
     ports:
       - '80:80'
       - '443:443/tcp'
@@ -37,10 +37,8 @@ services:
     build:
       context: '.'
       dockerfile: 'docker/node/Dockerfile'
-    environment:
-      - 'POSTGRES_CONNECTION'
     ports:
-      - '${NODE_PORT}:${NODE_PORT}'
+      - '${PORT}:${PORT}'
     restart: 'unless-stopped'
     volumes:
       - '.:/home/node'

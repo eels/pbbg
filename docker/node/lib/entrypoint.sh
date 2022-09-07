@@ -1,3 +1,3 @@
 #!/bin/bash
 
-node build/index.js
+node build/server.js

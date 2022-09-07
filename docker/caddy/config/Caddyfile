@@ -36,7 +36,7 @@
 
   encode zstd gzip
 
-  reverse_proxy node:{$NODE_PORT}
+  reverse_proxy node:{$PORT}
 }
 
 www.{$APP_WEB_CLIENT_DOMAIN} {
@@ -99,5 +99,5 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
 }
 
 localhost:80 {
-  reverse_proxy node:{$NODE_PORT}
+  reverse_proxy node:{$PORT}
 }
