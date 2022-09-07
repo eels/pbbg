@@ -12,6 +12,7 @@
   "commands": [
     "./src/start/commands",
     "@adonisjs/core/build/commands/index.js",
+    "@adonisjs/lucid/build/commands",
     "@adonisjs/repl/build/commands"
   ],
 
@@ -28,16 +29,22 @@
     "httpControllers": "App/Controllers"
   },
 
-  "preloads": ["./src/start/routes", "./src/start/kernel", "./src/start/limiter"],
+  "preloads": ["./src/start/kernel", "./src/start/limiter", "./src/start/routes"],
 
-  "providers": ["./src/providers/AppProvider", "@adonisjs/core", "@adonisjs/limiter"],
+  "providers": [
+    "./src/providers/AppProvider",
+    "@adonisjs/auth",
+    "@adonisjs/core",
+    "@adonisjs/limiter",
+    "@adonisjs/lucid"
+  ],
 
   "testProviders": ["@japa/preset-adonis/TestsProvider"],
 
   "tests": {
     "suites": [
       {
-        "files": ["tests/functional/**/*.spec(.ts|.js)"],
+        "files": ["./tests/functional/**/*.spec(.ts|.js)"],
         "name": "functional",
         "timeout": 60000
       }

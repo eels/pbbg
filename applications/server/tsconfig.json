@@ -17,11 +17,14 @@
     },
     "rootDir": ".",
     "sourceMap": true,
+    "strictPropertyInitialization": false,
     "types": [
+      "@adonisjs/auth",
       "@adonisjs/core",
+      "@adonisjs/limiter",
+      "@adonisjs/lucid",
       "@adonisjs/repl",
-      "@japa/preset-adonis/build/adonis-typings",
-      "@adonisjs/limiter"
+      "@japa/preset-adonis/build/adonis-typings"
     ]
   },
 

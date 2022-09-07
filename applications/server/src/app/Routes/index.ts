@@ -1,10 +1,7 @@
-import 'App/Routes/application';
+import 'App/Routes/application/entrypoint';
+import 'App/Routes/application/favicon';
 import Route from '@ioc:Adonis/Core/Route';
-
-// --- Favicon ----------------------------------
-
-Route.get('/favicon.ico', 'FaviconController.handle');
 
 // --- Catch All / Not Allowed ------------------
 
-Route.any('*', 'NotFoundController.handle');
+Route.any('*', 'NotAllowedController.handle');
