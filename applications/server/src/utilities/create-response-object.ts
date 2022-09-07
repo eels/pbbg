@@ -7,7 +7,7 @@ export function createResponseObject<T = Blank>(status: Status, response?: Respo
   const responseObject: ResponseObject<T> = {
     CODE: getStatusCode(status),
     DATA: response?.data,
-    MESSAGE: response?.message?.toLowerCase(),
+    MESSAGE: response?.message?.toLowerCase() as Lowercase<string> | undefined,
     STATUS: status,
   };
 

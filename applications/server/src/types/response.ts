@@ -12,6 +12,6 @@ export type ResponseOptions<T = Blank> = Object.AtLeast<Options<T>, 'data' | 'me
 export interface ResponseObject<T = Blank> {
   CODE: StatusCode;
   DATA?: T;
-  MESSAGE?: string;
+  MESSAGE?: Lowercase<string>;
   STATUS: Status;
 }
