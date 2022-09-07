@@ -268,6 +268,14 @@
     rev-hash "^3.0.0"
     source-map-support "^0.5.21"
 
+"@adonisjs/session@^6.4.0":
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/@adonisjs/session/-/session-6.4.0.tgz#464201a02df6a5d05c3ff423565ab0e7914c355d"
+  integrity sha512-9yHS60lFpNBUX5/yB+0j+bXQDWqbaYJ1JelLCYtaKRa7B0NewvmPAmsNpHH8SrXE3XGaRyKOxrUGRcmSGg5mRA==
+  dependencies:
+    "@poppinss/utils" "^4.0.4"
+    fs-extra "^10.1.0"
+
 "@adonisjs/sink@^5.4.0":
   version "5.4.0"
   resolved "https://registry.npmjs.org/@adonisjs/sink/-/sink-5.4.0.tgz"
@@ -11729,6 +11737,11 @@ no-case@^3.0.4:
   dependencies:
     lower-case "^2.0.2"
     tslib "^2.0.3"
+
+no-try@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/no-try/-/no-try-3.1.0.tgz#e47d8f34392c0a3d307d4f5f6002bb01d82cd7b9"
+  integrity sha512-4QyjqXvAcbjqEiV5fj8a6ZW/8VWx7SVq0qI2WhbgQ+XgnQ3vMa6zRw99x0pIG6Rgwv1uavlBJq/dP5DNMSzuiw==
 
 node-abi@^3.3.0:
   version "3.8.0"

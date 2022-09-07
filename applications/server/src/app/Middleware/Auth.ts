@@ -7,19 +7,15 @@ export default class AuthMiddleware {
   protected async authenticate(auth: AuthContract, guards: GuardsListKeys[]) {
     for (const guard of guards) {
       if (await auth.use(guard).check()) {
-        auth.defaultGuard = guard;
-
         return true;
       }
     }
 
-    throw new AuthenticationException('unauthorized', 'UNAUTHORISED');
+    throw new AuthenticationException();
   }
 
-  public async handle(ctx: HttpContextContract, next: Next, customGuards: GuardsListKeys[]) {
-    const guards = customGuards.length ? customGuards : [ctx.auth.name];
-
-    await this.authenticate(ctx.auth, guards);
+  public async handle(ctx: HttpContextContract, next: Next, guards: GuardsListKeys[]) {
+    await this.authenticate(ctx.auth, guards.length ? guards : [ctx.auth.name]);
     await next();
   }
 }

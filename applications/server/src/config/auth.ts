@@ -10,7 +10,7 @@ const authConfig: AuthConfig = {
   |
   */
 
-  guard: 'web',
+  guard: 'api',
 
   /*
   |--------------------------------------------------------------------------
@@ -23,7 +23,7 @@ const authConfig: AuthConfig = {
   */
 
   guards: {
-    web: {
+    api: {
       driver: 'session',
       provider: {
         driver: 'lucid',

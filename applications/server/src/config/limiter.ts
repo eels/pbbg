@@ -1,3 +1,4 @@
+import Env from '@ioc:Adonis/Core/Env';
 import { limiterConfig } from '@adonisjs/limiter/build/config';
 
 export default limiterConfig({
@@ -10,7 +11,7 @@ export default limiterConfig({
   |
   */
 
-  default: 'redis',
+  default: 'db',
 
   /*
   |--------------------------------------------------------------------------
@@ -23,9 +24,12 @@ export default limiterConfig({
   */
 
   stores: {
-    redis: {
-      client: 'redis',
-      connectionName: 'local',
+    db: {
+      clearExpiredByTimeout: true,
+      client: 'db',
+      connectionName: Env.get('DB_CONNECTION'),
+      dbName: Env.get('PG_DB_NAME'),
+      tableName: 'rate_limits',
     },
   },
 });

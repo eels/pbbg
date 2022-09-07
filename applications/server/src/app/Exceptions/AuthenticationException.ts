@@ -1,8 +1,8 @@
-import type { Status } from 'types/http';
+import { Exception } from '@adonisjs/core/build/standalone';
+import { getStatusCode } from 'utilities/status';
 
-export default class AuthenticationException {
-  constructor(public message: string, public status: Status) {
-    this.message = message;
-    this.status = status;
+export default class AuthenticationException extends Exception {
+  constructor(message = 'unauthorized') {
+    super(message, getStatusCode('UNAUTHORISED'));
   }
 }

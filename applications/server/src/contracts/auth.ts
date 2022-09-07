@@ -9,10 +9,10 @@ declare module '@ioc:Adonis/Addons/Auth' {
   }
 
   interface GuardsList {
-    web: {
+    api: {
       client: SessionClientContract<'user'>;
       config: SessionGuardConfig<'user'>;
-      implementation: SessionGuardContract<'user', 'web'>;
+      implementation: SessionGuardContract<'user', 'api'>;
     };
   }
 

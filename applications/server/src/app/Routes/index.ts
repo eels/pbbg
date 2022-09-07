@@ -1,5 +1,6 @@
 import 'App/Routes/application/entrypoint';
 import 'App/Routes/application/favicon';
+import 'App/Routes/authentication';
 import Route from '@ioc:Adonis/Core/Route';
 
 // --- Catch All / Not Allowed ------------------

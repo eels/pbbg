@@ -19,7 +19,10 @@
   "directories": {
     "config": "./src/config",
     "contracts": "./src/contracts",
+    "database": "./src/database",
+    "migrations": "./src/database/migrations",
     "providers": "./src/providers",
+    "seeds": "./src/database/seeders",
     "start": "./src/start"
   },
 
@@ -36,7 +39,8 @@
     "@adonisjs/auth",
     "@adonisjs/core",
     "@adonisjs/limiter",
-    "@adonisjs/lucid"
+    "@adonisjs/lucid",
+    "@adonisjs/session"
   ],
 
   "testProviders": ["@japa/preset-adonis/TestsProvider"],
