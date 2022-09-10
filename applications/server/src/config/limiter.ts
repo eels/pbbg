@@ -28,7 +28,7 @@ export default limiterConfig({
       clearExpiredByTimeout: true,
       client: 'db',
       connectionName: Env.get('DB_CONNECTION'),
-      dbName: Env.get('PG_DB_NAME'),
+      dbName: Env.get('DB_NAME'),
       tableName: 'rate_limits',
     },
   },
