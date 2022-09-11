@@ -2,6 +2,8 @@
 
 const path = require('path');
 
+/** @type {import('webpack').Configuration} */
+
 module.exports = {
   entry: path.join(process.cwd(), 'src/service-worker.ts'),
 

@@ -1,4 +1,5 @@
 import * as Styled from 'components/atoms/BlogPagination/styled';
+import ConditionalRender from 'components/utilities/ConditionalRender';
 import Link from 'next/link';
 
 interface BlogPaginationProps {
@@ -12,17 +13,20 @@ export default function BlogPagination({ current, total }: BlogPaginationProps) 
 
   return (
     <Styled.Wrapper>
-      {current !== 1 && (
-        <Link href={potentialPrevHref}>
-          <a>Previous</a>
-        </Link>
-      )}
-
-      {current !== total && (
-        <Link href={potentialNextHref}>
-          <a>Next</a>
-        </Link>
-      )}
+      <ConditionalRender condition={current !== 1}>
+        {() => (
+          <Link href={potentialPrevHref}>
+            <a>Previous</a>
+          </Link>
+        )}
+      </ConditionalRender>
+      <ConditionalRender condition={current !== total}>
+        {() => (
+          <Link href={potentialNextHref}>
+            <a>Next</a>
+          </Link>
+        )}
+      </ConditionalRender>
     </Styled.Wrapper>
   );
 }

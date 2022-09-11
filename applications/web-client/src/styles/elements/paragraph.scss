@@ -1,5 +1,9 @@
-p {
-  margin-top: 0;
-  margin-bottom: spacing(2);
-  line-height: 1.5;
+@layer base {
+  p {
+    line-height: theme('lineHeight.normal');
+
+    &:not(:last-child) {
+      margin-bottom: theme('margin.4');
+    }
+  }
 }

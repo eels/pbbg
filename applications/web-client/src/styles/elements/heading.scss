@@ -1,8 +1,15 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 0;
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: theme('fontSize.xl');
+    font-weight: theme('fontWeight.bold');
+
+    &:not(:last-child) {
+      margin-bottom: theme('margin.4');
+    }
+  }
 }

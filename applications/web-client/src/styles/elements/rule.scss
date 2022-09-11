@@ -1,4 +1,7 @@
-hr {
-  border: 0;
-  border-top: unit(1) solid $palette--black;
+@layer base {
+  hr {
+    border: theme('borderWidth.0');
+    border-color: theme('borderColor.black');
+    border-top-width: theme('borderWidth.DEFAULT');
+  }
 }

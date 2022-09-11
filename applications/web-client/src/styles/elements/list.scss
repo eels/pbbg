@@ -1,11 +1,16 @@
-ul {
-  display: flex;
-  flex-direction: column;
-  margin-top: 0;
-  gap: spacing(1);
-}
+@layer base {
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: theme('gap.1');
 
-li {
-  padding-left: spacing(0.5);
-  line-height: 1.5;
+    &:not(:last-child) {
+      margin-bottom: theme('margin.4');
+    }
+  }
+
+  li {
+    padding-left: theme('padding[0.5]');
+    line-height: theme('lineHeight.normal');
+  }
 }

@@ -1,15 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/** @type {import('next').NextConfig} */
 
-const path = require('path');
-const withPurgeCSSModules = require('next-purge-css-modules');
-const { config } = require('dotenv');
-
-const environment = config({ path: path.resolve('../../', '.env') });
-
-module.exports = withPurgeCSSModules({
+module.exports = {
   env: {
-    NEXT_PUBLIC_SERVER_DOMAIN: environment?.parsed?.APP_SERVER_DOMAIN,
-    NEXT_PUBLIC_WEB_CLIENT_DOMAIN: environment?.parsed?.APP_WEB_CLIENT_DOMAIN,
+    NEXT_PUBLIC_SERVER_DOMAIN: process.env.APP_SERVER_DOMAIN,
+    NEXT_PUBLIC_WEB_CLIENT_DOMAIN: process.env.APP_WEB_CLIENT_DOMAIN,
   },
 
   ...(process.env.NODE_ENV !== 'development' && {
@@ -22,18 +16,7 @@ module.exports = withPurgeCSSModules({
     loader: 'custom',
   },
 
-  purgeCSSModules: {
-    content: path.join(process.cwd(), 'src/**/*.{ts,tsx}'),
-    enableDevPurge: false,
-    safelist: ['html', 'li', 'ul', 'data-reactroot'],
-  },
-
   reactStrictMode: true,
 
-  sassOptions: {
-    includePaths: [path.join(process.cwd(), 'src')],
-    prependData: `@import '${path.join(process.cwd(), 'src/styles/shared')}';`,
-  },
-
   swcMinify: true,
-});
+};

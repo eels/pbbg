@@ -1,12 +1,24 @@
-import styles from 'components/atoms/BlogHeader/blog-header.module.scss';
-import { create } from 'chic-modules';
+import { compose } from 'tailwind-compose';
 
-const styled = create(styles);
+export const Wrapper = compose.div(() => [
+  'pb-3', //
+  'mb-3',
+  'border-b',
+  'border-black',
+]);
 
-export const Wrapper = styled.div('wrapper');
+export const Headline = compose.h2(() => [
+  'relative', //
+]);
 
-export const Headline = styled.h2('headline');
+export const MetaInformation = compose.div(() => [
+  'flex', //
+  'flex-row',
+  'gap-3',
+]);
 
-export const MetaInformation = styled.div('meta-information');
-
-export const MetaInformationItem = styled.div('meta-information-item');
+export const MetaInformationItem = compose.div(() => [
+  'flex', //
+  'flex-row',
+  'gap-1',
+]);

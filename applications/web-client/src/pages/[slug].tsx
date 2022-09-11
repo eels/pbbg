@@ -1,4 +1,3 @@
-import ContentWrapper from 'components/atoms/ContentWrapper';
 import Head from 'next/head';
 import MarkdownRenderer from 'components/atoms/MarkdownRenderer';
 import fs from 'fs';
@@ -21,9 +20,7 @@ export default function Auxiliary({ content, data }: AuxiliaryProps) {
       <Head>
         <title>{titleify(data.title)}</title>
       </Head>
-      <ContentWrapper>
-        <MarkdownRenderer content={content} />
-      </ContentWrapper>
+      <MarkdownRenderer content={content} />
     </Fragment>
   );
 }

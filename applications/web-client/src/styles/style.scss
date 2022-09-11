@@ -1,15 +1,12 @@
-// --- Shared -----------------------------------
+// --- Tailwind ---------------------------------
 
-@import './shared';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-// --- Generic ----------------------------------
+// --- Generics ---------------------------------
 
-@import './generics/box-sizing';
 @import './generics/font-face';
-@import './generics/reset';
-@import './generics/root';
-@import './generics/selection';
-@import './generics/typography';
 
 // --- Elements ---------------------------------
 

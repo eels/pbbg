@@ -1,6 +1,8 @@
-import styles from 'components/atoms/Button/button.module.scss';
-import { create } from 'chic-modules';
+import { compose } from 'tailwind-compose';
 
-const styled = create(styles);
-
-export const Button = styled.div.attrs({ role: 'button' })('button');
+export const Button = compose.button(() => [
+  'text-white', //
+  'bg-green-600',
+  'py-2',
+  'px-6',
+]);

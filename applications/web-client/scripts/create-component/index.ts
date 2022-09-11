@@ -1,7 +1,7 @@
 import fs from 'fs';
 import inquirer from 'inquirer';
 import path from 'path';
-import { paramCase, pascalCase } from 'change-case';
+import { pascalCase } from 'change-case';
 import { questions } from 'create-component/data/questions';
 
 function getComponentTemplateContent(filename: string) {
@@ -10,10 +10,9 @@ function getComponentTemplateContent(filename: string) {
 
 function getComponentTemplateMap() {
   return {
-    'component.stories.template': '%filename.stories.tsx',
+    'index.stories.template': 'index.stories.tsx',
     'index.template': 'index.tsx',
-    'styled.template': 'styled.tsx',
-    'styles.module.template': '%filename.module.scss',
+    'styled.template': 'styled.ts',
   };
 }
 
@@ -33,7 +32,6 @@ function writeComponentToDirectory(path: string, content: string) {
 
 async function createComponent() {
   const answers = await inquirer.prompt(questions);
-  const componentFilename = paramCase(answers.name);
   const componentName = pascalCase(answers.name);
   const componentType = answers.type.toLowerCase();
   const directory = path.join(process.cwd(), 'src/components', componentType, componentName);
@@ -44,7 +42,6 @@ async function createComponent() {
 
   const dynamicVariablesMap = {
     '%!type': pascalCase(componentType),
-    '%filename': componentFilename,
     '%name': componentName,
     '%type': componentType,
   };

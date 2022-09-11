@@ -1,6 +1,6 @@
-import styles from 'components/atoms/Container/container.module.scss';
-import { create } from 'chic-modules';
+import { compose } from 'tailwind-compose';
 
-const styled = create(styles);
-
-export const Container = styled.div('container');
+export const Container = compose.div(() => [
+  'container', //
+  'mx-auto',
+]);

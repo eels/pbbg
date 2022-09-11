@@ -1,7 +1,6 @@
 import 'styles/style.scss';
 import Container from 'components/atoms/Container';
 import Head from 'next/head';
-import Layout from 'components/atoms/Layout';
 import { Fragment, useEffect } from 'react';
 import { IS_PRODUCTION, SERVER_DOMAIN, WEB_CLIENT_DOMAIN } from 'config/constants';
 import { description, name, theme, title } from 'resources/strings/seo';
@@ -43,11 +42,9 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <link href='/site.webmanifest' rel='manifest' />
         <link href='/humans.txt' rel='author' />
       </Head>
-      <Layout>
-        <Container>
-          <Component {...pageProps} />
-        </Container>
-      </Layout>
+      <Container>
+        <Component {...pageProps} />
+      </Container>
     </Fragment>
   );
 }

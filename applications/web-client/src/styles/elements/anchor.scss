@@ -1,6 +1,8 @@
-a,
-a:active,
-a:visited {
-  color: $palette--green-500;
-  text-decoration: none;
+@layer base {
+  a,
+  a:active,
+  a:visited {
+    color: theme('colors.green.600');
+    text-decoration: none;
+  }
 }

@@ -1,6 +1,5 @@
 import BlogHeader from 'components/atoms/BlogHeader';
 import BlogPagination from 'components/atoms/BlogPagination';
-import ContentWrapper from 'components/atoms/ContentWrapper';
 import Link from 'next/link';
 import MarkdownRenderer from 'components/atoms/MarkdownRenderer';
 import { Fragment } from 'react';
@@ -19,13 +18,13 @@ export default function BlogIndex({ currentPage, posts, totalPages }: BlogIndexP
   return (
     <Fragment>
       {posts.map((post) => (
-        <ContentWrapper key={post.data.slug}>
+        <div key={post.data.slug}>
           <BlogHeader data={post.data} />
           <MarkdownRenderer content={post.content.preview} />
           <Link href={`/blog/post/${post.data.slug}`}>
             <a>Read more</a>
           </Link>
-        </ContentWrapper>
+        </div>
       ))}
       <BlogPagination current={currentPage} total={totalPages} />
     </Fragment>

@@ -1,3 +1,5 @@
-html {
-  height: 100%;
+@layer base {
+  html {
+    min-height: theme('height.full');
+  }
 }
