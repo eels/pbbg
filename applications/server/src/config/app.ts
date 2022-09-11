@@ -57,8 +57,8 @@ export const http: ServerConfig = {
     httpOnly: true,
     maxAge: '2h',
     path: '/',
-    sameSite: false,
-    secure: false,
+    sameSite: true,
+    secure: true,
   },
 
   /*

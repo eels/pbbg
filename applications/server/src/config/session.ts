@@ -1,5 +1,6 @@
 import Application from '@ioc:Adonis/Core/Application';
 import Env from '@ioc:Adonis/Core/Env';
+import { computeCookieName } from 'utilities/cookie';
 import { sessionConfig } from '@adonisjs/session/build/config';
 
 export default sessionConfig({
@@ -45,7 +46,7 @@ export default sessionConfig({
   cookie: {
     httpOnly: true,
     path: '/',
-    sameSite: false,
+    sameSite: true,
   },
 
   /*
@@ -57,7 +58,7 @@ export default sessionConfig({
   |
   */
 
-  cookieName: 'adonis-session',
+  cookieName: computeCookieName('adonis-session'),
 
   /*
   |--------------------------------------------------------------------------
