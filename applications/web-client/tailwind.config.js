@@ -11,7 +11,9 @@ module.exports = {
 
   theme: {
     extend: {
-      sans: ['Roboto', ...defaultTheme.fontFamily.sans],
+      fontFamily: {
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
+      },
     },
   },
 };

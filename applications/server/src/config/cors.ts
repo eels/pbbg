@@ -28,7 +28,7 @@ const corsConfig: CorsConfig = {
   |
   */
 
-  enabled: false,
+  enabled: true,
 
   // You can also use a function that return true or false.
   // enabled: (request) => request.url().startsWith('/api')
@@ -128,7 +128,7 @@ const corsConfig: CorsConfig = {
   |
   */
 
-  origin: true,
+  origin: '*',
 };
 
 export default corsConfig;

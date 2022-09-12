@@ -21,6 +21,8 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
-    "react/self-closing-comp": "error"
+    "react/self-closing-comp": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "react-hooks/rules-of-hooks": "off"
   }
 }

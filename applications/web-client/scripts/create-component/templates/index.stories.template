@@ -1,10 +1,12 @@
-import %name, { %nameProps } from 'components/%type/%name';
+import %name from 'components/%type/%name';
+import type { %nameProps } from 'components/%type/%name';
+import type { Story } from '@storybook/react';
 
 export default {
   component: %name,
   title: 'Components/%!type/%name',
 };
 
-export const Default = (args: %nameProps) => <%name {...args} />;
+export const Default: Story<%nameProps> = (args) => <%name {...args} />;
 
 Default.args = {};

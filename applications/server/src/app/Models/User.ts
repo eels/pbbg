@@ -3,7 +3,7 @@ import { BaseModel, beforeSave, column } from '@ioc:Adonis/Lucid/Orm';
 import type { DateTime } from 'luxon';
 
 export default class User extends BaseModel {
-  @column({ isPrimary: true })
+  @column({ isPrimary: true, serializeAs: null })
   public id: number;
 
   @column()
@@ -12,7 +12,7 @@ export default class User extends BaseModel {
   @column({ serializeAs: null })
   public password: string;
 
-  @column()
+  @column({ serializeAs: null })
   public rememberMeToken?: string;
 
   @column.dateTime({ autoCreate: true })

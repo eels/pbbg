@@ -1,9 +1,8 @@
 import * as Styled from 'components/atoms/Button/styled';
+import type { ButtonHTMLAttributes } from 'react';
 
-export interface ButtonProps {
-  copy: string;
-}
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export default function Button({ copy }: ButtonProps) {
-  return <Styled.Button>{copy}</Styled.Button>;
+export default function Button({ children }: ButtonProps) {
+  return <Styled.Button>{children}</Styled.Button>;
 }

@@ -13,3 +13,11 @@ export const WEB_CLIENT_DOMAIN = `${PROTOCOL}://${process.env.NEXT_PUBLIC_WEB_CL
 // --- Blog -------------------------------------
 
 export const POSTS_PER_PAGE = 1;
+
+// --- API Auth Routes --------------------------
+
+export const API_LOGIN_ROUTE = '/login';
+
+export const API_LOGOUT_ROUTE = '/logout';
+
+export const API_USER_ROUTE = '/user';
