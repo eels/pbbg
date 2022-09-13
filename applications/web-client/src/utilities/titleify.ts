@@ -1,5 +1,3 @@
-import { title } from 'resources/strings/seo';
-
-export function titleify(value: string) {
+export function titleify(value: string, title: string) {
   return `${value} | ${title}`;
 }

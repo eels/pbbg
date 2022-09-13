@@ -1,6 +1,7 @@
 import * as Styled from 'components/atoms/BlogPagination/styled';
 import ConditionalRender from 'components/utilities/ConditionalRender';
 import Link from 'next/link';
+import { useResourceString } from 'hooks/use-resource-string';
 
 interface BlogPaginationProps {
   current: number;
@@ -8,6 +9,8 @@ interface BlogPaginationProps {
 }
 
 export default function BlogPagination({ current, total }: BlogPaginationProps) {
+  const { t } = useResourceString();
+
   const potentialPrevHref = `/blog/${current !== 2 ? current - 1 : ''}`;
   const potentialNextHref = `/blog/${current + 1}`;
 
@@ -16,14 +19,14 @@ export default function BlogPagination({ current, total }: BlogPaginationProps) 
       <ConditionalRender condition={current !== 1}>
         {() => (
           <Link href={potentialPrevHref}>
-            <a>Previous</a>
+            <a>{t('blog:pagination.previous')}</a>
           </Link>
         )}
       </ConditionalRender>
       <ConditionalRender condition={current !== total}>
         {() => (
           <Link href={potentialNextHref}>
-            <a>Next</a>
+            <a>{t('blog:pagination.next')}</a>
           </Link>
         )}
       </ConditionalRender>

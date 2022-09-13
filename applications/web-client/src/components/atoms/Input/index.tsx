@@ -6,11 +6,11 @@ import type { HTMLInputTypeAttribute } from 'react';
 export interface InputProps {
   autoComplete?: string;
   label: string;
-  type: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  const { autoComplete, label, type } = props;
+  const { autoComplete, label, type = 'text' } = props;
   const name = paramCase(label);
 
   return (

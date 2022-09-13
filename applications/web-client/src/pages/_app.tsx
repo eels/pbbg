@@ -3,11 +3,13 @@ import Container from 'components/atoms/Container';
 import Head from 'next/head';
 import { Fragment, useEffect } from 'react';
 import { IS_PRODUCTION, SERVER_DOMAIN, WEB_CLIENT_DOMAIN } from 'config/constants';
-import { description, name, theme, title } from 'resources/strings/seo';
+import { appWithTranslation } from 'next-i18next';
+import { useResourceString } from 'hooks/use-resource-string';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 
-export default function CustomApp({ Component, pageProps }: AppProps) {
+export function CustomApp({ Component, pageProps }: AppProps) {
+  const { t } = useResourceString();
   const router = useRouter();
   const pathname = router.asPath.replace(/\/$/, '');
   const criticalFont = '/fonts/roboto-400.woff2';
@@ -26,11 +28,11 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <meta charSet='utf-8' />
         <meta content='ie=edge' httpEquiv='x-ua-compatible' />
         <meta content='width=device-width, initial-scale=1, shrink-to-fit=no' name='viewport' />
-        <title>{title}</title>
-        <meta content={description.join(' ')} name='description' />
+        <title>{t('seo:title')}</title>
+        <meta content={t('seo:description')} name='description' />
         <meta content='noindex,nofollow,noimageindex' name='robots' />
-        <meta content={name} name='application-name' />
-        <meta content={theme} name='theme-color' />
+        <meta content={t('seo:application_name')} name='application-name' />
+        <meta content={t('seo:theme_color')} name='theme-color' />
         <link as='font' crossOrigin='true' href={criticalFont} rel='preload' type='font/woff2' />
         <link crossOrigin='true' href={SERVER_DOMAIN} rel='preconnect' />
         <link href={SERVER_DOMAIN} rel='dns-prefetch' />
@@ -48,3 +50,5 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
     </Fragment>
   );
 }
+
+export default appWithTranslation(CustomApp);

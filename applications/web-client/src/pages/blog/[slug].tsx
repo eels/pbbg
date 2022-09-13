@@ -5,6 +5,8 @@ import MarkdownRenderer from 'components/atoms/MarkdownRenderer';
 import { Fragment } from 'react';
 import { POSTS_PER_PAGE } from 'config/constants';
 import { getAllPosts } from 'services/BlogPostService';
+import { useResourceString } from 'hooks/use-resource-string';
+import { withTranslations } from 'src/config/translations';
 import type { GetStaticPropsContext } from 'next';
 import type { Post } from 'types/post';
 
@@ -15,6 +17,8 @@ interface BlogIndexProps {
 }
 
 export default function BlogIndex({ currentPage, posts, totalPages }: BlogIndexProps) {
+  const { t } = useResourceString();
+
   return (
     <Fragment>
       {posts.map((post) => (
@@ -22,7 +26,7 @@ export default function BlogIndex({ currentPage, posts, totalPages }: BlogIndexP
           <BlogHeader data={post.data} />
           <MarkdownRenderer content={post.content.preview} />
           <Link href={`/blog/post/${post.data.slug}`}>
-            <a>Read more</a>
+            <a>{t('blog:continue_reading')}</a>
           </Link>
         </div>
       ))}
@@ -42,7 +46,7 @@ export function getStaticPaths() {
   };
 }
 
-export function getStaticProps({ params }: GetStaticPropsContext) {
+export async function getStaticProps({ locale, params }: GetStaticPropsContext) {
   const slug = params?.slug || '1';
   const constructedSlug = Array.isArray(slug) ? slug.join('') : slug;
   const offset = parseInt(constructedSlug);
@@ -50,11 +54,11 @@ export function getStaticProps({ params }: GetStaticPropsContext) {
   const pages = Math.ceil(posts.length / POSTS_PER_PAGE);
   const pointer = (offset - 1) * POSTS_PER_PAGE;
 
-  return {
+  return await withTranslations(locale, {
     props: {
       currentPage: offset,
       posts: posts.slice(pointer, pointer + POSTS_PER_PAGE),
       totalPages: pages,
     },
-  };
+  });
 }

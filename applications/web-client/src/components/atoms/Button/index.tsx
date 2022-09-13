@@ -3,6 +3,6 @@ import type { ButtonHTMLAttributes } from 'react';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export default function Button({ children }: ButtonProps) {
-  return <Styled.Button>{children}</Styled.Button>;
+export default function Button({ children, ...props }: ButtonProps) {
+  return <Styled.Button {...props}>{children}</Styled.Button>;
 }

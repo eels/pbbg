@@ -1,6 +1,7 @@
 import * as Styled from 'components/atoms/BlogHeader/styled';
 import Emoji from 'a11y-react-emoji';
 import { format, parse } from 'date-fns';
+import { useResourceString } from 'hooks/use-resource-string';
 import type { PostData } from 'types/post';
 
 interface BlogHeaderProps {
@@ -8,6 +9,7 @@ interface BlogHeaderProps {
 }
 
 export default function BlogHeader({ data }: BlogHeaderProps) {
+  const { t } = useResourceString();
   const parsedDate = parse(data.date.toString(), 'yyyyMMddHHmm', new Date());
 
   return (
@@ -20,7 +22,7 @@ export default function BlogHeader({ data }: BlogHeaderProps) {
         </Styled.MetaInformationItem>
         <Styled.MetaInformationItem>
           <Emoji symbol='⏱' />
-          <div>{data.timeToRead} minute read</div>
+          <div>{t('blog:ttr_label', { time: data.timeToRead })}</div>
         </Styled.MetaInformationItem>
       </Styled.MetaInformation>
     </Styled.Wrapper>

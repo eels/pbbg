@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { description, name, theme, title } from 'resources/strings/seo';
+import seo from 'data/locales/en/seo.json';
 import { format } from 'date-fns';
 
 function getComponentTemplateContent(filename: string) {
@@ -36,11 +36,11 @@ function createStaticResources() {
   }
 
   const dynamicVariablesMap = {
-    '%appname': name,
+    '%appname': seo.application_name,
     '%datetime': format(new Date(), 'yyyy/MM/dd HH:mm'),
-    '%description': description[0],
-    '%theme': theme,
-    '%title': title,
+    '%description': seo.description_short,
+    '%theme': seo.theme_color,
+    '%title': seo.title,
   };
 
   const templates = Object.entries(getComponentTemplateMap());
