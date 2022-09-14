@@ -4,5 +4,9 @@ import type { FormHTMLAttributes } from 'react';
 export interface FormProps extends FormHTMLAttributes<HTMLFormElement> {}
 
 export default function Form({ children, ...props }: FormProps) {
-  return <Styled.Form {...props}>{children}</Styled.Form>;
+  return (
+    <Styled.Form noValidate {...props}>
+      {children}
+    </Styled.Form>
+  );
 }

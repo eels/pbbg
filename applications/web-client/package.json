@@ -51,7 +51,8 @@
     "workbox-cacheable-response": "^6.5.4",
     "workbox-expiration": "^6.5.4",
     "workbox-routing": "^6.5.4",
-    "workbox-strategies": "^6.5.4"
+    "workbox-strategies": "^6.5.4",
+    "yup": "^0.32.11"
   },
   "peerDependencies": {
     "eslint": "*",

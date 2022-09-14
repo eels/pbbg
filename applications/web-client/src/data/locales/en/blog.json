@@ -1,6 +1,6 @@
 {
-  "continue_reading": "Continue reading",
+  "label.continue_reading": "Continue reading",
+  "label.ttr": "{{time}} minute read",
   "pagination.next": "Next",
-  "pagination.previous": "Previous",
-  "ttr_label": "{{time}} minute read"
+  "pagination.previous": "Previous"
 }

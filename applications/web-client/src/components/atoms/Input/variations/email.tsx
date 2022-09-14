@@ -1,14 +1,24 @@
 import Input from 'components/atoms/Input';
 import { forwardRef } from 'react';
 
+import type { InputProps } from 'components/atoms/Input';
+
 export interface EmailInputProps {
+  error?: string;
   label: string;
 }
 
 export const EmailInput = forwardRef<HTMLInputElement, EmailInputProps>((props, ref) => {
-  const { label } = props;
+  const { error, label } = props;
 
-  return <Input ref={ref} autoComplete='email' label={label} type='email' />;
+  const forwardedInputProps: InputProps = {
+    autoComplete: 'email',
+    error,
+    label,
+    type: 'email',
+  };
+
+  return <Input ref={ref} {...forwardedInputProps} />;
 });
 
 EmailInput.displayName = 'EmailInput';

@@ -12,13 +12,20 @@ export const Label = compose.label(() => [
   'text-sm',
 ]);
 
-export const Input = compose.input(() => [
+export const Input = compose.input((conditional) => [
   'block', //
   'border',
-  'border-neutral-400',
   'py-2',
   'px-4',
   'w-full',
   'focus:outline-none',
-  'focus:border-green-600',
+  conditional('border-neutral-400', ({ hasError }) => !hasError),
+  conditional('border-red-600', ({ hasError }) => hasError),
+  conditional('focus:border-green-600', ({ hasError }) => !hasError),
+  conditional('focus:border-red-600', ({ hasError }) => hasError),
+]);
+
+export const Error = compose.div(() => [
+  'text-sm', //
+  'text-red-600',
 ]);

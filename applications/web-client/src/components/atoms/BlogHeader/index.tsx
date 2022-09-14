@@ -22,7 +22,7 @@ export default function BlogHeader({ data }: BlogHeaderProps) {
         </Styled.MetaInformationItem>
         <Styled.MetaInformationItem>
           <Emoji symbol='⏱' />
-          <div>{t('blog:ttr_label', { time: data.timeToRead })}</div>
+          <div>{t('blog:label.ttr', { time: data.timeToRead })}</div>
         </Styled.MetaInformationItem>
       </Styled.MetaInformation>
     </Styled.Wrapper>

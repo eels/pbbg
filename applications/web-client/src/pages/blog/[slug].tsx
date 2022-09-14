@@ -26,7 +26,7 @@ export default function BlogIndex({ currentPage, posts, totalPages }: BlogIndexP
           <BlogHeader data={post.data} />
           <MarkdownRenderer content={post.content.preview} />
           <Link href={`/blog/post/${post.data.slug}`}>
-            <a>{t('blog:continue_reading')}</a>
+            <a>{t('blog:label.continue_reading')}</a>
           </Link>
         </div>
       ))}
