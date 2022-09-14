@@ -27,4 +27,11 @@ export default class User extends BaseModel {
       user.password = await Hash.make(user.password);
     }
   }
+
+  @beforeSave()
+  public static async ensureCaseInsensitivity(user: User) {
+    if (user.$dirty.email) {
+      user.email = user.email.toLowerCase();
+    }
+  }
 }

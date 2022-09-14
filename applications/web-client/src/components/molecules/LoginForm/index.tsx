@@ -27,7 +27,7 @@ export default function LoginForm({ handleLogin }: LoginFormProps) {
     event.preventDefault();
 
     const payload = {
-      email: email?.current?.value,
+      email: email?.current?.value?.toLowerCase(),
       password: password?.current?.value,
     };
 
