@@ -12,3 +12,10 @@ export const Default: Story<ButtonProps> = (args) => <Button {...args} />;
 Default.args = {
   children: 'Button',
 };
+
+export const Processing: Story<ButtonProps> = (args) => <Button {...args} />;
+
+Default.args = {
+  children: 'Button',
+  isProcessing: true,
+};

@@ -14,6 +14,7 @@ out
 public/humans.txt
 public/site.webmanifest
 public/sw.js
+src/types/icon.ts
 
 # --- Coverage ----------------------------------
 

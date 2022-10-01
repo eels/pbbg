@@ -19,6 +19,7 @@ export interface LoginFormProps {
 export default function LoginForm({ handleLogin }: LoginFormProps) {
   const { t } = useResourceString();
   const [errors, setErrors] = useState<FormErrors>({});
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
@@ -30,6 +31,8 @@ export default function LoginForm({ handleLogin }: LoginFormProps) {
       email: email?.current?.value?.toLowerCase(),
       password: password?.current?.value,
     };
+
+    setIsProcessing(true);
 
     const [validationError] = await useTryAsync(() => {
       return AuthLoginValidator(t).validate(payload, { abortEarly: false });
@@ -49,6 +52,8 @@ export default function LoginForm({ handleLogin }: LoginFormProps) {
       ...(hasNotFoundError && createValidationError('email', t('auth:error.email.not_found'))),
       ...extractValidationErrors(validationError as ValidationError),
     });
+
+    setIsProcessing(false);
   };
 
   return (
@@ -63,7 +68,7 @@ export default function LoginForm({ handleLogin }: LoginFormProps) {
         error={errors.password?.message}
         label={t('auth:form.login.field.password')}
       />
-      <Button>{t('auth:form.login.button.submit')}</Button>
+      <Button isProcessing={isProcessing}>{t('auth:form.login.button.submit')}</Button>
     </Form>
   );
 }
