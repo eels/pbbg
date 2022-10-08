@@ -1,7 +1,7 @@
 import AuthenticationException from 'App/Exceptions/AuthenticationException';
 import ThrottledException from 'App/Exceptions/ThrottledException';
 import { Limiter } from '@adonisjs/limiter/build/services';
-import { useTryAsync } from 'no-try';
+import { noTryAsync } from 'no-try';
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 import type { RuntimeConfig } from '@adonisjs/limiter/build/src/contracts';
 
@@ -23,7 +23,7 @@ export default class LoginController {
       throw new ThrottledException();
     }
 
-    const [error] = await useTryAsync(() => {
+    const [error] = await noTryAsync(() => {
       return ctx.auth.use('api').attempt(email, password);
     });
 

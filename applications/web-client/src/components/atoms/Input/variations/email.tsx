@@ -1,6 +1,5 @@
 import Input from 'components/atoms/Input';
 import { forwardRef } from 'react';
-
 import type { InputProps } from 'components/atoms/Input';
 
 export interface EmailInputProps {

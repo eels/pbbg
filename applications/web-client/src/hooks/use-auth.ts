@@ -2,9 +2,9 @@ import axios from 'config/axios';
 import useSWRImmutable from 'swr/immutable';
 import { API_USER_ROUTE } from 'config/constants';
 import { handleLogin, handleLogout } from 'utilities/authentication';
+import { noTryAsync } from 'no-try';
 import { useCallback, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useTryAsync } from 'no-try';
 
 export interface AuthOptions {
   guard: 'guest' | 'member';
@@ -15,7 +15,7 @@ export function useAuth({ guard }: AuthOptions) {
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchUserData = useCallback(async () => {
-    const [error, response] = await useTryAsync(() => axios.get(API_USER_ROUTE));
+    const [error, response] = await noTryAsync(() => axios.get(API_USER_ROUTE));
 
     setIsLoading(false);
 
@@ -24,7 +24,7 @@ export function useAuth({ guard }: AuthOptions) {
     }
 
     return response.data.DATA;
-  }, []);
+  }, [setIsLoading]);
 
   const { data, error, mutate } = useSWRImmutable(API_USER_ROUTE, fetchUserData, {
     errorRetryCount: 0,
@@ -38,7 +38,7 @@ export function useAuth({ guard }: AuthOptions) {
     if (guard === 'member' && !data && error && router.pathname !== '/') {
       router.replace('/');
     }
-  }, [data, error, guard]);
+  }, [data, error, router, guard]);
 
   return {
     handleLogin: handleLogin(router, mutate),

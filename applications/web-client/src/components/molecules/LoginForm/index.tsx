@@ -5,18 +5,18 @@ import PasswordInput from 'components/atoms/Input/variations/password';
 import { AuthLoginValidator } from 'validators/authentication';
 import { createValidationError } from 'utilities/create-validation-error';
 import { extractValidationErrors } from 'utilities/extract-validation-errors';
-import { useRef, useState } from 'react';
+import { noTryAsync } from 'no-try';
+import { useCallback, useRef, useState } from 'react';
 import { useResourceString } from 'hooks/use-resource-string';
-import { useTryAsync } from 'no-try';
 import type { FormErrors } from 'types/form-error';
 import type { FormEvent } from 'react';
 import type { ValidationError } from 'yup';
 
 export interface LoginFormProps {
-  handleLogin: (payload: Record<string, any>) => Promise<void>;
+  onLogin: (payload: Record<string, any>) => Promise<void>;
 }
 
-export default function LoginForm({ handleLogin }: LoginFormProps) {
+export default function LoginForm({ onLogin }: LoginFormProps) {
   const { t } = useResourceString();
   const [errors, setErrors] = useState<FormErrors>({});
   const [isProcessing, setIsProcessing] = useState(false);
@@ -24,37 +24,40 @@ export default function LoginForm({ handleLogin }: LoginFormProps) {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    async (event: FormEvent) => {
+      event.preventDefault();
 
-    const payload = {
-      email: email?.current?.value?.toLowerCase(),
-      password: password?.current?.value,
-    };
+      const payload = {
+        email: email?.current?.value?.toLowerCase(),
+        password: password?.current?.value,
+      };
 
-    setIsProcessing(true);
+      setIsProcessing(true);
 
-    const [validationError] = await useTryAsync(() => {
-      return AuthLoginValidator(t).validate(payload, { abortEarly: false });
-    });
+      const [validationError] = await noTryAsync(() => {
+        return AuthLoginValidator(t).validate(payload, { abortEarly: false });
+      });
 
-    const [authError] = await useTryAsync(() => {
-      if (validationError) {
-        throw validationError;
-      }
+      const [authError] = await noTryAsync(() => {
+        if (validationError) {
+          throw validationError;
+        }
 
-      return handleLogin(payload);
-    });
+        return onLogin(payload);
+      });
 
-    const hasNotFoundError = validationError === null && authError !== null;
+      const hasNotFoundError = validationError === null && authError !== null;
 
-    setErrors({
-      ...(hasNotFoundError && createValidationError('email', t('auth:error.email.not_found'))),
-      ...extractValidationErrors(validationError as ValidationError),
-    });
+      setErrors({
+        ...(hasNotFoundError && createValidationError('email', t('auth:error.email.not_found'))),
+        ...extractValidationErrors(validationError as ValidationError),
+      });
 
-    setIsProcessing(false);
-  };
+      setIsProcessing(false);
+    },
+    [email, password, onLogin, setErrors, setIsProcessing, t],
+  );
 
   return (
     <Form onSubmit={handleSubmit}>

@@ -1,12 +1,12 @@
 import axios from 'config/axios';
 import { API_LOGIN_ROUTE, API_LOGOUT_ROUTE } from 'config/constants';
-import { useTryAsync } from 'no-try';
+import { noTryAsync } from 'no-try';
 import type { KeyedMutator } from 'swr';
 import type { NextRouter } from 'next/router';
 
 export function handleLogin<T = any>(router: NextRouter, mutate?: KeyedMutator<T>) {
   return async (payload: Record<string, any>) => {
-    const [error] = await useTryAsync(() => axios.post(API_LOGIN_ROUTE, payload));
+    const [error] = await noTryAsync(() => axios.post(API_LOGIN_ROUTE, payload));
 
     if (error) {
       throw new Error(error.message);

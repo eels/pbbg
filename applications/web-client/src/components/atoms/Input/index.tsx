@@ -1,6 +1,6 @@
 import * as Styled from 'components/atoms/Input/styled';
 import ConditionalRender from 'components/utilities/ConditionalRender';
-import { forwardRef } from 'react';
+import { forwardRef, useId } from 'react';
 import { paramCase } from 'change-case';
 import type { HTMLInputTypeAttribute } from 'react';
 
@@ -13,7 +13,8 @@ export interface InputProps {
 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { autoComplete: ac, error, label, type = 'text' } = props;
-  const name = paramCase(label);
+  const identifier = useId();
+  const name = [identifier, paramCase(label)].join('-');
   const hasError = error !== undefined;
 
   return (

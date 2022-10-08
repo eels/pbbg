@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <ConditionalRender condition={user === undefined}>
-        {() => <LoginForm handleLogin={handleLogin} />}
+        {() => <LoginForm onLogin={handleLogin} />}
       </ConditionalRender>
 
       <ConditionalRender condition={user !== undefined}>
