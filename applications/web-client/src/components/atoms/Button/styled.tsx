@@ -6,7 +6,7 @@ export interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
   isProcessing?: boolean;
 }
 
-export const Button = compose.button((conditional) => [
+export const Button = compose.button<StyledButtonProps>((conditional) => [
   'text-white', //
   'text-center',
   'bg-green-600',

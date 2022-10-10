@@ -1,4 +1,5 @@
 import { compose } from 'tailwind-compose';
+import type { InputHTMLAttributes } from 'react';
 
 export const Wrapper = compose.div(() => [
   'flex', //
@@ -12,7 +13,11 @@ export const Label = compose.label(() => [
   'text-sm',
 ]);
 
-export const Input = compose.input((conditional) => [
+export interface StyledInput extends InputHTMLAttributes<HTMLInputElement> {
+  hasError: boolean;
+}
+
+export const Input = compose.input<StyledInput, HTMLInputElement>((conditional) => [
   'block', //
   'border',
   'py-2',

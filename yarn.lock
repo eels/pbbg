@@ -15043,10 +15043,10 @@ table@^6.8.0:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tailwind-compose@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/tailwind-compose/-/tailwind-compose-0.5.2.tgz#8c604a0ac182191ba454e7ad0bbf7cb84a1a92cd"
-  integrity sha512-wFG0YrXUunUIlrd3Nb5JjQNX253baN7sgtU9JWfrckpnIWOWWCdj3YmhtxUaW2udJcpLvAQME1oXQxpKRqpUgg==
+tailwind-compose@^0.7.1:
+  version "0.7.1"
+  resolved "https://registry.yarnpkg.com/tailwind-compose/-/tailwind-compose-0.7.1.tgz#0642ecbb1bff4c6380f3e3d71875b12a423f98b7"
+  integrity sha512-QkckWpih+ynS+XEUiy8rpW++F49v+zfLb5YRjiDhemLvRJ7vN+Yt5Ed2RdrXeR1iKJ5ujlEepOkoVDGtV4/59w==
   dependencies:
     html-attributes "^1.1.0"
     svg-attributes "^1.0.0"

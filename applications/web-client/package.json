@@ -106,7 +106,7 @@
     "svgo": "^2.8.0",
     "storybook-addon-next": "^1.4.4",
     "tailwindcss": "^3.1.8",
-    "tailwind-compose": "^0.5.2",
+    "tailwind-compose": "^0.7.1",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0"
