@@ -12,10 +12,9 @@ runs:
         node-version: lts/gallium
 
     - name: Retrieve Yarn cache directory
-      id: yarn-cache
       shell: bash
       run: |
-        echo "::set-output name=dir::$(yarn cache dir)"
+        echo YARN_CACHE_DIR="$(yarn cache dir)" >> $GITHUB_ENV
 
     - name: Use `.env` cache
       uses: actions/cache@v3
@@ -28,7 +27,7 @@ runs:
       uses: actions/cache@v3
       with:
         key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        path: ${{ steps.yarn-cache.outputs.dir }}
+        path: ${{ env.YARN_CACHE_DIR }}
         restore-keys: ${{ runner.os }}-yarn-
 
     - name: Install dependencies
