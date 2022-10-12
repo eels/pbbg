@@ -97,4 +97,5 @@ jobs:
 
       - name: Verify code TypeScript types
         run: |
+          yarn workspace @pbbg/web-client create:icon-type
           yarn typescript:verify
