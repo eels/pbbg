@@ -7,6 +7,7 @@ runs:
 
   steps:
     - name: Create application `.env` file
+      shell: bash
       run: |
         touch .env
         echo APP_KEY="${{ inputs.APP_KEY }}" >> .env
