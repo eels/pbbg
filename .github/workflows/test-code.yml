@@ -67,6 +67,10 @@ jobs:
           yarn clean
           yarn build
 
+      - name: Run Puppeteer install script
+        run: |
+          node node_modules/puppeteer/install.js
+
       - name: Test
         run: |
           yarn workspace @pbbg/web-client test:a11y
