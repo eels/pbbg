@@ -13,6 +13,7 @@ runs:
 
     - name: Retrieve Yarn cache directory
       id: yarn-cache
+      shell: bash
       run: |
         echo "::set-output name=dir::$(yarn cache dir)"
 
@@ -31,6 +32,7 @@ runs:
         restore-keys: ${{ runner.os }}-yarn-
 
     - name: Install dependencies
+      shell: bash
       run: |
         yarn install --ignore-scripts --prefer-offline
         yarn turbo run prepare
