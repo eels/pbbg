@@ -34,8 +34,8 @@ jobs:
           DB_USERNAME: ${{ secrets.DB_USERNAME }}
           SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
 
-  verify:
-    name: Verify Code Standard
+  verify-build:
+    name: Verify Build
     needs: variables
     runs-on: ubuntu-latest
 
@@ -51,7 +51,50 @@ jobs:
           yarn clean
           yarn build
 
-      - name: Verify code standard
+  verify-format:
+    name: Verify Formatting
+    needs: variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/actions/setup-workflow
+
+      - name: Verify code formatting
         run: |
           yarn format
+
+  verify-lint:
+    name: Verify Linting
+    needs: variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/actions/setup-workflow
+
+      - name: Verify code linting
+        run: |
           yarn lint
+
+  verify-types:
+    name: Verify Types
+    needs: variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/actions/setup-workflow
+
+      - name: Verify code TypeScript types
+        run: |
+          yarn typescript:verify
