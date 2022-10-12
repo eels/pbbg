@@ -1,0 +1,36 @@
+name: Prepare Application Environment Variables
+
+description: Create the required `.env` file from provided secrets
+
+runs:
+  using: composite
+
+  steps:
+    - name: Create application `.env` file
+      run: |
+        touch .env
+        echo APP_KEY="${{ inputs.APP_KEY }}" >> .env
+        echo APP_NAME="${{ inputs.APP_NAME }}" >> .env
+        echo APP_SERVER_DOMAIN="${{ inputs.APP_SERVER_DOMAIN }}" >> .env
+        echo APP_USE_SECURE_COOKIE_PREFIX="${{ inputs.APP_USE_SECURE_COOKIE_PREFIX }}" >> .env
+        echo APP_WEB_CLIENT_DOMAIN="${{ inputs.APP_WEB_CLIENT_DOMAIN }}" >> .env
+        echo HOST="${{ inputs.HOST }}" >> .env
+        echo NODE_ENV="${{ inputs.NODE_ENV }}" >> .env
+        echo PORT="${{ inputs.PORT }}" >> .env
+        echo SESSION_COOKIE="${{ inputs.SESSION_COOKIE }}" >> .env
+        echo SESSION_DRIVER="${{ inputs.SESSION_DRIVER }}" >> .env
+        echo DRIVE_DISK="${{ inputs.DRIVE_DISK }}" >> .env
+        echo DB_CONNECTION="${{ inputs.DB_CONNECTION }}" >> .env
+        echo DB_NAME="${{ inputs.DB_NAME }}" >> .env
+        echo DB_HOST="${{ inputs.DB_HOST }}" >> .env
+        echo DB_PASSWORD="${{ inputs.DB_PASSWORD }}" >> .env
+        echo DB_PORT="${{ inputs.DB_PORT }}" >> .env
+        echo DB_USERNAME="${{ inputs.DB_USERNAME }}" >> .env
+        echo SENTRY_DSN="${{ inputs.SENTRY_DSN }}" >> .env
+
+    - name: Cache created `.env` file
+      uses: actions/cache@v3
+      with:
+        key: ${{ runner.os }}-env-${{ github.sha }}
+        path: ./.env
+        restore-keys: ${{ runner.os }}-env-

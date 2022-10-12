@@ -10,50 +10,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Create application `.env` file
-        run: |
-          touch .env
-          echo APP_KEY="${{ secrets.APP_KEY }}" >> .env
-          echo APP_NAME="${{ secrets.APP_NAME }}" >> .env
-          echo APP_SERVER_DOMAIN="${{ secrets.APP_SERVER_DOMAIN }}" >> .env
-          echo APP_USE_SECURE_COOKIE_PREFIX="${{ secrets.APP_USE_SECURE_COOKIE_PREFIX }}" >> .env
-          echo APP_WEB_CLIENT_DOMAIN="${{ secrets.APP_WEB_CLIENT_DOMAIN }}" >> .env
-          echo HOST="${{ secrets.HOST }}" >> .env
-          echo NODE_ENV="${{ secrets.NODE_ENV }}" >> .env
-          echo PORT="${{ secrets.PORT }}" >> .env
-          echo SESSION_COOKIE="${{ secrets.SESSION_COOKIE }}" >> .env
-          echo SESSION_DRIVER="${{ secrets.SESSION_DRIVER }}" >> .env
-          echo DRIVE_DISK="${{ secrets.DRIVE_DISK }}" >> .env
-          echo DB_CONNECTION="${{ secrets.DB_CONNECTION }}" >> .env
-          echo DB_NAME="${{ secrets.DB_NAME }}" >> .env
-          echo DB_HOST="${{ secrets.DB_HOST }}" >> .env
-          echo DB_PASSWORD="${{ secrets.DB_PASSWORD }}" >> .env
-          echo DB_PORT="${{ secrets.DB_PORT }}" >> .env
-          echo DB_USERNAME="${{ secrets.DB_USERNAME }}" >> .env
-          echo SENTRY_DSN="${{ secrets.SENTRY_DSN }}" >> .env
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.5.1
-        with:
-          node-version: lts/gallium
-
-      - name: Retrieve Yarn cache directory
-        id: yarn-cache
-        run: |
-          echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Use Yarn cache
-        uses: actions/cache@v2
-        with:
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          restore-keys: ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: |
-          yarn install --ignore-scripts --prefer-offline
+      - name: Setup
+        uses: ./.github/actions/setup-workflow
 
       - name: Install sharp linux binaries
         env:
@@ -66,7 +26,8 @@ jobs:
         env:
           WEB_CLIENT_PUBLIC: applications/web-client/public
         run: |
-          npx imagemin-cli ${{ env.WEB_CLIENT_PUBLIC }}/* --out-dir=${{ env.WEB_CLIENT_PUBLIC }}
+          npx imagemin-cli ${{ env.WEB_CLIENT_PUBLIC }}/* \
+            --out-dir=${{ env.WEB_CLIENT_PUBLIC }}
 
       - name: Build
         env:

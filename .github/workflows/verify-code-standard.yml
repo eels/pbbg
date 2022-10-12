@@ -4,34 +4,44 @@ on:
   push:
 
 jobs:
+  variables:
+    name: Prepare Application Environment Variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup
+        uses: ./.github/actions/prepare-variables
+        with:
+          APP_KEY: ${{ secrets.APP_KEY }}
+          APP_NAME: ${{ secrets.APP_NAME }}
+          APP_SERVER_DOMAIN: ${{ secrets.APP_SERVER_DOMAIN }}
+          APP_USE_SECURE_COOKIE_PREFIX: ${{ secrets.APP_USE_SECURE_COOKIE_PREFIX }}
+          APP_WEB_CLIENT_DOMAIN: ${{ secrets.APP_WEB_CLIENT_DOMAIN }}
+          HOST: ${{ secrets.HOST }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          PORT: ${{ secrets.PORT }}
+          SESSION_COOKIE: ${{ secrets.SESSION_COOKIE }}
+          SESSION_DRIVER: ${{ secrets.SESSION_DRIVER }}
+          DRIVE_DISK: ${{ secrets.DRIVE_DISK }}
+          DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+
   verify:
     name: Verify Code Standard
+    needs: variables
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2.5.1
-        with:
-          node-version: lts/gallium
-
-      - name: Retrieve Yarn cache directory
-        id: yarn-cache
-        run: |
-          echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Use Yarn cache
-        uses: actions/cache@v2
-        with:
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          path: ${{ steps.yarn-cache.outputs.dir }}
-          restore-keys: ${{ runner.os }}-yarn-
-
-      - name: Install dependencies
-        run: |
-          yarn install --ignore-scripts --prefer-offline
+      - name: Setup
+        uses: ./.github/actions/setup-workflow
 
       - name: Build
         run: |
