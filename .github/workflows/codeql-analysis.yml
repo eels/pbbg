@@ -19,9 +19,9 @@ jobs:
           APP_NAME: ${{ secrets.APP_NAME }}
           APP_SERVER_DOMAIN: ${{ secrets.APP_SERVER_DOMAIN }}
           APP_USE_SECURE_COOKIE_PREFIX: ${{ secrets.APP_USE_SECURE_COOKIE_PREFIX }}
-          APP_WEB_CLIENT_DOMAIN: ${{ secrets.APP_WEB_CLIENT_DOMAIN }}
+          APP_WEB_CLIENT_DOMAIN: ${{ secrets.APP_LOCAL_WEB_CLIENT_DOMAIN }}
           HOST: ${{ secrets.HOST }}
-          NODE_ENV: ${{ secrets.NODE_ENV }}
+          NODE_ENV: production
           PORT: ${{ secrets.PORT }}
           SESSION_COOKIE: ${{ secrets.SESSION_COOKIE }}
           SESSION_DRIVER: ${{ secrets.SESSION_DRIVER }}
