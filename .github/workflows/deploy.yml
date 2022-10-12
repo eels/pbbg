@@ -4,8 +4,39 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy_server:
+  variables:
+    name: Prepare Application Environment Variables
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/actions/prepare-variables
+        with:
+          APP_KEY: ${{ secrets.APP_KEY }}
+          APP_NAME: ${{ secrets.APP_NAME }}
+          APP_SERVER_DOMAIN: ${{ secrets.APP_SERVER_DOMAIN }}
+          APP_USE_SECURE_COOKIE_PREFIX: ${{ secrets.APP_USE_SECURE_COOKIE_PREFIX }}
+          APP_WEB_CLIENT_DOMAIN: ${{ secrets.APP_WEB_CLIENT_DOMAIN }}
+          HOST: ${{ secrets.HOST }}
+          NODE_ENV: ${{ secrets.NODE_ENV }}
+          PORT: ${{ secrets.PORT }}
+          SESSION_COOKIE: ${{ secrets.SESSION_COOKIE }}
+          SESSION_DRIVER: ${{ secrets.SESSION_DRIVER }}
+          DRIVE_DISK: ${{ secrets.DRIVE_DISK }}
+          DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+
+  deploy:
     name: Deploy
+    needs: variables
     runs-on: ubuntu-latest
 
     steps:
