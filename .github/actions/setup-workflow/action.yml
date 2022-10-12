@@ -21,7 +21,6 @@ runs:
       with:
         key: ${{ runner.os }}-env-${{ github.sha }}-${{ github.workflow }}
         path: ./.env
-        restore-keys: ${{ runner.os }}-env-
 
     - name: Use Yarn cache
       uses: actions/cache@v3

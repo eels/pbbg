@@ -32,6 +32,5 @@ runs:
     - name: Cache created `.env` file
       uses: actions/cache@v3
       with:
-        key: ${{ runner.os }}-env-${{ github.sha }}
+        key: ${{ runner.os }}-env-${{ github.sha }}-${{ github.workflow }}
         path: ./.env
-        restore-keys: ${{ runner.os }}-env-
