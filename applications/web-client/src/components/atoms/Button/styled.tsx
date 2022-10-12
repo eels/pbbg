@@ -9,8 +9,8 @@ export interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = compose.button<StyledButtonProps>((conditional) => [
   'text-white', //
   'text-center',
-  'bg-green-600',
-  'hover:bg-green-700',
+  'bg-green-700',
+  'hover:bg-green-800',
   'w-full',
   'py-2',
   'px-6',

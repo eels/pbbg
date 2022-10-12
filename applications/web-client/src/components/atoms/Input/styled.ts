@@ -26,7 +26,7 @@ export const Input = compose.input<StyledInput, HTMLInputElement>((conditional) 
   'focus:outline-none',
   conditional('border-neutral-400', ({ hasError }) => !hasError),
   conditional('border-red-600', ({ hasError }) => hasError),
-  conditional('focus:border-green-600', ({ hasError }) => !hasError),
+  conditional('focus:border-green-700', ({ hasError }) => !hasError),
   conditional('focus:border-red-600', ({ hasError }) => hasError),
 ]);
 
