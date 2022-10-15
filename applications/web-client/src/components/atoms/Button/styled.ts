@@ -7,7 +7,7 @@ export interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 export const Button = compose.button<StyledButtonProps>((conditional) => [
-  'text-white', //
+  'text-white',
   'text-center',
   'bg-green-700',
   'hover:bg-green-800',
@@ -24,11 +24,11 @@ export interface StyledContentProps {
 }
 
 export const Content = compose.span<StyledContentProps>((conditional) => [
-  conditional('sr-only', ({ isProcessing }) => isProcessing === true), //
+  conditional('sr-only', ({ isProcessing }) => isProcessing === true),
 ]);
 
 export const Icon = compose(OriginalIcon, () => [
-  'animate-spin', //
+  'animate-spin',
   'mx-auto',
   'w-6',
   'h-6',

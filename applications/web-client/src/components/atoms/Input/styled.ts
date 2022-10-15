@@ -2,14 +2,14 @@ import { compose } from 'tailwind-compose';
 import type { InputHTMLAttributes } from 'react';
 
 export const Wrapper = compose.div(() => [
-  'flex', //
+  'flex',
   'flex-col',
   'gap-1',
   'w-full',
 ]);
 
 export const Label = compose.label(() => [
-  'block', //
+  'block',
   'text-sm',
 ]);
 
@@ -18,7 +18,7 @@ export interface StyledInput extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = compose.input<StyledInput, HTMLInputElement>((conditional) => [
-  'block', //
+  'block',
   'border',
   'py-2',
   'px-4',
@@ -31,6 +31,6 @@ export const Input = compose.input<StyledInput, HTMLInputElement>((conditional) 
 ]);
 
 export const Error = compose.div(() => [
-  'text-sm', //
+  'text-sm',
   'text-red-600',
 ]);
