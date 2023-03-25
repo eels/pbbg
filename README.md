@@ -10,8 +10,8 @@
   <div>As yet untitled persistent browser game</div>
   <br />
   <a href="https://github.com/eels/pbbg/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/eels/pbbg?style=flat-square" /></a>
-  <a href="https://github.com/eels/pbbg/actions/workflows/codeql-analysis.yml"><img src="https://img.shields.io/github/workflow/status/eels/pbbg/CodeQL%20Analysis?label=CodeQL&style=flat-square" /></a>
-  <a href="https://github.com/eels/pbbg/actions/workflows/test-code.yml"><img src="https://img.shields.io/github/workflow/status/eels/pbbg/Test%20Code?label=Coverage&style=flat-square" /></a>
+  <a href="https://github.com/eels/pbbg/actions/workflows/codeql-analysis.yml"><img src="https://img.shields.io/github/actions/workflow/status/eels/pbbg/codeql-analysis.yml?branch=main&label=CodeQL&style=flat-square" /></a>
+  <a href="https://github.com/eels/pbbg/actions/workflows/test-code.yml"><img src="https://img.shields.io/github/actions/workflow/status/eels/pbbg/test-code.yml?branch=main&label=Coverage&style=flat-square" /></a>
   <br /><br />
   <pre>git clone https://github.com/eels/pbbg</pre>
   <h1></h1>
