@@ -1,5 +1,4 @@
 {
   "extends": ["plugin:@next/next/core-web-vitals"],
-
   "plugins": ["@next/next"]
 }

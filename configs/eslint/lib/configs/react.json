@@ -1,14 +1,11 @@
 {
   "extends": ["plugin:react/recommended", "plugin:react-hooks/recommended"],
-
   "plugins": ["react", "react-hooks"],
-
   "settings": {
     "react": {
       "version": "detect"
     }
   },
-
   "rules": {
     "react/boolean-prop-naming": "error",
     "react/jsx-handler-names": [

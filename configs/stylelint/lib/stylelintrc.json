@@ -4,15 +4,15 @@
     "stylelint-config-standard",
     "stylelint-config-recommended-scss"
   ],
-
   "rules": {
     "alpha-value-notation": "number",
     "at-rule-no-vendor-prefix": true,
-    "declaration-colon-newline-after": null,
     "color-function-notation": "legacy",
     "color-named": "never",
     "color-no-hex": true,
+    "declaration-colon-newline-after": null,
     "function-no-unknown": null,
+    "import-notation": null,
     "max-empty-lines": 1,
     "media-feature-name-no-vendor-prefix": true,
     "no-invalid-position-at-import-rule": null,
