@@ -7,7 +7,7 @@ type StaticProps<T> = GetStaticPropsResult<T> & { props?: T };
 export async function withTranslations<T>(locale?: string, props?: StaticProps<T>) {
   return Object.assign({}, props, {
     props: {
-      ...('props' in (props! || {}) ? props?.props : {}),
+      ...('props' in (props || {}) ? props?.props : {}),
       ...(await serverSideTranslations(locale ?? i18next.i18n.defaultLocale)),
     },
   });

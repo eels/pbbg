@@ -1,35 +1,59 @@
 {
-  "baseBranch": "origin/main",
-
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"]
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".build/**", ".next/**"]
     },
     "clean": {
-      "dependsOn": []
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
     },
     "dev": {
       "cache": false,
-      "dependsOn": []
+      "dependsOn": ["^build"],
+      "outputs": []
     },
     "export": {
-      "dependsOn": []
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
     },
     "format": {
-      "dependsOn": []
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
+    },
+    "format:fix": {
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
     },
     "lint": {
-      "dependsOn": []
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
+    },
+    "lint:fix": {
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
     },
     "prepare": {
       "cache": false,
-      "dependsOn": []
+      "dependsOn": [],
+      "outputs": []
     },
     "test": {
-      "dependsOn": []
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
     },
     "typescript:verify": {
-      "dependsOn": []
+      "cache": false,
+      "dependsOn": ["^build"],
+      "outputs": []
     }
   }
 }

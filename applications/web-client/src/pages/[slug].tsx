@@ -49,7 +49,7 @@ export async function getStaticProps({ locale, params }: GetStaticPropsContext) 
   return await withTranslations(locale, {
     props: {
       content: convertMarkdownToHTML(content),
-      data: data,
+      data,
     },
   });
 }

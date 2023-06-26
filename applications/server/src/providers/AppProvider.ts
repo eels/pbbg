@@ -18,7 +18,9 @@ export default class AppProvider {
       const statusCode = getStatusCode(status);
       const responseObject = createResponseObject(status, response);
 
-      this.ctx!.response.status(statusCode).send(responseObject);
+      if (this.ctx) {
+        this.ctx.response.status(statusCode).send(responseObject);
+      }
 
       return this;
     });

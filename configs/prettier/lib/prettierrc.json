@@ -1,19 +1,11 @@
 {
   "arrowParens": "always",
-
   "bracketSpacing": true,
-
   "jsxSingleQuote": true,
-
-  "pluginSearchDirs": false,
-
+  "pluginSearchDirs": [],
   "printWidth": 100,
-
+  "quoteProps": "consistent",
   "semi": true,
-
   "singleQuote": true,
-
-  "trailingComma": "all",
-
-  "quoteProps": "consistent"
+  "trailingComma": "all"
 }

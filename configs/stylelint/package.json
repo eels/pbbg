@@ -3,12 +3,13 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "postcss": "^8.4.6",
-    "postcss-nested": "^5.0.6",
-    "stylelint-config-idiomatic-order": "^8.1.0",
-    "stylelint-config-recommended-scss": "^5.0.2",
-    "stylelint-config-standard": "^25.0.0",
-    "stylelint-order": "^5.0.0",
-    "stylelint-scss": "^4.1.0"
+    "postcss-nested": "6.0.1",
+    "postcss": "8.4.22",
+    "stylelint-config-idiomatic-order": "9.0.0",
+    "stylelint-config-recommended-scss": "10.0.0",
+    "stylelint-config-standard": "33.0.0",
+    "stylelint-order": "6.0.3",
+    "stylelint-scss": "4.6.0",
+    "stylelint": "15.9.0"
   }
 }

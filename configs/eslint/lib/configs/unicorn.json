@@ -1,0 +1,14 @@
+{
+  "plugins": ["unicorn"],
+  "rules": {
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "kebabCase": true
+        },
+        "ignore": ["README.md"]
+      }
+    ]
+  }
+}

@@ -1,5 +1,8 @@
 {
   "name": "@pbbg/typescript-config",
   "private": true,
-  "version": "1.0.0"
+  "version": "1.0.0",
+  "dependencies": {
+    "typescript": "5.0.4"
+  }
 }

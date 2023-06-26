@@ -1,5 +1,7 @@
-declare module '@ioc:Adonis/Core/Env' {
-  type CustomTypes = typeof import('../../env').default;
+import type CustomTypes from '../../env'; // eslint-disable-line import/no-relative-parent-imports
 
-  interface EnvTypes extends CustomTypes {}
+declare module '@ioc:Adonis/Core/Env' {
+  type BB = typeof CustomTypes;
+
+  interface EnvTypes extends BB {}
 }

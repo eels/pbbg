@@ -6,7 +6,7 @@
   "repository": "https://github.com/eels/pbbg",
   "bugs": "https://github.com/eels/pbbg/issues",
   "license": "GPL-3.0-or-later",
-  "packageManager": "yarn@1.22.17",
+  "packageManager": "yarn@1.22.19",
   "workspaces": [
     "applications/*",
     "configs/*"
@@ -17,32 +17,28 @@
     "dev": "turbo run dev",
     "docker:build": "docker-compose build",
     "docker:down": "docker-compose down",
+    "docker:restart": "docker-compose restart",
     "docker:stop": "docker-compose stop",
     "docker:up": "docker-compose up --detach",
     "export": "turbo run export",
-    "format": "turbo run format",
+    "format:fix": "yarn format:local --write && turbo run format:fix",
+    "format:local": "prettier \"{.,./{{.vscode,configs}/**/}}*.{js,json}\" --cache --check",
+    "format": "yarn format:local && turbo run format",
+    "lint:fix": "turbo run lint:fix",
     "lint": "turbo run lint",
     "prepare": "husky install && turbo run prepare",
     "storybook:build": "yarn workspace @pbbg/web-client storybook:build",
     "storybook:start": "yarn workspace @pbbg/web-client storybook:start",
-    "terraform:apply": "terraform -chdir=terraform apply -auto-approve",
-    "terraform:destroy": "terraform -chdir=terraform destroy -auto-approve",
-    "terraform:plan": "terraform -chdir=terraform plan",
-    "terraform:validate": "terraform -chdir=terraform validate",
     "test": "turbo run test",
     "typescript:verify": "turbo run typescript:verify"
   },
+  "dependencies": {
+    "turbo": "1.10.6"
+  },
   "devDependencies": {
-    "@commitlint/cli": "^16.1.0",
-    "@commitlint/config-conventional": "^16.0.0",
+    "@commitlint/cli": "17.6.1",
+    "@commitlint/config-conventional": "17.6.1",
     "@pbbg/prettier-config": "*",
-    "eslint": "^8.9.0",
-    "husky": "^7.0.4",
-    "prettier": "^2.5.1",
-    "stylelint": "^14.5.1",
-    "turbo": "^1.1.3",
-    "typescript": "^4.5.5",
-    "webpack": "^5.69.1",
-    "webpack-cli": "^4.9.2"
+    "husky": "8.0.3"
   }
 }

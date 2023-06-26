@@ -26,13 +26,22 @@ package-lock.json
 
 node_modules
 
+# --- Environment variables ---------------------
+
+.env
+
+# --- Caches ------------------------------------
+
+.eslintcache
+.stylelintcache
+
+# --- Compiled ----------------------------------
+
+tsconfig.tsbuildinfo
+
 # --- Terraform ---------------------------------
 
 .terraform
 *.tfstate
 *.tfstate.*
 *.tfvars
-
-# --- Environment variables ---------------------
-
-.env

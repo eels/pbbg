@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "alwaysStrict": true,
     "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
     "baseUrl": "src",
     "declaration": false,
     "declarationDir": null,
@@ -24,6 +24,5 @@
     "strictNullChecks": true,
     "target": "esnext"
   },
-
   "exclude": ["node_modules"]
 }
