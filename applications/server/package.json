@@ -33,11 +33,6 @@
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21"
   },
-  "peerDependencies": {
-    "eslint": "*",
-    "prettier": "*",
-    "typescript": "*"
-  },
   "devDependencies": {
     "@adonisjs/assembler": "^5.8.1",
     "@japa/preset-adonis": "^1.1.1",
