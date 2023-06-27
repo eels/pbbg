@@ -39,6 +39,7 @@
     "@commitlint/cli": "17.6.1",
     "@commitlint/config-conventional": "17.6.1",
     "@pbbg/prettier-config": "*",
-    "husky": "8.0.3"
+    "husky": "8.0.3",
+    "lint-staged": "13.2.2"
   }
 }
