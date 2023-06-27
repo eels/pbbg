@@ -2,4 +2,4 @@
 
 . "$(dirname "$0")/_/husky.sh"
 
-yarn turbo run format && yarn turbo run lint
+yarn lint-staged && yarn typescript:verify
