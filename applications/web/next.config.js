@@ -2,7 +2,6 @@
 
 module.exports = {
   env: {
-    NEXT_PUBLIC_SERVER_DOMAIN: process.env.APP_SERVER_DOMAIN,
     NEXT_PUBLIC_WEB_CLIENT_DOMAIN: process.env.APP_WEB_CLIENT_DOMAIN,
   },
 

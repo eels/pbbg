@@ -10,24 +10,11 @@ runs:
       shell: bash
       run: |
         touch .env
-        echo APP_KEY="${{ inputs.APP_KEY }}" >> .env
-        echo APP_NAME="${{ inputs.APP_NAME }}" >> .env
-        echo APP_SERVER_DOMAIN="${{ inputs.APP_SERVER_DOMAIN }}" >> .env
-        echo APP_USE_SECURE_COOKIE_PREFIX="${{ inputs.APP_USE_SECURE_COOKIE_PREFIX }}" >> .env
         echo APP_WEB_CLIENT_DOMAIN="${{ inputs.APP_WEB_CLIENT_DOMAIN }}" >> .env
-        echo HOST="${{ inputs.HOST }}" >> .env
         echo NODE_ENV="${{ inputs.NODE_ENV }}" >> .env
-        echo PORT="${{ inputs.PORT }}" >> .env
-        echo SESSION_COOKIE="${{ inputs.SESSION_COOKIE }}" >> .env
-        echo SESSION_DRIVER="${{ inputs.SESSION_DRIVER }}" >> .env
-        echo DRIVE_DISK="${{ inputs.DRIVE_DISK }}" >> .env
-        echo DB_CONNECTION="${{ inputs.DB_CONNECTION }}" >> .env
-        echo DB_NAME="${{ inputs.DB_NAME }}" >> .env
-        echo DB_HOST="${{ inputs.DB_HOST }}" >> .env
-        echo DB_PASSWORD="${{ inputs.DB_PASSWORD }}" >> .env
-        echo DB_PORT="${{ inputs.DB_PORT }}" >> .env
-        echo DB_USERNAME="${{ inputs.DB_USERNAME }}" >> .env
-        echo SENTRY_DSN="${{ inputs.SENTRY_DSN }}" >> .env
+        echo POCKETBASE_ADMIN_PASSWORD="${{ inputs.POCKETBASE_ADMIN_PASSWORD }}" >> .env
+        echo POCKETBASE_ADMIN_USERNAME="${{ inputs.POCKETBASE_ADMIN_USERNAME }}" >> .env
+        echo POCKETBASE_URL="${{ inputs.POCKETBASE_URL }}" >> .env
 
     - name: Cache created `.env` file
       uses: actions/cache@v3
