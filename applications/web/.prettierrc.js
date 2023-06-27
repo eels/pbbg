@@ -1,6 +1,5 @@
 module.exports = {
   ...require('@pbbg/prettier-config/lib/prettierrc.json'),
-
   overrides: [
     {
       files: '**/styled.ts',

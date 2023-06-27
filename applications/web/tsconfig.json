@@ -1,6 +1,5 @@
 {
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
-
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
@@ -9,9 +8,7 @@
       "*": ["*", "scripts/*", "src/*", "test/*"]
     }
   },
-
   "include": ["next-env.d.ts", "scripts", "src", "test"],
-
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }
