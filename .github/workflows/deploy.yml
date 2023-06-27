@@ -55,7 +55,7 @@ jobs:
 
       - name: Compress image assets
         env:
-          WEB_CLIENT_PUBLIC: applications/web-client/public
+          WEB_CLIENT_PUBLIC: applications/web/public
         run: |
           npx imagemin-cli ${{ env.WEB_CLIENT_PUBLIC }}/* \
             --out-dir=${{ env.WEB_CLIENT_PUBLIC }}
@@ -70,56 +70,5 @@ jobs:
 
       - name: Precompress static client files
         run: |
-          npx gzip-cli "applications/web-client/out/**/*.{css,html,js,json,svg,txt}" \
+          npx gzip-cli "applications/web/out/**/*.{css,html,js,json,svg,txt}" \
             --extension=br --extension=gz
-
-      - name: Prepare deployment directory
-        run: |
-          yarn turbo prune --scope=@pbbg/server --docker
-          mv out/json/* out
-          rm -rf out/full
-          rm -rf out/json
-          mkdir -p out/applications/server/build/
-          mkdir -p out/applications/web-client/build/
-          mkdir -p out/docker/
-          cp -r applications/server/build/* out/applications/server/build/
-          cp -r applications/web-client/out/* out/applications/web-client/build/
-          cp -r docker/* out/docker/
-          cp -r .dockerignore out/
-          cp -r .env out/
-          cp -r docker-compose.production.yml out/
-          cp -r docker-compose.yml out/
-          cp -r turbo.json out/
-
-      - name: Deploy to remote server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
-          port: ${{ secrets.SSH_PORT }}
-          source: out,!node_modules
-          strip_components: 1
-          target: ${{ github.repository }}
-          username: ${{ secrets.SSH_USERNAME }}
-
-      - name: Prepare remote files, build, start and prune Docker images
-        uses: appleboy/ssh-action@master
-        env:
-          DOCKER_BASE: docker-compose.yml
-          DOCKER_PROD: docker-compose.production.yml
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PRIVATE_KEY_PASSPHRASE }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USERNAME }}
-          script_stop: true
-          script: |
-            export COMPOSE_DOCKER_CLI_BUILD=1
-            export DOCKER_BUILDKIT=1
-            cd ${{ github.repository }}
-            chmod +x docker/node/lib/entrypoint.sh
-            docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} build
-            docker-compose --file ${{ env.DOCKER_BASE }} --file ${{ env.DOCKER_PROD }} up --detach
-            docker system prune --all --force --volumes

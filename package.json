@@ -27,8 +27,8 @@
     "lint:fix": "turbo run lint:fix",
     "lint": "turbo run lint",
     "prepare": "husky install && turbo run prepare",
-    "storybook:build": "yarn workspace @pbbg/web-client storybook:build",
-    "storybook:start": "yarn workspace @pbbg/web-client storybook:start",
+    "storybook:build": "yarn workspace @pbbg/web storybook:build",
+    "storybook:start": "yarn workspace @pbbg/web storybook:start",
     "test": "turbo run test",
     "typescript:verify": "turbo run typescript:verify"
   },

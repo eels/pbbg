@@ -15,17 +15,6 @@ services:
       - '443:443/udp'
     restart: 'unless-stopped'
     volumes:
-      - './applications/web-client:/home/web-client'
+      - './applications/web:/home/web'
       - './docker/caddy/config/Caddyfile:/etc/caddy/Caddyfile'
       - './docker/caddy/data:/var/log'
-
-  node:
-    build:
-      context: '.'
-      dockerfile: 'docker/node/Dockerfile'
-    ports:
-      - '${PORT}:${PORT}'
-    restart: 'unless-stopped'
-    volumes:
-      - '.:/home/node'
-      - '/home/node/node_modules'
