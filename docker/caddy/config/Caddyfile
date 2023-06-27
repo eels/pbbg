@@ -26,9 +26,9 @@ www.{$APP_WEB_CLIENT_DOMAIN} {
 
   push
 
-  reverse_proxy web:{$PORT}
+  reverse_proxy web:3000
 }
 
 localhost:80 {
-  reverse_proxy web:{$PORT}
+  reverse_proxy web:3000
 }

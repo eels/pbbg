@@ -6,9 +6,7 @@ services:
       context: '.'
       dockerfile: 'docker/caddy/Dockerfile'
     environment:
-      - 'APP_SERVER_DOMAIN'
       - 'APP_WEB_CLIENT_DOMAIN'
-      - 'PORT'
     ports:
       - '80:80'
       - '443:443/tcp'
