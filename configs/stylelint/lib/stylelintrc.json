@@ -13,14 +13,12 @@
     "declaration-colon-newline-after": null,
     "function-no-unknown": null,
     "import-notation": null,
-    "max-empty-lines": 1,
     "media-feature-name-no-vendor-prefix": true,
     "no-invalid-position-at-import-rule": null,
     "property-no-vendor-prefix": true,
     "scss/at-rule-no-unknown": null,
     "scss/no-global-function-names": null,
     "selector-no-vendor-prefix": true,
-    "string-quotes": "single",
     "unit-disallowed-list": ["em", "px"],
     "value-no-vendor-prefix": true
   }

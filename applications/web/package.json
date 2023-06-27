@@ -1,5 +1,5 @@
 {
-  "name": "@pbbg/web-client",
+  "name": "@pbbg/web",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -16,7 +16,7 @@
     "export": "yarn build && yarn export:client && yarn export:images",
     "export:client": "next export",
     "export:images": "ts-node scripts/create-webp-images --transpileOnly",
-    "format": "prettier \"{.,./{public,scripts,src,storybook,test}/**/}*.{js,json,svg,ts,tsx}\" --check",
+    "format": "prettier \"{.,./{public,scripts,src,storybook,test}/**/}*.{css,js,json,svg,ts,tsx}\" --check",
     "format:fix": "yarn format --write",
     "lint": "yarn lint:js && yarn lint:css",
     "lint:css": "stylelint \"./src/**/*.{css,scss}\" --cache",

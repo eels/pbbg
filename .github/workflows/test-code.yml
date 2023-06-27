@@ -73,4 +73,4 @@ jobs:
 
       - name: Test
         run: |
-          yarn workspace @pbbg/web-client test:a11y
+          yarn workspace @pbbg/web test:a11y
