@@ -19,6 +19,7 @@
     "outDir": "build",
     "removeComments": true,
     "resolveJsonModule": true,
+    "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,

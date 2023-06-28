@@ -14,8 +14,5 @@
     ],
     "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "next-express.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  "include": ["next-env.d.ts", "next-express.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
 }

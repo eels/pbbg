@@ -9,14 +9,6 @@
     "no-unused-vars": "off",
     "no-use-before-define": "off",
     "one-var": ["error", "never"],
-    "space-before-function-paren": [
-      "error",
-      {
-        "anonymous": "always",
-        "asyncArrow": "always",
-        "named": "never"
-      }
-    ],
     "padding-line-between-statements": [
       "error",
       {
@@ -25,6 +17,14 @@
         "prev": "import"
       }
     ],
-    "quote-props": ["error", "consistent"]
+    "quote-props": ["error", "consistent"],
+    "space-before-function-paren": [
+      "error",
+      {
+        "anonymous": "always",
+        "asyncArrow": "always",
+        "named": "never"
+      }
+    ]
   }
 }
