@@ -5,10 +5,16 @@
     "jsx": "preserve",
     "noEmit": true,
     "paths": {
-      "*": ["*", "scripts/*", "src/*", "test/*"]
-    }
+      "@/web/*": ["./src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "scripts", "src", "test"],
+  "include": ["next-env.d.ts", "next-express.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }
