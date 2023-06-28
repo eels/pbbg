@@ -1,8 +1,4 @@
 {
-  "plugins": ["sort-keys-fix"],
-  "rules": {
-    "sort-keys-fix/sort-keys-fix": "error"
-  },
   "overrides": [
     {
       "files": ["package.json", "tsconfig.json"],
@@ -10,5 +6,9 @@
         "sort-keys-fix/sort-keys-fix": "off"
       }
     }
-  ]
+  ],
+  "plugins": ["sort-keys-fix"],
+  "rules": {
+    "sort-keys-fix/sort-keys-fix": "error"
+  }
 }
