@@ -14,7 +14,6 @@
         "eventHandlerPropPrefix": "on"
       }
     ],
-    "react/jsx-no-bind": "error",
     "react/jsx-sort-props": [
       "error",
       {
