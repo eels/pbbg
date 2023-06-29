@@ -1,3 +1,4 @@
+import '@/web/styles/style.scss';
 import type { ReactNode } from 'react';
 
 export const metadata = {
