@@ -1,30 +1,29 @@
-import * as controllers from '@/web/server/controllers';
-import * as middleware from '@/web/server/middleware';
 import helmet from 'helmet';
 import rateLimiter from 'express-rate-limit';
 import timestring from 'timestring';
 import { app } from '@/web/server/utilities/application';
+import { cradle } from '@/web/server/container';
 import { router } from '@/web/server/utilities/router';
 import { wrapHandler } from '@/web/server/utilities/wrap';
 import type { Options as RateLimitOptions } from 'express-rate-limit';
 
 const rateLimitOptions: Partial<RateLimitOptions> = {
-  handler: controllers.RateLimited.handle,
+  handler: cradle.RateLimited.handle,
   legacyHeaders: true,
   max: 1,
-  skip: () => process.env.RATE_LIMIT_API_ENABLED !== 'true',
+  skip: () => process.env.API_RATE_LIMIT_ENABLED !== 'true',
   standardHeaders: true,
   windowMs: timestring('15 minutes', 'ms'),
 };
 
 app.use(helmet());
 app.use(rateLimiter(rateLimitOptions));
-app.use(wrapHandler(middleware.MeasureRequestDuration.handle));
-app.use(wrapHandler(middleware.SendAnalyticsEvent.handle));
+app.use(wrapHandler(cradle.MeasureRequestDuration.handle));
+app.use(wrapHandler(cradle.SendAnalyticsEvent.handle));
 
-router.get('/api/version', middleware.AuthenticationGuard.handle, controllers.Version.handle);
+router.get('/api/version', cradle.Version);
 
-app.use(controllers.ErrorHandler.handle);
-app.use(wrapHandler(controllers.NotFound.handle));
+app.use(cradle.ErrorHandler.handle);
+app.use(wrapHandler(cradle.NotFound.handle));
 
 export default app;
