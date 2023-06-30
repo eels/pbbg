@@ -1,11 +1,12 @@
-import type { AsyncErrorHandler } from '@/web/types/http';
+import type { Exception } from '@/web/types/exception';
+import type { NextFunction, Request, Response } from 'express';
 
-export class ErrorHandler {
-  public static handle: AsyncErrorHandler = async (error, _, response, __) => {
+export default class ErrorHandler {
+  public async handle(error: Exception, _: Request, response: Response, __: NextFunction) {
     response.respond({
       code: error.code,
       message: error.message,
       status: 'ERROR',
     });
-  };
+  }
 }

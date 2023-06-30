@@ -1,7 +1,9 @@
-export default class AuthenticationError extends Error {
+import { Exception } from '@/web/types/exception';
+
+export default class AuthenticationError extends Exception {
   public code: number;
 
-  constructor(message: string) {
+  public constructor(message: string) {
     super(message);
 
     this.code = 401;

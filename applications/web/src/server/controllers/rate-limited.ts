@@ -1,11 +1,12 @@
-import type { AsyncHandler } from '@/web/types/http';
+import { Controller } from '@/web/types/http';
+import type { Request, Response } from 'express';
 
-export class RateLimited {
-  public static handle: AsyncHandler = async (_, response) => {
+export default class RateLimited extends Controller {
+  public async handle(_: Request, response: Response) {
     response.respond({
       code: 429,
       message: 'request limit exceeded',
       status: 'FAIL',
     });
-  };
+  }
 }

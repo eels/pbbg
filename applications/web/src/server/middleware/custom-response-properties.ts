@@ -1,9 +1,10 @@
+import { Controller } from '@/web/types/http';
 import { response as responseFactory } from '@/web/server/utilities/response';
-import type { AsyncHandler } from '@/web/types/http';
+import type { NextFunction, Request, Response } from 'express';
 
-export class CustomResponseProperties {
-  public static handle: AsyncHandler = async (_, response, next) => {
+export default class CustomResponseProperties extends Controller {
+  public async handle(_: Request, response: Response, next: NextFunction) {
     response.respond = responseFactory(response);
     next();
-  };
+  }
 }

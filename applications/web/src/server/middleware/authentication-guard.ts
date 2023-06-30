@@ -1,9 +1,10 @@
 import AuthenticationError from '@/web/server/exceptions/authentication';
+import { Controller } from '@/web/types/http';
 import { getCurrentUser } from '@/web/utilities/session';
-import type { AsyncHandler } from '@/web/types/http';
+import type { NextFunction, Request, Response } from 'express';
 
-export class AuthenticationGuard {
-  public static handle: AsyncHandler = async (request, response, next) => {
+export default class AuthenticationGuard extends Controller {
+  public async handle(request: Request, response: Response, next: NextFunction) {
     const user = await getCurrentUser(request, response);
 
     if (!user) {
@@ -11,5 +12,5 @@ export class AuthenticationGuard {
     }
 
     next();
-  };
+  }
 }

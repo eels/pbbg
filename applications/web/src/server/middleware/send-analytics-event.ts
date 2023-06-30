@@ -1,28 +1,34 @@
+import { Controller } from '@/web/types/http';
 import { axiosInstance } from '@/web/server/utilities/axios';
-import type { AsyncHandler } from '@/web/types/http';
 import type { MeasurementProtocolEvent, MeasurementProtocolPayload } from '@/web/types/analytics';
-import type { Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 
-export class SendAnalyticsEvent {
-  public static handle: AsyncHandler = async (_, response, next) => {
-    response.on('finish', this.sendAnalyticsEvent(response));
-    next();
-  };
-
-  private static headers: Record<string, string> = {
+export default class SendAnalyticsEvent extends Controller {
+  private headers: Record<string, string> = {
     'Content-Type': 'application/json',
   };
 
-  private static parameters: Record<string, string | undefined> = {
-    api_secret: process.env.ANALYTICS_API_API_SECRET,
-    measurement_id: process.env.ANALYTICS_API_MEASUREMENT_ID,
+  private parameters: Record<string, string | undefined> = {
+    api_secret: process.env.API_ANALYTICS_SECRET,
+    measurement_id: process.env.API_ANALYTICS_MEASUREMENT_ID,
   };
 
-  private static sendAnalyticsEvent = (_: Response) => {
-    return async () => {
-      const { ANALYTICS_API_ENABLED } = process.env;
+  public constructor() {
+    super();
+    this.handle = this.handle.bind(this);
+    this.sendAnalyticsEvent = this.sendAnalyticsEvent.bind(this);
+  }
 
-      if (!ANALYTICS_API_ENABLED || ANALYTICS_API_ENABLED === 'false') {
+  public async handle(_: Request, response: Response, next: NextFunction) {
+    response.on('finish', this.sendAnalyticsEvent());
+    next();
+  }
+
+  private sendAnalyticsEvent() {
+    return async () => {
+      const { API_ANALYTICS_ENABLED } = process.env;
+
+      if (!API_ANALYTICS_ENABLED || API_ANALYTICS_ENABLED === 'false') {
         return;
       }
 
@@ -47,5 +53,5 @@ export class SendAnalyticsEvent {
         params: this.parameters,
       });
     };
-  };
+  }
 }

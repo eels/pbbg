@@ -1,11 +1,12 @@
-import type { AsyncHandler } from '@/web/types/http';
+import { Controller } from '@/web/types/http';
+import type { Request, Response } from 'express';
 
-export class NotFound {
-  public static handle: AsyncHandler = async (_, response) => {
+export default class NotFound extends Controller {
+  public async handle(_: Request, response: Response) {
     response.respond({
       code: 404,
       message: 'not found',
       status: 'FAIL',
     });
-  };
+  }
 }

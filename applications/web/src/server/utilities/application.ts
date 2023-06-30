@@ -1,7 +1,8 @@
 import express from 'express';
-import { CustomResponseProperties } from '@/web/server/middleware/custom-response-properties';
+import { cradle } from '@/web/server/container';
+import { wrapHandler } from '@/web/server/utilities/wrap';
 
 export const app = express();
 
 app.disable('x-powered-by');
-app.use(CustomResponseProperties.handle);
+app.use(wrapHandler(cradle.CustomResponseProperties.handle));
