@@ -22,7 +22,7 @@ app.use(rateLimiter(rateLimitOptions));
 app.use(wrapHandler(middleware.MeasureRequestDuration.handle));
 app.use(wrapHandler(middleware.SendAnalyticsEvent.handle));
 
-router.get('/api/version', controllers.Version.handle);
+router.get('/api/version', middleware.AuthenticationGuard.handle, controllers.Version.handle);
 
 app.use(controllers.ErrorHandler.handle);
 app.use(wrapHandler(controllers.NotFound.handle));
