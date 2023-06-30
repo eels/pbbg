@@ -39,6 +39,10 @@ node_modules
 
 tsconfig.tsbuildinfo
 
+# --- Pocketbase --------------------------------
+
+docker/pocketbase/pb_data
+
 # --- Terraform ---------------------------------
 
 .terraform

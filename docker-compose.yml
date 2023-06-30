@@ -1,14 +1,15 @@
 version: '3'
 
 services:
-  postgres:
+  pocketbase:
     build:
-      context: '.'
-      dockerfile: 'docker/postgres/Dockerfile'
-    environment:
-      - 'POSTGRES_DB=${DB_NAME}'
-      - 'POSTGRES_PASSWORD=${DB_PASSWORD}'
-      - 'POSTGRES_USER=${DB_USERNAME}'
+      args:
+        VERSION: '0.16.6'
+      context: .
+      dockerfile: docker/pocketbase/Dockerfile
     ports:
-      - '5432:5432'
-    restart: 'unless-stopped'
+      - 8090:8090
+    restart: unless-stopped
+    volumes:
+      - ./docker/pocketbase/pb_data:/pb_data
+      - ./docker/pocketbase/pb_migrations:/pb_migrations
