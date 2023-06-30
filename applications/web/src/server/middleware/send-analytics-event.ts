@@ -19,14 +19,15 @@ export default class SendAnalyticsEvent extends Controller {
     this.sendAnalyticsEvent = this.sendAnalyticsEvent.bind(this);
   }
 
-  public async handle(_: Request, response: Response, next: NextFunction) {
-    response.on('finish', this.sendAnalyticsEvent());
+  public async handle(request: Request, response: Response, next: NextFunction) {
+    response.on('finish', this.sendAnalyticsEvent(request, response));
     next();
   }
 
-  private sendAnalyticsEvent() {
+  private sendAnalyticsEvent(request: Request, response: Response) {
     return async () => {
       const { API_ANALYTICS_ENABLED } = process.env;
+      const location = new URL(request.url, `http://${request.headers.host}`).toString();
 
       if (!API_ANALYTICS_ENABLED || API_ANALYTICS_ENABLED === 'false') {
         return;
@@ -35,14 +36,22 @@ export default class SendAnalyticsEvent extends Controller {
       const pageViewEvent: MeasurementProtocolEvent = {
         name: 'page_view',
         params: {
-          page_location: '',
-          page_title: '',
+          page_location: location,
+          page_title: request.url,
+        },
+      };
+
+      const requestDurationEvent: MeasurementProtocolEvent = {
+        name: 'request_duration',
+        params: {
+          duration: response.duration,
+          page_location: location,
         },
       };
 
       const payload: MeasurementProtocolPayload = {
         client_id: 'test-user',
-        events: [pageViewEvent],
+        events: [pageViewEvent, requestDurationEvent],
         non_personalized_ads: false,
       };
 
