@@ -6,7 +6,9 @@ import NotFound from '@/web/server/controllers/not-found';
 import RateLimited from '@/web/server/controllers/rate-limited';
 import SendAnalyticsEvent from '@/web/server/middleware/send-analytics-event';
 import Version from '@/web/server/controllers/version';
-import { InjectionMode, asClass, createContainer } from 'awilix';
+import { InjectionMode, asClass, asValue, createContainer } from 'awilix';
+import { backendDatabaseInstance } from '@/web/server/utilities/database';
+import { queryInstance } from '@/web/server/utilities/query';
 
 interface Controllers {
   ErrorHandler: ErrorHandler;
@@ -28,6 +30,11 @@ interface Container extends Controllers, Middleware {
 
 export const container = createContainer<Container>({ injectionMode: InjectionMode.CLASSIC });
 export const cradle = container.cradle;
+
+// --- Database ---------------------------------
+
+container.register('database', asValue(backendDatabaseInstance));
+container.register('query', asValue(queryInstance));
 
 // --- Controllers ------------------------------
 
