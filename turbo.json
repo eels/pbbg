@@ -12,7 +12,7 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "outputs": []
     },
     "export": {

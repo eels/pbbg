@@ -12463,6 +12463,11 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
+pocketbase@0.15.2:
+  version "0.15.2"
+  resolved "https://registry.yarnpkg.com/pocketbase/-/pocketbase-0.15.2.tgz#1cfabd0ea1be9bfa023db03ec694766ac4711df8"
+  integrity sha512-dGSwO2j3XqtFMANNNEVh/moRw0ItOraKC1p3J+I0y/tPEfgleCAUptMWhqHrFNS+jM5r21eSS1U48N9/OmHFzA==
+
 polished@^4.0.5:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/polished/-/polished-4.2.2.tgz#2529bb7c3198945373c52e34618c8fe7b1aa84d1"
