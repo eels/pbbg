@@ -1,5 +1,5 @@
 import type { ErrorRequestHandler, RequestHandler } from 'express';
-import type { validHTTPRequestMethods } from '@/web/server/utilities/http';
+import type { validHTTPRequestMethods } from '@/http/utilities/http';
 
 export type AsyncHandler = (...args: Parameters<RequestHandler>) => Promise<void>;
 export type AsyncErrorHandler = (...args: Parameters<ErrorRequestHandler>) => Promise<void>;

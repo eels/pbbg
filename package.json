@@ -9,11 +9,13 @@
   "packageManager": "yarn@1.22.19",
   "workspaces": [
     "applications/*",
-    "configs/*"
+    "configs/*",
+    "packages/*"
   ],
   "scripts": {
     "build": "turbo run build",
     "clean:dependencies": "yarn rimraf \"**/node_modules/\"",
+    "clean:artifacts": "yarn rimraf \"**/tsconfig.tsbuildinfo\"",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
     "docker:build": "docker-compose build",
@@ -38,7 +40,7 @@
     "typescript:verify": "turbo run typescript:verify"
   },
   "dependencies": {
-    "turbo": "1.10.6"
+    "turbo": "1.10.7"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.1",
@@ -47,6 +49,7 @@
     "@pbbg/prettier-config": "*",
     "husky": "8.0.3",
     "lint-staged": "13.2.2",
+    "parse5": "7.1.2",
     "rimraf": "3.0.2",
     "syncpack": "10.6.1"
   }

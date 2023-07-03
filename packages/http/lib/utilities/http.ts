@@ -1,4 +1,4 @@
-import type { Status } from '@/web/types/api';
+import type { Status } from '@/http/types/api';
 
 export const defaultResponseCodeMap: Record<Status, number> = {
   ERROR: 500,

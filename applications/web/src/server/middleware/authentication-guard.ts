@@ -1,5 +1,5 @@
-import AuthenticationError from '@/web/server/exceptions/authentication';
-import { Controller } from '@/web/types/http';
+import AuthenticationError from '@pbbg/http/lib/exceptions/authentication';
+import { Controller } from '@pbbg/http/lib/types/http';
 import { getCurrentUser } from '@/web/utilities/session';
 import type { NextFunction, Request, Response } from 'express';
 

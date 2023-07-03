@@ -5,6 +5,7 @@
     "jsx": "preserve",
     "noEmit": true,
     "paths": {
+      "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
       "@/web/*": ["./src/*"]
     },
     "plugins": [
@@ -14,5 +15,11 @@
     ],
     "strictNullChecks": true
   },
-  "include": ["next-env.d.ts", "next-express.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../node_modules/@pbbg/http/express-http.d.ts"
+  ]
 }

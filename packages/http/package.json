@@ -1,0 +1,26 @@
+{
+  "name": "@pbbg/http",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "clean": "rimraf \"./lib/**/*.{d.ts,js}\"",
+    "format:fix": "yarn format --write",
+    "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
+    "lint:fix": "yarn lint:js --fix",
+    "lint": "eslint \"./*.{js,json,ts}\" \"./src/**/*.{js,json,ts}\" --cache",
+    "typescript:verify": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  },
+  "devDependencies": {
+    "@pbbg/eslint-config": "*",
+    "@pbbg/prettier-config": "*",
+    "@pbbg/typescript-config": "*",
+    "@types/express": "4.17.17",
+    "@types/node": "20.3.2",
+    "rimraf": "3.0.2",
+    "tsc-alias": "1.8.6"
+  }
+}

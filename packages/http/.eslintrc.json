@@ -1,0 +1,3 @@
+{
+  "extends": ["@pbbg/eslint-config/lib/eslintrc.json"]
+}

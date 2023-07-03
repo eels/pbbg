@@ -1,0 +1,45 @@
+{
+  "name": "@pbbg/query",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "clean": "rimraf \"./build\"",
+    "dev": "onchange --initial --kill \"src/**/*.{js,json,ts}\" -- yarn dev:client",
+    "dev:client": "ts-node --files \"./src/index.ts\" --transpileOnly",
+    "environment:copy": "ln -sf  \"../../.env\" \"./\"",
+    "format:fix": "yarn format --write",
+    "format": "prettier \"{.,./{src,test}/**/}*.{js,json,ts}\" --check",
+    "lint:fix": "yarn lint:js --fix",
+    "lint": "eslint \"./*.{js,json,ts}\" \"./{src,test}/**/*.{js,json,ts}\" --cache",
+    "prepare": "yarn environment:copy",
+    "start": "node \"build/index.js\"",
+    "test:coverage": "yarn test --coverage",
+    "test": "jest --cache --passWithNoTests",
+    "typescript:verify": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pbbg/http": "*",
+    "dotenv": "16.0.0",
+    "express": "4.18.2",
+    "no-try": "3.1.0",
+    "sqlite": "4.2.1",
+    "sqlite3": "5.1.6"
+  },
+  "devDependencies": {
+    "@pbbg/eslint-config": "*",
+    "@pbbg/prettier-config": "*",
+    "@pbbg/typescript-config": "*",
+    "@types/express": "4.17.17",
+    "@types/jest": "27.4.0",
+    "@types/node": "20.3.2",
+    "concurrently": "8.2.0",
+    "jest": "27.4.7",
+    "onchange": "7.1.0",
+    "rimraf": "3.0.2",
+    "ts-jest": "29.1.1",
+    "ts-node": "10.9.1",
+    "tsc-alias": "1.8.6",
+    "tsconfig-paths": "4.2.0"
+  }
+}

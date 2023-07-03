@@ -1,4 +1,4 @@
-import { Controller } from '@/web/types/http';
+import { Controller } from '@pbbg/http/lib/types/http';
 import { axiosInstance } from '@/web/server/utilities/axios';
 import type { MeasurementProtocolEvent, MeasurementProtocolPayload } from '@/web/types/analytics';
 import type { NextFunction, Request, Response } from 'express';
