@@ -1,0 +1,15 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "build",
+    "paths": {
+      "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
+      "@/query/*": ["./src/*"]
+    }
+  },
+  "include": ["../../node_modules/@pbbg/http/express-http.d.ts", "**/*.ts"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

@@ -11,7 +11,7 @@
     "create:icon-type": "ts-node scripts/create-icon-type --transpileOnly",
     "create:post": "ts-node scripts/create-blog-post --transpileOnly",
     "dev": "next dev",
-    "environment:copy": "ln -sf  ../../.env .",
+    "environment:copy": "ln -sf  \"../../.env\" \"./\"",
     "export:client": "next export",
     "export:images": "ts-node scripts/create-webp-images --transpileOnly",
     "export": "yarn build && yarn export:client && yarn export:images",
@@ -39,6 +39,7 @@
     "defaults"
   ],
   "dependencies": {
+    "@pbbg/http": "*",
     "awilix": "8.0.1",
     "axios": "1.4.0",
     "change-case": "4.1.2",
@@ -97,7 +98,6 @@
     "jest": "27.4.7",
     "jsdom": "19.0.0",
     "pa11y-ci": "3.0.1",
-    "parse5": "7.1.2",
     "postcss": "8.4.22",
     "rimraf": "3.0.2",
     "sass": "1.49.0",

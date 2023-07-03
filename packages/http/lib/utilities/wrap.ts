@@ -1,4 +1,4 @@
-import type { AsyncHandler } from '@/web/types/http';
+import type { AsyncHandler } from '@/http/types/http';
 
 export function wrapHandler(fn: AsyncHandler) {
   return (...args: Parameters<AsyncHandler>) => {

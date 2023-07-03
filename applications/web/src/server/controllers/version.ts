@@ -1,4 +1,4 @@
-import { Controller } from '@/web/types/http';
+import { Controller } from '@pbbg/http/lib/types/http';
 import type { Request, Response } from 'express';
 
 export default class Version extends Controller {

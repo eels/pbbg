@@ -1,5 +1,5 @@
 import type * as core from 'express-serve-static-core';
-import type { APIResponse } from '@/types/api';
+import type { APIResponse } from '@/http/types/api';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 declare module 'express-serve-static-core' {
