@@ -7,7 +7,7 @@ const PORT = process.env.APP_QUERY_PORT ?? 8091;
 
 app.use(wrapHandler(cradle.DatabaseCleanup.handle));
 
-router.post('/api/query', cradle.Query);
+router.post('/api/query', cradle.AuthenticationGuard, cradle.Query);
 
 app.use(cradle.ErrorHandler.handle);
 app.use(wrapHandler(cradle.NotFound.handle));
