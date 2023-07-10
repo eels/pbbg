@@ -6,9 +6,9 @@
     "build": "tsc && tsc-alias",
     "clean": "rimraf \"./lib/**/*.{d.ts,js}\"",
     "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
+    "format": "prettier \"{.,./lib/**/}*.{js,json,ts}\" --check",
     "lint:fix": "yarn lint:js --fix",
-    "lint": "eslint \"./*.{js,json,ts}\" \"./src/**/*.{js,json,ts}\" --cache",
+    "lint": "eslint \"./*.{js,json,ts}\" \"./lib/**/*.{json,ts}\" --cache",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
