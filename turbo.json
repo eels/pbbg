@@ -15,11 +15,6 @@
       "dependsOn": [],
       "outputs": []
     },
-    "export": {
-      "cache": false,
-      "dependsOn": [],
-      "outputs": []
-    },
     "format": {
       "cache": false,
       "dependsOn": [],

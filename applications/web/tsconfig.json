@@ -6,7 +6,8 @@
     "noEmit": true,
     "paths": {
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
-      "@/web/*": ["./src/*"]
+      "@/web/*": ["./src/*"],
+      "@/web-script/*": ["./scripts/*"]
     },
     "plugins": [
       {
@@ -21,5 +22,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "../../node_modules/@pbbg/http/express-http.d.ts"
-  ]
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }

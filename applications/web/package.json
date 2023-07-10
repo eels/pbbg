@@ -4,17 +4,13 @@
   "version": "1.0.0",
   "scripts": {
     "build:client": "next build",
-    "build:resources": "ts-node scripts/create-static-resources --transpileOnly",
-    "build": "yarn create:icon-type && yarn build:resources && yarn build:client",
+    "build:icon-type": "ts-node --files \"./scripts/create-icon-type\" --transpileOnly",
+    "build": "yarn build:icon-type && yarn build:client",
     "clean": "rimraf .next out",
-    "create:component": "ts-node scripts/create-component --transpileOnly",
-    "create:icon-type": "ts-node scripts/create-icon-type --transpileOnly",
-    "create:post": "ts-node scripts/create-blog-post --transpileOnly",
+    "create:component": "ts-node --files \"./scripts/create-component\" --transpileOnly",
+    "create:post": "ts-node --files \"./scripts/create-blog-post\" --transpileOnly",
     "dev": "next dev",
     "environment:copy": "ln -sf  \"../../.env\" \"./\"",
-    "export:client": "next export",
-    "export:images": "ts-node scripts/create-webp-images --transpileOnly",
-    "export": "yarn build && yarn export:client && yarn export:images",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./{public,scripts,src,storybook,test}/**/}*.{css,js,json,svg,ts,tsx}\" --check",
     "lint:css:fix": "yarn lint:css --fix",
@@ -28,8 +24,8 @@
     "prepare": "yarn environment:copy",
     "sitemap:generate": "next-sitemap && yarn sitemap:minify",
     "sitemap:minify": "html-minifier \"./public/sitemap.xml\" --output \"./public/sitemap.xml\" --collapse-whitespace",
-    "storybook:build": "build-storybook --config-dir storybook --quiet",
-    "storybook:start": "start-storybook --config-dir storybook --port 6006 --quiet",
+    "storybook:build": "build-storybook --config-dir \"./storybook\" --quiet",
+    "storybook:start": "start-storybook --config-dir \"./storybook\" --port 6006 --quiet",
     "test:a11y": "start-server-and-test \"next dev\" 3000 \"pa11y-ci --sitemap http://localhost:3000/sitemap.xml\"",
     "test:coverage": "yarn test --coverage",
     "test": "jest --cache --passWithNoTests",
@@ -108,6 +104,7 @@
     "svgo": "3.0.2",
     "tailwind-compose": "0.7.1",
     "tailwindcss": "3.3.2",
-    "ts-node": "10.9.1"
+    "ts-node": "10.9.1",
+    "tsconfig-paths": "4.2.0"
   }
 }
