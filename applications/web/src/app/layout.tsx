@@ -1,9 +1,20 @@
 import '@/web/styles/style.scss';
+import SiteBody from '@/web/components/atoms/site-body';
+import cc from 'classcat';
+import localFont from 'next/font/local';
 import { Roboto_Flex } from 'next/font/google'; // eslint-disable-line camelcase
 import type { ReactNode } from 'react';
 
+const excelsior = localFont({
+  display: 'optional',
+  preload: true,
+  src: '../resources/fonts/fixedsys-excelsior.woff2',
+  variable: '--font-excelsior',
+});
+
 const roboto = Roboto_Flex({
   display: 'swap',
+  preload: true,
   subsets: ['latin'],
   variable: '--font-roboto',
 });
@@ -19,8 +30,8 @@ interface LayoutProps {
 
 export default function RootLayout({ children }: LayoutProps) {
   return (
-    <html className={roboto.variable} lang='en'>
-      <body>{children}</body>
+    <html className={cc([excelsior.variable, roboto.variable])} lang='en'>
+      <SiteBody>{children}</SiteBody>
     </html>
   );
 }
