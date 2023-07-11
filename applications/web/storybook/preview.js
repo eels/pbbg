@@ -1,16 +1,8 @@
-/* eslint-disable no-import-assign */
+import '@/web/styles/style.scss';
+import { withThemeByClassName } from '@storybook/addon-styling';
 
-import 'styles/style.scss';
-import * as NextImage from 'next/image';
-
-const OriginalNextImage = NextImage.default;
-
-Object.defineProperty(NextImage, 'default', {
-  configurable: true,
-  value: (props) => <OriginalNextImage {...props} unoptimized />,
-});
-
-export const parameters = {
+/** @type { import('@storybook/react').Preview } */
+export default {
   actions: {
     argTypesRegex: '^on[A-Z].*',
   },
@@ -20,4 +12,13 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  decorators: [
+    withThemeByClassName({
+      defaultTheme: 'light',
+      themes: {
+        dark: 'dark',
+        light: 'light',
+      },
+    }),
+  ],
 };
