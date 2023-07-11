@@ -1,0 +1,34 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  variables:
+    name: Deploy Storybook
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup
+        uses: ./.github/actions/setup-workflow
+
+      - name: Build
+        env:
+          NODE_ENV: production
+        run: |
+          yarn workspace @pbbg/web storybook:build
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          accountId: ${{ vars.SB_CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.SB_CLOUDFLARE_API_TOKEN }}
+          directory: ./applications/web/storybook-static
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          projectName: ${{ vars.SB_CLOUDFLARE_PROJECT_NAME }}

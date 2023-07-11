@@ -16,6 +16,7 @@ public/site.webmanifest
 public/sitemap.xml
 public/sw.js
 src/types/icon.ts
+storybook-static
 
 # --- Coverage ----------------------------------
 

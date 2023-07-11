@@ -1,29 +1,32 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
-const path = require('path');
-
-module.exports = {
+/** @type { import('@storybook/nextjs').StorybookConfig } */
+export default {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-interactions',
-    'storybook-addon-next',
+    '@storybook/addon-styling',
+    {
+      name: '@storybook/addon-styling',
+      options: {
+        postCss: {
+          implementation: require.resolve('postcss'),
+        },
+      },
+    },
   ],
-  core: {
-    builder: 'webpack5',
+  docs: {
+    autodocs: 'tag',
   },
-  framework: '@storybook/react',
+  framework: {
+    name: '@storybook/nextjs',
+    options: {},
+  },
   staticDirs: ['../public'],
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
   typescript: {
     check: false,
     checkOptions: {},
     reactDocgen: false,
-  },
-  webpackFinal: (config) => {
-    config.resolve.modules.push(path.resolve(process.cwd(), 'src'));
-
-    return config;
   },
 };
