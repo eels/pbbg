@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        mono: ['var(--font-excelsior)', ...defaultTheme.fontFamily.mono],
         sans: ['var(--font-roboto)', ...defaultTheme.fontFamily.sans],
       },
     },
