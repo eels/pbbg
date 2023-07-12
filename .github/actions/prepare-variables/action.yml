@@ -10,7 +10,17 @@ runs:
       shell: bash
       run: |
         touch .env
+        echo API_ANALYTICS_ENABLED="${{ inputs.API_ANALYTICS_ENABLED }}" >> .env
+        echo API_ANALYTICS_MEASUREMENT_ID="${{ inputs.API_ANALYTICS_MEASUREMENT_ID }}" >> .env
+        echo API_ANALYTICS_SECRET="${{ inputs.API_ANALYTICS_SECRET }}" >> .env
+        echo API_RATE_LIMIT_ENABLED="${{ inputs.API_RATE_LIMIT_ENABLED }}" >> .env
+        echo APP_QUERY_DATABASE_LOCATION="${{ inputs.APP_QUERY_DATABASE_LOCATION }}" >> .env
+        echo APP_QUERY_PORT="${{ inputs.APP_QUERY_PORT }}" >> .env
+        echo APP_QUERY_SECRET="${{ inputs.APP_QUERY_SECRET }}" >> .env
+        echo APP_QUERY_URL="${{ inputs.APP_QUERY_URL }}" >> .env
         echo APP_WEB_CLIENT_DOMAIN="${{ inputs.APP_WEB_CLIENT_DOMAIN }}" >> .env
+        echo NEXTAUTH_SECRET="${{ inputs.NEXTAUTH_SECRET }}" >> .env
+        echo NEXTAUTH_URL="${{ inputs.NEXTAUTH_URL }}" >> .env
         echo NODE_ENV="${{ inputs.NODE_ENV }}" >> .env
         echo POCKETBASE_ADMIN_PASSWORD="${{ inputs.POCKETBASE_ADMIN_PASSWORD }}" >> .env
         echo POCKETBASE_ADMIN_USERNAME="${{ inputs.POCKETBASE_ADMIN_USERNAME }}" >> .env

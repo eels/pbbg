@@ -11,7 +11,7 @@ permissions:
   pull-requests: read
 
 jobs:
-  variables:
+  verify:
     name: Verify PR Title
     runs-on: ubuntu-latest
 

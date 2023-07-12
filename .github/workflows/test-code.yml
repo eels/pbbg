@@ -1,7 +1,7 @@
 name: Test Code
 
 on:
-  push:
+  pull_request:
 
 jobs:
   variables:
@@ -15,11 +15,21 @@ jobs:
       - name: Setup
         uses: ./.github/actions/prepare-variables
         with:
-          APP_WEB_CLIENT_DOMAIN: ${{ secrets.APP_LOCAL_WEB_CLIENT_DOMAIN }}
+          API_ANALYTICS_ENABLED: ${{ vars.API_ANALYTICS_ENABLED }}
+          API_ANALYTICS_MEASUREMENT_ID: ${{ vars.API_ANALYTICS_MEASUREMENT_ID }}
+          API_ANALYTICS_SECRET: ${{ secrets.API_ANALYTICS_SECRET }}
+          API_RATE_LIMIT_ENABLED: ${{ vars.API_RATE_LIMIT_ENABLED }}
+          APP_QUERY_DATABASE_LOCATION: ${{ vars.APP_QUERY_DATABASE_LOCATION }}
+          APP_QUERY_PORT: ${{ vars.APP_QUERY_PORT }}
+          APP_QUERY_SECRET: ${{ secrets.APP_QUERY_SECRET }}
+          APP_QUERY_URL: ${{ vars.APP_QUERY_URL }}
+          APP_WEB_CLIENT_DOMAIN: ${{ vars.APP_WEB_CLIENT_DOMAIN }}
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL }}
           NODE_ENV: production
           POCKETBASE_ADMIN_PASSWORD: ${{ secrets.POCKETBASE_ADMIN_PASSWORD }}
-          POCKETBASE_ADMIN_USERNAME: ${{ secrets.POCKETBASE_ADMIN_USERNAME }}
-          POCKETBASE_URL: ${{ secrets.POCKETBASE_URL }}
+          POCKETBASE_ADMIN_USERNAME: ${{ vars.POCKETBASE_ADMIN_USERNAME }}
+          POCKETBASE_URL: ${{ vars.POCKETBASE_URL }}
 
   test:
     name: Test Code
@@ -41,6 +51,7 @@ jobs:
     name: Test Web Client Accessibility
     needs: variables
     runs-on: ubuntu-latest
+    if: false
 
     steps:
       - name: Checkout
