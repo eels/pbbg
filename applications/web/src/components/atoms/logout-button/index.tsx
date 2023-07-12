@@ -1,5 +1,7 @@
 'use client';
 
+import Button from '@/web/components/atoms/button';
+import { Fragment } from 'react';
 import { signOut } from 'next-auth/react';
 
 export default function LogoutButton() {
@@ -7,5 +9,9 @@ export default function LogoutButton() {
     await signOut({ callbackUrl: '/' });
   };
 
-  return <button onClick={handleSignOut}>Sign Out</button>;
+  return (
+    <Fragment>
+      <Button onClick={handleSignOut}>Sign Out</Button>
+    </Fragment>
+  );
 }

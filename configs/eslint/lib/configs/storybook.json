@@ -3,7 +3,10 @@
     {
       "extends": ["plugin:storybook/recommended"],
       "files": ["*.stories.@(ts|tsx)"],
-      "plugins": ["storybook"]
+      "plugins": ["storybook"],
+      "rules": {
+        "storybook/prefer-pascal-case": "off"
+      }
     }
   ]
 }
