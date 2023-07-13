@@ -6,6 +6,10 @@ import type { Session } from 'next-auth';
 export async function getCurrentUser(request?: Request, response?: Response) {
   let session: Session | null;
 
+  if ((request && !response) || (!request && response)) {
+    throw new Error('valid arguments not provided');
+  }
+
   if (request && response) {
     session = await getServerSession(request, response, authOptions);
   } else {

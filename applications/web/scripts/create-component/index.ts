@@ -17,11 +17,18 @@ async function createComponent() {
     fs.mkdirSync(directory, { recursive: true });
   }
 
-  const componentTemplateMap = {
-    'index.stories.template': 'index.stories.tsx',
+  const componentTemplateMap: Record<string, string> = {
     'index.template': 'index.tsx',
     'styled.template': 'styled.ts',
   };
+
+  if (answers.storybook) {
+    componentTemplateMap['index.stories.template'] = 'index.stories.tsx';
+  }
+
+  if (answers.tests) {
+    componentTemplateMap['index.test.template'] = 'index.test.tsx';
+  }
 
   const dynamicVariablesMap = {
     '%!name': pascalCase(componentName),
