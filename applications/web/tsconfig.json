@@ -7,7 +7,8 @@
     "paths": {
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
       "@/web/*": ["./src/*"],
-      "@/web-script/*": ["./scripts/*"]
+      "@/web-script/*": ["./scripts/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
       {
@@ -17,11 +18,12 @@
     "strictNullChecks": true
   },
   "include": [
-    "next-env.d.ts",
+    "../../node_modules/@pbbg/http/express-http.d.ts",
+    ".contentlayer/generated",
+    ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "../../node_modules/@pbbg/http/express-http.d.ts"
+    "next-env.d.ts"
   ],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
