@@ -1,5 +1,9 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
+const { withContentlayer } = require('next-contentlayer');
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextJSConfig = {
   env: {
     NEXT_PUBLIC_WEB_CLIENT_DOMAIN: process.env.APP_WEB_CLIENT_DOMAIN,
   },
@@ -13,3 +17,5 @@ module.exports = {
   swcMinify: true,
   transpilePackages: ['@pbbg/http', 'tailwind-compose'],
 };
+
+module.exports = withContentlayer(nextJSConfig);
