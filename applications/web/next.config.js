@@ -11,5 +11,5 @@ module.exports = {
   },
   reactStrictMode: true,
   swcMinify: true,
-  transpilePackages: ['@pbbg/http'],
+  transpilePackages: ['@pbbg/http', 'tailwind-compose'],
 };

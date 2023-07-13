@@ -1,3 +1,5 @@
+'use client';
+
 import * as Styled from './styled';
 import ConditionalRender from '@/web/components/utilities/conditional-render';
 import type { AvailableIcon } from '@/web/types/icon';

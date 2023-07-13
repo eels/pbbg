@@ -11,4 +11,16 @@ export const questions = [
     name: 'type',
     type: 'list',
   },
+  {
+    default: true,
+    message: 'Do you want to include a test file?',
+    name: 'tests',
+    type: 'confirm',
+  },
+  {
+    default: true,
+    message: 'Do you want to include a Storybook file?',
+    name: 'storybook',
+    type: 'confirm',
+  },
 ];
