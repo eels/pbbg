@@ -1,4 +1,12 @@
 {
   "extends": ["plugin:sonarjs/recommended"],
+  "overrides": [
+    {
+      "files": ["styled.ts"],
+      "rules": {
+        "sonarjs/no-duplicate-string": "off"
+      }
+    }
+  ],
   "plugins": ["sonarjs"]
 }

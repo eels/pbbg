@@ -3,12 +3,12 @@ import { classnames, compose } from 'tailwind-compose';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 export interface StyledLinkButtonProps {
-  isError: boolean;
+  isAlert: boolean;
   isSecondary: boolean;
 }
 
 export interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isError: boolean;
+  isAlert: boolean;
   isSecondary: boolean;
 }
 
@@ -67,15 +67,15 @@ const errorButtonStyles = [
 ];
 
 export const Button = compose.button<StyledButtonProps>((conditional) => [
-  conditional(primaryButtonStyles, ({ isError, isSecondary }) => !isError && !isSecondary),
+  conditional(primaryButtonStyles, ({ isAlert, isSecondary }) => !isAlert && !isSecondary),
   conditional(secondaryButtonStyles, ({ isSecondary }) => isSecondary),
-  conditional(errorButtonStyles, ({ isError }) => isError),
+  conditional(errorButtonStyles, ({ isAlert }) => isAlert),
 ]);
 
 export const Link = classnames<StyledLinkButtonProps>((conditional) => [
-  conditional(primaryButtonStyles, ({ isError, isSecondary }) => !isError && !isSecondary),
+  conditional(primaryButtonStyles, ({ isAlert, isSecondary }) => !isAlert && !isSecondary),
   conditional(secondaryButtonStyles, ({ isSecondary }) => isSecondary),
-  conditional(errorButtonStyles, ({ isError }) => isError),
+  conditional(errorButtonStyles, ({ isAlert }) => isAlert),
 ]);
 
 export interface StyledContentProps {
