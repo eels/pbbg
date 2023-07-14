@@ -7,17 +7,17 @@ import type { ButtonHTMLAttributes } from 'react';
 import type { Object } from 'ts-toolbelt';
 
 interface BaseButton extends ButtonHTMLAttributes<HTMLButtonElement> {
-  error?: boolean;
+  alert?: boolean;
   icon?: AvailableIcon;
   processing?: boolean;
   secondary?: boolean;
 }
 
-export type ButtonProps = Object.Either<BaseButton, 'error' | 'secondary'>;
+export type ButtonProps = Object.Either<BaseButton, 'alert' | 'secondary'>;
 
 export default function Button({
+  alert = false,
   children,
-  error = false,
   icon,
   processing = false,
   secondary = false,
@@ -28,7 +28,7 @@ export default function Button({
   }
 
   return (
-    <Styled.Button isError={error} isSecondary={secondary} {...props}>
+    <Styled.Button isAlert={alert} isSecondary={secondary} {...props}>
       <Styled.Content isProcessing={processing}>
         <ConditionalRender condition={icon !== undefined}>
           {() => <Styled.Icon icon={icon as AvailableIcon} />}

@@ -1,30 +1,20 @@
-import Button from '@/web/components/atoms/button';
+import LinkButton from '@/web/components/atoms/link-button';
 import type { Meta, StoryObj } from '@storybook/react';
 
-export type Story = StoryObj<typeof Button>;
+export type Story = StoryObj<typeof LinkButton>;
 
 export default {
-  component: Button,
+  component: LinkButton,
   tags: ['autodocs'],
-  title: 'Components/Atoms/Button',
-} satisfies Meta<typeof Button>;
+  title: 'Components/Atoms/LinkButton',
+} satisfies Meta<typeof LinkButton>;
 
 export const Primary: Story = {
   args: {
     alert: undefined,
     children: 'Button',
+    href: '#',
     icon: undefined,
-    processing: false,
-    secondary: undefined,
-  },
-};
-
-export const PrimaryProcessing: Story = {
-  args: {
-    alert: undefined,
-    children: 'Button',
-    icon: undefined,
-    processing: true,
     secondary: undefined,
   },
 };
@@ -33,8 +23,8 @@ export const PrimaryWithIcon: Story = {
   args: {
     alert: undefined,
     children: 'Button',
-    icon: undefined,
-    processing: false,
+    href: '#',
+    icon: 'swords-emblem',
     secondary: undefined,
   },
 };
@@ -43,8 +33,8 @@ export const Secondary: Story = {
   args: {
     alert: undefined,
     children: 'Button',
+    href: '#',
     icon: undefined,
-    processing: undefined,
     secondary: true,
   },
 };
@@ -53,8 +43,8 @@ export const Alert: Story = {
   args: {
     alert: true,
     children: 'Button',
+    href: '#',
     icon: undefined,
-    processing: undefined,
     secondary: undefined,
   },
 };
