@@ -1,5 +1,6 @@
 import '@/web/styles/style.scss';
 import SiteBody from '@/web/components/atoms/site-body';
+import StringsProvider from '@/web/components/utilities/strings-provider';
 import cc from 'classcat';
 import { excelsior, roboto } from '@/web/config/fonts';
 import { getAllIconsAsSymbols } from '@/web/services/icons';
@@ -19,10 +20,12 @@ export default function RootLayout({ children }: LayoutProps) {
 
   return (
     <html className={cc([excelsior.variable, roboto.variable])} lang='en'>
-      <SiteBody>
-        <div dangerouslySetInnerHTML={{ __html: icons ?? '' }} id='__icons' />
-        {children}
-      </SiteBody>
+      <StringsProvider>
+        <SiteBody>
+          <div dangerouslySetInnerHTML={{ __html: icons ?? '' }} id='__icons' />
+          {children}
+        </SiteBody>
+      </StringsProvider>
     </html>
   );
 }

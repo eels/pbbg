@@ -1,4 +1,5 @@
 import * as Styled from './styled';
+import StringsProvider from '@/web/components/utilities/strings-provider';
 import cc from 'classcat';
 import { excelsior, roboto } from '@/web/config/fonts';
 import type { PartialStoryFn } from '@storybook/types';
@@ -10,8 +11,10 @@ export function withStorybookDecorator() {
   return function StoryblokDecorator(Story: PartialStoryFn<ReactRenderer>) {
     return (
       <Styled.Wrapper className={cc([excelsior.variable, roboto.variable])}>
-        <div dangerouslySetInnerHTML={{ __html: icons ?? '' }} id='__icons' />
-        <Story />
+        <StringsProvider>
+          <div dangerouslySetInnerHTML={{ __html: icons ?? '' }} id='__icons' />
+          <Story />
+        </StringsProvider>
       </Styled.Wrapper>
     );
   };

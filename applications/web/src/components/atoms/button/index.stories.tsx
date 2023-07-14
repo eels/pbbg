@@ -14,7 +14,18 @@ export const Primary: Story = {
     alert: undefined,
     children: 'Button',
     icon: undefined,
-    processing: false,
+    processing: undefined,
+    secondary: undefined,
+  },
+};
+
+export const PrimaryDisabled: Story = {
+  args: {
+    alert: undefined,
+    children: 'Button',
+    disabled: true,
+    icon: undefined,
+    processing: undefined,
     secondary: undefined,
   },
 };
@@ -33,8 +44,8 @@ export const PrimaryWithIcon: Story = {
   args: {
     alert: undefined,
     children: 'Button',
-    icon: undefined,
-    processing: false,
+    icon: 'swords-emblem',
+    processing: undefined,
     secondary: undefined,
   },
 };
