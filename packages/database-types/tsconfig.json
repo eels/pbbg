@@ -1,0 +1,4 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "include": ["**/*.ts"]
+}

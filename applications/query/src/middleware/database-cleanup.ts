@@ -1,5 +1,5 @@
 import { Controller } from '@pbbg/http/lib/types/http';
-import { noTryAsync } from 'no-try';
+import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import type { Database } from 'sqlite';
 import type { NextFunction, Request, Response } from 'express';
 
@@ -22,7 +22,7 @@ export default class DatabaseCleanup extends Controller {
 
   private close(db: Database) {
     return () => {
-      noTryAsync(() => db.close());
+      pleaseTryAsync(() => db.close());
     };
   }
 }

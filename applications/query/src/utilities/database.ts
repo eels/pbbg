@@ -1,6 +1,6 @@
 import { OPEN_READONLY, cached } from 'sqlite3';
-import { noTryAsync } from 'no-try';
 import { open } from 'sqlite';
+import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import { resolve } from 'path';
 import type { Database } from 'sqlite';
 
@@ -15,7 +15,7 @@ export async function databaseInstance() {
     return database;
   }
 
-  const [error, db] = await noTryAsync(() => {
+  const [error, db] = await pleaseTryAsync(() => {
     return open({
       driver: cached.Database,
       filename: resolve(process.env.APP_QUERY_DATABASE_LOCATION ?? ''),

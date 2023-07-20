@@ -5,7 +5,7 @@ export const questions = [
     type: 'input',
   },
   {
-    choices: ['atom', 'molecule', 'organism'],
+    choices: ['atom', 'molecule'],
     filter: (value: string) => `${value}s`,
     message: 'What type of component is this?',
     name: 'type',

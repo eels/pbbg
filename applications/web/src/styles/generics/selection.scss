@@ -1,0 +1,8 @@
+@layer base {
+  ::selection {
+    background-color: theme('colors.gray.50');
+    background-color: theme('colors.gray.50 / 99%');
+    color: theme('colors.neutral.950');
+    opacity: theme('opacity.100');
+  }
+}

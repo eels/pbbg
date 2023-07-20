@@ -1,6 +1,6 @@
 'use client';
 
-import * as Styled from './styled';
+import * as Styled from '@/web/components/atoms/button/styled';
 import ConditionalRender from '@/web/components/utilities/conditional-render';
 import type { AvailableIcon } from '@/web/types/icon';
 import type { ButtonHTMLAttributes } from 'react';

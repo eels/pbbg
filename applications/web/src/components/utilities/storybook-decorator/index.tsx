@@ -1,4 +1,4 @@
-import * as Styled from './styled';
+import * as Styled from '@/web/components/utilities/storybook-decorator/styled';
 import StringsProvider from '@/web/components/utilities/strings-provider';
 import cc from 'classcat';
 import { excelsior, roboto } from '@/web/config/fonts';

@@ -1,4 +1,23 @@
 import { defineDocumentType, makeSource } from 'contentlayer/source-files';
+import { removeExtension } from './src/utilities/extensions';
+
+const Auxiliary = defineDocumentType(() => ({
+  computedFields: {
+    slug: {
+      resolve: (doc) => removeExtension(doc._raw.sourceFileName),
+      type: 'string',
+    },
+  },
+  contentType: 'mdx',
+  fields: {
+    title: {
+      required: true,
+      type: 'string',
+    },
+  },
+  filePathPattern: 'auxiliary/**/*.mdx',
+  name: 'Auxiliary',
+}));
 
 const Post = defineDocumentType(() => ({
   computedFields: {
@@ -13,9 +32,14 @@ const Post = defineDocumentType(() => ({
       required: true,
       type: 'date',
     },
-    title: {
+    headline: {
       required: true,
       type: 'string',
+    },
+    status: {
+      options: ['DRAFT', 'PUBLISHED'],
+      required: true,
+      type: 'enum',
     },
   },
   filePathPattern: 'posts/**/*.mdx',
@@ -24,5 +48,5 @@ const Post = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'src/content',
-  documentTypes: [Post],
+  documentTypes: [Auxiliary, Post],
 });

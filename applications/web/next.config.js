@@ -15,7 +15,7 @@ const nextJSConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
-  transpilePackages: ['@pbbg/http', 'tailwind-compose'],
+  transpilePackages: ['@pbbg/http', '@pbbg/utilities', 'tailwind-compose'],
 };
 
 module.exports = withContentlayer(nextJSConfig);

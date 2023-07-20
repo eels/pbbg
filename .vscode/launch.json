@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "yarn dev",
+      "command": "yarn workspace @pbbg/web dev",
       "name": "Next.js: debug server-side",
       "request": "launch",
       "type": "node-terminal"
@@ -14,7 +14,7 @@
       "url": "http://localhost:3000"
     },
     {
-      "command": "yarn dev",
+      "command": "yarn workspace @pbbg/web dev",
       "request": "launch",
       "name": "Next.js: debug full stack",
       "serverReadyAction": {

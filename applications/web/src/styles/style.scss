@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+// --- Generics ---------------------------------
+
+@import './generics/selection';
+
 // --- Elements ---------------------------------
 
 @import './elements/anchor';

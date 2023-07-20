@@ -20,7 +20,7 @@ async function createBlogPost() {
   const timestamp = format(new Date(), 'yyyyMMddHHmm');
   const urlSafeHeadline = sanitiseHeadline(answers.headline);
   const slug = `${timestamp}-${urlSafeHeadline}`;
-  const directory = path.join(process.cwd(), 'src', 'data', 'blog');
+  const directory = path.join(process.cwd(), 'src', 'content', 'posts');
 
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, { recursive: true });
@@ -29,14 +29,13 @@ async function createBlogPost() {
   const dynamicVariablesMap = {
     '%date': timestamp,
     '%headline': capitalCase(answers.headline),
-    '%slug': slug,
     '%status': 'DRAFT',
   };
 
   const template = getTemplateContent(path.join(__dirname, 'templates', 'blog-post.md'));
   const post = replaceDynamicVariableValues(dynamicVariablesMap, template);
 
-  writeContentToDirectory(path.join(directory, `${slug}.md`), post);
+  writeContentToDirectory(path.join(directory, `${slug}.mdx`), post);
 }
 
 createBlogPost();

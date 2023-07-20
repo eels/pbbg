@@ -11,6 +11,10 @@
     "lint": "eslint \"./*.{js,json,ts}\" \"./lib/**/*.{json,ts}\" --cache",
     "typescript:verify": "tsc --noEmit"
   },
+  "files": [
+    "express-http.d.ts",
+    "lib/*"
+  ],
   "dependencies": {
     "express": "4.18.2"
   },

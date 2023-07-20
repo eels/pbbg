@@ -1,9 +1,10 @@
-import type { StringKey } from '@/web/types/strings';
+import { getString } from '@/web/utilities/string';
+import { hydrate, hydrateWithJSX } from '@/web/utilities/hydrate-string';
 
 export function useString() {
   return {
-    s: (key: StringKey) => {
-      return (typeof window === 'undefined' ? global : window)?.nextstring?.[key];
-    },
+    hydrate,
+    hydrateWithJSX,
+    s: getString,
   };
 }

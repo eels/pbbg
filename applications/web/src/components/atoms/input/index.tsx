@@ -1,5 +1,6 @@
 import * as Styled from '@/web/components/atoms/input/styled';
 import ConditionalRender from '@/web/components/utilities/conditional-render';
+import Error from '@/web/components/atoms/error';
 import { forwardRef, useId } from 'react';
 import { paramCase } from 'change-case';
 import type { AvailableIcon } from '@/web/types/icon';
@@ -44,7 +45,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         </Styled.Container>
 
         <ConditionalRender condition={error && errorMessage !== undefined}>
-          {() => <Styled.Error>{errorMessage}</Styled.Error>}
+          {() => <Error>{errorMessage}</Error>}
         </ConditionalRender>
       </Styled.Wrapper>
     );
