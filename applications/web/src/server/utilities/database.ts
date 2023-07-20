@@ -1,5 +1,5 @@
 import PocketBase from 'pocketbase';
-import { noTryAsync } from 'no-try';
+import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 
 let database: PocketBase;
 let backendDatabase: PocketBase;
@@ -30,7 +30,7 @@ export async function backendDatabaseInstance() {
   }
 
   if (backendDatabase?.authStore?.isValid === false) {
-    const [error] = await noTryAsync(() => backendDatabase.admins.authRefresh());
+    const [error] = await pleaseTryAsync(() => backendDatabase.admins.authRefresh());
 
     if (!error) {
       return backendDatabase;

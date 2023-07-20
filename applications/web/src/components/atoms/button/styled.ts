@@ -13,6 +13,7 @@ export interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const baseStyles = [
+  '!no-underline',
   'block',
   'w-full',
   'min-w-[200px]',

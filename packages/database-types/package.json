@@ -1,0 +1,23 @@
+{
+  "name": "@pbbg/database-types",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "format:fix": "yarn format --write",
+    "format": "prettier \"{.,./lib/**/}*.{js,json,ts}\" --cache --check",
+    "lint:fix": "yarn lint:js --fix",
+    "lint": "eslint \"./*.{js,ts}\" \"./lib/**/*.{js,ts}\" --cache",
+    "typescript:verify": "tsc --noEmit"
+  },
+  "files": [
+    "lib/*"
+  ],
+  "dependencies": {
+    "pocketbase": "0.15.2"
+  },
+  "devDependencies": {
+    "@pbbg/eslint-config": "*",
+    "@pbbg/prettier-config": "*",
+    "@pbbg/typescript-config": "*"
+  }
+}

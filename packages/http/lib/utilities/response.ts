@@ -8,3 +8,8 @@ export function response<T>(res: Response) {
     res.json({ status, ...response });
   };
 }
+
+export const exceptions = {
+  INTERNAL_ERROR: 'internal error',
+  INVALID_CREDENTIALS: 'invalid credentials',
+} as const;

@@ -6,8 +6,9 @@
     "noEmit": true,
     "paths": {
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
-      "@/web/*": ["./src/*"],
+      "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"],
       "@/web-script/*": ["./scripts/*"],
+      "@/web/*": ["./src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
@@ -23,6 +24,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
+    "next-authentication.d.ts",
     "next-env.d.ts",
     "next-string.d.ts"
   ],

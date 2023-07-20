@@ -1,4 +1,5 @@
 import AuthenticationGuard from '@/web/server/middleware/authentication-guard';
+import AuthenticationQuery from '@/web/server/queries/authentication';
 import CustomResponseProperties from '@/web/server/middleware/custom-response-properties';
 import ErrorHandler from '@/web/server/controllers/error';
 import MeasureRequestDuration from '@/web/server/middleware/measure-request-duration';
@@ -7,7 +8,7 @@ import RateLimited from '@/web/server/controllers/rate-limited';
 import SendAnalyticsEvent from '@/web/server/middleware/send-analytics-event';
 import Version from '@/web/server/controllers/version';
 import { InjectionMode, asClass, asValue, createContainer } from 'awilix';
-import { backendDatabaseInstance } from '@/web/server/utilities/database';
+import { backendDatabaseInstance, databaseInstance } from '@/web/server/utilities/database';
 import { queryInstance } from '@/web/server/utilities/query';
 
 interface Controllers {
@@ -24,7 +25,11 @@ interface Middleware {
   SendAnalyticsEvent: SendAnalyticsEvent;
 }
 
-interface Container extends Controllers, Middleware {
+interface Queries {
+  AuthenticationQuery: AuthenticationQuery;
+}
+
+interface Container extends Controllers, Middleware, Queries {
   //
 }
 
@@ -33,8 +38,9 @@ export const cradle = container.cradle;
 
 // --- Database ---------------------------------
 
-container.register('database', asValue(backendDatabaseInstance));
-container.register('query', asValue(queryInstance));
+container.register('authentication', asValue(databaseInstance()));
+container.register('database', asValue(backendDatabaseInstance()));
+container.register('query', asValue(queryInstance()));
 
 // --- Controllers ------------------------------
 
@@ -49,3 +55,7 @@ container.register('AuthenticationGuard', asClass(AuthenticationGuard));
 container.register('CustomResponseProperties', asClass(CustomResponseProperties));
 container.register('MeasureRequestDuration', asClass(MeasureRequestDuration));
 container.register('SendAnalyticsEvent', asClass(SendAnalyticsEvent));
+
+// --- Queries ----------------------------------
+
+container.register('AuthenticationQuery', asClass(AuthenticationQuery));

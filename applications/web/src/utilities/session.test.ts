@@ -4,7 +4,7 @@ import httpMock from 'node-mocks-http';
 import { getCurrentUser } from '@/web/utilities/session';
 import { getServerSession } from 'next-auth';
 import { mockSessionObject } from '@/web/__mocks__/session';
-import { noTryAsync } from 'no-try';
+import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 
 jest.mock('next-auth');
 
@@ -36,7 +36,7 @@ describe('getCurrentUser', () => {
   });
 
   it('throws an error when partial arguments are provided', async () => {
-    await noTryAsync(async () => expect(await getCurrentUser(mockReq)).toThrow());
-    await noTryAsync(async () => expect(await getCurrentUser(undefined, mockRes)).toThrow());
+    await pleaseTryAsync(async () => expect(await getCurrentUser(mockReq)).toThrow());
+    await pleaseTryAsync(async () => expect(await getCurrentUser(undefined, mockRes)).toThrow());
   });
 });

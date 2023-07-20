@@ -40,7 +40,7 @@
     "typescript:verify": "turbo run typescript:verify"
   },
   "dependencies": {
-    "turbo": "1.10.7"
+    "turbo": "1.10.9"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.1",

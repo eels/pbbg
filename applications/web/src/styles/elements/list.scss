@@ -2,7 +2,9 @@
   ul {
     display: flex;
     flex-direction: column;
-    gap: theme('gap.1');
+    margin-left: calc(theme('margin.3') + theme('margin[0.5]'));
+    gap: theme('gap.4');
+    list-style-type: theme('listStyleType.disc');
 
     &:not(:last-child) {
       margin-bottom: theme('margin.4');
@@ -10,7 +12,7 @@
   }
 
   li {
-    padding-left: theme('padding[0.5]');
+    padding-left: theme('padding.0');
     line-height: theme('lineHeight.normal');
   }
 }

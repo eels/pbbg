@@ -2,7 +2,12 @@
   a,
   a:active,
   a:visited {
-    color: theme('colors.green.700');
+    color: theme('colors.red.500');
+    font-weight: theme('fontWeight.bold');
     text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 }

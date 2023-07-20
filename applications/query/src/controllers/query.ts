@@ -1,5 +1,5 @@
 import { Controller } from '@pbbg/http/lib/types/http';
-import { noTryAsync } from 'no-try';
+import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import type { Database } from 'sqlite';
 import type { Request, Response } from 'express';
 
@@ -27,7 +27,7 @@ export default class Query extends Controller {
     }
 
     const fetchMethod = mode === 'SINGULAR' ? 'get' : 'all';
-    const [error, results] = await noTryAsync(() => statement[fetchMethod]());
+    const [error, results] = await pleaseTryAsync(() => statement[fetchMethod]());
 
     if (error) {
       throw new Error('error querying database');

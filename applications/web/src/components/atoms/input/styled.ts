@@ -71,9 +71,3 @@ export const Input = compose.input<StyledInput, HTMLInputElement>((conditional) 
   conditional('focus:ring-red-500/40', ({ hasError }) => hasError),
   conditional('pl-10', ({ hasIcon }) => hasIcon),
 ]);
-
-export const Error = compose.div(() => [
-  'text-sm',
-  'font-medium',
-  'text-red-500',
-]);

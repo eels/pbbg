@@ -6,5 +6,9 @@ export interface ConditionalRenderProps {
 }
 
 export default function ConditionalRender({ children, condition }: ConditionalRenderProps) {
-  return condition ? children() : null;
+  if (!condition) {
+    return null;
+  }
+
+  return children();
 }
