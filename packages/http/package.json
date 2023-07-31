@@ -16,7 +16,9 @@
     "lib/*"
   ],
   "dependencies": {
-    "express": "4.18.2"
+    "axios": "1.4.0",
+    "express": "4.18.2",
+    "zod": "3.21.4"
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",

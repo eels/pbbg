@@ -1,6 +1,7 @@
 'use client';
 
 import Button from '@/web/components/atoms/button';
+import LoadingIndicator from '@/web/components/molecules/loading-indicator';
 import { useAuthentication } from '@/web/hooks/use-authentication';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -10,7 +11,7 @@ import { useString } from '@/web/hooks/use-string';
 export default function Mayflower() {
   const router = useRouter();
   const session = useSession();
-  const { handleOnSignOut } = useAuthentication();
+  const { handleOnLogout } = useAuthentication();
   const { s } = useString();
 
   useEffect(() => {
@@ -19,5 +20,9 @@ export default function Mayflower() {
     }
   }, [router, s, session.status]);
 
-  return <Button onClick={handleOnSignOut}>Sign out</Button>;
+  if (session.status === 'loading') {
+    return <LoadingIndicator className='w-screen h-screen' />;
+  }
+
+  return <Button onClick={handleOnLogout}>Logout</Button>;
 }

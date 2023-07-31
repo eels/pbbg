@@ -5,5 +5,12 @@ export default {
   'auth.login.error.invalid_credentials': 'Wrong password',
   'auth.login.password.label': 'Password',
   'auth.login.password.placeholder': '••••••••••',
-  'auth.login.submit': 'Sign In',
+  'auth.login.submit': 'Login',
+  'auth.register.email.label': 'E-mail',
+  'auth.register.email.placeholder': 'example@example.com',
+  'auth.register.error.internal_error': 'Internal server error',
+  'auth.register.error.user_exists': 'User already exists',
+  'auth.register.password.label': 'Password',
+  'auth.register.password.placeholder': '••••••••••',
+  'auth.register.submit': 'Register',
 } as const satisfies Record<string, string>;

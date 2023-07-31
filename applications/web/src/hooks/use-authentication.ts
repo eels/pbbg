@@ -1,26 +1,25 @@
+import { axiosInstance } from '@/web/utilities/axios';
 import { createValidationError, extractValidationErrors } from '@/web/utilities/validation';
 import { exceptions } from '@pbbg/http/lib/utilities/response';
 import { pleaseTry, pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import { signIn, signOut } from 'next-auth/react';
 import { useString } from '@/web/hooks/use-string';
-import { validateAuthLogin } from '@/web/validators/authentication';
+import { validateAuthentication } from '@/web/validators/authentication';
+import type { APIError } from '@pbbg/http/lib/types/api';
 import type { ZodError } from 'zod';
 
 export function useAuthentication() {
   const { s } = useString();
 
   return {
-    handleOnRedirect: () => {
-      window.location.href = s('router.application');
-    },
-    handleOnSignIn: async (email?: string, password?: string) => {
+    handleOnLogin: async (email?: string, password?: string) => {
       const payload = {
         email: email?.toLowerCase(),
         password,
       };
 
       const [validationError] = pleaseTry(() => {
-        return validateAuthLogin().parse(payload);
+        return validateAuthentication().parse(payload);
       });
 
       const [authError, response] = await pleaseTryAsync(async () => {
@@ -28,10 +27,7 @@ export function useAuthentication() {
           throw validationError;
         }
 
-        return await signIn('credentials', {
-          ...payload,
-          redirect: false,
-        });
+        return await signIn('credentials', { ...payload, redirect: false });
       });
 
       let errorsPayload = {
@@ -54,10 +50,68 @@ export function useAuthentication() {
 
       return errorsPayload;
     },
-    handleOnSignOut: async () => {
+    handleOnLogout: async () => {
       await signOut({
         redirect: false,
       });
+    },
+    handleOnRedirect: () => {
+      window.location.href = s('router.application');
+    },
+    handleOnRegister: async (email?: string, password?: string) => {
+      const payload = {
+        email: email?.toLowerCase(),
+        password,
+      };
+
+      const [validationError] = pleaseTry(() => {
+        return validateAuthentication({ isRegister: true }).parse(payload);
+      });
+
+      const [registerError] = await pleaseTryAsync<never, APIError>(async () => {
+        if (validationError) {
+          throw validationError;
+        }
+
+        return await axiosInstance.post('/api/user/register', payload);
+      });
+
+      const [authError, response] = await pleaseTryAsync(async () => {
+        if (registerError) {
+          throw registerError;
+        }
+
+        return await signIn('credentials', { ...payload, redirect: false });
+      });
+
+      let errorsPayload = {
+        ...extractValidationErrors(validationError as ZodError),
+      };
+
+      const registerErrorMessage = registerError?.response?.data?.message;
+
+      if (!validationError && registerErrorMessage === exceptions.USER_EXISTS) {
+        errorsPayload = {
+          ...errorsPayload,
+          ...createValidationError('email', s('auth.register.error.user_exists')),
+        };
+      }
+
+      if (!validationError && registerError && registerErrorMessage !== exceptions.USER_EXISTS) {
+        errorsPayload = {
+          ...errorsPayload,
+          ...createValidationError('email', s('auth.register.error.internal_error')),
+        };
+      }
+
+      if (!validationError && (authError || response?.error === exceptions.INTERNAL_ERROR)) {
+        errorsPayload = {
+          ...errorsPayload,
+          ...createValidationError('password', s('auth.register.error.internal_error')),
+        };
+      }
+
+      return errorsPayload;
     },
   };
 }
