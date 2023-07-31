@@ -20,7 +20,13 @@ app.use(rateLimiter(rateLimitOptions));
 app.use(wrapHandler(cradle.MeasureRequestDuration.handle));
 app.use(wrapHandler(cradle.SendAnalyticsEvent.handle));
 
-router.get('/api/version', cradle.Version);
+// --- GET --------------------------------------
+
+router.get('/api/version', cradle.Version.handle);
+
+// --- POST -------------------------------------
+
+router.post('/api/user/register', cradle.Registration.handle);
 
 app.use(cradle.ErrorHandler.handle);
 app.use(wrapHandler(cradle.NotFound.handle));

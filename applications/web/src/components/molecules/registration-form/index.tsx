@@ -1,6 +1,6 @@
 'use client';
 
-import * as Styled from '@/web/components/molecules/login-form/styled';
+import * as Styled from '@/web/components/molecules/registration-form/styled';
 import Button from '@/web/components/atoms/button';
 import EmailInput from '@/web/components/atoms/input/variations/email';
 import PasswordInput from '@/web/components/atoms/input/variations/password';
@@ -9,15 +9,15 @@ import { useString } from '@/web/hooks/use-string';
 import type { FormErrors } from '@/web/types/forms';
 import type { FormEvent } from 'react';
 
-export interface LoginFormProps {
-  onLogin?: (email?: string, password?: string) => Promise<FormErrors>;
+export interface RegistrationFormProps {
   onRedirect?: () => void;
+  onRegister?: (email?: string, password?: string) => Promise<FormErrors>;
 }
 
-export default function LoginForm({
-  onLogin: handleOnLogin,
+export default function RegistrationForm({
   onRedirect: handleOnRedirect,
-}: LoginFormProps) {
+  onRegister: handleOnRegister,
+}: RegistrationFormProps) {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -31,7 +31,7 @@ export default function LoginForm({
 
     const email = emailRef.current?.value;
     const password = passwordRef.current?.value;
-    const response = (await handleOnLogin?.(email, password)) || {};
+    const response = (await handleOnRegister?.(email, password)) || {};
 
     setErrors(response);
 
@@ -49,22 +49,22 @@ export default function LoginForm({
         error={errors.email?.message !== undefined}
         errorMessage={errors.email?.message}
         icon='envelope'
-        id='login.email'
-        label={s('auth.login.email.label')}
-        placeholder={s('auth.login.email.placeholder')}
+        id='register.email'
+        label={s('auth.register.email.label')}
+        placeholder={s('auth.register.email.placeholder')}
       />
       <PasswordInput
         ref={passwordRef}
         error={errors.password?.message !== undefined}
         errorMessage={errors.password?.message}
         icon='lock'
-        id='login.password'
-        label={s('auth.login.password.label')}
-        placeholder={s('auth.login.password.placeholder')}
+        id='register.password'
+        label={s('auth.register.password.label')}
+        placeholder={s('auth.register.password.placeholder')}
         isCurrentPassword
       />
       <Button className='mt-2' processing={isProcessing} type='submit'>
-        {s('auth.login.submit')}
+        {s('auth.register.submit')}
       </Button>
     </Styled.Wrapper>
   );

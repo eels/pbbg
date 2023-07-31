@@ -38,6 +38,8 @@ const primaryButtonStyles = [
   'border-gray-50',
   'hover:bg-gray-50',
   'hover:text-neutral-950',
+  'active:bg-gray-50/20',
+  'active:text-gray-50',
   'focus:ring-gray-50/40',
   'disabled:text-gray-50/60',
   'disabled:border-gray-50/60',
@@ -50,17 +52,22 @@ const secondaryButtonStyles = [
   'text-neutral-950',
   'border-transparent',
   'hover:bg-gray-50/80',
+  'active:bg-gray-50/20',
+  'active:text-gray-50',
+  'active:border-gray-50',
   'focus:ring-gray-50/40',
   'disabled:hover:bg-gray-50',
 ];
 
-const errorButtonStyles = [
+const alertButtonStyles = [
   ...baseStyles,
   'bg-neutral-950',
   'text-red-500',
   'border-red-500',
   'hover:bg-red-500',
   'hover:text-neutral-950',
+  'active:bg-red-500/20',
+  'active:text-red-500',
   'focus:ring-red-500/40',
   'disabled:text-red-500/60',
   'disabled:border-red-500/60',
@@ -70,13 +77,13 @@ const errorButtonStyles = [
 export const Button = compose.button<StyledButtonProps>((conditional) => [
   conditional(primaryButtonStyles, ({ isAlert, isSecondary }) => !isAlert && !isSecondary),
   conditional(secondaryButtonStyles, ({ isSecondary }) => isSecondary),
-  conditional(errorButtonStyles, ({ isAlert }) => isAlert),
+  conditional(alertButtonStyles, ({ isAlert }) => isAlert),
 ]);
 
 export const Link = classnames<StyledLinkButtonProps>((conditional) => [
   conditional(primaryButtonStyles, ({ isAlert, isSecondary }) => !isAlert && !isSecondary),
   conditional(secondaryButtonStyles, ({ isSecondary }) => isSecondary),
-  conditional(errorButtonStyles, ({ isAlert }) => isAlert),
+  conditional(alertButtonStyles, ({ isAlert }) => isAlert),
 ]);
 
 export interface StyledContentProps {

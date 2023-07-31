@@ -1,8 +1,9 @@
 'use client';
 
 import LoginForm from '@/web/components/molecules/login-form';
+import RegistrationForm from '@/web/components/molecules/registration-form';
+import { Fragment, useEffect } from 'react';
 import { useAuthentication } from '@/web/hooks/use-authentication';
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useString } from '@/web/hooks/use-string';
@@ -10,7 +11,7 @@ import { useString } from '@/web/hooks/use-string';
 export default function Home() {
   const router = useRouter();
   const session = useSession();
-  const { handleOnRedirect, handleOnSignIn } = useAuthentication();
+  const { handleOnLogin, handleOnRedirect, handleOnRegister } = useAuthentication();
   const { s } = useString();
 
   useEffect(() => {
@@ -19,5 +20,10 @@ export default function Home() {
     }
   }, [router, s, session.status]);
 
-  return <LoginForm onRedirect={handleOnRedirect} onSignIn={handleOnSignIn} />;
+  return (
+    <Fragment>
+      <LoginForm onLogin={handleOnLogin} onRedirect={handleOnRedirect} />
+      <RegistrationForm onRedirect={handleOnRedirect} onRegister={handleOnRegister} />
+    </Fragment>
+  );
 }

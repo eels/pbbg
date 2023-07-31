@@ -94,5 +94,6 @@ jobs:
 
       - name: Verify code TypeScript types
         run: |
+          yarn workspace @pbbg/web build:content
           yarn workspace @pbbg/web build:icon-type
           yarn typescript:verify

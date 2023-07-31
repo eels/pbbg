@@ -16,7 +16,7 @@
     "build": "turbo run build",
     "clean:dependencies": "yarn rimraf \"**/node_modules/\"",
     "clean:artifacts": "yarn rimraf \"**/tsconfig.tsbuildinfo\"",
-    "clean": "turbo run clean",
+    "clean": "turbo run clean && yarn clean:artifacts",
     "dev": "turbo run dev",
     "docker:build": "docker-compose build",
     "docker:down": "docker-compose down",

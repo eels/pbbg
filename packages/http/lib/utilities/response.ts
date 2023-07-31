@@ -10,6 +10,8 @@ export function response<T>(res: Response) {
 }
 
 export const exceptions = {
+  BAD_DATA: 'bad data',
   INTERNAL_ERROR: 'internal error',
   INVALID_CREDENTIALS: 'invalid credentials',
+  USER_EXISTS: 'user exists',
 } as const;

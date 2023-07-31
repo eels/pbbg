@@ -6,7 +6,7 @@ import type { Router } from '@/http/types/http';
 export function createExpressRouter(app: Express) {
   return validHTTPRequestMethods.reduce<Router>((router, method) => {
     router[method] = (path, ...handler) => {
-      return app[method](path, ...handler.map((h) => wrapHandler(h.handle)));
+      return app[method](path, ...handler.map((h) => wrapHandler(h)));
     };
 
     return router;

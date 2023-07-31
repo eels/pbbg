@@ -5,6 +5,7 @@ import ErrorHandler from '@/web/server/controllers/error';
 import MeasureRequestDuration from '@/web/server/middleware/measure-request-duration';
 import NotFound from '@/web/server/controllers/not-found';
 import RateLimited from '@/web/server/controllers/rate-limited';
+import Registration from '@/web/server/controllers/authentication/register';
 import SendAnalyticsEvent from '@/web/server/middleware/send-analytics-event';
 import Version from '@/web/server/controllers/version';
 import { InjectionMode, asClass, asValue, createContainer } from 'awilix';
@@ -15,6 +16,7 @@ interface Controllers {
   ErrorHandler: ErrorHandler;
   NotFound: NotFound;
   RateLimited: RateLimited;
+  Registration: Registration;
   Version: Version;
 }
 
@@ -47,6 +49,7 @@ container.register('query', asValue(queryInstance()));
 container.register('ErrorHandler', asClass(ErrorHandler));
 container.register('NotFound', asClass(NotFound));
 container.register('RateLimited', asClass(RateLimited));
+container.register('Registration', asClass(Registration));
 container.register('Version', asClass(Version));
 
 // --- Middleware -------------------------------

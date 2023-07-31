@@ -1,9 +1,17 @@
-// import { getString } from '@/web/utilities/string';
+import isStrongPassword from 'validator/lib/isStrongPassword';
 import { z } from 'zod';
 
-export function validateAuthLogin() {
+const strongPassword = z.string().refine((value) => isStrongPassword(value), {
+  message: 'Password is not strong enough',
+});
+
+interface ValidateAuthOptions {
+  isRegister?: boolean;
+}
+
+export function validateAuthentication({ isRegister = false }: ValidateAuthOptions = {}) {
   return z.object({
-    email: z.string().email().min(1),
-    password: z.string().min(1),
+    email: z.string().email(),
+    password: isRegister ? strongPassword : z.string().min(1),
   });
 }

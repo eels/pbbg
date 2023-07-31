@@ -21,6 +21,9 @@ export const Label = compose.label(() => [
   'font-medium',
   'text-gray-50',
   'font-mono',
+  'transition-all',
+  'duration-100',
+  '[&:has(+div_input:focus)]:pl-3',
 ]);
 
 export const Container = compose.div(() => [
