@@ -1,11 +1,8 @@
 import OriginalIcon from '@/web/components/atoms/icon';
 import { compose } from 'tailwind-compose';
-import type { InputHTMLAttributes, ReactNode } from 'react';
 
 export interface StyledWrapper {
-  children: ReactNode;
-  className?: string;
-  isHidden: boolean;
+  $isHidden: boolean;
 }
 
 export const Wrapper = compose.div<StyledWrapper>((conditional) => [
@@ -13,7 +10,7 @@ export const Wrapper = compose.div<StyledWrapper>((conditional) => [
   'flex-col',
   'gap-1',
   'w-full',
-  conditional('hidden', ({ isHidden }) => isHidden),
+  conditional('hidden', ({ $isHidden }) => $isHidden),
 ]);
 
 export const Label = compose.label(() => [
@@ -47,12 +44,24 @@ export const Icon = compose(OriginalIcon, () => [
   'my-auto',
 ]);
 
-export interface StyledInput extends InputHTMLAttributes<HTMLInputElement> {
-  hasError: boolean;
-  hasIcon: boolean;
+export interface StyledInput {
+  $hasError: boolean;
+  $hasIcon: boolean;
 }
 
-export const Input = compose.input<StyledInput, HTMLInputElement>((conditional) => [
+const defaultInputStyles = [
+  'border-gray-50',
+  'focus:border-gray-50',
+  'focus:ring-gray-50/40',
+];
+
+const errorInputStyles = [
+  'border-red-500',
+  'focus:border-red-500',
+  'focus:ring-red-500/40',
+];
+
+export const Input = compose.input<StyledInput>((conditional) => [
   'block',
   'w-full',
   'border-2',
@@ -66,11 +75,7 @@ export const Input = compose.input<StyledInput, HTMLInputElement>((conditional) 
   'disabled:opacity-50',
   'disabled:cursor-not-allowed',
   'read-only:cursor-not-allowed',
-  conditional('border-gray-50', ({ hasError }) => !hasError),
-  conditional('border-red-500', ({ hasError }) => hasError),
-  conditional('focus:border-gray-50', ({ hasError }) => !hasError),
-  conditional('focus:border-red-500', ({ hasError }) => hasError),
-  conditional('focus:ring-gray-50/40', ({ hasError }) => !hasError),
-  conditional('focus:ring-red-500/40', ({ hasError }) => hasError),
-  conditional('pl-10', ({ hasIcon }) => hasIcon),
+  conditional(defaultInputStyles, ({ $hasError }) => !$hasError),
+  conditional(errorInputStyles, ({ $hasError }) => $hasError),
+  conditional('pl-10', ({ $hasIcon }) => $hasIcon),
 ]);

@@ -54,6 +54,7 @@
     "pocketbase": "0.15.2",
     "react-dom": "18.2.0",
     "react": "18.2.0",
+    "tailwind-compose": "1.0.0",
     "timestring": "7.0.0",
     "validator": "13.9.0",
     "zod": "3.21.4"
@@ -110,7 +111,6 @@
     "start-server-and-test": "1.14.0",
     "storybook": "7.0.26",
     "svgo": "3.0.2",
-    "tailwind-compose": "0.7.1",
     "tailwindcss": "3.3.2",
     "ts-node": "10.9.1",
     "ts-toolbelt": "9.6.0",

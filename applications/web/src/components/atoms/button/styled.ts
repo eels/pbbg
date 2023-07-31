@@ -1,15 +1,9 @@
 import OriginalIcon from '@/web/components/atoms/icon';
 import { classnames, compose } from 'tailwind-compose';
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
-export interface StyledLinkButtonProps {
-  isAlert: boolean;
-  isSecondary: boolean;
-}
-
-export interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  isAlert: boolean;
-  isSecondary: boolean;
+export interface StyledButtonProps {
+  $isAlert: boolean;
+  $isSecondary: boolean;
 }
 
 const baseStyles = [
@@ -75,24 +69,23 @@ const alertButtonStyles = [
 ];
 
 export const Button = compose.button<StyledButtonProps>((conditional) => [
-  conditional(primaryButtonStyles, ({ isAlert, isSecondary }) => !isAlert && !isSecondary),
-  conditional(secondaryButtonStyles, ({ isSecondary }) => isSecondary),
-  conditional(alertButtonStyles, ({ isAlert }) => isAlert),
+  conditional(primaryButtonStyles, ({ $isAlert, $isSecondary }) => !$isAlert && !$isSecondary),
+  conditional(secondaryButtonStyles, ({ $isSecondary }) => $isSecondary),
+  conditional(alertButtonStyles, ({ $isAlert }) => $isAlert),
 ]);
 
-export const Link = classnames<StyledLinkButtonProps>((conditional) => [
-  conditional(primaryButtonStyles, ({ isAlert, isSecondary }) => !isAlert && !isSecondary),
-  conditional(secondaryButtonStyles, ({ isSecondary }) => isSecondary),
-  conditional(alertButtonStyles, ({ isAlert }) => isAlert),
+export const Link = classnames<StyledButtonProps>((conditional) => [
+  conditional(primaryButtonStyles, ({ $isAlert, $isSecondary }) => !$isAlert && !$isSecondary),
+  conditional(secondaryButtonStyles, ({ $isSecondary }) => $isSecondary),
+  conditional(alertButtonStyles, ({ $isAlert }) => $isAlert),
 ]);
 
 export interface StyledContentProps {
-  children: ReactNode;
-  isProcessing?: boolean;
+  $isProcessing?: boolean;
 }
 
 export const Content = compose.span<StyledContentProps>((conditional) => [
-  conditional('sr-only', ({ isProcessing }) => isProcessing === true),
+  conditional('sr-only', ({ $isProcessing }) => $isProcessing === true),
 ]);
 
 export const Icon = compose(OriginalIcon, () => [

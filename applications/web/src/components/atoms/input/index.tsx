@@ -23,7 +23,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const name = id ?? [identifier, paramCase(label ?? identifier)].join('-');
 
     return (
-      <Styled.Wrapper className={className} isHidden={hidden ?? false}>
+      <Styled.Wrapper $isHidden={hidden ?? false} className={className}>
         <ConditionalRender condition={label !== undefined}>
           {() => <Styled.Label htmlFor={name}>{label}</Styled.Label>}
         </ConditionalRender>
@@ -35,8 +35,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             </ConditionalRender>
             <Styled.Input
               ref={ref}
-              hasError={error}
-              hasIcon={icon !== undefined}
+              $hasError={error}
+              $hasIcon={icon !== undefined}
               hidden={hidden}
               id={name}
               {...inputProps}
