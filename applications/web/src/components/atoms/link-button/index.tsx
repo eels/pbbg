@@ -27,7 +27,7 @@ export default function LinkButton({
   secondary = false,
   ...props
 }: LinkButtonProps) {
-  const conditionalStyleProps = { isAlert: alert, isSecondary: secondary };
+  const conditionalStyleProps = { $isAlert: alert, $isSecondary: secondary };
 
   return (
     <Link className={cc([Styled.Link(conditionalStyleProps), className])} {...props}>

@@ -28,8 +28,8 @@ export default function Button({
   }
 
   return (
-    <Styled.Button isAlert={alert} isSecondary={secondary} {...props}>
-      <Styled.Content isProcessing={processing}>
+    <Styled.Button $isAlert={alert} $isSecondary={secondary} {...props}>
+      <Styled.Content $isProcessing={processing}>
         <ConditionalRender condition={icon !== undefined}>
           {() => <Styled.Icon icon={icon as AvailableIcon} />}
         </ConditionalRender>
