@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import inquirer from 'inquirer';
-import path from 'path';
+import path from 'node:path';
 import { getTemplateContent } from '@/web-script/utilities/template';
 import { paramCase, pascalCase } from 'change-case';
 import { questions } from '@/web-script/create-component/data/questions';

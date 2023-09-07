@@ -12,6 +12,7 @@
     "@pbbg/eslint-config/lib/configs/import.json",
     "@pbbg/eslint-config/lib/configs/jest.json",
     "@pbbg/eslint-config/lib/configs/json.json",
+    "@pbbg/eslint-config/lib/configs/node.json",
     "@pbbg/eslint-config/lib/configs/prettier.json",
     "@pbbg/eslint-config/lib/configs/sonarjs.json",
     "@pbbg/eslint-config/lib/configs/sort-destructure-keys.json",

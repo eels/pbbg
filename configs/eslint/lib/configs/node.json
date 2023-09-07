@@ -1,0 +1,6 @@
+{
+  "plugins": ["prefer-node-builtin-imports"],
+  "rules": {
+    "prefer-node-builtin-imports/prefer-node-builtin-imports": "error"
+  }
+}
