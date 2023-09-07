@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'node:path';
 import { getAllIconSlugs } from '@/web/services/icons';
 import { getTemplateContent } from '@/web-script/utilities/template';
 import { replaceDynamicVariableValues } from '@/web-script/utilities/variables';

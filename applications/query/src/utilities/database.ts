@@ -1,7 +1,7 @@
 import { OPEN_READONLY, cached } from 'sqlite3';
 import { open } from 'sqlite';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import type { Database } from 'sqlite';
 
 let database: Database;

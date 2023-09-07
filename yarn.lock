@@ -7385,6 +7385,11 @@ eslint-plugin-n@15.7.0:
     resolve "^1.22.1"
     semver "^7.3.8"
 
+eslint-plugin-prefer-node-builtin-imports@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prefer-node-builtin-imports/-/eslint-plugin-prefer-node-builtin-imports-0.0.3.tgz#c210e6dd4b5cf20e1da9394a743a4851ed0a81d5"
+  integrity sha512-teo8L8gmjyggs9jScstOJ5Id3K6SCXYFjIRGARAfcGRl6s/wAFPxujc27nPwBJmEI1IYHElZD6X5SICfq7ATxQ==
+
 eslint-plugin-prettier@4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-4.2.1.tgz#651cbb88b1dab98bfd42f017a12fa6b2d993f94b"

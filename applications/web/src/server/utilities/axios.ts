@@ -1,7 +1,7 @@
 import axios from 'axios';
-import http from 'http';
-import https from 'https';
-import type { AgentOptions } from 'http';
+import http from 'node:http';
+import https from 'node:https';
+import type { AgentOptions } from 'node:http';
 
 const requestAgentOptions: AgentOptions = {
   keepAlive: true,

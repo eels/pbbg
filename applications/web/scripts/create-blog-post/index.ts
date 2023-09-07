@@ -1,6 +1,6 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import inquirer from 'inquirer';
-import path from 'path';
+import path from 'node:path';
 import { capitalCase } from 'change-case';
 import { format } from 'date-fns';
 import { getTemplateContent } from '@/web-script/utilities/template';
