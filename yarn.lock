@@ -14462,10 +14462,10 @@ table@^6.8.1:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tailwind-compose@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/tailwind-compose/-/tailwind-compose-1.0.0.tgz#259dfd36fd745015d18c582e02d8915fab437576"
-  integrity sha512-IX/N/hbe5mO/HFc5yd2OowB2euJ5p4YpuRqPWDcPn76VSr//9j4+HZ1d6+u04JQgiIRMFP1kFieKaBckyiIciw==
+tailwind-compose@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tailwind-compose/-/tailwind-compose-1.1.0.tgz#56f4b0a049c7e6f1c151a78292483ef84f04cc6d"
+  integrity sha512-DcdTlrKMCuKab5VbiVCVHoYlzOPsAr4x9XAVqWtttyxvSUWyWu+ILAznJ1b5Pq8r378iWtCF0YukwvJBbOphUw==
 
 tailwindcss@3.3.2:
   version "3.3.2"

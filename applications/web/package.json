@@ -54,7 +54,7 @@
     "pocketbase": "0.15.2",
     "react-dom": "18.2.0",
     "react": "18.2.0",
-    "tailwind-compose": "1.0.0",
+    "tailwind-compose": "1.1.0",
     "timestring": "7.0.0",
     "validator": "13.9.0",
     "zod": "3.21.4"
