@@ -13,7 +13,7 @@ export async function generateStaticParams() {
   return allAuxiliaries.map((auxiliary) => ({ slug: auxiliary.slug }));
 }
 
-export function findAuxiliaryBySlug(slug: string) {
+function findAuxiliaryBySlug(slug: string) {
   const auxiliary = allAuxiliaries.find((auxiliary) => {
     return auxiliary.slug === slug;
   });

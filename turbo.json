@@ -47,7 +47,7 @@
     },
     "typescript:verify": {
       "cache": false,
-      "dependsOn": ["^build"],
+      "dependsOn": ["^build", "build"],
       "outputs": []
     }
   }
