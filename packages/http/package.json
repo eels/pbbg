@@ -4,12 +4,14 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc && tsc-alias",
-    "clean": "rimraf \"./lib/**/*.{d.ts,js}\"",
+    "clean": "rimraf \"./lib\"",
+    "dev": "onchange --initial \"./src/**/*.{js,json,ts}\" -- yarn build",
     "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./lib/**/}*.{js,json,ts}\" --check",
+    "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
     "lint:fix": "yarn lint:js --fix",
-    "lint": "eslint \"./*.{js,json,ts}\" \"./lib/**/*.{json,ts}\" --cache",
-    "typescript:verify": "tsc --noEmit"
+    "lint": "eslint \"./*.{js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
+    "typescript:verify": "tsc --noEmit",
+    "wait": "wait-on \"./lib\""
   },
   "files": [
     "express-http.d.ts",
@@ -26,7 +28,9 @@
     "@pbbg/typescript-config": "*",
     "@types/express": "4.17.17",
     "@types/node": "20.3.2",
+    "onchange": "7.1.0",
     "rimraf": "3.0.2",
-    "tsc-alias": "1.8.6"
+    "tsc-alias": "1.8.6",
+    "wait-on": "7.0.1"
   }
 }

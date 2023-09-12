@@ -2,8 +2,8 @@
   "pipeline": {
     "build": {
       "cache": false,
-      "dependsOn": ["^clean", "^build"],
-      "outputs": ["build/**", "dist/**", ".next/**"]
+      "dependsOn": ["^clean", "^build", "clean"],
+      "outputs": ["build/**", "dist/**", "lib/**", ".next/**"]
     },
     "clean": {
       "cache": false,
@@ -12,8 +12,9 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": [],
-      "outputs": []
+      "dependsOn": ["^wait", "clean"],
+      "outputs": [],
+      "persistent": true
     },
     "format": {
       "cache": false,
@@ -48,6 +49,11 @@
     "typescript:verify": {
       "cache": false,
       "dependsOn": ["^build", "build"],
+      "outputs": []
+    },
+    "wait": {
+      "cache": false,
+      "dependsOn": ["^clean", "clean"],
       "outputs": []
     }
   }

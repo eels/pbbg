@@ -10,5 +10,5 @@ export function createExpressRouter(app: Express) {
     };
 
     return router;
-  }, {} as Router);
+  }, Object.create({}));
 }
