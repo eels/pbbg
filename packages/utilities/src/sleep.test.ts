@@ -1,6 +1,4 @@
-/** @jest-environment node */
-
-import { sleep } from '@/web/utilities/sleep';
+import { sleep } from '@/utilities/sleep';
 
 describe('sleep', () => {
   it('resolves after specified time', async () => {

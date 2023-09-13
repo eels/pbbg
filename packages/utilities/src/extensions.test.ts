@@ -1,6 +1,4 @@
-/** @jest-environment node */
-
-import { removeExtension } from '@/web/utilities/extensions';
+import { removeExtension } from '@/utilities/extensions';
 
 describe('removeExtension', () => {
   it('removes the file extension', () => {

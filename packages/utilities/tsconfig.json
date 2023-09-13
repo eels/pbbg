@@ -5,9 +5,12 @@
     "declaration": true,
     "outDir": "lib",
     "paths": {
-      "@/http/*": ["./*"]
+      "@/utilities/*": ["./*"]
     }
   },
   "exclude": ["node_modules", "lib"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
 }

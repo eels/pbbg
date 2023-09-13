@@ -3,10 +3,8 @@ import inquirer from 'inquirer';
 import path from 'node:path';
 import { capitalCase } from 'change-case';
 import { format } from 'date-fns';
-import { getTemplateContent } from '@/web-script/utilities/template';
-import { questions } from '@/web-script/create-blog-post/data/questions';
-import { replaceDynamicVariableValues } from '@/web-script/utilities/variables';
-import { writeContentToDirectory } from '@/web-script/utilities/output';
+import { hydrateFromVariableMap } from '@pbbg/utilities/lib/hydrate-string';
+import { questions } from '@/content-script/create-post/data/questions';
 
 function sanitiseHeadline(headline: string) {
   headline = headline.toLowerCase().split(' ').join('-');
@@ -17,9 +15,8 @@ function sanitiseHeadline(headline: string) {
 
 async function createBlogPost() {
   const answers = await inquirer.prompt(questions);
-  const timestamp = format(new Date(), 'yyyyMMddHHmm');
   const urlSafeHeadline = sanitiseHeadline(answers.headline);
-  const slug = `${timestamp}-${urlSafeHeadline}`;
+  const slug = `${format(new Date(), 'yyyyMMddHHmm')}-${urlSafeHeadline}`;
   const directory = path.join(process.cwd(), 'src', 'content', 'posts');
 
   if (!fs.existsSync(directory)) {
@@ -27,15 +24,15 @@ async function createBlogPost() {
   }
 
   const dynamicVariablesMap = {
-    '%date': timestamp,
+    '%date': format(new Date(), 'yyyy-MM-dd'),
     '%headline': capitalCase(answers.headline),
     '%status': 'DRAFT',
   };
 
-  const template = getTemplateContent(path.join(__dirname, 'templates', 'blog-post.md'));
-  const post = replaceDynamicVariableValues(dynamicVariablesMap, template);
+  const template = fs.readFileSync(path.join(__dirname, 'templates', 'blog-post.md'), 'utf-8');
+  const post = hydrateFromVariableMap(template, dynamicVariablesMap);
 
-  writeContentToDirectory(path.join(directory, `${slug}.mdx`), post);
+  fs.writeFileSync(path.join(directory, `${slug}.mdx`), post);
 }
 
 createBlogPost();
