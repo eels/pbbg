@@ -9,7 +9,7 @@
       "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"],
       "@/web-script/*": ["./scripts/*"],
       "@/web/*": ["./src/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "contentlayer/generated": ["../../node_modules/@pbbg/content/.contentlayer/generated"]
     },
     "plugins": [
       {

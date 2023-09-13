@@ -1,0 +1,14 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/content-script/*": ["./scripts/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    }
+  },
+  "include": [".contentlayer/generated", "**/*.ts"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

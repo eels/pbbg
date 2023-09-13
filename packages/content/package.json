@@ -1,30 +1,32 @@
 {
-  "name": "@pbbg/utilities",
+  "name": "@pbbg/content",
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc && tsc-alias",
-    "clean": "rimraf \"./lib\"",
-    "dev": "onchange --initial \"./src/**/*.{js,json,ts}\" -- yarn build",
+    "build": "contentlayer build",
+    "clean": "rimraf \"./.contentlayer\"",
+    "create:post": "ts-node --files \"./scripts/create-post\" --transpileOnly",
+    "dev": "contentlayer dev",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
     "lint:fix": "yarn lint:js --fix",
     "lint": "eslint \"./*.{js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
-    "test": "jest --passWithNoTests",
     "typescript:verify": "tsc --noEmit",
-    "wait": "wait-on \"./lib\""
+    "wait": "wait-on \"./.contentlayer\""
   },
   "files": [
-    "lib/*"
+    ".contentlayer/*"
   ],
+  "dependencies": {
+    "@pbbg/utilities": "*",
+    "contentlayer": "0.3.1"
+  },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
-    "jest": "29.6.1",
-    "onchange": "7.1.0",
     "rimraf": "3.0.2",
-    "ts-jest": "29.1.1",
+    "ts-node": "10.9.1",
     "tsc-alias": "1.8.6",
     "tsconfig-paths": "4.2.0",
     "wait-on": "7.0.1"

@@ -1,11 +1,9 @@
 import fs from 'node:fs';
 import inquirer from 'inquirer';
 import path from 'node:path';
-import { getTemplateContent } from '@/web-script/utilities/template';
+import { hydrateFromVariableMap } from '@pbbg/utilities/lib/hydrate-string';
 import { paramCase, pascalCase } from 'change-case';
 import { questions } from '@/web-script/create-component/data/questions';
-import { replaceDynamicVariableValues } from '@/web-script/utilities/variables';
-import { writeContentToDirectory } from '@/web-script/utilities/output';
 
 async function createComponent() {
   const answers = await inquirer.prompt(questions);
@@ -38,11 +36,11 @@ async function createComponent() {
   };
 
   for (const [template, output] of Object.entries(componentTemplateMap)) {
-    const templateContent = getTemplateContent(path.join(__dirname, 'templates', template));
-    const filename = replaceDynamicVariableValues(dynamicVariablesMap, output);
-    const content = replaceDynamicVariableValues(dynamicVariablesMap, templateContent);
+    const templateContent = fs.readFileSync(path.join(__dirname, 'templates', template), 'utf-8');
+    const filename = hydrateFromVariableMap(output, dynamicVariablesMap);
+    const content = hydrateFromVariableMap(templateContent, dynamicVariablesMap);
 
-    writeContentToDirectory(path.join(directory, filename), content);
+    fs.writeFileSync(path.join(directory, filename), content);
   }
 }
 
