@@ -1,16 +1,16 @@
-import AuthenticationGuard from '@/web/server/middleware/authentication-guard';
-import AuthenticationQuery from '@/web/server/queries/authentication';
-import CustomResponseProperties from '@/web/server/middleware/custom-response-properties';
-import ErrorHandler from '@/web/server/controllers/error';
-import MeasureRequestDuration from '@/web/server/middleware/measure-request-duration';
-import NotFound from '@/web/server/controllers/not-found';
-import RateLimited from '@/web/server/controllers/rate-limited';
-import Registration from '@/web/server/controllers/authentication/register';
-import SendAnalyticsEvent from '@/web/server/middleware/send-analytics-event';
-import Version from '@/web/server/controllers/version';
+import AuthenticationGuard from '@/api/middleware/authentication-guard';
+import AuthenticationQuery from '@/api/queries/authentication';
+import CustomResponseProperties from '@/api/middleware/custom-response-properties';
+import ErrorHandler from '@/api/controllers/error';
+import MeasureRequestDuration from '@/api/middleware/measure-request-duration';
+import NotFound from '@/api/controllers/not-found';
+import RateLimited from '@/api/controllers/rate-limited';
+import Registration from '@/api/controllers/authentication/register';
+import SendAnalyticsEvent from '@/api/middleware/send-analytics-event';
+import Version from '@/api/controllers/version';
 import { InjectionMode, asClass, asValue, createContainer } from 'awilix';
-import { backendDatabaseInstance, databaseInstance } from '@/web/server/utilities/database';
-import { queryInstance } from '@/web/server/utilities/query';
+import { backendDatabaseInstance, databaseInstance } from '@/api/utilities/database';
+import { queryInstance } from '@/api/utilities/query';
 
 interface Controllers {
   ErrorHandler: ErrorHandler;

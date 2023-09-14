@@ -9,7 +9,7 @@
     "dev": "contentlayer dev",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
-    "lint:fix": "yarn lint:js --fix",
+    "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./.contentlayer\""
@@ -19,12 +19,16 @@
   ],
   "dependencies": {
     "@pbbg/utilities": "*",
-    "contentlayer": "0.3.1"
+    "change-case": "4.1.2",
+    "contentlayer": "0.3.1",
+    "date-fns": "2.30.0",
+    "inquirer": "8.2.0"
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
+    "@types/node": "20.3.2",
     "rimraf": "3.0.2",
     "ts-node": "10.9.1",
     "tsc-alias": "1.8.6",

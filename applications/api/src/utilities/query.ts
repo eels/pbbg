@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/web/server/utilities/axios';
+import { axiosInstance } from '@/api/utilities/axios';
 import type { SuccessResponse } from '@pbbg/http/lib/types/api';
 
 export interface QueryOptions {

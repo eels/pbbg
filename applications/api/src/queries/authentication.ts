@@ -1,4 +1,4 @@
-import BaseQuery from '@/web/server/lib/query';
+import BaseQuery from '@/api/lib/query';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import type { User } from '@pbbg/database-types/lib/types';
 

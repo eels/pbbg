@@ -1,0 +1,20 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noEmit": true,
+    "paths": {
+      "@/api/*": ["./src/*"],
+      "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
+      "@/validators/*": ["../../node_modules/@pbbg/validators/lib/*"]
+    }
+  },
+  "include": [
+    "../../node_modules/@pbbg/http/express-http.d.ts",
+    "**/*.ts",
+    "next-authentication.d.ts"
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

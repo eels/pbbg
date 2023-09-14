@@ -5,11 +5,11 @@
     "declaration": true,
     "outDir": "lib",
     "paths": {
-      "@/http/*": ["./*"]
+      "@/validators/*": ["./*"]
     }
   },
   "exclude": ["node_modules", "lib"],
-  "include": ["express-http.d.ts", "**/*.ts"],
+  "include": ["**/*.ts"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }

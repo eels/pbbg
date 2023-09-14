@@ -1,6 +1,6 @@
 import AuthenticationError from '@pbbg/http/lib/exceptions/authentication';
 import { Controller } from '@pbbg/http/lib/types/http';
-import { getCurrentUser } from '@/web/utilities/session';
+import { getCurrentUser } from '@/api/utilities/session';
 import type { NextFunction, Request, Response } from 'express';
 
 export default class AuthenticationGuard extends Controller {
