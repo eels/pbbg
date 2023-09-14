@@ -5,7 +5,7 @@
   "scripts": {
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./lib/**/}*.{js,json,ts}\" --cache --check",
-    "lint:fix": "yarn lint:js --fix",
+    "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{js,ts}\" \"./lib/**/*.{js,ts}\" --cache",
     "typescript:verify": "tsc --noEmit"
   },

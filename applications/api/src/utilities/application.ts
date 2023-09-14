@@ -1,5 +1,5 @@
 import express from 'express';
-import { cradle } from '@/web/server/container';
+import { cradle } from '@/api/container';
 import { createExpressRouter } from '@pbbg/http/lib/utilities/router';
 import { wrapHandler } from '@pbbg/http/lib/utilities/wrap';
 

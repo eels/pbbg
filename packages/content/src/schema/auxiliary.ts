@@ -2,7 +2,7 @@
 /* See: https://github.com/contentlayerdev/contentlayer/issues/238 */
 
 import { defineDocumentType } from 'contentlayer/source-files';
-import { removeExtension } from '../../../utilities/src/extensions';
+import { removeExtension } from '../../../../node_modules/@pbbg/utilities/src/extensions';
 
 export const Auxiliary = defineDocumentType(() => ({
   computedFields: {

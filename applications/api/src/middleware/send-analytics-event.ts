@@ -1,6 +1,6 @@
 import { Controller } from '@pbbg/http/lib/types/http';
-import { axiosInstance } from '@/web/server/utilities/axios';
-import type { MeasurementProtocolEvent, MeasurementProtocolPayload } from '@/web/types/analytics';
+import { axiosInstance } from '@/api/utilities/axios';
+import type { MeasurementProtocolEvent, MeasurementProtocolPayload } from '@/api/types/analytics';
 import type { NextFunction, Request, Response } from 'express';
 
 export default class SendAnalyticsEvent extends Controller {

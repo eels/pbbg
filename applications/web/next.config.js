@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { withContentlayer } = require('next-contentlayer');
+const { createContentlayerPlugin } = require('next-contentlayer');
+
+const configPath = '../../node_modules/@pbbg/content/contentlayer.config.ts';
+const withContentlayer = createContentlayerPlugin({ configPath });
 
 /** @type {import('next').NextConfig} */
 const nextJSConfig = {
@@ -15,7 +18,7 @@ const nextJSConfig = {
   },
   reactStrictMode: true,
   swcMinify: true,
-  transpilePackages: ['@pbbg/http', '@pbbg/utilities', 'tailwind-compose'],
+  transpilePackages: ['@pbbg/api', '@pbbg/http', '@pbbg/utilities', 'tailwind-compose'],
 };
 
 module.exports = withContentlayer(nextJSConfig);

@@ -8,8 +8,11 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.ts'],
   moduleDirectories: ['node_modules', 'src'],
   moduleFileExtensions: ['js', 'ts'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/src' }),
+  moduleNameMapper: {
+    ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/' }),
+    pocketbase: require.resolve('pocketbase/cjs'),
+  },
   preset: 'ts-jest',
-  roots: ['<rootDir>', '<rootDir>/src/'],
+  roots: ['<rootDir>/src/'],
   testEnvironment: 'node',
 };

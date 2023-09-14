@@ -1,4 +1,4 @@
-import { authOptions } from '@/web/server/utilities/auth';
+import { authOptions } from '@/api/utilities/auth';
 import { getServerSession } from 'next-auth';
 import type { Request, Response } from 'express';
 import type { Session } from 'next-auth';

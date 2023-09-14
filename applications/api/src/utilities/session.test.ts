@@ -1,9 +1,7 @@
-/** @jest-environment node */
-
 import httpMock from 'node-mocks-http';
-import { getCurrentUser } from '@/web/utilities/session';
+import { getCurrentUser } from '@/api/utilities/session';
 import { getServerSession } from 'next-auth';
-import { mockSessionObject } from '@/web/__mocks__/session';
+import { mockSessionObject } from '@/api/__mocks__/session';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 
 jest.mock('next-auth');

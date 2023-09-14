@@ -4,7 +4,7 @@ import { exceptions } from '@pbbg/http/lib/utilities/response';
 import { pleaseTry, pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import { signIn, signOut } from 'next-auth/react';
 import { useString } from '@/web/hooks/use-string';
-import { validateAuthentication } from '@/web/validators/authentication';
+import { validateAuthentication } from '@pbbg/validators/lib/authentication';
 import type { APIError } from '@pbbg/http/lib/types/api';
 import type { ZodError } from 'zod';
 

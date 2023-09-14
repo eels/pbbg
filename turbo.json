@@ -3,7 +3,7 @@
     "build": {
       "cache": false,
       "dependsOn": ["^clean", "^build", "clean"],
-      "outputs": ["build/**", "dist/**", "lib/**", ".next/**"]
+      "outputs": ["build/**", "dist/**", "lib/**", ".contentlayer/**", ".next/**"]
     },
     "clean": {
       "cache": false,
@@ -13,8 +13,7 @@
     "dev": {
       "cache": false,
       "dependsOn": ["^wait", "clean"],
-      "outputs": [],
-      "persistent": true
+      "outputs": []
     },
     "format": {
       "cache": false,
@@ -43,7 +42,7 @@
     },
     "test": {
       "cache": false,
-      "dependsOn": [],
+      "dependsOn": ["^build"],
       "outputs": []
     },
     "typescript:verify": {

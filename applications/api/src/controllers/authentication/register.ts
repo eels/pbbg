@@ -1,9 +1,9 @@
 import BadDataError from '@pbbg/http/lib/exceptions/bad-data';
 import { Controller } from '@pbbg/http/lib/types/http';
-import { ValidateRequestBody } from '@/web/server/utilities/validate-body';
+import { ValidateRequestBody } from '@/api/utilities/validate-body';
 import { exceptions } from '@pbbg/http/lib/utilities/response';
-import { validateAuthentication } from '@/web/validators/authentication';
-import type AuthenticationQuery from '@/web/server/queries/authentication';
+import { validateAuthentication } from '@pbbg/validators/lib/authentication';
+import type AuthenticationQuery from '@/api/queries/authentication';
 import type { Data } from '@pbbg/http/lib/types/validate';
 import type { Request, Response } from 'express';
 

@@ -1,7 +1,7 @@
 import AuthenticationError from '@pbbg/http/lib/exceptions/authentication';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import InternalError from '@pbbg/http/lib/exceptions/internal';
-import { cradle } from '@/web/server/container';
+import { cradle } from '@/api/container';
 import { exceptions } from '@pbbg/http/lib/utilities/response';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import type { AuthOptions } from 'next-auth';
