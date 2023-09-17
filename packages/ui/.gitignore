@@ -1,0 +1,19 @@
+# --- Dependencies ------------------------------
+
+node_modules
+
+# --- Caches ------------------------------------
+
+.eslintcache
+.stylelintcache
+
+# --- Compiled ----------------------------------
+
+.next
+.swc
+src/types/icon.ts
+storybook-static
+
+# --- Coverage ----------------------------------
+
+coverage

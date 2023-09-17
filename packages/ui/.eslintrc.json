@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "@pbbg/eslint-config/lib/eslintrc.json",
+    "@pbbg/eslint-config/lib/configs/jsx-a11y.json",
+    "@pbbg/eslint-config/lib/configs/react.json",
+    "@pbbg/eslint-config/lib/configs/storybook.json",
+    "@pbbg/eslint-config/lib/configs/testing-library.json"
+  ]
+}

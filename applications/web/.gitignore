@@ -5,20 +5,13 @@ node_modules
 # --- Caches ------------------------------------
 
 .eslintcache
-.stylelintcache
 
 # --- Compiled ----------------------------------
 
-.contentlayer
 .next
 .swc
-out
-public/humans.txt
-public/site.webmanifest
 public/sitemap.xml
 public/sw.js
-src/types/icon.ts
-storybook-static
 
 # --- Coverage ----------------------------------
 

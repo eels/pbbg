@@ -1,0 +1,5 @@
+{
+  "*.{css,js,json,svg,ts,tsx}": "prettier --check",
+  "*.{css,scss}": "stylelint",
+  "*.{js,json,ts,tsx}": "eslint"
+}

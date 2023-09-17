@@ -7,9 +7,9 @@
     "paths": {
       "@/api/*": ["../../node_modules/@pbbg/api/src/*"],
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
+      "@/ui/*": ["../../node_modules/@pbbg/ui/src/*"],
       "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"],
       "@/validators/*": ["../../node_modules/@pbbg/validators/lib/*"],
-      "@/web-script/*": ["./scripts/*"],
       "@/web/*": ["./src/*"],
       "contentlayer/generated": ["../../node_modules/@pbbg/content/.contentlayer/generated"]
     },
@@ -24,13 +24,10 @@
     "../../node_modules/@pbbg/api/next-authentication.d.ts",
     "../../node_modules/@pbbg/content/.contentlayer/generated",
     "../../node_modules/@pbbg/http/express-http.d.ts",
+    "../../node_modules/@pbbg/ui/next-string.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx",
-    "next-env.d.ts",
-    "next-string.d.ts"
-  ],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+    "next-env.d.ts"
+  ]
 }

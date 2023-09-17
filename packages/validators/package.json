@@ -28,7 +28,6 @@
     "onchange": "7.1.0",
     "rimraf": "3.0.2",
     "tsc-alias": "1.8.6",
-    "tsconfig-paths": "4.2.0",
     "wait-on": "7.0.1"
   }
 }
