@@ -1,6 +1,0 @@
-import %!name from '@/web/components/%type/%name';
-import { render, screen } from '@testing-library/react';
-
-describe('%type/%name', () => {
-  it('...', () => {});
-});

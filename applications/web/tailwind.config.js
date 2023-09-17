@@ -1,17 +1,9 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./public/**/*.svg', './src/**/*.{js,ts,tsx}'],
-  plugins: [],
-  theme: {
-    extend: {
-      fontFamily: {
-        mono: ['var(--font-excelsior)', ...defaultTheme.fontFamily.mono],
-        sans: ['var(--font-roboto)', ...defaultTheme.fontFamily.sans],
-      },
-    },
-  },
+  ...require('@pbbg/tailwind-config/lib/tailwind.config'),
+  content: [
+    '../../node_modules/@pbbg/ui/src/**/*.{js,ts,tsx}',
+    './public/**/*.svg',
+    './src/**/*.{js,ts,tsx}',
+  ],
 };

@@ -1,6 +1,6 @@
-import ContentContainer from '@/web/components/atoms/content-container';
+import ContentContainer from '@/ui/components/atoms/content-container';
 import { allAuxiliaries } from 'contentlayer/generated';
-import { decorateSEOMetaTitle } from '@/web/utilities/seo';
+import { decorateSEOMetaTitle } from '@pbbg/ui/src/utilities/seo';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 export interface AuxiliaryProps {

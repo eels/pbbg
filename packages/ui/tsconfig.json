@@ -1,0 +1,18 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "jsx": "preserve",
+    "paths": {
+      "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"],
+      "@/validators/*": ["../../node_modules/@pbbg/validators/lib/*"],
+      "@/ui-script/*": ["./scripts/*"],
+      "@/ui/*": ["./src/*"]
+    },
+    "strictNullChecks": true
+  },
+  "include": [".next/types/**/*.ts", "**/*.ts", "**/*.tsx", "next-env.d.ts", "next-string.d.ts"],
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
