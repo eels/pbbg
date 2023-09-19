@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext"
+  },
+  "exclude": [
+    "**/*.stories.*",
+    "**/*.test.*",
+    "lib",
+    "node_modules",
+    "scripts",
+    "storybook",
+    "test"
+  ]
+}

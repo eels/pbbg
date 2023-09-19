@@ -5,15 +5,12 @@ node_modules
 # --- Caches ------------------------------------
 
 .eslintcache
-.stylelintcache
 
 # --- Compiled ----------------------------------
 
-.next
-.swc
+build
+lib
+src/--styles
+src/**/*.js
 src/types/icon.ts
 storybook-static
-
-# --- Coverage ----------------------------------
-
-coverage

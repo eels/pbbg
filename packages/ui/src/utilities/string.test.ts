@@ -7,7 +7,7 @@ describe('getString', () => {
   const mockString = 'Hello, world!';
 
   it('returns the correct string', () => {
-    global.nextstring = {
+    global.pbbgstring = {
       'general.example': mockString,
     };
 

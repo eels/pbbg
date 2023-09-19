@@ -4,10 +4,11 @@
     "baseUrl": ".",
     "paths": {
       "@/content-script/*": ["./scripts/*"],
-      "contentlayer/generated": ["./.contentlayer/generated"]
+      "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"]
     }
   },
-  "include": [".contentlayer/generated", "**/*.ts"],
+  "exclude": [".contentlayer", "node_modules"],
+  "include": ["**/*.ts"],
   "ts-node": {
     "require": ["tsconfig-paths/register"]
   }

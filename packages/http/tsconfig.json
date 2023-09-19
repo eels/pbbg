@@ -3,11 +3,11 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "declaration": true,
-    "outDir": "lib",
+    "outDir": "./lib",
     "paths": {
       "@/http/*": ["./*"]
     }
   },
-  "exclude": ["node_modules", "lib"],
-  "include": ["express-http.d.ts", "**/*.ts"]
+  "exclude": ["lib"],
+  "include": ["**/*.ts", "express-http.d.ts"]
 }

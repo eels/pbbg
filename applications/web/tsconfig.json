@@ -1,33 +1,23 @@
 {
-  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "preserve",
-    "noEmit": true,
+    "moduleResolution": "node",
     "paths": {
       "@/api/*": ["../../node_modules/@pbbg/api/src/*"],
-      "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
-      "@/ui/*": ["../../node_modules/@pbbg/ui/src/*"],
+      "@/content/*": ["../../node_modules/@pbbg/content/.contentlayer/generated"],
+      "@/styles/*": ["../../node_modules/@pbbg/styles/lib/*"],
+      "@/ui/*": ["../../node_modules/@pbbg/ui/lib/*"],
       "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"],
       "@/validators/*": ["../../node_modules/@pbbg/validators/lib/*"],
-      "@/web/*": ["./src/*"],
-      "contentlayer/generated": ["../../node_modules/@pbbg/content/.contentlayer/generated"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "strictNullChecks": true
+      "@/web/*": ["./src/*"]
+    }
   },
   "include": [
-    "../../node_modules/@pbbg/api/next-authentication.d.ts",
     "../../node_modules/@pbbg/content/.contentlayer/generated",
-    "../../node_modules/@pbbg/http/express-http.d.ts",
-    "../../node_modules/@pbbg/ui/next-string.d.ts",
-    ".next/types/**/*.ts",
+    "../../node_modules/@pbbg/ui/pbbg-string.d.ts",
+    "**/*.astro",
     "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts"
+    "**/*.tsx"
   ]
 }

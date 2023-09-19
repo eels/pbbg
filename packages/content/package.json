@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "contentlayer build",
+    "build": "contentlayer build >/dev/null 2>&1",
     "clean": "rimraf \"./.contentlayer\"",
     "create:post": "ts-node --files \"./scripts/create-post\" --transpileOnly",
     "dev": "contentlayer dev",
@@ -29,7 +29,7 @@
     "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
     "@types/node": "20.3.2",
-    "rimraf": "3.0.2",
+    "rimraf": "5.0.1",
     "ts-node": "10.9.1",
     "tsc-alias": "1.8.6",
     "tsconfig-paths": "4.2.0",

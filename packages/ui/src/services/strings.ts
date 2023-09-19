@@ -10,10 +10,10 @@ export const strings = {
 
 export function assignStringsToStorage() {
   if (typeof window !== 'undefined') {
-    window.nextstring = strings;
+    window.pbbgstring = strings;
   }
 
   if (typeof window === 'undefined') {
-    global.nextstring = strings;
+    global.pbbgstring = strings;
   }
 }

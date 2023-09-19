@@ -5,7 +5,8 @@
     "outDir": "build",
     "paths": {
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
-      "@/query/*": ["./src/*"]
+      "@/query/*": ["./src/*"],
+      "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"]
     }
   },
   "include": ["../../node_modules/@pbbg/http/express-http.d.ts", "**/*.ts"],

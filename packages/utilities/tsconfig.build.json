@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext"
+  },
+  "exclude": ["**/*.test.*", "lib", "node_modules"]
+}

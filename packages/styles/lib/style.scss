@@ -1,0 +1,20 @@
+// --- Tailwind ---------------------------------
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// --- Generics ---------------------------------
+
+@import './generics/fonts';
+@import './generics/selection';
+
+// --- Elements ---------------------------------
+
+@import './elements/anchor';
+@import './elements/body';
+@import './elements/heading';
+@import './elements/html';
+@import './elements/list';
+@import './elements/paragraph';
+@import './elements/rule';

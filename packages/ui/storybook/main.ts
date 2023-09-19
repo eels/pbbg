@@ -1,4 +1,7 @@
+/* eslint-disable sonarjs/cognitive-complexity */
+
 import { getAllIconsAsSymbols } from '@/ui/services/icons';
+import type { RuleSetRule } from 'webpack';
 import type { StorybookConfig } from '@storybook/nextjs';
 
 export default {
@@ -7,7 +10,6 @@ export default {
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-interactions',
-    '@storybook/addon-styling',
     {
       name: '@storybook/addon-styling',
       options: {
@@ -25,7 +27,7 @@ export default {
     name: '@storybook/nextjs',
     options: {},
   },
-  staticDirs: [{ from: '../src/resources/fonts', to: 'src/resources/fonts' }],
+  staticDirs: [{ from: '../../../assets/fonts', to: 'fonts' }],
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
   typescript: {
     check: false,
@@ -39,6 +41,27 @@ export default {
   async webpackFinal(config, { presets }) {
     const webpack: any = await presets.apply('webpackInstance');
     const icons = getAllIconsAsSymbols();
+
+    for (const rule of config.module?.rules ?? []) {
+      const rr = rule as RuleSetRule;
+      const test = rr.test?.toString();
+
+      if (test && ['/\\.css$/', '/\\.s[ac]ss$/'].includes(test) && Array.isArray(rr.use)) {
+        rr.use = rr.use?.map((entry) => {
+          if (entry && typeof entry === 'object' && 'loader' in entry) {
+            if (entry?.loader?.toString().includes('/css-loader/')) {
+              entry.options = entry.options ?? {};
+
+              if (typeof entry.options !== 'string') {
+                entry.options.url = false;
+              }
+            }
+          }
+
+          return entry;
+        });
+      }
+    }
 
     config.plugins?.push(
       new webpack.DefinePlugin({

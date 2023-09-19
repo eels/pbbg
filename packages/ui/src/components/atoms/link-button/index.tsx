@@ -1,5 +1,3 @@
-'use client';
-
 import * as Styled from '@/ui/components/atoms/button/styled';
 import ConditionalRender from '@/ui/components/utilities/conditional-render';
 import Link from '@/ui/components/atoms/link';

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { JSDOM } from 'jsdom';
 
-const directory = path.join(process.cwd(), 'src', 'resources', 'icons');
+const directory = path.join(process.cwd(), '..', '..', 'assets', 'icons');
 
 export function getIconContentBySlug(slug: string) {
   const clonedSlug = slug.replace(/\.svg$/, '');

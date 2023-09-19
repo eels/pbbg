@@ -1,0 +1,18 @@
+{
+  "plugins": ["astro"],
+  "overrides": [
+    {
+      "extends": ["plugin:astro/jsx-a11y-recommended", "plugin:astro/recommended"],
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      },
+      "rules": {
+        "astro/prefer-class-list-directive": "error",
+        "newline-after-var": "off"
+      }
+    }
+  ]
+}
