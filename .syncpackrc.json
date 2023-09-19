@@ -1,0 +1,10 @@
+{
+  "versionGroups": [
+    {
+      "dependencies": ["@pbbg/**"],
+      "dependencyTypes": ["!local"],
+      "packages": ["**"],
+      "pinVersion": "*"
+    }
+  ]
+}

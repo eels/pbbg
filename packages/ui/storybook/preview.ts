@@ -1,4 +1,4 @@
-import '@/ui/styles/style.scss';
+import '@/ui/--styles/style.scss';
 import { themes } from '@storybook/theming';
 import { withStorybookDecorator } from '@/ui/components/utilities/storybook-decorator';
 import type { Preview } from '@storybook/react';

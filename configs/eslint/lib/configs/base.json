@@ -6,6 +6,7 @@
     "newline-after-var": ["error", "always"],
     "newline-before-return": "error",
     "no-case-declarations": "off",
+    "no-multiple-empty-line": "off",
     "no-unused-vars": "off",
     "no-use-before-define": "off",
     "one-var": ["error", "never"],

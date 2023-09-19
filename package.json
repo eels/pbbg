@@ -19,12 +19,6 @@
     "clean": "turbo run clean && yarn clean:artifacts",
     "dev:web": "turbo run dev --filter=@pbbg/web...",
     "dev": "turbo run dev",
-    "docker:build": "docker-compose build",
-    "docker:down": "docker-compose down",
-    "docker:restart": "docker-compose restart",
-    "docker:stop": "docker-compose stop",
-    "docker:up": "docker-compose up --detach",
-    "export": "turbo run export",
     "format:fix": "yarn format:local:fix && turbo run format:fix",
     "format:local:fix": "yarn format:local --write",
     "format:local": "prettier \"{.,./{{.vscode,configs}/**/}}*.{js,json,ts}\" --cache --check",
@@ -34,24 +28,22 @@
     "lint:local": "eslint \"./*.{js,json,ts}\" \"./{.vscode,configs}/**/*.{js,json,ts}\" --cache",
     "lint": "yarn format:local && turbo run lint",
     "prepare": "husky install && turbo run prepare",
-    "storybook:build": "yarn workspace @pbbg/web storybook:build",
-    "storybook:start": "yarn workspace @pbbg/web storybook:start",
-    "sync:dependencies": "yarn syncpack list-mismatches",
+    "test:dependencies": "yarn syncpack list-mismatches",
     "test": "turbo run test",
     "typescript:verify": "turbo run typescript:verify"
   },
   "dependencies": {
-    "turbo": "1.10.13"
+    "turbo": "1.10.14"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.1",
-    "@commitlint/config-conventional": "17.6.1",
+    "@commitlint/cli": "17.7.1",
+    "@commitlint/config-conventional": "17.7.0",
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
     "husky": "8.0.3",
-    "lint-staged": "13.2.2",
+    "lint-staged": "14.0.1",
     "parse5": "7.1.2",
-    "rimraf": "3.0.2",
-    "syncpack": "10.6.1"
+    "rimraf": "5.0.1",
+    "syncpack": "11.2.1"
   }
 }

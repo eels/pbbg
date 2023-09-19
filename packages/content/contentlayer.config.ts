@@ -4,5 +4,6 @@ import { makeSource } from 'contentlayer/source-files';
 
 export default makeSource({
   contentDirPath: 'src/content',
+  disableImportAliasWarning: true,
   documentTypes: [Auxiliary, Post],
 });

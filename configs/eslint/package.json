@@ -3,12 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "dependencies": {
-    "@next/eslint-plugin-next": "13.3.0",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
     "eslint-config-semistandard": "17.0.0",
     "eslint-config-standard": "17.0.0",
-    "eslint-plugin-astro": "0.26.1",
+    "eslint-plugin-astro": "0.29.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-jest-dom": "4.0.3",
     "eslint-plugin-jsx-a11y": "6.7.1",

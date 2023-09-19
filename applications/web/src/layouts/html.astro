@@ -1,0 +1,24 @@
+---
+import '@pbbg/styles/lib/style.scss';
+import SessionProvider from '@pbbg/ui/lib/components/utilities/session-provider';
+import StringsProvider from '@pbbg/ui/lib/components/utilities/strings-provider';
+import { Body } from '@pbbg/ui/lib/components/atoms/site-body/styled';
+import { getAllIconsAsSymbols } from '@/ui/services/icons';
+
+const icons = getAllIconsAsSymbols();
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <slot name='head' />
+  </head>
+  <body class:list={Body.toClass()}>
+    <StringsProvider>
+      <SessionProvider>
+        <div id='__icons' set:html={icons ?? ''} />
+        <slot />
+      </SessionProvider>
+    </StringsProvider>
+  </body>
+</html>

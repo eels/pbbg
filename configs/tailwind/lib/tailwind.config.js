@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['var(--font-excelsior)', ...defaultTheme.fontFamily.mono],
-        sans: ['var(--font-roboto)', ...defaultTheme.fontFamily.sans],
+        mono: ['Excelsior', ...defaultTheme.fontFamily.mono],
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
       },
     },
   },

@@ -1,6 +1,4 @@
-import type { GetServerSidePropsContext } from 'next';
-
-const contextTxt = `
+const content = `
 /* --- TEAM ------------------------------------- */
 
 Webmaster: Liam Howell
@@ -13,16 +11,6 @@ Language: English
 Last update: ${new Date().toUTCString()}
 `;
 
-export default function Humans() {
-  return undefined;
-}
-
-export async function getServerSideProps({ res }: GetServerSidePropsContext) {
-  res.setHeader('Content-Type', 'text/plain');
-  res.write(contextTxt.trim());
-  res.end();
-
-  return {
-    props: {},
-  };
+export async function GET() {
+  return new Response(content.trim());
 }

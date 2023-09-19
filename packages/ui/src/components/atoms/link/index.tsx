@@ -1,14 +1,14 @@
-'use client';
+import type { AnchorHTMLAttributes, ReactNode } from 'react';
 
-import NextLink from 'next/link';
-import type { LinkProps as NextLinkProps } from 'next/link';
-import type { ReactNode } from 'react';
-
-export interface LinkProps extends NextLinkProps {
+export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
   className?: string;
 }
 
-export default function Link(props: LinkProps) {
-  return <NextLink {...props} prefetch={props.prefetch ?? false} />;
+export default function Link({ children, className, ...props }: LinkProps) {
+  return (
+    <a className={className} {...props}>
+      {children}
+    </a>
+  );
 }

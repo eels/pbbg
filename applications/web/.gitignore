@@ -8,11 +8,6 @@ node_modules
 
 # --- Compiled ----------------------------------
 
-.next
-.swc
-public/sitemap.xml
-public/sw.js
-
-# --- Coverage ----------------------------------
-
-coverage
+.astro
+dist
+public/fonts

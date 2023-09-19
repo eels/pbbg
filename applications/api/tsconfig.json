@@ -6,6 +6,7 @@
     "paths": {
       "@/api/*": ["./src/*"],
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
+      "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"],
       "@/validators/*": ["../../node_modules/@pbbg/validators/lib/*"]
     }
   },

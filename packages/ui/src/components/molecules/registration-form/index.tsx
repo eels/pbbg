@@ -1,5 +1,3 @@
-'use client';
-
 import * as Styled from '@/ui/components/molecules/registration-form/styled';
 import Button from '@/ui/components/atoms/button';
 import EmailInput from '@/ui/components/atoms/input/variations/email';

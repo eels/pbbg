@@ -3,11 +3,11 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "declaration": true,
-    "outDir": "lib",
+    "outDir": "./lib",
     "paths": {
       "@/validators/*": ["./*"]
     }
   },
-  "exclude": ["node_modules", "lib"],
+  "exclude": ["lib"],
   "include": ["**/*.ts"]
 }

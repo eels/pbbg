@@ -2,8 +2,8 @@
   "pipeline": {
     "build": {
       "cache": false,
-      "dependsOn": ["^clean", "^build", "clean"],
-      "outputs": ["build/**", "dist/**", "lib/**", ".contentlayer/**", ".next/**"]
+      "dependsOn": ["^clean", "^prepare", "^build", "clean", "prepare"],
+      "outputs": ["build/**", "dist/**", "lib/**", ".contentlayer/**"]
     },
     "clean": {
       "cache": false,
@@ -12,7 +12,7 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["^wait", "clean"],
+      "dependsOn": ["^prepare", "^wait", "clean", "prepare"],
       "outputs": []
     },
     "format": {
