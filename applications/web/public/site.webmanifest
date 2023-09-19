@@ -1,4 +1,3 @@
-const content = `
 {
   "name": "PBBG",
   "short_name": "PBBG",
@@ -32,9 +31,4 @@ const content = `
       "type": "image/png"
     }
   ]
-}
-`;
-
-export async function GET() {
-  return new Response(content.trim());
 }
