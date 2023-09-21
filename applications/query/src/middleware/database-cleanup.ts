@@ -1,7 +1,7 @@
 import { Controller } from '@pbbg/http/lib/types/http';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
+import type { Context, Next } from 'hono';
 import type { Database } from 'sqlite';
-import type { NextFunction, Request, Response } from 'express';
 
 export default class DatabaseCleanup extends Controller {
   private database: Promise<Database>;
@@ -13,11 +13,11 @@ export default class DatabaseCleanup extends Controller {
     this.handle = this.handle.bind(this);
   }
 
-  public async handle(_: Request, response: Response, next: NextFunction) {
+  public async handle(_: Context, next: Next) {
     const db = await this.database;
 
-    response.on('close', this.close(db));
-    next();
+    await next();
+    this.close(db);
   }
 
   private close(db: Database) {

@@ -1,11 +1,11 @@
 import BadDataError from '@pbbg/http/lib/exceptions/bad-data';
 import { Controller } from '@pbbg/http/lib/types/http';
-import { ValidateRequestBody } from '@/api/utilities/validate-body';
+import { ValidateRequestBody } from '@pbbg/http/lib/utilities/validate-body';
 import { exceptions } from '@pbbg/http/lib/utilities/response';
 import { validateAuthentication } from '@pbbg/validators/lib/authentication';
 import type AuthenticationQuery from '@/api/queries/authentication';
+import type { Context } from 'hono';
 import type { Data } from '@pbbg/http/lib/types/validate';
-import type { Request, Response } from 'express';
 
 export default class Registration extends Controller {
   private authentication: AuthenticationQuery;
@@ -17,8 +17,8 @@ export default class Registration extends Controller {
   }
 
   @ValidateRequestBody(validateAuthentication())
-  public async handle(request: Request, response: Response) {
-    const { email, password } = request.body as Data<typeof validateAuthentication>;
+  public async handle(context: Context) {
+    const { email, password } = (await context.req.json()) as Data<typeof validateAuthentication>;
 
     if (await this.authentication.doesUserExist(email)) {
       throw new BadDataError(exceptions.USER_EXISTS);
@@ -26,7 +26,7 @@ export default class Registration extends Controller {
 
     await this.authentication.createUser(email, password);
 
-    return response.respond({
+    return context.send({
       data: {},
       status: 'SUCCESS',
     });

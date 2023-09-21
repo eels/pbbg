@@ -1,7 +1,7 @@
 import { Controller } from '@pbbg/http/lib/types/http';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
+import type { Context } from 'hono';
 import type { Database } from 'sqlite';
-import type { Request, Response } from 'express';
 
 export default class Query extends Controller {
   private database: Promise<Database>;
@@ -12,8 +12,8 @@ export default class Query extends Controller {
     this.handle = this.handle.bind(this);
   }
 
-  public async handle(request: Request, response: Response) {
-    const { mode = 'SINGULAR', query, variables = [] } = request.body;
+  public async handle(context: Context) {
+    const { mode = 'SINGULAR', query, variables = [] } = await context.req.json();
 
     if (!query) {
       throw new Error('sql query not supplied');
@@ -33,7 +33,7 @@ export default class Query extends Controller {
       throw new Error('error querying database');
     }
 
-    response.respond({
+    return context.send({
       data: results,
       status: 'SUCCESS',
     });

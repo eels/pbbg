@@ -26,6 +26,7 @@
   ],
   "dependencies": {
     "@pbbg/database-types": "*",
+    "@pbbg/http": "*",
     "@pbbg/styles": "*",
     "@pbbg/utilities": "*",
     "@pbbg/validators": "*",

@@ -2,15 +2,15 @@
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "outDir": "build",
+    "noEmit": true,
     "paths": {
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
       "@/query/*": ["./src/*"],
       "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"]
     }
   },
-  "include": ["../../node_modules/@pbbg/http/express-http.d.ts", "**/*.ts"],
+  "include": ["../../node_modules/@pbbg/http/hono-http.d.ts", "**/*.ts"],
   "ts-node": {
-    "require": ["tsconfig-paths/register"]
+    "require": ["tsconfig-paths/register", "dotenv/config"]
   }
 }

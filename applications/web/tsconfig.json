@@ -4,8 +4,8 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
-      "@/api/*": ["../../node_modules/@pbbg/api/src/*"],
       "@/content/*": ["../../node_modules/@pbbg/content/.contentlayer/generated"],
+      "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
       "@/styles/*": ["../../node_modules/@pbbg/styles/lib/*"],
       "@/ui/*": ["../../node_modules/@pbbg/ui/lib/*"],
       "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"],

@@ -1,16 +1,16 @@
 import AuthenticationError from '@pbbg/http/lib/exceptions/authentication';
 import { Controller } from '@pbbg/http/lib/types/http';
-import type { NextFunction, Request, Response } from 'express';
+import type { Context, Next } from 'hono';
 
 export default class AuthenticationGuard extends Controller {
-  public async handle(request: Request, __: Response, next: NextFunction) {
-    const auth = request.headers.authorization;
+  public async handle(context: Context, next: Next) {
+    const auth = context.req.header().authorization;
     const [, token] = auth?.split(' ') ?? [];
 
     if (!token || token !== process.env.APP_QUERY_SECRET) {
       throw new AuthenticationError('access denied');
     }
 
-    next();
+    await next();
   }
 }
