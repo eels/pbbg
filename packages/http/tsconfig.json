@@ -9,5 +9,5 @@
     }
   },
   "exclude": ["lib"],
-  "include": ["**/*.ts", "express-http.d.ts"]
+  "include": ["**/*.ts", "hono-http.d.ts"]
 }

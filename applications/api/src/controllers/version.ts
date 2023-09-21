@@ -1,9 +1,9 @@
 import { Controller } from '@pbbg/http/lib/types/http';
-import type { Request, Response } from 'express';
+import type { Context } from 'hono';
 
 export default class Version extends Controller {
-  public async handle(_: Request, response: Response) {
-    response.respond({
+  public async handle(context: Context) {
+    return context.send({
       data: {
         version: 'v1.0.0',
       },

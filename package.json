@@ -17,7 +17,7 @@
     "clean:artifacts": "yarn rimraf \"**/tsconfig.tsbuildinfo\"",
     "clean:dependencies": "yarn rimraf \"**/node_modules/\"",
     "clean": "turbo run clean && yarn clean:artifacts",
-    "dev:web": "turbo run dev --filter=@pbbg/web...",
+    "dev:web": "turbo run dev --filter=@pbbg/api... --filter=@pbbg/web...",
     "dev": "turbo run dev",
     "format:fix": "yarn format:local:fix && turbo run format:fix",
     "format:local:fix": "yarn format:local --write",

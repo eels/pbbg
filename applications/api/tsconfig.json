@@ -11,8 +11,11 @@
     }
   },
   "include": [
-    "../../node_modules/@pbbg/http/express-http.d.ts",
+    "../../node_modules/@pbbg/http/hono-http.d.ts",
     "**/*.ts",
     "next-authentication.d.ts"
-  ]
+  ],
+  "ts-node": {
+    "require": ["tsconfig-paths/register", "dotenv/config"]
+  }
 }

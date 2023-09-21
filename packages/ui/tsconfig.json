@@ -6,6 +6,7 @@
     "jsx": "preserve",
     "outDir": "./lib",
     "paths": {
+      "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
       "@/styles/*": ["../../../node_modules/@pbbg/styles/lib/*"],
       "@/ui-script/*": ["../scripts/*"],
       "@/ui/*": ["./*"],

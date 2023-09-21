@@ -14,7 +14,7 @@ const icons = getAllIconsAsSymbols();
     <slot name='head' />
   </head>
   <body class:list={Body.toClass()}>
-    <StringsProvider>
+    <StringsProvider client:load>
       <SessionProvider>
         <div id='__icons' set:html={icons ?? ''} />
         <slot />
