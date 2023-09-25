@@ -1,4 +1,4 @@
 export default {
-  'router.application': '/mayflower',
+  'router.application': '/!',
   'router.index': '/',
 } as const satisfies Record<string, string>;

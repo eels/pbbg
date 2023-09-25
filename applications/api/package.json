@@ -23,7 +23,7 @@
     "change-case": "4.1.2",
     "date-fns": "2.30.0",
     "hono": "3.6.3",
-    "next-auth": "4.22.1",
+    "jose": "4.14.6",
     "pocketbase": "0.15.2",
     "rate-limiter-flexible": "3.0.0",
     "timestring": "7.0.0",

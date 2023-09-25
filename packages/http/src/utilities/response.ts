@@ -12,9 +12,11 @@ export function response<T>(context: Context) {
 
 export const exceptions = {
   BAD_DATA: 'bad data',
+  FORBIDDEN: 'forbidden',
   INTERNAL_ERROR: 'internal error',
   INVALID_CREDENTIALS: 'invalid credentials',
   RATE_LIMITED: 'request limit exceeded',
   SERVICE_UNAVAILABLE: 'service unavailable',
+  UNAUTHENTICATED: 'unauthenticated',
   USER_EXISTS: 'user exists',
 } as const;

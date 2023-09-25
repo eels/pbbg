@@ -6,7 +6,7 @@ import type { Context, Next } from 'hono';
 import type { RateLimiterMemory } from 'rate-limiter-flexible';
 
 export default class RateLimit extends Controller {
-  public static handle(limiter: RateLimiterMemory) {
+  public handle(limiter: RateLimiterMemory) {
     return async (context: Context, next: Next) => {
       const { API_RATE_LIMIT_ENABLED } = process.env;
       const ip = context.req.header('x-forwarded-for');

@@ -1,5 +1,3 @@
-import type { AxiosError } from 'axios';
-
 type ErrorStatus = 'ERROR';
 type FailStatus = 'FAIL';
 type SuccessStatus = 'SUCCESS';
@@ -24,4 +22,4 @@ export interface SuccessResponse<T> {
 
 export type Status = ErrorStatus | FailStatus | SuccessStatus;
 export type APIResponse<T> = ErrorResponse | FailResponse | SuccessResponse<T>;
-export type APIError = AxiosError<ErrorResponse>;
+export type APIError = ErrorResponse;

@@ -1,0 +1,22 @@
+---
+import ContentContainer from '@pbbg/ui/lib/components/atoms/content-container';
+import HTML from '@/web/layouts/html.astro';
+import Head from '@/web/layouts/head.astro';
+import MDXContent from '@pbbg/ui/lib/components/utilities/mdx-content';
+import { allAuxiliaries } from '@/content';
+
+const { slug } = Astro.params;
+const auxiliary = allAuxiliaries.find((auxiliary) => auxiliary.slug === slug);
+
+if (!auxiliary) {
+  return new Response(null, { status: 404 });
+}
+---
+
+<HTML>
+  <Head slot='head' />
+  <ContentContainer>
+    <h1>{auxiliary.title}</h1>
+    <MDXContent code={auxiliary.body.code} />
+  </ContentContainer>
+</HTML>
