@@ -7,12 +7,12 @@ import type { AxiosError, AxiosResponse } from 'axios';
 
 export async function ALL({ request }: APIContext) {
   const { pathname } = new URL(request.url);
-  const { headers, json, method } = request;
+  const { headers, method } = request;
 
   const [error, response] = await pleaseTryAsync<AxiosResponse, AxiosError>(async () => {
-    const [error, body] = await pleaseTryAsync(() => json());
+    const [error, body] = await pleaseTryAsync(() => request.json());
 
-    return axiosInstance({
+    return await axiosInstance({
       data: !error ? body : undefined,
       headers: Object.fromEntries(headers),
       method,
@@ -39,6 +39,7 @@ export async function ALL({ request }: APIContext) {
   const value = error ? error.response : response;
 
   return new Response(JSON.stringify(value?.data ?? fallback), {
+    headers: value?.headers as HeadersInit,
     status: value?.status ?? 500,
   });
 }

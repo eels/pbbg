@@ -14,7 +14,9 @@ export function ValidateRequestBody(validator: ZodType) {
     type Fn = typeof fn;
 
     descriptor.value = async function (context: Context, ...rest: DropFirst<Parameters<Fn>>) {
-      const [error] = await pleaseTryAsync(() => validator.parse(context.req.json()));
+      const [error] = await pleaseTryAsync(async () => {
+        return validator.parse(await context.req.json());
+      });
 
       if (error) {
         throw new BadDataError(exceptions.BAD_DATA);

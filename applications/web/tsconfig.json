@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
-      "@/content/*": ["../../node_modules/@pbbg/content/.contentlayer/generated"],
+      "@/content": ["../../node_modules/@pbbg/content/.contentlayer/generated"],
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
       "@/styles/*": ["../../node_modules/@pbbg/styles/lib/*"],
       "@/ui/*": ["../../node_modules/@pbbg/ui/lib/*"],

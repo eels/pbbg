@@ -4,9 +4,13 @@ import node from '@astrojs/node';
 import react from '@astrojs/react';
 import sw from 'astrojs-service-worker';
 import tailwind from '@astrojs/tailwind';
+import { loadEnv } from 'vite';
 
 /** @type {import('vite').BuildOptions} */
 export const viteConfig = {
+  define: {
+    'process.env': loadEnv('development', process.cwd(), ''),
+  },
   ssr: {
     noExternal: ['path-to-regexp'],
   },

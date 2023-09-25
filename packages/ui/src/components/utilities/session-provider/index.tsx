@@ -1,4 +1,3 @@
-import { SessionProvider as NextAuthSessionProvider } from 'next-auth/react';
 import type { ReactNode } from 'react';
 
 export interface SessionProviderProps {
@@ -6,5 +5,5 @@ export interface SessionProviderProps {
 }
 
 export default function SessionProvider({ children }: SessionProviderProps) {
-  return <NextAuthSessionProvider>{children}</NextAuthSessionProvider>;
+  return children;
 }
