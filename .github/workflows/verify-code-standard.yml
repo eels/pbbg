@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        command: [build, format, lint, test, test:dependencies, typescript:verify]
+        command: [build, format, lint, test, 'test:dependencies', 'typescript:verify']
 
     steps:
       - name: Checkout
