@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "copy:environment": "ln -sf  \"../../.env\" \"./\"",
+    "copy:environment": "ln -sf \"../../.env\" \"./\"",
     "dev": "onchange --initial --kill \"./src/**/*.{js,json,ts}\" -- yarn start",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
