@@ -52,7 +52,7 @@
     },
     "wait": {
       "cache": false,
-      "dependsOn": ["^clean", "clean"],
+      "dependsOn": ["clean"],
       "outputs": []
     }
   }

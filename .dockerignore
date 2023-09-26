@@ -1,3 +1,11 @@
 # --- Dependencies ------------------------------
 
 **/node_modules
+
+# --- Environment variables ---------------------
+
+.env*
+.env.me
+.flaskenv*
+!.env.project
+!.env.vault

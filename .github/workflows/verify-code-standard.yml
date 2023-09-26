@@ -1,40 +1,16 @@
 name: Verify Code Standard
 
 on:
-  push:
+  pull_request:
 
 jobs:
-  variables:
-    name: Prepare Application Environment Variables
+  verify:
+    name: Verify Code Standard
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup
-        uses: ./.github/actions/prepare-variables
-        with:
-          API_ANALYTICS_ENABLED: ${{ vars.API_ANALYTICS_ENABLED }}
-          API_ANALYTICS_MEASUREMENT_ID: ${{ vars.API_ANALYTICS_MEASUREMENT_ID }}
-          API_ANALYTICS_SECRET: ${{ secrets.API_ANALYTICS_SECRET }}
-          API_RATE_LIMIT_ENABLED: ${{ vars.API_RATE_LIMIT_ENABLED }}
-          APP_QUERY_DATABASE_LOCATION: ${{ vars.APP_QUERY_DATABASE_LOCATION }}
-          APP_QUERY_PORT: ${{ vars.APP_QUERY_PORT }}
-          APP_QUERY_SECRET: ${{ secrets.APP_QUERY_SECRET }}
-          APP_QUERY_URL: ${{ vars.APP_QUERY_URL }}
-          APP_WEB_CLIENT_DOMAIN: ${{ vars.APP_WEB_CLIENT_DOMAIN }}
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL: ${{ vars.NEXTAUTH_URL }}
-          NODE_ENV: production
-          POCKETBASE_ADMIN_PASSWORD: ${{ secrets.POCKETBASE_ADMIN_PASSWORD }}
-          POCKETBASE_ADMIN_USERNAME: ${{ vars.POCKETBASE_ADMIN_USERNAME }}
-          POCKETBASE_URL: ${{ vars.POCKETBASE_URL }}
-
-  verify-build:
-    name: Verify Build
-    needs: variables
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        command: [build, format, lint, test, test:dependencies, typescript:verify]
 
     steps:
       - name: Checkout
@@ -43,57 +19,8 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup-workflow
 
-      - name: Build
+      - name: Verify
+        env:
+          DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
         run: |
-          yarn clean
-          yarn build
-
-  verify-format:
-    name: Verify Formatting
-    needs: variables
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup
-        uses: ./.github/actions/setup-workflow
-
-      - name: Verify code formatting
-        run: |
-          yarn format
-
-  verify-lint:
-    name: Verify Linting
-    needs: variables
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup
-        uses: ./.github/actions/setup-workflow
-
-      - name: Verify code linting
-        run: |
-          yarn lint
-
-  verify-types:
-    name: Verify Types
-    needs: variables
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Setup
-        uses: ./.github/actions/setup-workflow
-
-      - name: Verify code TypeScript types
-        run: |
-          yarn workspace @pbbg/content build
-          yarn workspace @pbbg/web build:icon-type
-          yarn typescript:verify
+          yarn ${{ matrix.command }}
