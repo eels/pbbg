@@ -26,7 +26,7 @@ jobs:
           yarn workspace @pbbg/ui create:icon-type
           yarn workspace @pbbg/ui storybook:build
 
-      - name: Publish To Cloudflare Pages
+      - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           accountId: ${{ vars.SB_CLOUDFLARE_ACCOUNT_ID }}

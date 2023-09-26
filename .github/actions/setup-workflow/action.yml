@@ -34,3 +34,10 @@ runs:
       run: |
         yarn install --frozen-lockfile --ignore-scripts --prefer-offline
         yarn turbo run prepare
+
+    - name: Install sharp linux binaries
+      env:
+        npm_config_arch: x64
+        npm_config_platform: linux
+      run: |
+        yarn add sharp --ignore-workspace-root-check
