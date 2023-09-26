@@ -1,13 +1,9 @@
-/* eslint-disable import/no-relative-parent-imports */
-/* See: https://github.com/contentlayerdev/contentlayer/issues/238 */
-
 import { defineDocumentType } from 'contentlayer/source-files';
-import { removeExtension } from '../../../../node_modules/@pbbg/utilities/src/extensions';
 
 export const Auxiliary = defineDocumentType(() => ({
   computedFields: {
     slug: {
-      resolve: (doc) => removeExtension(doc._raw.sourceFileName),
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
       type: 'string',
     },
   },
