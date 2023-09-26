@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "astro build",
+    "build": "node --register dotenv/config \"./node_modules/.bin/astro\" build",
     "clean": "rimraf \"./.astro\" \"./dist\"",
     "dev": "astro dev",
     "copy:environment": "ln -sf  \"../../.env\" \"./\"",
@@ -13,7 +13,7 @@
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
     "prepare": "yarn copy:environment && yarn copy:fonts",
-    "start": "astro preview",
+    "start": "node --register dotenv/config \"./node_modules/.bin/astro\" preview",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
@@ -47,7 +47,6 @@
     "@types/react-dom": "18.2.6",
     "@types/react": "18.2.14",
     "axios": "1.4.0",
-    "dotenv": "16.0.0",
     "prettier-plugin-astro": "0.8.0",
     "rimraf": "5.0.1",
     "sass": "1.49.0",

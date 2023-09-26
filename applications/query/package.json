@@ -19,7 +19,6 @@
     "@pbbg/http": "*",
     "@pbbg/utilities": "*",
     "awilix": "8.0.1",
-    "dotenv": "16.0.0",
     "hono": "3.6.3",
     "sqlite": "4.2.1",
     "sqlite3": "5.1.6"
