@@ -2,8 +2,8 @@ import { defineDocumentType } from 'contentlayer/source-files';
 
 export const Post = defineDocumentType(() => ({
   computedFields: {
-    url: {
-      resolve: (doc) => `/posts/${doc._raw.flattenedPath}`,
+    slug: {
+      resolve: (doc) => doc._raw.sourceFileName.replace(/\.mdx$/, ''),
       type: 'string',
     },
   },

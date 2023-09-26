@@ -1,0 +1,22 @@
+---
+import ContentContainer from '@pbbg/ui/lib/components/atoms/content-container';
+import HTML from '@/web/layouts/html.astro';
+import Head from '@/web/layouts/head.astro';
+import MDXContent from '@pbbg/ui/lib/components/utilities/mdx-content';
+import { allPosts } from '@/content';
+
+const { slug } = Astro.params;
+const post = allPosts.find((post) => post.slug === slug && post.status !== 'DRAFT');
+
+if (!post) {
+  return new Response(null, { status: 404 });
+}
+---
+
+<HTML>
+  <Head slot='head' />
+  <ContentContainer>
+    <h1>{post.headline}</h1>
+    <MDXContent code={post.body.code} />
+  </ContentContainer>
+</HTML>

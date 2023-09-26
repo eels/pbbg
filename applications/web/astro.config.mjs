@@ -16,10 +16,15 @@ export const viteConfig = {
   },
 };
 
+/** @type {import('@astrojs/tailwind').TailwindOptions} */
+const tailwindConfig = {
+  applyBaseStyles: false,
+};
+
 /** @type {import('astro').AstroUserConfig} */
 export default {
   adapter: node({ mode: 'standalone' }),
-  integrations: [react(), tailwind(), sw(), critters(), compress()],
+  integrations: [react(), tailwind(tailwindConfig), sw(), critters(), compress()],
   output: 'server',
   trailingSlash: 'never',
   vite: viteConfig,
