@@ -31,6 +31,6 @@ jobs:
         with:
           accountId: ${{ vars.SB_CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.SB_CLOUDFLARE_API_TOKEN }}
-          directory: ./applications/ui/storybook-static
+          directory: ./packages/ui/storybook-static
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: ${{ vars.SB_CLOUDFLARE_PROJECT_NAME }}
