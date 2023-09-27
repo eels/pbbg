@@ -36,6 +36,7 @@ runs:
         yarn turbo run prepare
 
     - name: Install sharp linux binaries
+      shell: bash
       env:
         npm_config_arch: x64
         npm_config_platform: linux
