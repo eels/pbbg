@@ -23,7 +23,7 @@ jobs:
           DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
           NODE_ENV: production
         run: |
-          yarn workspace @pbbg/ui create:icon-type
+          yarn turbo run build --filter=@pbbg/ui...
           yarn workspace @pbbg/ui storybook:build
 
       - name: Publish to Cloudflare Pages
