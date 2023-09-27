@@ -8,6 +8,7 @@ export interface StyledButtonProps {
 
 const baseStyles = [
   '!no-underline',
+  '!font-normal',
   'block',
   'w-full',
   'min-w-[200px]',

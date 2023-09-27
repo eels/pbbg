@@ -15,8 +15,10 @@
     "lint": "eslint \"./*.{js,json,ts}\" \"./{scripts,src,storybook,test}/**/*.{js,json,ts,tsx}\" --cache",
     "optimise:svg": "yarn svgo --folder \"./src/resources/icons\" --output \"./src/resources/icons\"",
     "prebuild": "yarn create:icon-type",
-    "storybook:build": "yarn copy:styles && storybook build --config-dir \"./storybook\" --quiet",
-    "storybook:start": "yarn copy:styles && storybook dev --config-dir \"./storybook\" --no-open --quiet",
+    "prestorybook:build": "yarn copy:styles",
+    "prestorybook:start": "yarn copy:styles",
+    "storybook:build": "storybook build --config-dir \"./storybook\" --quiet",
+    "storybook:start": "storybook dev --config-dir \"./storybook\" --no-open --quiet",
     "test": "jest --passWithNoTests",
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./lib\""
