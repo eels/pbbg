@@ -40,6 +40,11 @@
       "dependsOn": [],
       "outputs": []
     },
+    "start": {
+      "cache": false,
+      "dependsOn": [],
+      "outputs": []
+    },
     "test": {
       "cache": false,
       "dependsOn": ["^build", "build"],
