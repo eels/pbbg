@@ -26,6 +26,8 @@
     "jose": "4.14.6",
     "pocketbase": "0.15.2",
     "rate-limiter-flexible": "3.0.0",
+    "sqlite": "4.2.1",
+    "sqlite3": "5.1.6",
     "timestring": "7.0.0",
     "validator": "13.9.0",
     "zod": "3.21.4"

@@ -4,48 +4,55 @@
 import PocketBase from '../../../../node_modules/pocketbase/dist/pocketbase.cjs.js';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 
-let database: PocketBase;
+export type Authentication = () => PocketBase;
+export type Database = () => Promise<PocketBase>;
+
+let authenticationDatabase: PocketBase;
 let backendDatabase: PocketBase;
 
-export function databaseInstance() {
-  const { POCKETBASE_URL } = process.env;
+export function authenticationDatabaseInstance() {
+  return () => {
+    const { POCKETBASE_URL } = process.env;
 
-  if (!POCKETBASE_URL) {
-    throw new Error('pocketbase host not configured');
-  }
+    if (!POCKETBASE_URL) {
+      throw new Error('pocketbase host not configured');
+    }
 
-  if (!database) {
-    database = new PocketBase(POCKETBASE_URL);
-  }
+    if (!authenticationDatabase) {
+      authenticationDatabase = new PocketBase(POCKETBASE_URL);
+    }
 
-  return database;
+    return authenticationDatabase;
+  };
 }
 
-export async function backendDatabaseInstance() {
-  const { POCKETBASE_ADMIN_PASSWORD, POCKETBASE_ADMIN_USERNAME } = process.env;
+export function backendDatabaseInstance() {
+  return async () => {
+    const { POCKETBASE_ADMIN_PASSWORD, POCKETBASE_ADMIN_USERNAME } = process.env;
 
-  if (!POCKETBASE_ADMIN_PASSWORD || !POCKETBASE_ADMIN_USERNAME) {
-    throw new Error('pocketbase username and/or password not configured');
-  }
+    if (!POCKETBASE_ADMIN_PASSWORD || !POCKETBASE_ADMIN_USERNAME) {
+      throw new Error('pocketbase username and/or password not configured');
+    }
 
-  if (backendDatabase?.authStore?.isValid) {
-    return backendDatabase;
-  }
-
-  if (backendDatabase?.authStore?.isValid === false) {
-    const [error] = await pleaseTryAsync(() => backendDatabase.admins.authRefresh());
-
-    if (!error) {
+    if (backendDatabase?.authStore?.isValid) {
       return backendDatabase;
     }
-  }
 
-  const pb = databaseInstance();
+    if (backendDatabase?.authStore?.isValid === false) {
+      const [error] = await pleaseTryAsync(() => backendDatabase.admins.authRefresh());
 
-  await pb.admins.authWithPassword(POCKETBASE_ADMIN_USERNAME, POCKETBASE_ADMIN_PASSWORD);
-  pb.autoCancellation(false);
+      if (!error) {
+        return backendDatabase;
+      }
+    }
 
-  backendDatabase = pb;
+    const pb = authenticationDatabaseInstance()();
 
-  return pb;
+    await pb.admins.authWithPassword(POCKETBASE_ADMIN_USERNAME, POCKETBASE_ADMIN_PASSWORD);
+    pb.autoCancellation(false);
+
+    backendDatabase = pb;
+
+    return pb;
+  };
 }
