@@ -28,11 +28,11 @@ node_modules
 
 # --- Environment variables ---------------------
 
-!.env.project
-!.env.vault
 .env*
 .env.me
 .flaskenv*
+!./.env.project
+!./.env.vault
 
 # --- Caches ------------------------------------
 
