@@ -1,11 +1,14 @@
-import type PocketBase from 'pocketbase';
+import type { Authentication, Database } from '@/api/utilities/database';
+import type { Query } from '@/api/utilities/database-local';
 
 export default class BaseQuery {
-  protected authentication: PocketBase;
-  protected database: Promise<PocketBase>;
+  protected authentication: Authentication;
+  protected database: Database;
+  protected query: Query;
 
-  public constructor(authentication: PocketBase, database: Promise<PocketBase>) {
+  public constructor(authentication: Authentication, database: Database, query: Query) {
     this.authentication = authentication;
     this.database = database;
+    this.query = query;
   }
 }

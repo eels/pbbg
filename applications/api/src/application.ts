@@ -10,6 +10,7 @@ app.use('*', cradle.RateLimit.handle(limiter));
 app.use('*', cradle.CSRFTokenGuard.handle);
 app.use('*', cradle.MeasureRequestDuration.handle);
 app.use('*', cradle.SendAnalyticsEvent.handle);
+app.use('*', cradle.DatabaseCleanup.handle);
 
 // --- GET --------------------------------------
 
