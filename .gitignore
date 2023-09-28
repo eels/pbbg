@@ -56,6 +56,7 @@ packages/utilities/src/**/*.js
 packages/validators/src/**/*.js
 tsconfig.tsbuildinfo
 !**/src/lib
+!configs/**/lib
 !packages/database-types/lib
 !packages/styles/lib
 
