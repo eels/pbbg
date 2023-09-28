@@ -41,6 +41,9 @@ node_modules
 
 # --- Compiled ----------------------------------
 
+!**/src/lib
+!packages/database-types/lib
+!packages/styles/lib
 .astro
 .contentlayer
 applications/web/public/fonts
