@@ -13,12 +13,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
+    "build": "dotenv -- turbo run build",
     "clean:artifacts": "yarn rimraf \"**/tsconfig.tsbuildinfo\"",
     "clean:dependencies": "yarn rimraf \"**/node_modules/\"",
     "clean": "turbo run clean && yarn clean:artifacts",
-    "dev:web": "turbo run dev --filter=@pbbg/api... --filter=@pbbg/web...",
-    "dev": "turbo run dev",
+    "dev:web": "dotenv -- turbo run dev --filter=@pbbg/api... --filter=@pbbg/web...",
+    "dev": "dotenv -- turbo run dev",
     "format:fix": "yarn format:local:fix && turbo run format:fix",
     "format:local:fix": "yarn format:local --write",
     "format:local": "prettier \"{.,./{{.vscode,configs}/**/}}*.{js,json,ts}\" --cache --check",
@@ -29,10 +29,12 @@
     "lint": "yarn format:local && turbo run lint",
     "prepare": "husky install && turbo run prepare",
     "test:dependencies": "yarn syncpack list-mismatches",
-    "test": "turbo run test",
+    "test": "dotenv -- turbo run test",
     "typescript:verify": "turbo run typescript:verify"
   },
   "dependencies": {
+    "dotenv-cli": "7.3.0",
+    "dotenv-vault": "1.25.0",
     "dotenv": "16.3.1",
     "turbo": "1.10.14"
   },
@@ -41,7 +43,6 @@
     "@commitlint/config-conventional": "17.7.0",
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
-    "dotenv-vault": "1.25.0",
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
     "parse5": "7.1.2",

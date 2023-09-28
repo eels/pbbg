@@ -21,11 +21,17 @@ const tailwindConfig = {
   applyBaseStyles: false,
 };
 
+/** @type {import('astro').ServerConfig} */
+const serverConfig = {
+  host: '0.0.0.0',
+};
+
 /** @type {import('astro').AstroUserConfig} */
 export default {
   adapter: node({ mode: 'standalone' }),
   integrations: [react(), tailwind(tailwindConfig), sw(), critters(), compress()],
   output: 'server',
+  server: (command) => (command === 'preview' ? serverConfig : undefined),
   trailingSlash: 'never',
   vite: viteConfig,
 };

@@ -3,17 +3,16 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "node --require dotenv/config \"./node_modules/.bin/astro\" build",
+    "build": "astro build",
     "clean": "rimraf \"./.astro\" \"./dist\"",
     "dev": "astro dev",
-    "copy:environment": "ln -sf \"../../.env\" \"./\" && ln -sf \"../../.env.vault\" \"./\"",
     "copy:fonts": "cp -a  \"../../assets/fonts\" \"./public/\"",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./{public,src}/**/}*.{astro,js,json,mjs,svg,ts,tsx}\" --check",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
-    "prepare": "yarn copy:environment && yarn copy:fonts",
-    "start": "node --require dotenv/config \"./node_modules/.bin/astro\" preview",
+    "prepare": "yarn copy:fonts",
+    "start": "astro preview",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {

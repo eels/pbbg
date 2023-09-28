@@ -12,6 +12,6 @@
   },
   "include": ["../../node_modules/@pbbg/http/hono-http.d.ts", "**/*.ts"],
   "ts-node": {
-    "require": ["tsconfig-paths/register", "dotenv/config"]
+    "require": ["tsconfig-paths/register"]
   }
 }

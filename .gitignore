@@ -31,8 +31,8 @@ node_modules
 .env*
 .env.me
 .flaskenv*
-!./.env.project
-!./.env.vault
+!.env.project
+!.env.vault
 
 # --- Caches ------------------------------------
 
@@ -50,7 +50,6 @@ lib
 packages/http/src/**/*.js
 packages/ui/src/--styles
 packages/ui/src/**/*.js
-packages/ui/src/types/icon.ts
 packages/ui/storybook-static
 packages/utilities/src/**/*.js
 packages/validators/src/**/*.js

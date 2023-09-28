@@ -1,8 +1,10 @@
 {
+  "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
       "cache": false,
       "dependsOn": ["^clean", "^prepare", "^build", "clean", "prepare"],
+      "dotEnv": [".env.production", ".env.staging", ".env"],
       "outputs": ["build/**", "dist/**", "lib/**", ".contentlayer/**"]
     },
     "clean": {
@@ -13,6 +15,7 @@
     "dev": {
       "cache": false,
       "dependsOn": ["^prepare", "^wait", "clean", "prepare"],
+      "dotEnv": [".env.production", ".env.staging", ".env"],
       "outputs": []
     },
     "format": {
@@ -48,6 +51,7 @@
     "test": {
       "cache": false,
       "dependsOn": ["^build", "build"],
+      "dotEnv": [".env.production", ".env.staging", ".env"],
       "outputs": []
     },
     "typescript:verify": {

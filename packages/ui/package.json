@@ -14,7 +14,6 @@
     "lint:fix": "yarn lint:js --fix",
     "lint": "eslint \"./*.{js,json,ts}\" \"./{scripts,src,storybook,test}/**/*.{js,json,ts,tsx}\" --cache",
     "optimise:svg": "yarn svgo --folder \"./src/resources/icons\" --output \"./src/resources/icons\"",
-    "prebuild": "yarn create:icon-type",
     "prestorybook:build": "yarn copy:styles",
     "prestorybook:start": "yarn copy:styles",
     "storybook:build": "storybook build --config-dir \"./storybook\" --quiet",
