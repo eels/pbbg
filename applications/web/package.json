@@ -5,14 +5,15 @@
   "scripts": {
     "build": "astro build",
     "clean": "rimraf \"./.astro\" \"./dist\"",
-    "dev": "astro dev",
     "copy:fonts": "cp -a  \"../../assets/fonts\" \"./public/\"",
+    "dev": "astro dev",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./{public,src}/**/}*.{astro,js,json,mjs,svg,ts,tsx}\" --check",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
     "prepare": "yarn copy:fonts",
-    "start": "astro preview",
+    "preview": "astro preview",
+    "start": "node \"./dist/server/entry.mjs\"",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
