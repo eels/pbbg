@@ -41,9 +41,6 @@ node_modules
 
 # --- Compiled ----------------------------------
 
-!**/src/lib
-!packages/database-types/lib
-!packages/styles/lib
 .astro
 .contentlayer
 applications/web/public/fonts
@@ -58,6 +55,9 @@ packages/ui/storybook-static
 packages/utilities/src/**/*.js
 packages/validators/src/**/*.js
 tsconfig.tsbuildinfo
+!**/src/lib
+!packages/database-types/lib
+!packages/styles/lib
 
 # --- Pocketbase --------------------------------
 
