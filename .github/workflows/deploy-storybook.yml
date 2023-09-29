@@ -29,7 +29,7 @@ jobs:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
-          accountId: ${{ vars.SB_CLOUDFLARE_ACCOUNT_ID }}
+          accountId: ${{ vars.AE_CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.SB_CLOUDFLARE_API_TOKEN }}
           directory: ./packages/ui/storybook-static
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
