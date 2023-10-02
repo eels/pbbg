@@ -1,4 +1,4 @@
-import { axiosInstance } from '@pbbg/http/lib/utilities/axios';
+import { axiosInstance } from '@pbbg/http/lib/utilities/request';
 import { exceptions } from '@pbbg/http/lib/utilities/response';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import type { APIContext } from 'astro';

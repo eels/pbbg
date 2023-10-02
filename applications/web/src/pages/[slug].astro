@@ -3,7 +3,7 @@ import ContentContainer from '@pbbg/ui/lib/components/atoms/content-container';
 import HTML from '@/web/layouts/html.astro';
 import Head from '@/web/layouts/head.astro';
 import MDXContent from '@pbbg/ui/lib/components/utilities/mdx-content';
-import { allAuxiliaries } from '@/content';
+import { allAuxiliaries } from '@pbbg/content/.contentlayer/generated';
 
 const { slug } = Astro.params;
 const auxiliary = allAuxiliaries.find((auxiliary) => auxiliary.slug === slug);

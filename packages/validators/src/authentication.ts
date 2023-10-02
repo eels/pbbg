@@ -1,7 +1,7 @@
-import isStrongPassword from 'validator/lib/isStrongPassword';
+import validator from 'validator';
 import { z } from 'zod';
 
-const strongPassword = z.string().refine((value) => isStrongPassword(value), {
+const strongPassword = z.string().refine((value) => validator.isStrongPassword(value), {
   message: 'Password is not strong enough',
 });
 

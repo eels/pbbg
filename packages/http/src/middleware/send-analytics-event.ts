@@ -1,5 +1,5 @@
 import { Controller } from '@/http/types/http';
-import { axiosInstance } from '@/http/utilities/axios';
+import { axiosInstance } from '@/http/utilities/request';
 import type { Context, Next } from 'hono';
 import type { MeasurementProtocolEvent, MeasurementProtocolPayload } from '@/http/types/analytics';
 

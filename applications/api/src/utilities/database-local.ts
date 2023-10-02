@@ -1,4 +1,4 @@
-import { OPEN_READONLY, cached } from 'sqlite3';
+import sqlite from 'sqlite3';
 import { open } from 'sqlite';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import { resolve } from 'node:path';
@@ -6,6 +6,7 @@ import type { Database } from 'sqlite';
 
 export type Query = () => Promise<Database>;
 
+const { OPEN_READONLY, cached } = sqlite;
 let localDatabase: Database;
 
 export function localDatabaseInstance() {

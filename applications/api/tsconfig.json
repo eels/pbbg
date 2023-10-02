@@ -2,7 +2,7 @@
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "noEmit": true,
+    "outDir": "./dist",
     "paths": {
       "@/api/*": ["./src/*"],
       "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
@@ -10,8 +10,6 @@
       "@/validators/*": ["../../node_modules/@pbbg/validators/lib/*"]
     }
   },
-  "include": ["../../node_modules/@pbbg/http/hono-http.d.ts", "**/*.ts"],
-  "ts-node": {
-    "require": ["tsconfig-paths/register"]
-  }
+  "exclude": ["dist", "node_modules"],
+  "include": ["../../node_modules/@pbbg/http/types/hono-http.d.ts", "**/*.ts"]
 }

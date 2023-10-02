@@ -26,5 +26,15 @@
     "strictNullChecks": true,
     "target": "esnext"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "tsc-alias": {
+    "resolveFullPaths": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "files": true,
+    "require": ["tsconfig-paths/register"],
+    "transpileOnly": true
+  }
 }

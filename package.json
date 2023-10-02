@@ -26,8 +26,8 @@
     "lint:fix": "yarn lint:local:fix && turbo run lint:fix",
     "lint:local:fix": "yarn lint:local --fix",
     "lint:local": "eslint \"./*.{js,json,ts}\" \"./{.vscode,configs}/**/*.{js,json,ts}\" --cache",
-    "lint": "yarn format:local && turbo run lint",
-    "prepare": "husky install && turbo run prepare",
+    "lint": "yarn lint:local && turbo run lint",
+    "prepare": "husky install",
     "test:dependencies": "yarn syncpack list-mismatches",
     "test": "dotenv -- turbo run test",
     "typescript:verify": "turbo run typescript:verify"

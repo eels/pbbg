@@ -1,7 +1,7 @@
 {
   "overrides": [
     {
-      "files": ["package.json", "tsconfig.json", "tsconfig.build.json"],
+      "files": ["package.json", "tsconfig.json", "tsconfig.*.json"],
       "rules": {
         "sort-keys-fix/sort-keys-fix": "off"
       }

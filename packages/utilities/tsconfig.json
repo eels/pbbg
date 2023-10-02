@@ -8,6 +8,6 @@
       "@/utilities/*": ["./*"]
     }
   },
-  "exclude": ["lib"],
+  "exclude": ["lib", "node_modules"],
   "include": ["**/*.ts"]
 }
