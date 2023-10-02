@@ -1,16 +1,14 @@
 {
   "name": "@pbbg/styles",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./lib/**/}*.{css,js,json,scss}\" --check",
+    "format": "prettier \"{.,./lib/**/}*.{cjs,css,js,json,scss}\" --check",
     "lint:fix": "yarn lint:css --fix",
     "lint": "stylelint \"./lib/**/*.{css,scss}\" --cache"
   },
-  "files": [
-    "lib/*"
-  ],
   "devDependencies": {
     "@pbbg/prettier-config": "*",
     "@pbbg/stylelint-config": "*",

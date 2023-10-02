@@ -13,9 +13,10 @@
       "@/web/*": ["./src/*"]
     }
   },
+  "exclude": ["dist", "node_modules"],
   "include": [
     "../../node_modules/@pbbg/content/.contentlayer/generated",
-    "../../node_modules/@pbbg/ui/pbbg-string.d.ts",
+    "../../node_modules/@pbbg/ui/types/pbbg-string.d.ts",
     "**/*.astro",
     "**/*.ts",
     "**/*.tsx"

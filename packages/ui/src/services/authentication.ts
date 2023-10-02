@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/ui/utilities/axios';
+import { axiosInstance } from '@/ui/utilities/request';
 import { createValidationError, extractValidationErrors } from '@/ui/utilities/validation';
 import { exceptions } from '@pbbg/http/lib/utilities/response';
 import { getString } from '@/ui/utilities/string';

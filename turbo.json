@@ -3,7 +3,7 @@
   "pipeline": {
     "build": {
       "cache": false,
-      "dependsOn": ["^clean", "^prepare", "^build", "clean", "prepare"],
+      "dependsOn": ["^clean", "^build", "clean"],
       "dotEnv": [".env.production", ".env.staging", ".env"],
       "outputs": ["build/**", "dist/**", "lib/**", ".contentlayer/**"]
     },
@@ -14,7 +14,7 @@
     },
     "dev": {
       "cache": false,
-      "dependsOn": ["^prepare", "^wait", "clean", "prepare"],
+      "dependsOn": ["^wait", "clean"],
       "dotEnv": [".env.production", ".env.staging", ".env"],
       "outputs": []
     },
@@ -34,11 +34,6 @@
       "outputs": []
     },
     "lint:fix": {
-      "cache": false,
-      "dependsOn": [],
-      "outputs": []
-    },
-    "prepare": {
       "cache": false,
       "dependsOn": [],
       "outputs": []

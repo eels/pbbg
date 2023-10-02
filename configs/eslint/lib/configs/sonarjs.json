@@ -1,15 +1,15 @@
 {
   "extends": ["plugin:sonarjs/recommended"],
-  "rules": {
-    "sonarjs/no-collapsible-if": "off"
-  },
   "overrides": [
     {
-      "files": ["styled.ts"],
+      "files": ["styled.ts", "turbo.json"],
       "rules": {
         "sonarjs/no-duplicate-string": "off"
       }
     }
   ],
-  "plugins": ["sonarjs"]
+  "plugins": ["sonarjs"],
+  "rules": {
+    "sonarjs/no-collapsible-if": "off"
+  }
 }

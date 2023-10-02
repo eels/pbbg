@@ -1,9 +1,13 @@
 import fs from 'node:fs';
 import inquirer from 'inquirer';
 import path from 'node:path';
+import url from 'node:url';
 import { hydrateFromVariableMap } from '@pbbg/utilities/lib/hydrate-string';
 import { paramCase, pascalCase } from 'change-case';
-import { questions } from '@/ui-script/create-component/data/questions';
+import { questions } from '@pbbg/ui/scripts/create-component/data/questions';
+
+// @ts-expect-error - import.meta is only available when using build tsconfig
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 async function createComponent() {
   const answers = await inquirer.prompt(questions);

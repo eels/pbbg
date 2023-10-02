@@ -1,10 +1,14 @@
 import fs from 'node:fs';
 import inquirer from 'inquirer';
 import path from 'node:path';
+import url from 'node:url';
 import { capitalCase } from 'change-case';
 import { format } from 'date-fns';
 import { hydrateFromVariableMap } from '@pbbg/utilities/lib/hydrate-string';
-import { questions } from '@/content-script/create-post/data/questions';
+import { questions } from '@pbbg/content/scripts/create-post/data/questions';
+
+// @ts-expect-error - import.meta is only available when using build tsconfig
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 function sanitiseHeadline(headline: string) {
   headline = headline.toLowerCase().split(' ').join('-');

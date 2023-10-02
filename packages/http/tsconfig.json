@@ -8,6 +8,6 @@
       "@/http/*": ["./*"]
     }
   },
-  "exclude": ["lib"],
-  "include": ["**/*.ts", "hono-http.d.ts"]
+  "exclude": ["lib", "node_modules"],
+  "include": ["**/*.ts"]
 }

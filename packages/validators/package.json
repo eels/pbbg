@@ -1,21 +1,22 @@
 {
   "name": "@pbbg/validators",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
     "clean": "rimraf \"./lib\"",
     "dev": "onchange --initial \"./src/**/*.{js,json,ts}\" -- yarn build",
     "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
+    "format": "prettier \"{.,./src/**/}*.{cjs,js,json,ts}\" --check",
     "lint:fix": "yarn lint --fix",
-    "lint": "eslint \"./*.{js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
+    "lint": "eslint \"./*.{cjs,js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./lib\""
   },
-  "files": [
-    "lib/*"
-  ],
+  "exports": {
+    "./lib/*": "./lib/*.js"
+  },
   "dependencies": {
     "validator": "13.9.0",
     "zod": "3.21.4"
@@ -27,7 +28,6 @@
     "@types/node": "20.3.2",
     "onchange": "7.1.0",
     "rimraf": "5.0.1",
-    "tsc-alias": "1.8.6",
     "wait-on": "7.0.1"
   }
 }

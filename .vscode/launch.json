@@ -1,5 +1,4 @@
 {
-  "version": "0.2.0",
   "configurations": [
     {
       "command": "yarn dev:web",
@@ -7,5 +6,6 @@
       "request": "launch",
       "type": "node-terminal"
     }
-  ]
+  ],
+  "version": "0.2.0"
 }

@@ -1,22 +1,20 @@
 {
   "name": "@pbbg/content",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "build": "contentlayer build >/dev/null 2>&1",
     "clean": "rimraf \"./.contentlayer\"",
-    "create:post": "ts-node --files \"./scripts/create-post\" --transpileOnly",
+    "create:post": "ts-node --project \"./tsconfig.script.json\" \"./scripts/create-post\"",
     "dev": "contentlayer dev",
     "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./src/**/}*.{js,json,ts}\" --check",
+    "format": "prettier \"{.,./src/**/}*.{cjs,js,json,ts}\" --check",
     "lint:fix": "yarn lint --fix",
-    "lint": "eslint \"./*.{js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
+    "lint": "eslint \"./*.{cjs,js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./.contentlayer\""
   },
-  "files": [
-    ".contentlayer/*"
-  ],
   "dependencies": {
     "@pbbg/utilities": "*",
     "change-case": "4.1.2",
@@ -30,9 +28,6 @@
     "@pbbg/typescript-config": "*",
     "@types/node": "20.3.2",
     "rimraf": "5.0.1",
-    "ts-node": "10.9.1",
-    "tsc-alias": "1.8.6",
-    "tsconfig-paths": "4.2.0",
     "wait-on": "7.0.1"
   }
 }

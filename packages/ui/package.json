@@ -1,18 +1,19 @@
 {
   "name": "@pbbg/ui",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
     "build": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
     "clean": "rimraf \"./storybook-static\" \"./lib\" \"./src/--styles\"",
     "copy:styles": "cp -a \"../styles/lib\" \"./src/--styles\"",
-    "create:component": "ts-node --files \"./scripts/create-component\" --transpileOnly",
-    "create:icon-type": "ts-node --files \"./scripts/create-icon-type\" --transpileOnly",
+    "create:component": "ts-node --project \"./tsconfig.script.json\" \"./scripts/create-component\"",
+    "create:icon-type": "ts-node --project \"./tsconfig.script.json\" \"./scripts/create-icon-type\"",
     "dev": "onchange --initial \"./src/**/*.{js,jsx,json,ts,tsx}\" -- yarn build",
     "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./{scripts,src,storybook,test}/**/}*.{js,json,svg,ts,tsx}\" --check",
+    "format": "prettier \"{.,./{scripts,src,storybook,test}/**/}*.{cjs,js,json,svg,ts,tsx}\" --check",
     "lint:fix": "yarn lint:js --fix",
-    "lint": "eslint \"./*.{js,json,ts}\" \"./{scripts,src,storybook,test}/**/*.{js,json,ts,tsx}\" --cache",
+    "lint": "eslint \"./*.{cjs,js,json,ts}\" \"./{scripts,src,storybook,test}/**/*.{js,json,ts,tsx}\" --cache",
     "optimise:svg": "yarn svgo --folder \"./src/resources/icons\" --output \"./src/resources/icons\"",
     "prestorybook:build": "yarn copy:styles",
     "prestorybook:start": "yarn copy:styles",
@@ -22,10 +23,6 @@
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./lib\""
   },
-  "files": [
-    "src/*",
-    "pbbg-string.d.ts"
-  ],
   "dependencies": {
     "@pbbg/database-types": "*",
     "@pbbg/http": "*",
@@ -82,10 +79,6 @@
     "storybook": "7.0.26",
     "svgo": "3.0.2",
     "ts-jest": "29.1.1",
-    "ts-node": "10.9.1",
-    "ts-toolbelt": "9.6.0",
-    "tsc-alias": "1.8.6",
-    "tsconfig-paths": "4.2.0",
     "wait-on": "7.0.1"
   }
 }

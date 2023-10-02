@@ -1,17 +1,17 @@
 {
   "name": "@pbbg/web",
   "private": true,
+  "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "build": "astro build",
+    "build": "yarn copy:fonts && astro build",
     "clean": "rimraf \"./.astro\" \"./dist\"",
     "copy:fonts": "cp -a  \"../../assets/fonts\" \"./public/\"",
-    "dev": "astro dev",
+    "dev": "yarn copy:fonts && astro dev",
     "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./{public,src}/**/}*.{astro,js,json,mjs,svg,ts,tsx}\" --check",
+    "format": "prettier \"{.,./{public,src}/**/}*.{astro,cjs,js,json,mjs,svg,ts,tsx}\" --check",
     "lint:fix": "yarn lint --fix",
-    "lint": "eslint \"./*.{js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
-    "prepare": "yarn copy:fonts",
+    "lint": "eslint \"./*.{cjs,js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
     "preview": "astro preview",
     "start": "node \"./dist/server/entry.mjs\"",
     "typescript:verify": "tsc --noEmit"
@@ -49,7 +49,6 @@
     "axios": "1.4.0",
     "prettier-plugin-astro": "0.8.0",
     "rimraf": "5.0.1",
-    "sass": "1.49.0",
-    "ts-toolbelt": "9.6.0"
+    "sass": "1.49.0"
   }
 }

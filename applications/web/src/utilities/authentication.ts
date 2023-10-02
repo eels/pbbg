@@ -1,4 +1,4 @@
-import { axiosInstance } from '@pbbg/ui/lib/utilities/axios';
+import { axiosInstance } from '@pbbg/ui/lib/utilities/request';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import type { Session } from '@pbbg/http/lib/types/session';
 

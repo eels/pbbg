@@ -1,7 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { getAllIconSlugs } from '@/ui/services/icons';
+import url from 'node:url';
+import { getAllIconSlugs } from '@pbbg/ui/src/services/icons';
 import { hydrateFromVariableMap } from '@pbbg/utilities/lib/hydrate-string';
+
+// @ts-expect-error - import.meta is only available when using build tsconfig
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 async function createIconType() {
   const template = fs.readFileSync(path.join(__dirname, 'templates', 'icon.template'), 'utf-8');
