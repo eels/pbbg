@@ -32,11 +32,11 @@ node_modules
 
 # --- Environment variables ---------------------
 
-!.env.project
-!.env.vault
 .env.me
 .env*
 .flaskenv*
+!.env.project
+!.env.vault
 
 # --- Caches ------------------------------------
 
@@ -46,13 +46,13 @@ tsconfig.tsbuildinfo
 
 # --- Compiled ----------------------------------
 
-!**/src/lib
-!configs/**/lib
 .astro
 .contentlayer
 dist
 lib
 storybook-static
+!**/src/lib
+!configs/**/lib
 
 # --- Generated ---------------------------------
 
