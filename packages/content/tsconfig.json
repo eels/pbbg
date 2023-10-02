@@ -2,6 +2,8 @@
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "incremental": false,
+    "noEmit": true,
     "paths": {
       "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"]
     }

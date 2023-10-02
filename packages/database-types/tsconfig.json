@@ -1,4 +1,10 @@
 {
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "incremental": false,
+    "noEmit": true
+  },
+  "exclude": ["lib", "node_modules"],
   "include": ["**/*.ts"]
 }

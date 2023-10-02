@@ -10,9 +10,9 @@
 
 # --- OS generated files ------------------------
 
+._*
 .DS_Store
 .DS_Store?
-._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
@@ -26,46 +26,39 @@ package-lock.json
 
 node_modules
 
+# --- Terraform ---------------------------------
+
+.terraform
+
 # --- Environment variables ---------------------
 
-.env*
-.env.me
-.flaskenv*
 !.env.project
 !.env.vault
+.env.me
+.env*
+.flaskenv*
 
 # --- Caches ------------------------------------
 
 .eslintcache
 .stylelintcache
+tsconfig.tsbuildinfo
 
 # --- Compiled ----------------------------------
 
-.astro
-.contentlayer
-applications/web/public/fonts
-build
-dist
-lib
-packages/http/src/**/*.js
-packages/ui/src/--styles
-packages/ui/src/**/*.js
-packages/ui/storybook-static
-packages/utilities/src/**/*.js
-packages/validators/src/**/*.js
-tsconfig.tsbuildinfo
 !**/src/lib
 !configs/**/lib
-!packages/database-types/lib
-!packages/styles/lib
+.astro
+.contentlayer
+dist
+lib
+storybook-static
+
+# --- Generated ---------------------------------
+
+applications/web/public/fonts
+packages/ui/src/--styles
 
 # --- Pocketbase --------------------------------
 
 docker/pocketbase/pb_data
-
-# --- Terraform ---------------------------------
-
-.terraform
-*.tfstate
-*.tfstate.*
-*.tfvars
