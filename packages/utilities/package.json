@@ -15,9 +15,6 @@
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./lib\""
   },
-  "exports": {
-    "./lib/*": "./lib/*.js"
-  },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",

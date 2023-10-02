@@ -14,9 +14,6 @@
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./lib\""
   },
-  "exports": {
-    "./lib/*": "./lib/*.js"
-  },
   "dependencies": {
     "validator": "13.9.0",
     "zod": "3.21.4"

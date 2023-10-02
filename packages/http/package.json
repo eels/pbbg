@@ -15,9 +15,6 @@
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./lib\""
   },
-  "exports": {
-    "./lib/*": "./lib/*.js"
-  },
   "dependencies": {
     "@pbbg/utilities": "*",
     "axios": "1.4.0",
