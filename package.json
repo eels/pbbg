@@ -13,6 +13,8 @@
     "packages/*"
   ],
   "scripts": {
+    "build:api": "dotenv -- turbo run build --filter=@pbbg/api...",
+    "build:web": "dotenv -- turbo run build --filter=@pbbg/web...",
     "build": "dotenv -- turbo run build",
     "clean:artifacts": "yarn rimraf \"**/tsconfig.tsbuildinfo\"",
     "clean:dependencies": "yarn rimraf \"**/node_modules/\"",
@@ -29,6 +31,8 @@
     "lint:local": "eslint \"./*.{js,json,ts}\" \"./{.vscode,configs}/**/*.{js,json,ts}\" --cache",
     "lint": "yarn lint:local && turbo run lint",
     "prepare": "husky install",
+    "start:api": "dotenv -- turbo run start --filter=@pbbg/api",
+    "start:web": "dotenv -- turbo run start --filter=@pbbg/web",
     "test:dependencies": "yarn syncpack list-mismatches",
     "test": "dotenv -- turbo run test",
     "typescript:verify": "turbo run typescript:verify"
