@@ -13,9 +13,10 @@ export default class DatabaseCleanup extends Controller {
   }
 
   public async handle(_: Context, next: Next) {
-    const db = await this.query();
-
     await next();
-    await pleaseTryAsync(() => db.close());
+
+    if (this.query.isDatabaseOpen()) {
+      await pleaseTryAsync(async () => (await this.query.open()).close());
+    }
   }
 }

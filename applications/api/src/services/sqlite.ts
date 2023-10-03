@@ -19,7 +19,7 @@ export default class SQLiteQuery {
       throw new Error('sql query not supplied');
     }
 
-    const db = await this.query();
+    const db = await this.query.open();
     const [errorStatement, statement] = await pleaseTryAsync(() => db.prepare(query));
 
     if (errorStatement) {

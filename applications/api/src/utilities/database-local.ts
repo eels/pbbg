@@ -4,37 +4,45 @@ import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
 import { resolve } from 'node:path';
 import type { Database } from 'sqlite';
 
-export type Query = () => Promise<Database>;
+export interface Query {
+  isDatabaseOpen: () => boolean;
+  open: () => Promise<Database>;
+}
 
 const { OPEN_READONLY, cached } = sqlite;
 let localDatabase: Database;
 
 export function localDatabaseInstance() {
-  return async () => {
-    const { APP_API_LOCAL_DATABASE_LOCATION } = process.env;
+  return {
+    isDatabaseOpen: () => {
+      return typeof localDatabase !== 'undefined';
+    },
+    open: async () => {
+      const { APP_API_LOCAL_DATABASE_LOCATION } = process.env;
 
-    if (!APP_API_LOCAL_DATABASE_LOCATION) {
-      throw new Error('database location not defined');
-    }
+      if (!APP_API_LOCAL_DATABASE_LOCATION) {
+        throw new Error('database location not defined');
+      }
 
-    if (localDatabase) {
-      return localDatabase;
-    }
+      if (localDatabase) {
+        return localDatabase;
+      }
 
-    const [error, db] = await pleaseTryAsync(() => {
-      return open({
-        driver: cached.Database,
-        filename: resolve(APP_API_LOCAL_DATABASE_LOCATION),
-        mode: OPEN_READONLY,
+      const [error, db] = await pleaseTryAsync(() => {
+        return open({
+          driver: cached.Database,
+          filename: resolve(APP_API_LOCAL_DATABASE_LOCATION),
+          mode: OPEN_READONLY,
+        });
       });
-    });
 
-    if (error) {
-      throw new Error('error fetching database');
-    }
+      if (error) {
+        throw new Error('error fetching database');
+      }
 
-    localDatabase = db;
+      localDatabase = db;
 
-    return localDatabase;
+      return localDatabase;
+    },
   };
 }
