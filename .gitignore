@@ -56,6 +56,7 @@ storybook-static
 
 # --- Generated ---------------------------------
 
+applications/web/public/favicons
 applications/web/public/fonts
 packages/ui/src/--styles
 

@@ -4,14 +4,16 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "build": "yarn copy:fonts && astro build",
+    "build": "yarn pre && astro build",
     "clean": "rimraf \"./.astro\" \"./dist\"",
+    "copy:favicons": "cp -a  \"../../assets/favicons\" \"./public/\"",
     "copy:fonts": "cp -a  \"../../assets/fonts\" \"./public/\"",
-    "dev": "yarn copy:fonts && astro dev",
+    "dev": "yarn pre && astro dev",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./{public,src}/**/}*.{astro,cjs,js,json,mjs,svg,ts,tsx}\" --check",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{cjs,js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
+    "pre": "yarn copy:favicons && yarn copy:fonts",
     "preview": "astro preview",
     "start": "node \"./dist/server/entry.mjs\"",
     "typescript:verify": "tsc --noEmit"

@@ -27,21 +27,16 @@ export default {
     name: '@storybook/nextjs',
     options: {},
   },
-  previewHead: (head) => {
-    const fonts = [
-      '/fonts/excelsior-400.woff2',
-      '/fonts/roboto-400.woff2',
-      '/fonts/roboto-900.woff2',
-    ];
-
-    return [
-      head,
-      ...fonts.map((font) => {
-        return `<link as="font" href="${font}" rel="preload" type="font/woff2" crossorigin />`;
-      }),
-    ].join('');
-  },
-  staticDirs: [{ from: '../../../assets/fonts', to: 'fonts' }],
+  staticDirs: [
+    {
+      from: '../../../assets/favicons',
+      to: 'favicons',
+    },
+    {
+      from: '../../../assets/fonts',
+      to: 'fonts',
+    },
+  ],
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
   typescript: {
     check: false,
