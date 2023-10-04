@@ -31,6 +31,7 @@
     "lint:local": "eslint \"./*.{js,json,ts}\" \"./{.vscode,configs}/**/*.{js,json,ts}\" --cache",
     "lint": "yarn lint:local && turbo run lint",
     "prepare": "husky install",
+    "optimise:svg": "yarn svgo --folder \"./assets/icons\" --output \"./assets/icons\"",
     "start:api": "dotenv -- turbo run start --filter=@pbbg/api",
     "start:web": "dotenv -- turbo run start --filter=@pbbg/web",
     "test:dependencies": "yarn syncpack list-mismatches",
@@ -48,11 +49,13 @@
     "@commitlint/config-conventional": "17.7.0",
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
+    "@types/svgo": "2.6.4",
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
     "onchange": "7.1.0",
     "parse5": "7.1.2",
     "rimraf": "5.0.1",
+    "svgo": "3.0.2",
     "syncpack": "11.2.1",
     "wait-on": "7.0.1"
   }
