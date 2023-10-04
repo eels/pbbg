@@ -15,16 +15,13 @@
     "wait": "wait-on \"./lib\""
   },
   "dependencies": {
-    "validator": "13.9.0",
+    "validator": "13.11.0",
     "zod": "3.21.4"
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
-    "@types/node": "20.3.2",
-    "onchange": "7.1.0",
-    "rimraf": "5.0.1",
-    "wait-on": "7.0.1"
+    "@types/validator": "13.11.2"
   }
 }

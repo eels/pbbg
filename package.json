@@ -50,8 +50,10 @@
     "@pbbg/prettier-config": "*",
     "husky": "8.0.3",
     "lint-staged": "14.0.1",
+    "onchange": "7.1.0",
     "parse5": "7.1.2",
     "rimraf": "5.0.1",
-    "syncpack": "11.2.1"
+    "syncpack": "11.2.1",
+    "wait-on": "7.0.1"
   }
 }

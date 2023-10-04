@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        service: [api, web]
+        service: [api, database, web]
 
     steps:
       - name: Checkout

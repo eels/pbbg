@@ -1,3 +1,4 @@
+import { CSRF_HEADER_NAME } from '@pbbg/http/lib/config/constants';
 import { axiosInstance } from '@pbbg/http/lib/utilities/request';
 import { exceptions } from '@pbbg/http/lib/utilities/response';
 import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
@@ -9,12 +10,17 @@ export async function ALL({ request }: APIContext) {
   const { pathname } = new URL(request.url);
   const { headers, method } = request;
 
+  const headersToSend = {
+    [CSRF_HEADER_NAME]: headers.get(CSRF_HEADER_NAME) ?? undefined,
+    cookie: headers.get('cookie') ?? undefined,
+  };
+
   const [error, response] = await pleaseTryAsync<AxiosResponse, AxiosError>(async () => {
     const [error, body] = await pleaseTryAsync(() => request.json());
 
     return await axiosInstance({
       data: !error ? body : undefined,
-      headers: Object.fromEntries(headers),
+      headers: headersToSend,
       method,
       url: new URL(pathname, process.env.APP_API_HOST).toString(),
     });

@@ -4,9 +4,8 @@ services:
   pocketbase:
     build:
       args:
-        VERSION: '0.16.6'
-      context: .
-      dockerfile: docker/pocketbase/Dockerfile
+        VERSION: '0.18.9'
+      context: docker/pocketbase
     ports:
       - 8090:8090
     restart: unless-stopped

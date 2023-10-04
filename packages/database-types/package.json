@@ -18,7 +18,6 @@
   "devDependencies": {
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
-    "@pbbg/typescript-config": "*",
-    "onchange": "7.1.0"
+    "@pbbg/typescript-config": "*"
   }
 }

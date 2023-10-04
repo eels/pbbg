@@ -14,7 +14,6 @@
   "devDependencies": {
     "@pbbg/prettier-config": "*",
     "@pbbg/stylelint-config": "*",
-    "@pbbg/tailwind-config": "*",
-    "onchange": "7.1.0"
+    "@pbbg/tailwind-config": "*"
   }
 }

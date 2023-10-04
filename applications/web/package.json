@@ -31,11 +31,8 @@
     "astro-critters": "2.0.11",
     "astro": "3.1.0",
     "astrojs-service-worker": "1.1.0",
-    "classcat": "5.0.4",
     "react-dom": "18.2.0",
-    "react": "18.2.0",
-    "tailwind-compose": "1.1.0",
-    "zod": "3.21.4"
+    "react": "18.2.0"
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
@@ -48,7 +45,6 @@
     "@types/react": "18.2.14",
     "axios": "1.4.0",
     "prettier-plugin-astro": "0.8.0",
-    "rimraf": "5.0.1",
     "sass": "1.49.0"
   }
 }

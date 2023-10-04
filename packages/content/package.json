@@ -26,8 +26,6 @@
     "@pbbg/eslint-config": "*",
     "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
-    "@types/node": "20.3.2",
-    "rimraf": "5.0.1",
-    "wait-on": "7.0.1"
+    "@types/node": "20.3.2"
   }
 }
