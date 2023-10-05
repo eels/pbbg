@@ -2,8 +2,3 @@
 
 Webmaster: Liam Howell
 Website: https://liam.codes
-
-# --- SITE --------------------------------------
-
-Doctype: HTML5
-Language: English

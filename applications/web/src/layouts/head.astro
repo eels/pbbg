@@ -1,13 +1,24 @@
 ---
 export interface Props {
+  robots?: string[];
   slot: 'head';
+}
+
+const IS_PRODUCTION = process.env.NODE_IS_PRODUCTION === 'true';
+const NON_PROD_ROBOT_COMMANDS = ['noindex', 'nofollow'];
+const STATIC_ROBOT_COMMANDS = ['noimageindex'];
+
+let { robots = ['index', 'nofollow'] } = Astro.props;
+
+if (!IS_PRODUCTION) {
+  robots = NON_PROD_ROBOT_COMMANDS;
 }
 ---
 
 <meta charset='utf-8' />
 <meta content='ie=edge' http-equiv='x-ua-compatible' />
 <meta content='width=device-width, initial-scale=1, shrink-to-fit=no' name='viewport' />
-<meta content='index,follow,noimageindex' name='robots' />
+<meta content={[...robots, ...STATIC_ROBOT_COMMANDS].join(',')} name='robots' />
 <meta content='PBBG' name='application-name' />
 <meta content='PBBG' name='apple-mobile-web-app-title' />
 <meta content='yes' name='apple-mobile-web-app-capable' />
@@ -23,8 +34,8 @@ export interface Props {
 <link href='/site.webmanifest' rel='manifest' />
 <link href='/favicons/16x16.png' rel='icon' sizes='16x16' type='image/png' />
 <link href='/favicons/32x32.png' rel='icon' sizes='32x32' type='image/png' />
+<link href='/favicons/96x96.svg' rel='shortcut icon' sizes='96x96' type='image/svg+xml' />
 <link href='/favicons/1024x1024.png' rel='apple-touch-icon' sizes='1024x1024' type='image/png' />
-<link href='/favicons/512x512.svg' rel='shortcut icon' sizes='512x512' type='image/svg+xml' />
 <link as='font' href='/fonts/ex-400.woff2' rel='preload' type='font/woff2' crossorigin />
 <link as='font' href='/fonts/ka-300.woff2' rel='preload' type='font/woff2' crossorigin />
 <link as='font' href='/fonts/ka-600.woff2' rel='preload' type='font/woff2' crossorigin />

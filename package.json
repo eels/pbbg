@@ -16,7 +16,7 @@
     "build:api": "dotenv -- turbo run build --filter=@pbbg/api...",
     "build:web": "dotenv -- turbo run build --filter=@pbbg/web...",
     "build": "dotenv -- turbo run build",
-    "clean:artifacts": "yarn rimraf \"**/tsconfig.tsbuildinfo\"",
+    "clean:artifacts": "yarn rimraf \"**/.DS_Store\" \"**/tsconfig.tsbuildinfo\"",
     "clean:dependencies": "yarn rimraf \"**/node_modules/\"",
     "clean": "turbo run clean && yarn clean:artifacts",
     "dev:api": "dotenv -- turbo run dev --filter=@pbbg/api...",

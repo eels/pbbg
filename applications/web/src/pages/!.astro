@@ -9,6 +9,6 @@ if (!(await doesUserHaveValidSession(Astro.request))) {
 ---
 
 <HTML>
-  <Head slot='head' />
+  <Head robots={['noindex', 'nofollow']} slot='head' />
   <div>Hello, world!</div>
 </HTML>

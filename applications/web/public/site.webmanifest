@@ -19,16 +19,6 @@
       "sizes": "512x512",
       "src": "/favicons/512x512-maskable.png",
       "type": "image/png"
-    },
-    {
-      "sizes": "192x192",
-      "src": "/favicons/192x192.png",
-      "type": "image/png"
-    },
-    {
-      "sizes": "512x512",
-      "src": "/favicons/512x512.png",
-      "type": "image/png"
     }
   ]
 }
