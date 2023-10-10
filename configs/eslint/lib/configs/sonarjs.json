@@ -2,7 +2,7 @@
   "extends": ["plugin:sonarjs/recommended"],
   "overrides": [
     {
-      "files": ["styled.ts", "turbo.json"],
+      "files": ["*.test.ts", "styled.ts", "turbo.json"],
       "rules": {
         "sonarjs/no-duplicate-string": "off"
       }
