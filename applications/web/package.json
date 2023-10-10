@@ -34,7 +34,8 @@
     "astro": "3.2.3",
     "astrojs-service-worker": "1.1.0",
     "react-dom": "18.2.0",
-    "react": "18.2.0"
+    "react": "18.2.0",
+    "tailwind-compose": "1.1.0"
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
