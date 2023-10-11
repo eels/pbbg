@@ -6,7 +6,7 @@
   "scripts": {
     "build": "contentlayer build >/dev/null 2>&1",
     "clean": "rimraf \"./.contentlayer\"",
-    "create:post": "ts-node --project \"./tsconfig.script.json\" \"./scripts/create-post\"",
+    "create:post": "ts-node --project \"./tsconfig.build.script.json\" \"./scripts/create-post\"",
     "dev": "contentlayer dev",
     "format:fix": "yarn format --write",
     "format": "prettier \"{.,./src/**/}*.{cjs,js,json,ts}\" --check",

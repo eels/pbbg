@@ -3,13 +3,5 @@
   "compilerOptions": {
     "module": "esnext"
   },
-  "exclude": [
-    "**/*.stories.*",
-    "**/*.test.*",
-    "lib",
-    "node_modules",
-    "scripts",
-    "storybook",
-    "test"
-  ]
+  "exclude": ["**/*.stories.*", "**/*.test.*", "lib", "node_modules", "scripts", "test"]
 }

@@ -58,7 +58,7 @@ storybook-static
 
 applications/web/public/favicons
 applications/web/public/fonts
-packages/ui/src/--styles
+packages/storybook/src/--styles
 
 # --- Pocketbase --------------------------------
 

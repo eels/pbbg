@@ -1,0 +1,11 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/storybook/*": ["./*"],
+      "@/ui/*": ["../../../node_modules/@pbbg/ui/src/*"]
+    }
+  },
+  "include": ["**/*.ts"]
+}

@@ -23,14 +23,13 @@ jobs:
           DOTENV_KEY: ${{ secrets.DOTENV_KEY }}
           NODE_ENV: production
         run: |
-          yarn turbo run build --filter=@pbbg/ui...
-          yarn workspace @pbbg/ui storybook:build
+          yarn turbo run build --filter=@pbbg/storybook...
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           accountId: ${{ vars.AE_CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.SB_CLOUDFLARE_API_TOKEN }}
-          directory: ./packages/ui/storybook-static
+          directory: ./packages/storybook/storybook-static
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           projectName: ${{ vars.SB_CLOUDFLARE_PROJECT_NAME }}

@@ -1,6 +1,6 @@
-import '@/ui/--styles/style.scss';
+import '@/storybook/--styles/style.scss';
 import { themes } from '@storybook/theming';
-import { withStorybookDecorator } from '@/ui/components/utilities/storybook-decorator';
+import { withStorybookDecorator } from '@pbbg/ui/lib/components/utilities/storybook-decorator';
 import type { Preview } from '@storybook/react';
 
 export default {

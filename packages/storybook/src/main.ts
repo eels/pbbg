@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/cognitive-complexity */
 
-import { getAllIconsAsSymbols } from '@/ui/services/icons';
+import { getAllIconsAsSymbols } from '@pbbg/ui/lib/services/icons';
 import type { RuleSetRule } from 'webpack';
 import type { StorybookConfig } from '@storybook/nextjs';
 
@@ -16,9 +16,17 @@ export default {
         postCss: {
           implementation: require.resolve('postcss'),
         },
+        sass: {
+          implementation: require.resolve('sass'),
+        },
       },
     },
   ],
+  core: {
+    disableProjectJson: true,
+    disableTelemetry: true,
+    disableWhatsNewNotifications: true,
+  },
   docs: {
     autodocs: 'tag',
     defaultName: 'Documentation',
@@ -37,7 +45,7 @@ export default {
       to: 'fonts',
     },
   ],
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx)'],
+  stories: ['../../ui/src/**/*.stories.@(ts|tsx)'],
   typescript: {
     check: false,
     checkOptions: {},
