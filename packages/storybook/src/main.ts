@@ -25,7 +25,6 @@ export default {
   core: {
     disableProjectJson: true,
     disableTelemetry: true,
-    disableWhatsNewNotifications: true,
   },
   docs: {
     autodocs: 'tag',

@@ -10,6 +10,8 @@
   <div>As yet untitled persistent browser game</div>
   <br />
   <a href="https://github.com/eels/pbbg/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/eels/pbbg?style=flat-square" /></a>
+  <a href="https://canary.aethelm.com/"><img src="https://img.shields.io/badge/staging-https%3A%2F%2Fcanary.aethelm.com-blue?style=flat-square" /></a>
+  <a href="https://sb.aethelm.com/"><img src="https://img.shields.io/badge/storybook-https%3A%2F%2Fsb.aethelm.com-blue?logo=storybook&logoColor=white&style=flat-square" /></a>
   <br /><br />
   <pre>git clone https://github.com/eels/pbbg</pre>
   <h1></h1>
