@@ -1,34 +1,54 @@
 ---
 export interface Props {
+  description?: string;
   robots?: string[];
   slot: 'head';
+  title?: string;
 }
 
 const IS_PRODUCTION = process.env.NODE_IS_PRODUCTION === 'true';
 const NON_PROD_ROBOT_COMMANDS = ['noindex', 'nofollow'];
 const STATIC_ROBOT_COMMANDS = ['noimageindex'];
 
-let { robots = ['index', 'nofollow'] } = Astro.props;
+let { description, robots = ['index', 'nofollow'], title } = Astro.props;
 
 if (!IS_PRODUCTION) {
   robots = NON_PROD_ROBOT_COMMANDS;
 }
+
+const constructedTitle = {
+  base: 'Aethelm | Free Browser-Based Multiplayer RPG - Explore, Battle, Loot!',
+  construct: () => (title ? `${title} | ${constructedTitle.base}` : constructedTitle.base),
+};
+
+const baseDescription = [
+  'Experience Aethelm, a free browser-based multiplayer RPG for all devices.',
+  'Conquer an ever-changing world, battle tough foes, and collect heaps of loot.',
+  'Your epic adventure starts now!',
+];
 ---
 
 <meta charset='utf-8' />
 <meta content='ie=edge' http-equiv='x-ua-compatible' />
-<meta content='width=device-width, initial-scale=1, shrink-to-fit=no' name='viewport' />
+<meta content='initial-scale=1, maximum-scale=1, width=device-width' name='viewport' />
+<title>{constructedTitle.construct()}</title>
+<meta content={description ?? baseDescription.join(' ')} name='description' />
 <meta content={[...robots, ...STATIC_ROBOT_COMMANDS].join(',')} name='robots' />
-<meta content='PBBG' name='application-name' />
-<meta content='PBBG' name='apple-mobile-web-app-title' />
+<meta content='Aethelm' name='application-name' />
+<meta content='Aethelm' name='apple-mobile-web-app-title' />
 <meta content='yes' name='apple-mobile-web-app-capable' />
 <meta content='default' name='apple-mobile-web-app-status-bar-style' />
 <meta content='#0a0a0a' name='theme-color' />
+<meta content='yes' name='mobile-web-app-capable' />
 <meta content='telephone=no' name='format-detection' />
+<meta content={description ?? baseDescription.join(' ')} property='og:description' />
 <meta content='/social/600x600.png' property='og:image' />
 <meta content='en_GB' property='og:locale' />
-<meta content='PBBG' property='og:site_name' />
+<meta content={new URL(Astro.request.url, process.env.APP_WEB_HOST)} property='og:site' />
+<meta content='Aethelm' property='og:site_name' />
+<meta content={constructedTitle.construct()} property='og:title' />
 <meta content='website' property='og:type' />
+<link href={new URL(Astro.request.url, process.env.APP_WEB_HOST)} rel='canonical' />
 <link href='/api/int/csrf' rel='prefetch' />
 <link href='/humans.txt' rel='author' type='text/plain' />
 <link href='/site.webmanifest' rel='manifest' />
@@ -39,4 +59,3 @@ if (!IS_PRODUCTION) {
 <link as='font' href='/fonts/ex-400.woff2' rel='preload' type='font/woff2' crossorigin />
 <link as='font' href='/fonts/ka-300.woff2' rel='preload' type='font/woff2' crossorigin />
 <link as='font' href='/fonts/ka-600.woff2' rel='preload' type='font/woff2' crossorigin />
-<slot />

@@ -63,6 +63,7 @@ const errorInputStyles = [
 
 export const Input = compose.input<StyledInput>((conditional) => [
   'block',
+  'rounded-none',
   'w-full',
   'border-2',
   'bg-neutral-950',

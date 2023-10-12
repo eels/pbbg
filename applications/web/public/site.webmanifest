@@ -1,12 +1,16 @@
 {
-  "name": "PBBG",
-  "short_name": "PBBG",
-  "description": "PBBG",
+  "name": "Aethelm | Free Browser-Based Multiplayer RPG - Explore, Battle, Loot!",
+  "short_name": "Aethelm",
+  "description": "Experience Aethelm, a free browser-based multiplayer RPG for all devices. Conquer an ever-changing world, battle tough foes, and collect heaps of loot. Your epic adventure starts now!",
   "lang": "en-GB",
+  "id": "/",
   "start_url": "/",
   "theme_color": "#0a0a0a",
   "background_color": "#0a0a0a",
+  "dir": "ltr",
+  "orientation": "portrait-primary",
   "display": "standalone",
+  "display_override": ["window-controls-overlay"],
   "icons": [
     {
       "purpose": "maskable",
@@ -16,6 +20,12 @@
     },
     {
       "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "/favicons/512x512-maskable.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
       "sizes": "512x512",
       "src": "/favicons/512x512-maskable.png",
       "type": "image/png"
