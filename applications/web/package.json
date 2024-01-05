@@ -19,9 +19,9 @@
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/node": "6.0.3",
-    "@astrojs/react": "3.0.3",
-    "@astrojs/tailwind": "5.0.1",
+    "@astrojs/node": "7.0.4",
+    "@astrojs/react": "3.0.9",
+    "@astrojs/tailwind": "5.1.0",
     "@pbbg/content": "*",
     "@pbbg/database-types": "*",
     "@pbbg/http": "*",
@@ -29,12 +29,12 @@
     "@pbbg/ui": "*",
     "@pbbg/utilities": "*",
     "@pbbg/validators": "*",
-    "astro-compress": "2.0.15",
+    "astro": "4.1.0",
+    "astro-compress": "astro-community/AstroCompress#no-sharp",
     "astro-critters": "2.0.11",
-    "astro": "3.2.3",
-    "astrojs-service-worker": "1.1.0",
-    "react-dom": "18.2.0",
+    "astrojs-service-worker": "2.0.0",
     "react": "18.2.0",
+    "react-dom": "18.2.0",
     "tailwind-compose": "1.1.0"
   },
   "devDependencies": {
@@ -44,8 +44,8 @@
     "@pbbg/tailwind-config": "*",
     "@prettier/multiline-arrays@npm:prettier-plugin-multiline-arrays": "1.1.1",
     "@types/node": "20.3.2",
-    "@types/react-dom": "18.2.6",
     "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
     "axios": "1.4.0",
     "prettier-plugin-astro": "0.8.0",
     "sass": "1.49.0"
