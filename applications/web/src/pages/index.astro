@@ -1,10 +1,14 @@
 ---
 import AuthenticationForms from '@pbbg/ui/lib/components/organisms/authentication-forms';
+import Break from '@pbbg/ui/lib/components/atoms/break';
 import HTML from '@/web/layouts/html.astro';
 import Head from '@/web/layouts/head.astro';
+import Icon from '@pbbg/ui/lib/components/atoms/icon';
 ---
 
 <HTML>
+  <Icon className='mb-5 mx-auto aspect-[333/103] max-w-[300px]' icon='logo-long' />
   <Head slot='head' />
   <AuthenticationForms client:visible />
+  <Break className='mt-5' />
 </HTML>

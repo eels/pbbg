@@ -6,5 +6,6 @@ export const Icon = [
   'logo-long',
   'logo-short',
   'spinner',
+  'sword-right',
   'swords-emblem',
 ] as const;
