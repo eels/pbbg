@@ -2,10 +2,7 @@
   "name": "@pbbg/database-types",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
   "scripts": {
-    "build": "cp -R \"./src/\" \"./lib/\"",
-    "dev": "onchange --initial \"./src/**/*.ts\" -- yarn build",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {

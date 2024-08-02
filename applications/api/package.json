@@ -2,13 +2,7 @@
   "name": "@pbbg/api",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
   "scripts": {
-    "build": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
-    "clean": "rimraf \"./dist\"",
-    "dev:client": "yarn build && yarn start",
-    "dev": "onchange --initial --kill \"./src/**/*.{js,json,ts}\" -- yarn dev:client",
-    "start": "node --experimental-specifier-resolution node \"./dist/index.js\"",
     "test": "jest --passWithNoTests",
     "typescript:verify": "tsc --noEmit"
   },

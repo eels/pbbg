@@ -1,7 +1,6 @@
 {
   "name": "@pbbg/typescript-config",
   "private": true,
-  "version": "1.0.0",
   "dependencies": {
     "ts-node": "10.9.1",
     "ts-toolbelt": "9.6.0",

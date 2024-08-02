@@ -2,7 +2,6 @@
   "name": "@pbbg/content",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
   "scripts": {
     "build": "contentlayer build >/dev/null 2>&1",
     "clean": "rimraf \"./.contentlayer\"",

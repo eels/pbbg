@@ -2,14 +2,9 @@
   "name": "@pbbg/utilities",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
   "scripts": {
-    "build": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
-    "clean": "rimraf \"./lib\"",
-    "dev": "onchange --initial \"./src/**/*.{js,json,ts}\" -- yarn build",
     "test": "jest --passWithNoTests",
-    "typescript:verify": "tsc --noEmit",
-    "wait": "wait-on \"./lib\""
+    "typescript:verify": "tsc --noEmit"
   },
   "devDependencies": {
     "@pbbg/typescript-config": "*"

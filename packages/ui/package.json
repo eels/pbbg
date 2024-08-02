@@ -2,16 +2,11 @@
   "name": "@pbbg/ui",
   "private": true,
   "type": "module",
-  "version": "1.0.0",
   "scripts": {
-    "build": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
-    "clean": "rimraf \"./lib\"",
     "create:component": "ts-node --project \"./tsconfig.build.script.json\" \"./scripts/create-component\"",
     "create:icon-type": "ts-node --project \"./tsconfig.build.script.json\" \"./scripts/create-icon-type\"",
-    "dev": "onchange --initial \"./src/**/*.{js,jsx,json,ts,tsx}\" -- yarn build",
     "test": "jest --passWithNoTests",
-    "typescript:verify": "tsc --noEmit",
-    "wait": "wait-on \"./lib\""
+    "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
     "@pbbg/database-types": "*",
