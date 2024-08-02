@@ -10,6 +10,10 @@ module.exports = {
         mono: ['Excelsior', ...defaultTheme.fontFamily.mono],
         sans: ['Kanit', ...defaultTheme.fontFamily.sans],
       },
+      spacing: {
+        content: '860px',
+        page: '960px',
+      },
     },
   },
 };

@@ -56,7 +56,6 @@
     },
     "wait": {
       "cache": false,
-      "dependsOn": ["clean"],
       "outputs": []
     }
   }

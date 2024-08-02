@@ -28,7 +28,7 @@ const baseStyles = [
 
 const primaryButtonStyles = [
   ...baseStyles,
-  'bg-neutral-950',
+  'bg-neutral-950/50',
   'text-gray-50',
   'border-gray-50',
   'hover:bg-gray-50',

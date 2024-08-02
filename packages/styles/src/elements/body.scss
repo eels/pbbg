@@ -1,7 +1,6 @@
 @layer base {
   body {
     height: theme('height.full');
-    padding: theme('padding.6');
     font-family: theme('fontFamily.sans');
     overscroll-behavior-y: none;
   }

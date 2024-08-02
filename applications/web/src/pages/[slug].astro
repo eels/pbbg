@@ -1,5 +1,5 @@
 ---
-import ContentContainer from '@pbbg/ui/lib/components/atoms/content-container';
+import Container from '@pbbg/ui/lib/components/atoms/container';
 import HTML from '@/web/layouts/html.astro';
 import Head from '@/web/layouts/head.astro';
 import MDXContent from '@pbbg/ui/lib/components/utilities/mdx-content';
@@ -15,8 +15,8 @@ if (!auxiliary) {
 
 <HTML>
   <Head slot='head' />
-  <ContentContainer>
+  <Container type='content'>
     <h1>{auxiliary.title}</h1>
     <MDXContent code={auxiliary.body.code} />
-  </ContentContainer>
+  </Container>
 </HTML>

@@ -2,6 +2,8 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "baseUrl": ".",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "moduleResolution": "node",
     "paths": {
       "@/content": ["../../node_modules/@pbbg/content/.contentlayer/generated"],

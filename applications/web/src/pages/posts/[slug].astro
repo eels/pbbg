@@ -1,5 +1,5 @@
 ---
-import ContentContainer from '@pbbg/ui/lib/components/atoms/content-container';
+import Container from '@pbbg/ui/lib/components/atoms/container';
 import HTML from '@/web/layouts/html.astro';
 import Head from '@/web/layouts/head.astro';
 import MDXContent from '@pbbg/ui/lib/components/utilities/mdx-content';
@@ -15,8 +15,8 @@ if (!post) {
 
 <HTML>
   <Head slot='head' />
-  <ContentContainer>
+  <Container type='content'>
     <h1>{post.headline}</h1>
     <MDXContent code={post.body.code} />
-  </ContentContainer>
+  </Container>
 </HTML>
