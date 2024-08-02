@@ -50,7 +50,6 @@ tsconfig.tsbuildinfo
 .contentlayer
 dist
 lib
-storybook-static
 !**/src/lib
 !configs/**/lib
 
@@ -58,7 +57,6 @@ storybook-static
 
 applications/web/public/favicons
 applications/web/public/fonts
-packages/storybook/src/--styles
 
 # --- Pocketbase --------------------------------
 

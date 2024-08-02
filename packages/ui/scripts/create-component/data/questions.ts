@@ -17,10 +17,4 @@ export const questions = [
     name: 'tests',
     type: 'confirm',
   },
-  {
-    default: true,
-    message: 'Do you want to include a Storybook file?',
-    name: 'storybook',
-    type: 'confirm',
-  },
 ];

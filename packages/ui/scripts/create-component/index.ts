@@ -24,10 +24,6 @@ async function createComponent() {
     'styled.template': 'styled.ts',
   };
 
-  if (answers.storybook) {
-    componentTemplateMap['index.stories.template'] = 'index.stories.tsx';
-  }
-
   if (answers.tests) {
     componentTemplateMap['index.test.template'] = 'index.test.tsx';
   }
