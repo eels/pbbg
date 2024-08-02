@@ -23,12 +23,6 @@
       "dependsOn": [],
       "outputs": []
     },
-    "test": {
-      "cache": false,
-      "dependsOn": ["^build", "build"],
-      "dotEnv": [".env.production", ".env.staging", ".env"],
-      "outputs": []
-    },
     "typescript:verify": {
       "cache": false,
       "dependsOn": ["^build", "build"],

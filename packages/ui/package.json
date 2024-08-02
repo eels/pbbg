@@ -5,7 +5,6 @@
   "scripts": {
     "create:component": "ts-node --project \"./tsconfig.build.script.json\" \"./scripts/create-component\"",
     "create:icon-type": "ts-node --project \"./tsconfig.build.script.json\" \"./scripts/create-icon-type\"",
-    "test": "jest --passWithNoTests",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
