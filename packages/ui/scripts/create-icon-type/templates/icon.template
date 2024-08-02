@@ -2,5 +2,4 @@
 
 export type AvailableIcon = (typeof Icon)[number];
 
-/* prettier-ignore */
 export const Icon = %array as const;

@@ -6,8 +6,6 @@
   "scripts": {
     "build": "cp -R \"./src/\" \"./lib/\"",
     "dev": "onchange --initial \"./src/**/*.ts\" -- yarn build",
-    "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./lib/**/}*.{cjs,js,json,ts}\" --cache --check",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{cjs,js,ts}\" \"./lib/**/*.{js,ts}\" --cache",
     "typescript:verify": "tsc --noEmit"
@@ -17,7 +15,6 @@
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
-    "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*"
   }
 }

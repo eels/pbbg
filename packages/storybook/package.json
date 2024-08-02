@@ -8,8 +8,6 @@
     "clean": "rimraf \"./src/--styles\" \"./storybook-static\"",
     "copy:styles": "cp -a \"../styles/lib\" \"./src/--styles\"",
     "dev": "yarn pre && storybook dev --config-dir \"./src\" --no-open --port 6006 --quiet",
-    "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./src/**/}*.{cjs,js,json,ts}\" --check",
     "lint:fix": "yarn lint:js --fix",
     "lint": "eslint \"./*.{cjs,js,json}\" \"./src/**/*.{json,ts}\" --cache",
     "pre": "yarn copy:styles",
@@ -37,7 +35,6 @@
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
-    "@pbbg/prettier-config": "*",
     "@pbbg/tailwind-config": "*",
     "@pbbg/typescript-config": "*",
     "@types/node": "20.3.2",

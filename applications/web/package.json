@@ -9,8 +9,6 @@
     "copy:favicons": "cp -a  \"../../assets/favicons\" \"./public/\"",
     "copy:fonts": "cp -a  \"../../assets/fonts\" \"./public/\"",
     "dev": "yarn pre && astro dev",
-    "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./{public,src}/**/}*.{astro,cjs,js,json,mjs,svg,ts,tsx}\" --check",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{cjs,js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
     "pre": "yarn copy:favicons && yarn copy:fonts",
@@ -39,15 +37,12 @@
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
-    "@pbbg/prettier-config": "*",
     "@pbbg/stylelint-config": "*",
     "@pbbg/tailwind-config": "*",
-    "@prettier/multiline-arrays@npm:prettier-plugin-multiline-arrays": "1.1.1",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "axios": "1.4.0",
-    "prettier-plugin-astro": "0.8.0",
     "sass": "1.49.0"
   }
 }

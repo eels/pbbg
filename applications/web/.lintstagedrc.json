@@ -1,4 +1,3 @@
 {
-  "*.{astro,cjs,js,json,mjs,svg,ts,tsx}": "prettier --check",
   "*.{astro,cjs,js,json,mjs,ts,tsx}": "eslint"
 }

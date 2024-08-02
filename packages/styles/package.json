@@ -6,13 +6,10 @@
   "scripts": {
     "build": "cp -R \"./src/\" \"./lib/\"",
     "dev": "onchange --initial \"./src/**/*.{css,scss}\" -- yarn build",
-    "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./lib/**/}*.{cjs,css,js,json,scss}\" --check",
     "lint:fix": "yarn lint:css --fix",
     "lint": "stylelint \"./lib/**/*.{css,scss}\" --cache"
   },
   "devDependencies": {
-    "@pbbg/prettier-config": "*",
     "@pbbg/stylelint-config": "*",
     "@pbbg/tailwind-config": "*"
   }

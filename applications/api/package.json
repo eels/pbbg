@@ -8,8 +8,6 @@
     "clean": "rimraf \"./dist\"",
     "dev:client": "yarn build && yarn start",
     "dev": "onchange --initial --kill \"./src/**/*.{js,json,ts}\" -- yarn dev:client",
-    "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./src/**/}*.{cjs,js,json,ts}\" --check",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{cjs,js,json,ts}\" \"./src/**/*.{js,json,ts}\" --cache",
     "start": "node --experimental-specifier-resolution node \"./dist/index.js\"",
@@ -31,7 +29,6 @@
   "devDependencies": {
     "@pbbg/database-types": "*",
     "@pbbg/eslint-config": "*",
-    "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
     "@types/node": "20.3.2",
     "@types/timestring": "6.0.2",

@@ -8,8 +8,6 @@
     "clean": "rimraf \"./.contentlayer\"",
     "create:post": "ts-node --project \"./tsconfig.build.script.json\" \"./scripts/create-post\"",
     "dev": "contentlayer dev",
-    "format:fix": "yarn format --write",
-    "format": "prettier \"{.,./src/**/}*.{cjs,js,json,ts}\" --check",
     "lint:fix": "yarn lint --fix",
     "lint": "eslint \"./*.{cjs,js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
     "typescript:verify": "tsc --noEmit",
@@ -24,7 +22,6 @@
   },
   "devDependencies": {
     "@pbbg/eslint-config": "*",
-    "@pbbg/prettier-config": "*",
     "@pbbg/typescript-config": "*",
     "@types/node": "20.3.2"
   }

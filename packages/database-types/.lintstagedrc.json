@@ -1,4 +1,0 @@
-{
-  "*.{cjs,js,json,ts}": "prettier --check",
-  "*.{cjs,json,ts}": "eslint"
-}
