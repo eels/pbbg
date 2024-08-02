@@ -9,8 +9,6 @@
     "copy:favicons": "cp -a  \"../../assets/favicons\" \"./public/\"",
     "copy:fonts": "cp -a  \"../../assets/fonts\" \"./public/\"",
     "dev": "yarn pre && astro dev",
-    "lint:fix": "yarn lint --fix",
-    "lint": "eslint \"./*.{cjs,js,json,mjs,ts}\" \"./src/**/*.{astro,js,json,mjs,ts,tsx}\" --cache",
     "pre": "yarn copy:favicons && yarn copy:fonts",
     "preview": "astro preview",
     "start": "node \"./dist/server/entry.mjs\"",
@@ -36,8 +34,6 @@
     "tailwind-compose": "1.1.0"
   },
   "devDependencies": {
-    "@pbbg/eslint-config": "*",
-    "@pbbg/stylelint-config": "*",
     "@pbbg/tailwind-config": "*",
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",

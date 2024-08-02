@@ -18,7 +18,8 @@
     "@pbbg/eslint-config/lib/configs/sort-imports.json",
     "@pbbg/eslint-config/lib/configs/sort-keys.json",
     "@pbbg/eslint-config/lib/configs/typescript-sort-keys.json",
-    "@pbbg/eslint-config/lib/configs/typescript.json"
+    "@pbbg/eslint-config/lib/configs/typescript.json",
+    "@pbbg/eslint-config/lib/overrides/web.json"
   ],
   "ignorePatterns": ["!.*"]
 }

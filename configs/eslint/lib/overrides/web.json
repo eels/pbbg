@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": ["./applications/web/**/*"],
+      "extends": [
+        "@pbbg/eslint-config/lib/configs/astro.json",
+        "@pbbg/eslint-config/lib/configs/jsx-a11y.json",
+        "@pbbg/eslint-config/lib/configs/react.json"
+      ]
+    }
+  ]
+}

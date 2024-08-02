@@ -7,8 +7,6 @@
     "build": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
     "clean": "rimraf \"./lib\"",
     "dev": "onchange --initial \"./src/**/*.{js,json,ts}\" -- yarn build",
-    "lint:fix": "yarn lint --fix",
-    "lint": "eslint \"./*.{cjs,js,json,ts}\" \"./src/**/*.{json,ts}\" --cache",
     "test": "jest --passWithNoTests",
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./lib\""
@@ -21,7 +19,6 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
-    "@pbbg/eslint-config": "*",
     "@pbbg/typescript-config": "*",
     "@types/node": "20.3.2",
     "jose": "4.14.6",

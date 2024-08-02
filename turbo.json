@@ -18,16 +18,6 @@
       "dotEnv": [".env.production", ".env.staging", ".env"],
       "outputs": []
     },
-    "lint": {
-      "cache": false,
-      "dependsOn": [],
-      "outputs": []
-    },
-    "lint:fix": {
-      "cache": false,
-      "dependsOn": [],
-      "outputs": []
-    },
     "start": {
       "cache": false,
       "dependsOn": [],

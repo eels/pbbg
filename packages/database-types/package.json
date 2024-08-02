@@ -6,15 +6,12 @@
   "scripts": {
     "build": "cp -R \"./src/\" \"./lib/\"",
     "dev": "onchange --initial \"./src/**/*.ts\" -- yarn build",
-    "lint:fix": "yarn lint --fix",
-    "lint": "eslint \"./*.{cjs,js,ts}\" \"./lib/**/*.{js,ts}\" --cache",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
     "pocketbase": "0.15.2"
   },
   "devDependencies": {
-    "@pbbg/eslint-config": "*",
     "@pbbg/typescript-config": "*"
   }
 }

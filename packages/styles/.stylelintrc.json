@@ -1,3 +1,0 @@
-{
-  "extends": ["@pbbg/stylelint-config/lib/stylelintrc.json"]
-}

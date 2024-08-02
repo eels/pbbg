@@ -5,12 +5,9 @@
   "version": "1.0.0",
   "scripts": {
     "build": "cp -R \"./src/\" \"./lib/\"",
-    "dev": "onchange --initial \"./src/**/*.{css,scss}\" -- yarn build",
-    "lint:fix": "yarn lint:css --fix",
-    "lint": "stylelint \"./lib/**/*.{css,scss}\" --cache"
+    "dev": "onchange --initial \"./src/**/*.{css,scss}\" -- yarn build"
   },
   "devDependencies": {
-    "@pbbg/stylelint-config": "*",
     "@pbbg/tailwind-config": "*"
   }
 }
