@@ -1,0 +1,17 @@
+# --- Dependencies ------------------------------
+
+**/node_modules
+
+# --- Caches ------------------------------------
+
+.eslintcache
+.stylelintcache
+
+# --- Compiled ----------------------------------
+
+.astro
+.contentlayer
+dist
+lib
+!**/src/lib
+!configs/**/lib
