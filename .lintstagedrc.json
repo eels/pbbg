@@ -1,0 +1,4 @@
+{
+  "*.{astro,cjs,js,json,mjs,ts,tsx}": "eslint",
+  "*.{css,scss}": "stylelint"
+}
