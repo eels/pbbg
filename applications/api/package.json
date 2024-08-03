@@ -7,21 +7,21 @@
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
-    "@hono/node-server": "1.1.1",
+    "@hono/node-server": "1.12.0",
     "@pbbg/http": "*",
     "@pbbg/utilities": "*",
     "@pbbg/validators": "*",
-    "awilix": "8.0.1",
-    "hono": "3.6.3",
-    "jose": "4.14.6",
-    "pocketbase": "0.15.2",
-    "rate-limiter-flexible": "3.0.0",
+    "awilix": "10.0.2",
+    "hono": "4.5.3",
+    "jose": "5.6.3",
+    "pocketbase": "0.21.4",
+    "rate-limiter-flexible": "5.0.3",
     "timestring": "7.0.0"
   },
   "devDependencies": {
     "@pbbg/database-types": "*",
     "@pbbg/typescript-config": "*",
-    "@types/timestring": "6.0.2",
-    "node-mocks-http": "1.12.2"
+    "@types/timestring": "6.0.5",
+    "node-mocks-http": "1.15.1"
   }
 }

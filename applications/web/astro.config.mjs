@@ -1,7 +1,6 @@
 import compress from 'astro-compress';
 import critters from 'astro-critters';
 import node from '@astrojs/node';
-import react from '@astrojs/react';
 import sw from 'astrojs-service-worker';
 import tailwind from '@astrojs/tailwind';
 import { loadEnv } from 'vite';
@@ -24,7 +23,7 @@ const tailwindConfig = {
 /** @type {import('astro').AstroUserConfig} */
 export default {
   adapter: node({ mode: 'standalone' }),
-  integrations: [react(), tailwind(tailwindConfig), sw(), critters(), compress()],
+  integrations: [tailwind(tailwindConfig), sw(), critters(), compress()],
   output: 'server',
   trailingSlash: 'never',
   vite: viteConfig,

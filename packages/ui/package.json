@@ -11,6 +11,6 @@
   },
   "devDependencies": {
     "@pbbg/typescript-config": "*",
-    "@testing-library/jest-dom": "6.1.3"
+    "@testing-library/jest-dom": "6.4.8"
   }
 }

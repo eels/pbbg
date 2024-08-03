@@ -10,7 +10,7 @@
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
-    "pocketbase": "0.15.2"
+    "pocketbase": "0.21.4"
   },
   "devDependencies": {
     "@pbbg/typescript-config": "*"
