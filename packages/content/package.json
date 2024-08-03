@@ -6,7 +6,6 @@
   "scripts": {
     "build": "contentlayer build >/dev/null 2>&1",
     "clean": "rimraf \"./.contentlayer\"",
-    "create:post": "ts-node --project \"./tsconfig.build.script.json\" \"./scripts/create-post\"",
     "dev": "contentlayer dev",
     "typescript:verify": "tsc --noEmit",
     "wait": "wait-on \"./.contentlayer\""
