@@ -5,7 +5,7 @@ import url from 'node:url';
 import { capitalCase } from 'change-case';
 import { format } from 'date-fns';
 import { hydrateFromVariableMap } from '@pbbg/utilities/hydrate-string';
-import { questions } from '@/squire/create-post/data/questions';
+import { questions } from '@/squire/commands/create-blog-post/data/questions';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -16,7 +16,7 @@ function sanitiseHeadline(headline: string) {
   return headline;
 }
 
-async function createBlogPost() {
+export async function createBlogPost() {
   const answers = await inquirer.prompt(questions);
   const urlSafeHeadline = sanitiseHeadline(answers.headline);
   const slug = `${format(new Date(), 'yyyyMMddHHmm')}-${urlSafeHeadline}`;
@@ -37,5 +37,3 @@ async function createBlogPost() {
 
   fs.writeFileSync(path.join(directory, `${slug}.mdx`), post);
 }
-
-createBlogPost();

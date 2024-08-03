@@ -21,7 +21,6 @@
   "devDependencies": {
     "@pbbg/database-types": "*",
     "@pbbg/typescript-config": "*",
-    "@types/node": "20.3.2",
     "@types/timestring": "6.0.2",
     "node-mocks-http": "1.12.2"
   }

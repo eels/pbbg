@@ -1,0 +1,11 @@
+{
+  "plugins": ["sort-destructure-keys"],
+  "rules": {
+    "sort-destructure-keys/sort-destructure-keys": [
+      "error",
+      {
+        "caseSensitive": true
+      }
+    ]
+  }
+}

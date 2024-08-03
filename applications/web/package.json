@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@pbbg/tailwind-config": "*",
-    "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "axios": "1.4.0",

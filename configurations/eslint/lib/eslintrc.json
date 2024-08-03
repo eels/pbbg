@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "semistandard",
+    "@pbbg/eslint-config/lib/configs/base.json",
+    "@pbbg/eslint-config/lib/configs/import.json",
+    "@pbbg/eslint-config/lib/configs/jest.json",
+    "@pbbg/eslint-config/lib/configs/json.json",
+    "@pbbg/eslint-config/lib/configs/node.json",
+    "@pbbg/eslint-config/lib/configs/sonarjs.json",
+    "@pbbg/eslint-config/lib/configs/sort-destructure-keys.json",
+    "@pbbg/eslint-config/lib/configs/sort-imports.json",
+    "@pbbg/eslint-config/lib/configs/sort-keys.json",
+    "@pbbg/eslint-config/lib/configs/typescript-sort-keys.json",
+    "@pbbg/eslint-config/lib/configs/typescript.json",
+    "@pbbg/eslint-config/lib/overrides/web.json"
+  ],
+  "ignorePatterns": ["!.*"]
+}

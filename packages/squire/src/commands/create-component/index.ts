@@ -4,11 +4,11 @@ import path from 'node:path';
 import url from 'node:url';
 import { hydrateFromVariableMap } from '@pbbg/utilities/hydrate-string';
 import { paramCase, pascalCase } from 'change-case';
-import { questions } from '@/squire/create-component/data/questions';
+import { questions } from '@/squire/commands/create-component/data/questions';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
-async function createComponent() {
+export async function createComponent() {
   const answers = await inquirer.prompt(questions);
   const componentName = paramCase(answers.name.toLowerCase());
   const componentType = paramCase(answers.type.toLowerCase());
@@ -42,5 +42,3 @@ async function createComponent() {
     fs.writeFileSync(path.join(directory, filename), content);
   }
 }
-
-createComponent();

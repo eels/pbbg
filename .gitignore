@@ -51,7 +51,7 @@ tsconfig.tsbuildinfo
 dist
 lib
 !**/src/lib
-!configs/**/lib
+!configurations/**/lib
 
 # --- Generated ---------------------------------
 

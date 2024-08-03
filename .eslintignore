@@ -14,4 +14,4 @@
 dist
 lib
 !**/src/lib
-!configs/**/lib
+!configurations/**/lib

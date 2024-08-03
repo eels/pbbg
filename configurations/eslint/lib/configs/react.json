@@ -1,0 +1,35 @@
+{
+  "extends": ["plugin:react/recommended", "plugin:react-hooks/recommended"],
+  "plugins": ["react", "react-hooks"],
+  "rules": {
+    "react-hooks/exhaustive-deps": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react/boolean-prop-naming": "error",
+    "react/jsx-handler-names": [
+      "error",
+      {
+        "checkInlineFunction": true,
+        "checkLocalVariables": true,
+        "eventHandlerPrefix": "handle",
+        "eventHandlerPropPrefix": "on"
+      }
+    ],
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "callbacksLast": true,
+        "ignoreCase": false,
+        "reservedFirst": true,
+        "shorthandLast": true
+      }
+    ],
+    "react/no-unknown-property": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/self-closing-comp": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

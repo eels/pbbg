@@ -7,6 +7,7 @@
       "@/content": ["./packages/content/.contentlayer/generated"],
       "@/database-types": ["./packages/database-types/src/*"],
       "@/http/*": ["./packages/http/src/*"],
+      "@/squire/*": ["./packages/squire/src/*"],
       "@/styles/*": ["./packages/styles/src/*"],
       "@/ui/*": ["./packages/ui/src/*"],
       "@/utilities/*": ["./packages/utilities/src/*"],

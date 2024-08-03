@@ -3,20 +3,21 @@
   "private": true,
   "type": "module",
   "version": "0.0.0",
-  "exports": {
-    "./*": ["./src/*.ts"]
-  },
   "scripts": {
+    "squire": "tsx \"./src/index\"",
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
     "@pbbg/utilities": "*",
     "change-case": "4.1.2",
+    "commander": "12.1.0",
     "date-fns": "2.30.0",
-    "inquirer": "8.2.0"
+    "inquirer": "8.2.0",
+    "tsx": "4.16.5"
   },
   "devDependencies": {
     "@pbbg/typescript-config": "*",
-    "@types/inquirer": "9.0.7"
+    "@types/inquirer": "9.0.7",
+    "@types/node": "22.1.0"
   }
 }

@@ -1,0 +1,13 @@
+{
+  "overrides": [
+    {
+      "files": ["*.json"],
+      "rules": {
+        "comma-dangle": ["error", "never"],
+        "no-unused-expressions": "off",
+        "quotes": ["error", "double"],
+        "semi": ["error", "never"]
+      }
+    }
+  ]
+}

@@ -30,6 +30,7 @@
     "optimise:svg": "yarn svgo --folder \"./assets/icons\" --output \"./assets/icons\"",
     "prepare": "husky install",
     "start:web": "dotenv -- turbo run start --filter=@pbbg/web",
+    "squire": "yarn workspace @pbbg/squire squire",
     "test:dependencies": "yarn syncpack list-mismatches",
     "test": "jest --cache --maxWorkers 50% --passWithNoTests",
     "typescript:verify": "turbo run typescript:verify"

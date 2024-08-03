@@ -1,5 +1,0 @@
-/* eslint-disable */
-
-export type AvailableIcon = (typeof Icon)[number];
-
-export const Icon = %array as const;
