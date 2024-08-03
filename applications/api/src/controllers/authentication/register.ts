@@ -1,11 +1,11 @@
-import BadDataError from '@pbbg/http/lib/exceptions/bad-data';
-import { Controller } from '@pbbg/http/lib/types/http';
-import { ValidateRequestBody } from '@pbbg/http/lib/utilities/validate-body';
-import { exceptions } from '@pbbg/http/lib/utilities/response';
-import { validateAuthentication } from '@pbbg/validators/lib/authentication';
+import BadDataError from '@pbbg/http/exceptions/bad-data';
+import { Controller } from '@pbbg/http/types/http';
+import { ValidateRequestBody } from '@pbbg/http/utilities/validate-body';
+import { exceptions } from '@pbbg/http/utilities/response';
+import { validateAuthentication } from '@pbbg/validators/authentication';
 import type AuthenticationQuery from '@/api/queries/authentication';
 import type { Context } from 'hono';
-import type { Data } from '@pbbg/http/lib/types/validate';
+import type { Data } from '@pbbg/http/types/validate';
 
 export default class Registration extends Controller {
   private authentication: AuthenticationQuery;

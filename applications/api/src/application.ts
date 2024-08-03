@@ -1,4 +1,4 @@
-import { app } from '@pbbg/http/lib/application/hono';
+import { app } from '@pbbg/http/application/hono';
 import { cradle } from '@/api/container';
 import { limiter } from '@/api/utilities/limiter';
 

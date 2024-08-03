@@ -1,18 +1,16 @@
 {
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src",
-    "declaration": true,
+    "baseUrl": "../../",
     "jsx": "preserve",
-    "outDir": "./lib",
     "paths": {
-      "@/http/*": ["../../node_modules/@pbbg/http/lib/*"],
-      "@/styles/*": ["../../../node_modules/@pbbg/styles/lib/*"],
-      "@/ui/*": ["./*"],
-      "@/utilities/*": ["../../../node_modules/@pbbg/utilities/lib/*"],
-      "@/validators/*": ["../../../node_modules/@pbbg/validators/lib/*"]
+      "@/http/*": ["./packages/http/src/*"],
+      "@/styles/*": ["./packages/styles/src/*"],
+      "@/ui/*": ["./packages/ui/src/*"],
+      "@/utilities/*": ["./packages/utilities/src/*"],
+      "@/validators/*": ["./packages/validators/src/*"]
     }
   },
-  "exclude": ["lib", "node_modules"],
+  "exclude": ["node_modules"],
   "include": ["**/*.ts", "**/*.tsx"]
 }

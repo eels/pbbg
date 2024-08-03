@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "../../",
     "paths": {
-      "@/http/*": ["./packages/http/src/*"],
+      "@/squire/*": ["./packages/squire/src/*"],
       "@/utilities/*": ["./packages/utilities/src/*"]
     }
   },

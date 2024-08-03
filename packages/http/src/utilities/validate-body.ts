@@ -1,6 +1,6 @@
 import BadDataError from '@/http/exceptions/bad-data';
 import { exceptions } from '@/http/utilities/response';
-import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
+import { pleaseTryAsync } from '@pbbg/utilities/try';
 import type { Context } from 'hono';
 import type { Controller } from '@/http/types/http';
 import type { ZodType } from 'zod';

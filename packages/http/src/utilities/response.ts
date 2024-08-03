@@ -1,5 +1,5 @@
 import { defaultResponseCodeMap } from '@/http/utilities/http';
-import { get, set } from '@pbbg/utilities/lib/object';
+import { get, set } from '@pbbg/utilities/object';
 import type { APIResponse } from '@/http/types/api';
 import type { Context } from 'hono';
 

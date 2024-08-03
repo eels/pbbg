@@ -1,11 +1,6 @@
 ---
 import HTML from '@/web/layouts/html.astro';
 import Head from '@/web/layouts/head.astro';
-import { doesUserHaveValidSession } from '@/web/utilities/authentication';
-
-if (!(await doesUserHaveValidSession(Astro.request))) {
-  return Astro.redirect('/');
-}
 ---
 
 <HTML>

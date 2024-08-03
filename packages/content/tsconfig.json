@@ -1,11 +1,9 @@
 {
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "incremental": false,
-    "noEmit": true,
+    "baseUrl": "../../",
     "paths": {
-      "@/utilities/*": ["../../node_modules/@pbbg/utilities/lib/*"]
+      "@/utilities/*": ["./packages/utilities/src/*"]
     }
   },
   "exclude": [".contentlayer", "node_modules"],

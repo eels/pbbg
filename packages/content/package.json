@@ -12,14 +12,9 @@
     "wait": "wait-on \"./.contentlayer\""
   },
   "dependencies": {
-    "@pbbg/utilities": "*",
-    "change-case": "4.1.2",
-    "contentlayer": "0.3.1",
-    "date-fns": "2.30.0",
-    "inquirer": "8.2.0"
+    "contentlayer": "0.3.1"
   },
   "devDependencies": {
-    "@pbbg/typescript-config": "*",
-    "@types/node": "20.3.2"
+    "@pbbg/typescript-config": "*"
   }
 }

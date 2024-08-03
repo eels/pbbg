@@ -1,6 +1,6 @@
 import BaseQuery from '@/api/lib/query';
-import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
-import type { User } from '@pbbg/database-types/lib/types';
+import { pleaseTryAsync } from '@pbbg/utilities/try';
+import type { User } from '@pbbg/database-types/types';
 
 export default class AuthenticationQuery extends BaseQuery {
   public async authenticate(email: string, password: string) {

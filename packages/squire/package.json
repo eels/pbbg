@@ -1,5 +1,5 @@
 {
-  "name": "@pbbg/database-types",
+  "name": "@pbbg/squire",
   "private": true,
   "type": "module",
   "version": "0.0.0",
@@ -10,9 +10,13 @@
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
-    "pocketbase": "0.15.2"
+    "@pbbg/utilities": "*",
+    "change-case": "4.1.2",
+    "date-fns": "2.30.0",
+    "inquirer": "8.2.0"
   },
   "devDependencies": {
-    "@pbbg/typescript-config": "*"
+    "@pbbg/typescript-config": "*",
+    "@types/inquirer": "9.0.7"
   }
 }

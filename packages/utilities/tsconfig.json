@@ -1,13 +1,11 @@
 {
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./src",
-    "declaration": true,
-    "outDir": "./lib",
+    "baseUrl": "../../",
     "paths": {
-      "@/utilities/*": ["./*"]
+      "@/utilities/*": ["./packages/utilities/src/*"]
     }
   },
-  "exclude": ["lib", "node_modules"],
+  "exclude": ["node_modules"],
   "include": ["**/*.ts"]
 }

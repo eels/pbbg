@@ -1,4 +1,4 @@
-import { Controller } from '@pbbg/http/lib/types/http';
+import { Controller } from '@pbbg/http/types/http';
 import type { Context, Next } from 'hono';
 
 export default class AuthenticationGuard extends Controller {

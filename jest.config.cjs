@@ -13,7 +13,6 @@ const transformerOptions = {
 /** @type {string[]} */
 const transformIgnorePackages = [
   'pocketbase',
-  'tailwind-compose',
 ];
 
 /** @type {Record<string, string | [string, Record<string, unknown>]>} */
@@ -50,7 +49,7 @@ const projects = [
     moduleDirectories: ['node_modules', 'src', 'test'],
     preset: 'ts-jest/presets/js-with-ts-esm',
     roots: ['<rootDir>/packages/ui'],
-    setupFilesAfterEnv: ['<rootDir>/packages/ui/test/setup.ts'],
+    setupFilesAfterEnv: ['<rootDir>/packages/ui/jest.setup.ts'],
     testEnvironment: 'jest-environment-jsdom',
   },
   {

@@ -1,7 +1,7 @@
 import RateLimitedError from '@/http/exceptions/rate-limited';
 import { Controller } from '@/http/types/http';
 import { exceptions } from '@/http/utilities/response';
-import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
+import { pleaseTryAsync } from '@pbbg/utilities/try';
 import type { Context, Next } from 'hono';
 import type { RateLimiterMemory } from 'rate-limiter-flexible';
 

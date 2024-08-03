@@ -1,12 +1,6 @@
 ---
-import '@pbbg/styles/lib/style.scss';
-import SessionProvider from '@pbbg/ui/lib/components/utilities/session-provider';
-import StringsProvider from '@pbbg/ui/lib/components/utilities/strings-provider';
-import { Body } from '@pbbg/ui/lib/components/atoms/site-body/styled';
+import '@pbbg/styles/src/style.scss';
 import { ViewTransitions } from 'astro:transitions';
-import { getAllIconsAsSymbols } from '@pbbg/ui/lib/services/icons';
-
-const icons = getAllIconsAsSymbols();
 ---
 
 <!DOCTYPE html>
@@ -15,12 +9,7 @@ const icons = getAllIconsAsSymbols();
     <slot name='head' />
     <ViewTransitions />
   </head>
-  <body class:list={Body.toClass()}>
-    <StringsProvider client:load>
-      <SessionProvider>
-        <div id='__icons' set:html={icons ?? ''} />
-        <slot />
-      </SessionProvider>
-    </StringsProvider>
+  <body>
+    <slot />
   </body>
 </html>

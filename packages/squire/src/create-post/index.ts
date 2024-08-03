@@ -4,10 +4,9 @@ import path from 'node:path';
 import url from 'node:url';
 import { capitalCase } from 'change-case';
 import { format } from 'date-fns';
-import { hydrateFromVariableMap } from '@pbbg/utilities/lib/hydrate-string';
-import { questions } from '@pbbg/content/scripts/create-post/data/questions';
+import { hydrateFromVariableMap } from '@pbbg/utilities/hydrate-string';
+import { questions } from '@/squire/create-post/data/questions';
 
-// @ts-expect-error - import.meta is only available when using build tsconfig
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 function sanitiseHeadline(headline: string) {

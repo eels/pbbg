@@ -1,18 +1,18 @@
-import AuthenticationError from '@pbbg/http/lib/exceptions/authentication';
-import InternalError from '@pbbg/http/lib/exceptions/internal';
-import { AUTH_COOKIE_NAME } from '@pbbg/http/lib/config/constants';
-import { Controller } from '@pbbg/http/lib/types/http';
-import { ValidateRequestBody } from '@pbbg/http/lib/utilities/validate-body';
+import AuthenticationError from '@pbbg/http/exceptions/authentication';
+import InternalError from '@pbbg/http/exceptions/internal';
+import { AUTH_COOKIE_NAME } from '@pbbg/http/config/constants';
+import { Controller } from '@pbbg/http/types/http';
+import { ValidateRequestBody } from '@pbbg/http/utilities/validate-body';
 import { encodeJWT } from '@/api/utilities/jwt';
-import { exceptions } from '@pbbg/http/lib/utilities/response';
-import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
-import { setCookie } from '@pbbg/http/lib/utilities/cookie';
-import { validateAuthentication } from '@pbbg/validators/lib/authentication';
+import { exceptions } from '@pbbg/http/utilities/response';
+import { pleaseTryAsync } from '@pbbg/utilities/try';
+import { setCookie } from '@pbbg/http/utilities/cookie';
+import { validateAuthentication } from '@pbbg/validators/authentication';
 import type AuthenticationQuery from '@/api/queries/authentication';
-import type { AuthResponse } from '@pbbg/database-types/lib/types';
+import type { AuthResponse } from '@pbbg/database-types/types';
 import type { ClientResponseError } from 'pocketbase';
 import type { Context } from 'hono';
-import type { Data } from '@pbbg/http/lib/types/validate';
+import type { Data } from '@pbbg/http/types/validate';
 
 export default class SignIn extends Controller {
   private authentication: AuthenticationQuery;

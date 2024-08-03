@@ -1,8 +1,6 @@
 ---
-import Container from '@pbbg/ui/lib/components/atoms/container';
 import HTML from '@/web/layouts/html.astro';
 import Head from '@/web/layouts/head.astro';
-import MDXContent from '@pbbg/ui/lib/components/utilities/mdx-content';
 import { allAuxiliaries } from '@pbbg/content/.contentlayer/generated';
 
 const { slug } = Astro.params;
@@ -15,8 +13,7 @@ if (!auxiliary) {
 
 <HTML>
   <Head slot='head' />
-  <Container type='content'>
+  <div>
     <h1>{auxiliary.title}</h1>
-    <MDXContent code={auxiliary.body.code} />
-  </Container>
+  </div>
 </HTML>

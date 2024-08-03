@@ -1,5 +1,5 @@
 import { SignJWT, jwtVerify } from 'jose';
-import type { Session } from '@pbbg/http/lib/types/session';
+import type { Session } from '@pbbg/http/types/session';
 
 const algorithm = 'HS256';
 

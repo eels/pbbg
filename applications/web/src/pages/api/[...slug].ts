@@ -1,9 +1,9 @@
-import { CSRF_HEADER_NAME } from '@pbbg/http/lib/config/constants';
-import { axiosInstance } from '@pbbg/http/lib/utilities/request';
-import { exceptions } from '@pbbg/http/lib/utilities/response';
-import { pleaseTryAsync } from '@pbbg/utilities/lib/try';
+import { CSRF_HEADER_NAME } from '@pbbg/http/config/constants';
+import { axiosInstance } from '@pbbg/http/utilities/request';
+import { exceptions } from '@pbbg/http/utilities/response';
+import { pleaseTryAsync } from '@pbbg/utilities/try';
 import type { APIContext } from 'astro';
-import type { APIResponse } from '@pbbg/http/lib/types/api';
+import type { APIResponse } from '@pbbg/http/types/api';
 import type { AxiosError, AxiosResponse } from 'axios';
 
 export async function ALL({ request }: APIContext) {

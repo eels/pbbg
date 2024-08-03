@@ -1,6 +1,6 @@
-import { AUTH_COOKIE_NAME } from '@pbbg/http/lib/config/constants';
-import { Controller } from '@pbbg/http/lib/types/http';
-import { delCookie } from '@pbbg/http/lib/utilities/cookie';
+import { AUTH_COOKIE_NAME } from '@pbbg/http/config/constants';
+import { Controller } from '@pbbg/http/types/http';
+import { delCookie } from '@pbbg/http/utilities/cookie';
 import type { Context } from 'hono';
 
 export default class SignOut extends Controller {
