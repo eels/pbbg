@@ -1,6 +1,7 @@
 {
   "name": "@pbbg/root",
   "private": true,
+  "type": "module",
   "version": "3.0.0",
   "author": "Liam Howell <liam@liam.codes>",
   "repository": "https://github.com/eels/pbbg",
@@ -30,7 +31,7 @@
     "prepare": "husky install",
     "start:web": "dotenv -- turbo run start --filter=@pbbg/web",
     "test:dependencies": "yarn syncpack list-mismatches",
-    "test": "dotenv -- turbo run test",
+    "test": "jest --cache --maxWorkers 50% --passWithNoTests",
     "typescript:verify": "turbo run typescript:verify"
   },
   "dependencies": {
@@ -44,6 +45,7 @@
     "@commitlint/config-conventional": "17.7.0",
     "@pbbg/eslint-config": "*",
     "@pbbg/stylelint-config": "*",
+    "@pbbg/typescript-config": "*",
     "@types/jest": "29.5.3",
     "@types/svgo": "2.6.4",
     "concurrently": "8.2.2",

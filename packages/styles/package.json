@@ -2,6 +2,7 @@
   "name": "@pbbg/styles",
   "private": true,
   "type": "module",
+  "version": "0.0.0",
   "devDependencies": {
     "@pbbg/tailwind-config": "*"
   }

@@ -1,6 +1,7 @@
 {
   "name": "@pbbg/eslint-config",
   "private": true,
+  "version": "0.0.0",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",

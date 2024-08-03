@@ -3,7 +3,6 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
-    "baseUrl": "src",
     "declaration": false,
     "declarationDir": null,
     "esModuleInterop": true,

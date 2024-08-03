@@ -2,6 +2,7 @@
   "name": "@pbbg/validators",
   "private": true,
   "type": "module",
+  "version": "0.0.0",
   "scripts": {
     "typescript:verify": "tsc --noEmit"
   },

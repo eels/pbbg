@@ -1,0 +1,17 @@
+{
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/api/*": ["./applications/api/src/*"],
+      "@/content": ["./packages/content/.contentlayer/generated"],
+      "@/database-types": ["./packages/database-types/src/*"],
+      "@/http/*": ["./packages/http/src/*"],
+      "@/styles/*": ["./packages/styles/src/*"],
+      "@/ui/*": ["./packages/ui/src/*"],
+      "@/utilities/*": ["./packages/utilities/src/*"],
+      "@/validators/*": ["./packages/validators/src/*"],
+      "@/web/*": ["./applications/web/src/*"]
+    }
+  }
+}
