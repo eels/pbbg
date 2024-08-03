@@ -10,7 +10,7 @@
   "packageManager": "yarn@1.22.22",
   "workspaces": [
     "applications/*",
-    "configs/*",
+    "configurations/*",
     "packages/*"
   ],
   "scripts": {
