@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "../../",
     "paths": {
-      "@/api/*": ["./applications/api/src/*"],
+      "@/api/*": ["./packages/api/src/*"],
       "@/http/*": ["./packages/http/src/*"],
       "@/utilities/*": ["./packages/utilities/src/*"],
       "@/validators/*": ["./packages/validators/src/*"]

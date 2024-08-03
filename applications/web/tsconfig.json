@@ -5,6 +5,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "paths": {
+      "@/api/*": ["./packages/api/src/*"],
       "@/content": ["./packages/content/.contentlayer/generated"],
       "@/http/*": ["./packages/http/src/*"],
       "@/styles/*": ["./packages/styles/src/*"],

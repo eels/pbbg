@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/api/*": ["./applications/api/src/*"],
+      "@/api/*": ["./packages/api/src/*"],
       "@/content": ["./packages/content/.contentlayer/generated"],
       "@/database-types": ["./packages/database-types/src/*"],
       "@/http/*": ["./packages/http/src/*"],

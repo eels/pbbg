@@ -17,6 +17,7 @@
   "dependencies": {
     "@astrojs/node": "8.3.2",
     "@astrojs/tailwind": "5.1.0",
+    "@pbbg/api": "*",
     "@pbbg/content": "*",
     "@pbbg/database-types": "*",
     "@pbbg/http": "*",

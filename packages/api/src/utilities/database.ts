@@ -1,7 +1,7 @@
 /* eslint-disable import/no-relative-parent-imports */
 /* See: https://github.com/pocketbase/js-sdk/issues/34 */
 
-import PocketBase from '../../../../node_modules/pocketbase/dist/pocketbase.cjs.js';
+import PocketBase from 'pocketbase/cjs';
 import { pleaseTryAsync } from '@pbbg/utilities/try';
 
 export type Authentication = () => PocketBase;
