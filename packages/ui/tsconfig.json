@@ -1,5 +1,5 @@
 {
-  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
+  "extends": "@pbbg/typescript-config/tsconfig.json",
   "compilerOptions": {
     "baseUrl": "../../",
     "jsx": "preserve",

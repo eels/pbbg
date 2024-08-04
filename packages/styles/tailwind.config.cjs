@@ -1,4 +1,4 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  ...require('@pbbg/tailwind-config/lib/tailwind.config'),
+  ...require('@pbbg/tailwind-config/tailwind.config'),
 };

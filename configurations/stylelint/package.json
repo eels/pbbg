@@ -1,7 +1,11 @@
 {
   "name": "@pbbg/stylelint-config",
   "private": true,
+  "type": "module",
   "version": "0.0.0",
+  "exports": {
+    "./*": "./lib/*"
+  },
   "dependencies": {
     "postcss-nested": "6.0.1",
     "postcss": "8.4.22",
