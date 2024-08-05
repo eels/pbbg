@@ -1,0 +1,18 @@
+{
+  "rules": {
+    "alpha-value-notation": "number",
+    "at-rule-no-vendor-prefix": true,
+    "color-function-notation": "legacy",
+    "color-named": "never",
+    "color-no-hex": true,
+    "declaration-colon-newline-after": null,
+    "function-no-unknown": null,
+    "import-notation": null,
+    "media-feature-name-no-vendor-prefix": true,
+    "no-invalid-position-at-import-rule": null,
+    "property-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "unit-disallowed-list": ["em", "rem"],
+    "value-no-vendor-prefix": true
+  }
+}
