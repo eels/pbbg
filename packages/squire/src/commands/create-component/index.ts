@@ -3,16 +3,17 @@ import inquirer from 'inquirer';
 import path from 'node:path';
 import url from 'node:url';
 import { hydrateFromVariableMap } from '@pbbg/utilities/hydrate-string';
-import { paramCase, pascalCase } from 'change-case';
+import { kebabCase, pascalCase } from 'change-case';
 import { questions } from '@/squire/commands/create-component/data/questions';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const __uiPackage = path.join(process.cwd(), '..', 'ui');
 
 export async function createComponent() {
   const answers = await inquirer.prompt(questions);
-  const componentName = paramCase(answers.name.toLowerCase());
-  const componentType = paramCase(answers.type.toLowerCase());
-  const directory = path.join(process.cwd(), 'src', 'components', componentType, componentName);
+  const componentName = kebabCase(answers.name.toLowerCase());
+  const componentType = kebabCase(answers.type.toLowerCase());
+  const directory = path.join(__uiPackage, 'src', 'components', componentType, componentName);
 
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, { recursive: true });

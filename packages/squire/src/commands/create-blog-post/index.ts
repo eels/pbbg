@@ -8,6 +8,7 @@ import { hydrateFromVariableMap } from '@pbbg/utilities/hydrate-string';
 import { questions } from '@/squire/commands/create-blog-post/data/questions';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+const __contentPackage = path.join(process.cwd(), '..', 'content');
 
 function sanitiseHeadline(headline: string) {
   headline = headline.toLowerCase().split(' ').join('-');
@@ -20,7 +21,7 @@ export async function createBlogPost() {
   const answers = await inquirer.prompt(questions);
   const urlSafeHeadline = sanitiseHeadline(answers.headline);
   const slug = `${format(new Date(), 'yyyyMMddHHmm')}-${urlSafeHeadline}`;
-  const directory = path.join(process.cwd(), 'src', 'content', 'posts');
+  const directory = path.join(__contentPackage, 'src', 'content', 'posts');
 
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, { recursive: true });
