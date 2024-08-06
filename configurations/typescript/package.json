@@ -3,9 +3,6 @@
   "private": true,
   "type": "module",
   "version": "0.0.0",
-  "exports": {
-    "./*": "./lib/*"
-  },
   "dependencies": {
     "ts-node": "10.9.2",
     "ts-toolbelt": "9.6.0",

@@ -1,14 +1,13 @@
 {
-  "extends": "@pbbg/typescript-config/tsconfig.json",
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "../../",
+    "baseUrl": ".",
+    "declaration": true,
+    "outDir": "./dist",
     "paths": {
-      "@/api/*": ["./packages/api/src/*"],
-      "@/http/*": ["./packages/http/src/*"],
-      "@/utilities/*": ["./packages/utilities/src/*"],
-      "@/validators/*": ["./packages/validators/src/*"]
+      "@/api/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules"],
-  "include": ["../../node_modules/@pbbg/http/types/hono-http.d.ts", "**/*.ts"]
+  "exclude": ["dist", "node_modules"],
+  "include": ["../http/types/hono-http.d.ts", "**/*.ts"]
 }

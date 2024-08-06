@@ -3,12 +3,13 @@ import { get, set } from '@pbbg/utilities/object';
 import type { APIResponse } from '@/http/types/api';
 import type { Context } from 'hono';
 
+type StatusCode = Parameters<Context['status']>[0];
+
 export function response<T>(context: Context) {
   return ({ code, status, ...response }: APIResponse<T>) => {
     const fields = context.req.query('fields')?.split(',');
+    const statusCode = typeof code === 'number' ? code : defaultResponseCodeMap[status] ?? 500;
     const data = {};
-
-    context.status(typeof code === 'number' ? code : defaultResponseCodeMap[status] ?? 500);
 
     if (typeof fields !== 'undefined' && 'data' in response) {
       for (const path in fields) {
@@ -18,7 +19,7 @@ export function response<T>(context: Context) {
       response.data = data as T;
     }
 
-    return context.json({ ...response, status });
+    return context.json({ ...response, status }, statusCode as StatusCode);
   };
 }
 

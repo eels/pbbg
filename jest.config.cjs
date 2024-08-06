@@ -34,7 +34,7 @@ const projects = [
     displayName: '@pbbg/api',
     moduleDirectories: ['node_modules', 'src'],
     preset: 'ts-jest/presets/js-with-ts-esm',
-    roots: ['<rootDir>/applications/api'],
+    roots: ['<rootDir>/packages/api'],
     testEnvironment: 'node',
   },
   {

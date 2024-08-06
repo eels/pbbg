@@ -3,9 +3,6 @@
   "private": true,
   "type": "module",
   "version": "0.0.0",
-  "exports": {
-    "./*": "./lib/*"
-  },
   "dependencies": {
     "tailwindcss": "3.4.7"
   }

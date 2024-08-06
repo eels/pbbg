@@ -1,12 +1,11 @@
 {
-  "extends": "@pbbg/typescript-config/tsconfig.json",
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "../../",
+    "baseUrl": ".",
     "paths": {
-      "@/squire/*": ["./packages/squire/src/*"],
-      "@/utilities/*": ["./packages/utilities/src/*"]
+      "@/squire/*": ["./src/*"]
     }
   },
-  "exclude": ["node_modules"],
+  "exclude": ["dist", "node_modules"],
   "include": ["**/*.ts"]
 }

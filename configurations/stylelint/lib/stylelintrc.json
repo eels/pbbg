@@ -2,7 +2,7 @@
   "extends": [
     "stylelint-config-idiomatic-order",
     "stylelint-config-standard",
-    "@pbbg/stylelint-config/configs/base.json",
-    "@pbbg/stylelint-config/configs/scss.json"
+    "@pbbg/stylelint-config/lib/configs/base.json",
+    "@pbbg/stylelint-config/lib/configs/scss.json"
   ]
 }

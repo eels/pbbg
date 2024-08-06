@@ -3,7 +3,7 @@ module.exports = {
   ...require('@pbbg/tailwind-config/tailwind.config'),
   content: [
     '../../assets/icons/**/*.svg',
-    '../../node_modules/@pbbg/ui/src/**/*.{js,ts,tsx}',
+    '../../packages/ui/src/**/*.{js,ts,tsx}',
     './public/**/*.svg',
     './src/**/*.{astro,js,ts,tsx}',
   ],

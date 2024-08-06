@@ -1,11 +1,5 @@
 {
-  "extends": "@pbbg/typescript-config/tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": "../../",
-    "paths": {
-      "@/utilities/*": ["./packages/utilities/src/*"]
-    }
-  },
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "exclude": [".contentlayer", "node_modules"],
   "include": ["**/*.ts"]
 }

@@ -55,6 +55,7 @@
     "jest-environment-jsdom": "29.7.0",
     "jest-transform-css": "6.0.1",
     "lint-staged": "15.2.8",
+    "onchange": "7.1.0",
     "parse5": "7.1.2",
     "rimraf": "6.0.1",
     "svgo": "3.3.2",

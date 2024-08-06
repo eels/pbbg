@@ -4,10 +4,17 @@
   "type": "module",
   "version": "0.0.0",
   "exports": {
-    "./*": ["./src/*.ts"]
+    "./*": {
+      "default": "./dist/*.js",
+      "types": "./dist/*.d.ts"
+    }
   },
   "scripts": {
-    "typescript:verify": "tsc --noEmit"
+    "build": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
+    "clean": "rimraf \"./dist\"",
+    "dev": "onchange --initial \"./src/**/*.{js,json,ts}\" -- yarn build",
+    "typescript:verify": "tsc --noEmit",
+    "wait": "wait-on \"./dist\""
   },
   "dependencies": {
     "pocketbase": "0.21.4"

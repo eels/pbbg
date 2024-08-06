@@ -1,25 +1,13 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "../../",
+    "baseUrl": ".",
     "jsx": "react-jsx",
-    "jsxImportSource": "react",
+    "jsxImportSource": "@builder.io/qwik",
     "paths": {
-      "@/api/*": ["./packages/api/src/*"],
-      "@/content": ["./packages/content/.contentlayer/generated"],
-      "@/http/*": ["./packages/http/src/*"],
-      "@/styles/*": ["./packages/styles/src/*"],
-      "@/ui/*": ["./packages/ui/src/*"],
-      "@/utilities/*": ["./packages/utilities/src/*"],
-      "@/validators/*": ["./packages/validators/src/*"],
-      "@/web/*": ["./applications/web/src/*"]
+      "@/web/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules"],
-  "include": [
-    "../../node_modules/@pbbg/content/.contentlayer/generated",
-    "**/*.astro",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "include": ["../../packages/content/.contentlayer/generated", "**/*.astro", "**/*.ts", "**/*.tsx"]
 }

@@ -4,13 +4,13 @@ type SuccessStatus = 'SUCCESS';
 
 export interface ErrorResponse {
   code?: number;
-  message: Lowercase<string>;
+  message: string;
   status: ErrorStatus;
 }
 
 export interface FailResponse {
   code?: number;
-  message: Lowercase<string>;
+  message: string;
   status: FailStatus;
 }
 

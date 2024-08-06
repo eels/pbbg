@@ -1,14 +1,11 @@
 {
-  "extends": "@pbbg/typescript-config/tsconfig.json",
+  "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "../../",
-    "jsx": "preserve",
+    "baseUrl": ".",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik",
     "paths": {
-      "@/http/*": ["./packages/http/src/*"],
-      "@/styles/*": ["./packages/styles/src/*"],
-      "@/ui/*": ["./packages/ui/src/*"],
-      "@/utilities/*": ["./packages/utilities/src/*"],
-      "@/validators/*": ["./packages/validators/src/*"]
+      "@/ui/*": ["./src/*"]
     }
   },
   "exclude": ["node_modules"],
