@@ -1,12 +1,9 @@
 ---
 import HTML from '@/web/layouts/html.astro';
 import Head from '@/web/layouts/head.astro';
-import { hydrate } from '@pbbg/utilities/hydrate-string';
-
-export const title = hydrate('Hello, %1', ['World']);
 ---
 
 <HTML>
   <Head slot='head' />
-  <div>{title}</div>
+  <div>Home</div>
 </HTML>

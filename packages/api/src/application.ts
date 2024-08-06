@@ -14,10 +14,3 @@ app.use('*', cradle.SendAnalyticsEvent.handle);
 // --- GET --------------------------------------
 
 app.get('/api/version', cradle.Version.handle);
-app.get('/api/user/session', cradle.Session.handle);
-
-// --- POST -------------------------------------
-
-app.post('/api/user/register', cradle.Registration.handle);
-app.post('/api/user/signin', cradle.SignIn.handle);
-app.post('/api/user/signout', cradle.SignOut.handle);
