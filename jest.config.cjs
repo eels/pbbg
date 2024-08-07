@@ -49,7 +49,7 @@ const projects = [
     moduleDirectories: ['node_modules', 'src', 'test'],
     preset: 'ts-jest/presets/js-with-ts-esm',
     roots: ['<rootDir>/packages/ui'],
-    setupFilesAfterEnv: ['<rootDir>/packages/ui/jest.setup.ts'],
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
     testEnvironment: 'jest-environment-jsdom',
   },
   {
