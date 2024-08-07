@@ -39,7 +39,7 @@
     "dotenv": "16.4.5",
     "dotenv-cli": "7.4.2",
     "dotenv-vault": "1.26.2",
-    "turbo": "2.0.11"
+    "turbo": "2.0.12"
   },
   "devDependencies": {
     "@commitlint/cli": "19.3.0",

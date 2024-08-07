@@ -2,8 +2,10 @@
   "extends": "@pbbg/typescript-config/lib/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "declaration": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@builder.io/qwik",
+    "outDir": "./dist",
     "paths": {
       "@/ui/*": ["./src/*"]
     }

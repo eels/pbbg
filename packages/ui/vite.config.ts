@@ -25,5 +25,5 @@ const buildOptions = {
 
 export default {
   build: buildOptions,
-  plugins: [qwikVite(), tsconfigPaths({ root: __dirname })],
+  plugins: [qwikVite(), tsconfigPaths()],
 } satisfies UserConfig;
