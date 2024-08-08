@@ -15,23 +15,26 @@
     "typescript:verify": "tsc --noEmit"
   },
   "dependencies": {
-    "@astrojs/node": "8.3.2",
-    "@astrojs/tailwind": "5.1.0",
     "@pbbg/api": "*",
     "@pbbg/content": "*",
-    "@pbbg/database-types": "*",
     "@pbbg/http": "*",
     "@pbbg/styles": "*",
     "@pbbg/ui": "*",
     "@pbbg/utilities": "*",
     "@pbbg/validators": "*",
-    "astro": "4.13.1",
-    "astro-compress": "astro-community/AstroCompress#no-sharp",
-    "astro-critters": "2.2.0",
-    "astrojs-service-worker": "2.0.0"
+    "@qwik-ui/headless": "0.5.1",
+    "astro": "4.13.1"
   },
   "devDependencies": {
+    "@astrojs/node": "8.3.2",
+    "@astrojs/tailwind": "5.1.0",
+    "@builder.io/qwik": "1.7.3",
+    "@pbbg/database-types": "*",
     "@pbbg/tailwind-config": "*",
+    "@qwikdev/astro": "0.6.3",
+    "astro-compress": "astro-community/AstroCompress#no-sharp",
+    "astro-critters": "2.2.0",
+    "astrojs-service-worker": "2.0.0",
     "sass": "1.77.8"
   }
 }

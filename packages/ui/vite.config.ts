@@ -13,7 +13,7 @@ const libOptions = {
 } satisfies LibraryOptions;
 
 const rollupOptions = {
-  external: [/^node:.*/, ...excludeAll(pkg.devDependencies)],
+  external: [/^node:.*/, ...excludeAll(pkg.dependencies), ...excludeAll(pkg.devDependencies)],
 } satisfies BuildOptions['rollupOptions'];
 
 const buildOptions = {

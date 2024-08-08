@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
+    "emitDeclarationOnly": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@builder.io/qwik",
     "outDir": "./dist",
@@ -11,5 +12,5 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

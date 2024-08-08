@@ -16,12 +16,14 @@
       "cache": false,
       "dependsOn": ["^wait", "clean"],
       "inputs": ["$TURBO_DEFAULT$", ".env.production", ".env.staging", ".env"],
-      "outputs": []
+      "outputs": [],
+      "persistent": true
     },
     "start": {
       "cache": false,
       "dependsOn": [],
-      "outputs": []
+      "outputs": [],
+      "persistent": true
     },
     "typescript:verify": {
       "cache": false,

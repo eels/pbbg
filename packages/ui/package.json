@@ -3,15 +3,23 @@
   "private": true,
   "type": "module",
   "version": "0.0.0",
+  "qwik": "./dist/index.qwik.mjs",
   "exports": {
-    "./*": ["./src/*.ts", "./src/*.tsx"]
+    ".": {
+      "default": "./dist/index.qwik.mjs",
+      "types": "./dist/index.d.ts"
+    }
   },
   "scripts": {
-    "build": "vite build --mode lib",
+    "build:dts": "tsc --project \"./tsconfig.build.json\" && tsc-alias",
+    "build": "vite build --mode lib && yarn build:dts",
     "clean": "rimraf \"./dist\"",
     "dev": "onchange --initial \"./src/**/*.{js,json,ts,tsx}\" -- yarn build",
-    "typescript:verify": "tsc --noEmit",
+    "typescript:verify": "tsc --emitDeclarationOnly false --noEmit",
     "wait": "wait-on \"./dist\""
+  },
+  "dependencies": {
+    "@pbbg/utilities": "*"
   },
   "devDependencies": {
     "@builder.io/qwik": "1.7.1",
